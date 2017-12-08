@@ -1,0 +1,20 @@
+
+
+<div class="row">
+    <div class="col-xs-12"  *ngFor="let chapter of chapters">
+      <h1> Chapter {{chapter.number}}: {{ chapter.name }}</h1>
+
+        <hr>
+      <ul class="list-group">
+        <li
+        style="cursor: pointer;"
+          class="list-group-item"
+          *ngFor="let section of chapter.sections"
+          (click)="toSection(chapter.id, section.name)"
+          >
+          Sections {{section.number}} {{section.name}}
+      </li>
+      </ul>
+    </div>
+  </div>
+

@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-xs-12">
+    <!-- <button class="btn btn-success" (click)="onNewRecipe()">New Recipe</button> -->
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <app-law-item
+      *ngFor="let lawEl of laws; let i = index"
+      [law]="lawEl"
+      [index]="lawEl.id"></app-law-item>
+  </div>
+</div>
