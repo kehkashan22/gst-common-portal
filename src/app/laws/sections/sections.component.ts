@@ -59,6 +59,11 @@ export class SectionsComponent implements OnInit, AfterViewInit {
     //     console.log(e.target.href);
     //   });
     // })
+    const anchors = document.querySelectorAll('a[href^=\'#\']');
+    let index = 0;
+    for ( index  = 0; index < anchors.length; index++ ) {
+      console.log(anchors[index]);
+}
   }
 
   toSection(chap_id, name) {

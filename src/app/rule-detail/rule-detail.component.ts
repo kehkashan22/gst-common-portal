@@ -1,8 +1,11 @@
+import { RuleDetail } from './rule-detail.model';
 import { RuleDetailService } from './rule-detail.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 
+
+import * as firebase from 'firebase';
 @Component({
   selector: 'app-rule-detail',
   templateUrl: './rule-detail.component.html',
@@ -14,7 +17,7 @@ export class RuleDetailComponent implements OnInit {
     video_url: '',
     name: '',
     number: '',
-    related_rules: [],
+    related_sections: [],
     footnotes: [],
     text: ''
   };
@@ -24,6 +27,8 @@ export class RuleDetailComponent implements OnInit {
   act_id: string;
   chap_id: string;
   name: string;
+  rule_id: string;
+
   constructor(
     private _rule: RuleDetailService,
     private route: ActivatedRoute,
@@ -39,21 +44,42 @@ export class RuleDetailComponent implements OnInit {
       this.law_id = params['law_id'];
       this.act_id = params['act_id'];
       this.chap_id = params['chap_id'];
-      this.name = params['name'];
-      this._rule.getRule(this.law_id, this.act_id, this.chap_id, this.name).then((snap: any[]) => {
-        console.log('here');
-        snap.forEach(doc => {
-          const rule = {
-            id: doc.id,
-            ...doc.data()
-          };
-          this.rule = {
-            ...this.rule,
-            ...rule
-          }
-          this.htmlText = this._dom.bypassSecurityTrustHtml(this.rule.text);
+      this.name = params['name'] || '';
+      this.rule_id = params['rule_id'] || '';
+      if (this.rule_id) {
+        this._rule.getRuleById(this.law_id, this.act_id, this.chap_id, this.rule_id).then((snap: firebase.firestore.DocumentSnapshot) => {
+          console.log('here');
+          console.log(snap);
+
+            const rule = {
+              id: snap.id,
+              ...snap.data()
+            };
+
+            this.rule = {
+              ...this.rule,
+              ...rule
+            }
+            this.htmlText = this._dom.bypassSecurityTrustHtml(this.rule.text);
+
         });
-      });
+      }else if (this.name) {
+        this._rule.getRule(this.law_id, this.act_id, this.chap_id, this.name).then((snap: any[]) => {
+          console.log('here');
+          snap.forEach(doc => {
+            const rule = {
+              id: doc.id,
+              ...doc.data()
+            };
+            this.rule = {
+              ...this.rule,
+              ...rule
+            }
+            this.htmlText = this._dom.bypassSecurityTrustHtml(this.rule.text);
+          });
+        });
+      }
+
     });
   }
 }
