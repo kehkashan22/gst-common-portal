@@ -1,16 +1,18 @@
 import { LawsService } from './../laws.service';
 import { Component, OnInit } from '@angular/core';
-import { Params, Router, ActivatedRoute } from '@angular/router';
+import { Params, Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
   selector: 'app-sections',
   templateUrl: './sections.component.html',
   styleUrls: ['./sections.component.css']
 })
-export class SectionsComponent implements OnInit {
+export class SectionsComponent implements OnInit, AfterViewInit {
   law_id: string;
   act_id: string;
   chapters = [];
+  fragment = '';
   constructor(
     private _law: LawsService,
     private route: ActivatedRoute,
@@ -35,6 +37,33 @@ export class SectionsComponent implements OnInit {
         });
       });
     });
+
+    // this.route.fragment.subscribe(fragment => { this.fragment = fragment; });
+
+    // this.router.events.subscribe(s => {
+    //   if (s instanceof NavigationEnd) {
+    //     const tree = this.router.parseUrl(this.router.url);
+    //     if (tree.fragment) {
+    //       const element = document.querySelector('#' + tree.fragment);
+    //       if (element) { element.scrollIntoView(true); }
+    //     }
+    //   }
+    // });
+  }
+
+  ngAfterViewInit(): void {
+    // document.querySelectorAll('a[href^=\'#\']').
+    // forEach(node => {
+    //   node.addEventListener('click', e => {
+    //     e.preventDefault();
+    //     console.log(e.target.href);
+    //   });
+    // })
+    const anchors = document.querySelectorAll('a[href^=\'#\']');
+    let index = 0;
+    for ( index  = 0; index < anchors.length; index++ ) {
+      console.log(anchors[index]);
+}
   }
 
   toSection(chap_id, name) {
