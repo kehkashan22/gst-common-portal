@@ -51,15 +51,15 @@ export class SectionsComponent implements OnInit, AfterViewInit {
     // });
   }
 
-  // ngAfterViewInit(): void {
-  //   document.querySelectorAll('a[href^=\'#\']').
-  //   forEach(node => {
-  //     node.addEventListener('click', e => {
-  //       e.preventDefault();
-  //       console.log(e.target.href);
-  //     });
-  //   })
-  // }
+  ngAfterViewInit(): void {
+    // document.querySelectorAll('a[href^=\'#\']').
+    // forEach(node => {
+    //   node.addEventListener('click', e => {
+    //     e.preventDefault();
+    //     console.log(e.target.href);
+    //   });
+    // })
+  }
 
   toSection(chap_id, name) {
     this.router.navigate(['/section'], {
