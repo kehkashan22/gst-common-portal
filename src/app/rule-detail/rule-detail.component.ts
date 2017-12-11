@@ -1,16 +1,15 @@
-import { SectionDetailService } from './section-detail.service';
+import { RuleDetailService } from './rule-detail.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-section-detail',
-  templateUrl: './section-detail.component.html',
-  styleUrls: ['./section-detail.component.css']
+  selector: 'app-rule-detail',
+  templateUrl: './rule-detail.component.html',
+  styleUrls: ['./rule-detail.component.css']
 })
-export class SectionDetailComponent implements OnInit {
-  section = {
+export class RuleDetailComponent implements OnInit {
+  rule = {
     id: '',
     video_url: '',
     name: '',
@@ -26,7 +25,7 @@ export class SectionDetailComponent implements OnInit {
   chap_id: string;
   name: string;
   constructor(
-    private _section: SectionDetailService,
+    private _rule: RuleDetailService,
     private route: ActivatedRoute,
     private router: Router,
     private _dom: DomSanitizer
@@ -41,18 +40,18 @@ export class SectionDetailComponent implements OnInit {
       this.act_id = params['act_id'];
       this.chap_id = params['chap_id'];
       this.name = params['name'];
-      this._section.getSection(this.law_id, this.act_id, this.chap_id, this.name).then((snap: any[]) => {
+      this._rule.getRule(this.law_id, this.act_id, this.chap_id, this.name).then((snap: any[]) => {
         console.log('here');
         snap.forEach(doc => {
-          const section = {
+          const rule = {
             id: doc.id,
             ...doc.data()
           };
-          this.section = {
-            ...this.section,
-            ...section
+          this.rule = {
+            ...this.rule,
+            ...rule
           }
-          this.htmlText = this._dom.bypassSecurityTrustHtml(this.section.text);
+          this.htmlText = this._dom.bypassSecurityTrustHtml(this.rule.text);
         });
       });
     });

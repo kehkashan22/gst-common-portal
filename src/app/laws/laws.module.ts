@@ -10,6 +10,7 @@ import { LawsRoutingModule } from './laws-routing.module';
 import { RouterModule } from '@angular/router';
 import { SectionsComponent } from './sections/sections.component';
 import { LawsDetailsComponent } from './laws-details/laws-details.component';
+import { RulesComponent } from './rules/rules.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LawsDetailsComponent } from './laws-details/laws-details.component';
     LawsListComponent,
     LawItemComponent,
     LawsDetailsComponent,
-    SectionsComponent
+    SectionsComponent,
+    RulesComponent
 ],
   imports: [
     CommonModule,

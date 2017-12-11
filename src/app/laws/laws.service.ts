@@ -48,6 +48,22 @@ export class LawsService {
     });
   }
 
+  getRules(law_id, act_id) {
+    return new Promise((resolve, reject) => {
+      this.firestore
+        .collection('laws')
+        .doc(law_id)
+        .collection('acts')
+        .doc(act_id)
+        .collection('rules_chapters')
+        .get()
+        .then(snapshot => {
+          console.log(snapshot);
+          resolve(snapshot);
+        });
+    });
+  }
+
   getSectionDetails(law_id, act_id, chap_id, section_name) {
     const collectionRef = this.firestore
       .collection('laws')
@@ -57,6 +73,26 @@ export class LawsService {
       .collection('chapters')
       .doc(chap_id)
       .collection('sections_detail');
+
+    return new Promise((resolve, reject) => {
+      collectionRef
+        .where('name', '==', section_name)
+        .get()
+        .then(snapshot => {
+          resolve(snapshot);
+        });
+    });
+  }
+
+  getRuleDetails(law_id, act_id, chap_id, section_name) {
+    const collectionRef = this.firestore
+      .collection('laws')
+      .doc(law_id)
+      .collection('acts')
+      .doc(act_id)
+      .collection('rules_chapters')
+      .doc(chap_id)
+      .collection('rules');
 
     return new Promise((resolve, reject) => {
       collectionRef

@@ -1,3 +1,4 @@
+import { RuleDetailModule } from './rule-detail/rule-detail.module';
 import { SectionDetailComponent } from './section-detail/section-detail.component';
 
 import { NgModule } from '@angular/core';
@@ -17,6 +18,8 @@ import { LawsComponent } from './laws/laws.component';
 import { LawsModule } from './laws/laws.module';
 import { SectionDetailModule } from './section-detail/section-detail.module';
 
+import {ScrollToModule} from 'ng2-scroll-to';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +34,9 @@ import { SectionDetailModule } from './section-detail/section-detail.module';
     AuthModule,
     CoreModule,
     LawsModule,
-    SectionDetailModule
+    SectionDetailModule,
+    RuleDetailModule,
+    ScrollToModule.forRoot(),
   ],
   bootstrap: [AppComponent],
   providers: [
