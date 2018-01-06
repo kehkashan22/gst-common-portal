@@ -1,3 +1,4 @@
+
 import { RulesComponent } from './rules/rules.component';
 import { SectionsComponent } from './sections/sections.component';
 import { NgModule } from '@angular/core';
@@ -9,7 +10,6 @@ import { LawsDetailsComponent } from './laws-details/laws-details.component';
 
 const lawsRoutes: Routes = [
   { path: '', component: LawsComponent, children: [
-    // { path: '', component: Laws },
     // { path: 'new', component: RecipeEditComponent },
     { path: ':id', component: LawsDetailsComponent },
     { path: ':id/act/:act_id/sections', component: SectionsComponent },

@@ -1,3 +1,9 @@
-.text{
+#text{
     color:red;
+}
+
+.video-background video {
+    background-attachment: fixed;
+    background-size: cover;
+
 }

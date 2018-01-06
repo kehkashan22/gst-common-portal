@@ -10,8 +10,8 @@ import { HomeComponent } from './core/home/home.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'recipes', loadChildren: './recipes/recipes.module#RecipesModule'},
-  { path: 'shopping-list', component: ShoppingListComponent },
+  // { path: 'recipes', loadChildren: './recipes/recipes.module#RecipesModule'},
+  // { path: 'shopping-list', component: ShoppingListComponent },
   { path: 'laws', loadChildren: './laws/laws.module#LawsModule' },
   { path: 'section', component: SectionDetailComponent },
   { path: 'rule', component: RuleDetailComponent },
