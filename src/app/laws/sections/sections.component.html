@@ -1,10 +1,38 @@
 
-
-<div class="row">
-    <div class="col-xs-12"  *ngFor="let chapter of chapters">
-      <h1> Chapter {{chapter.number}}: {{ chapter.name }}</h1>
-
-        <hr>
+      <hr>
+         <div class="container">
+            <div class="col-md-12 col-sm-6" *ngFor="let chapter of chapters">
+              <div class="panel-group wrap" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel">
+                  <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      Chapter {{chapter.number}}: {{ chapter.name }}
+                  </a>
+                </h4>
+                  </div>
+                  <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body"
+                    style="cursor: pointer;"
+              class="list-group-item"
+              *ngFor="let section of chapter.sections"
+              (click)="toSection(chapter.id, section.name)">
+                        Sections {{section.number}} : {{section.name}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end of #accordion -->
+            </div>
+            <!-- end of wrap -->
+          </div>
+          <!-- end of container -->
+<!-- 
+  <hr>
+<div class="container">
+    <div class="col-xs-12 panel"  *ngFor="let chapter of chapters">
+     <div class="panel-heading"><h4> Chapter {{chapter.number}}: {{ chapter.name }}</h4></div> 
+     <div class="panel-group wrap" id="bs-collapse">
       <ul class="list-group">
         <li
         style="cursor: pointer;"
@@ -12,9 +40,13 @@
           *ngFor="let section of chapter.sections"
           (click)="toSection(chapter.id, section.name)"
           >
-          Sections {{section.number}} {{section.name}}
+         <div class="panel-body">Sections {{section.number}} : {{section.name}}</div>
       </li>
       </ul>
     </div>
-  </div>
+    </div>
+  </div>   -->
 
+  
+  <div style="padding:20px;"> <button id="moveleft">Move Left</button>  <button id="moveright">Move right</button> <button id="movedown">Move Down</button> <button id="moveup">Move Up</button></div>
+  <div id="textbox" style="position:absolute;padding:10px;background:#FFFFCC;width:300px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec tincidunt purus. Donec eleifend libero in orci mattis pulvinar. Ut et felis eu leo malesuada eleifend. Ut sit amet odio eu ipsum rutrum consequat. Aliquam congue ultricies sagittis.</div>

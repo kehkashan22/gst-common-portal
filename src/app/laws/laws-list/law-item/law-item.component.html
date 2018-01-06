@@ -1,17 +1,60 @@
-<a
-style="cursor: pointer;"
-[routerLink]="[index]"
-routerLinkActive="active"
-class="list-group-item clearfix">
-<div class="pull-left">
-  <h4 class="list-group-item-heading">{{ law.name | uppercase }}</h4>
-  <p class="list-group-item-text">{{ law.title }}</p>
-</div>
-<!-- <span class="pull-right">
-      <img
-        [src]="law.imagePath"
-        alt="{{ law.name }}"
-        class="img-responsive"
-        style="max-height: 50px;">
-    </span> -->
-</a>
+
+
+
+   <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <a style="cursor: pointer;"
+        [routerLink]="[index]"
+        routerLinkActive="active"
+        class="list-group-item clearfix">
+          <div class="hovereffect">
+              <img class="img-responsive" src="assets/image/blue.jpg" alt=""> 
+                  <div class="overlay">
+                      <h2>{{ law.name | uppercase }}</h2>
+                      <p>
+                          <a href="#">{{ law.title }}</a>
+                      </p>
+                  </div>
+          </div>
+      </a>
+      </div> 
+
+       
+
+
+<!-- 
+    <div class="container">
+            <div class="content">
+              <a >
+                <div class="content-overlay"></div>
+                <img class="content-image" src="https://images.unsplash.com/photo-1433360405326-e50f909805b3?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=359e8e12304ffa04a38627a157fc3362">
+                <div class="content-details fadeIn-bottom">
+                  <h3 class="content-title">{{ law.name | uppercase }}</h3>
+                  <p class="content-text">{{ law.title }}</p>
+                </div>
+              </a>
+            </div>
+          </div> -->
+
+ 
+       
+<!-- 
+          <div class="col-md-3 col-sm-6 col-xs-12">
+                <a
+                    style="cursor: pointer;"
+                    [routerLink]="[index]"
+                    routerLinkActive="active"
+                    class="list-group-item clearfix">
+                    <div class="pull-left col-xs-12">
+                      <h4 class="list-group-item-heading">{{ law.name | uppercase }}</h4>
+                      <p class="list-group-item-text">{{ law.title }}</p>
+                    </div>
+                   
+                    </a>
+                </div> -->
+                 <!-- <span class="pull-right">
+                          <img
+                            [src]="law.imagePath"
+                            alt="{{ law.name }}"
+                            class="img-responsive"
+                            style="max-height: 50px;">
+                        </span> -->

@@ -1,10 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-6 vid__wrapper" *ngIf="rule.video_url">
-
+    <div class="col-lg-6 vid__wrapper video" *ngIf="rule.video_url">
+     
+     <section class="video-background">
       <video controls class="video">
         <source [src]="rule.video_url" type="video/mp4" />
       </video>
+    </section>
 
       <div>
         <h3>Related Rules</h3>
@@ -36,7 +38,7 @@
       </div>
       <!-- <div class="content" dangerouslySetInnerHTML={{ __html: this.props.rule.text }} /> -->
       <hr>
-      <div id="test">TEST</div>
+      <div id="test text">TEST</div>
 
       <div *ngIf="rule.footnotes.length !== 0">
         <h3>Footnotes:</h3>
@@ -46,7 +48,6 @@
           </li>
         </ul>
       </div>
-
     </div>
   </div>
 </div>

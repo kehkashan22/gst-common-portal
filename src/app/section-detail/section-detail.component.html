@@ -6,46 +6,62 @@
         <source [src]="section.video_url" type="video/mp4" />
       </video>
 
-      <div>
-        <h3>Related Rules</h3>
+      
+      
+      <div class="panel-group" id="accordion">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+        <h3 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse1">Related Rules:</h3>
         <div *ngIf="section.related_rules.length === 0">
             <span>No Related Rules</span>
           </div>
-        <ul *ngIf="section.related_rules.length !== 0">
-          <li *ngFor="let rule of section.related_rules" >
+        </div>  
+          <div id="collapse1" class="panel-collapse collapse in">
+        <div *ngIf="section.related_rules.length !== 0">
+          <div *ngFor="let rule of section.related_rules" >
             <!-- <Link to={`/rule?law_id=${rule.law_id}&act_id=${rule.act_id}&chap_id=${rule.chap_id}&rule_id=${rule.rule_id}`} target="_blank"> Rule {rule.id}. {rule.rule_title}
             </Link> -->
-            <a target="_blank" routerLink="/rule" [queryParams]="{
+            <div class="panel-body" target="_blank" routerLink="/rule" [queryParams]="{
               law_id: rule.law_id,
               act_id: rule.act_id,
               chap_id: rule.chap_id,
               rule_id: rule.rule_id
             }">
             Rule {{rule.id}}. {{rule.rule_title}}
-            </a>
-          </li>
-
-        </ul>
+          </div>
+        </div>
+        </div>
       </div>
-    </div>
-    <div class="col-lg-6">
-      <h3>{{section.name}}</h3>
-      <div [innerHTML]="htmlText">
+     
+      </div>  
+     
 
+        <div class="panel panel-info">
+          <div class="panel-heading">
+       <div *ngIf="section.footnotes.length !== 0">
+              <h3 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse2">Footnotes:</h3></div> 
+            </div>
+              <div id="collapse2" class="panel-collapse collapse">
+                <div *ngFor="let footnote of section.footnotes">
+                  <div class="panel-body">Footnote {{footnote.id}}. {{footnote.note}}</div>
+                </div>
+            </div>
+          </div>
+        </div> 
+    </div>
+
+
+    <div class="container"> 
+    <div class="col-lg-6 clsScroll scrollbar panel-group" id="style-2">
+      <div class="panel panel-info">
+      <div class="force-overflow panel-heading"><h4>{{section.name}}</h4></div>
+      <div class="panel-body" [innerHTML]="htmlText"></div>
       </div>
       <!-- <div class="content" dangerouslySetInnerHTML={{ __html: this.props.section.text }} /> -->
-      <hr>
-      <div id="test">TEST</div>
-
-      <div *ngIf="section.footnotes.length !== 0">
-        <h3>Footnotes:</h3>
-        <ul>
-          <li *ngFor="let footnote of section.footnotes">
-            Footnote {{footnote.id}}. {{footnote.note}}
-          </li>
-        </ul>
-      </div>
 
     </div>
+  </div>
+
+
   </div>
 </div>

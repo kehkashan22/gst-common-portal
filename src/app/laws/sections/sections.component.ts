@@ -20,6 +20,7 @@ export class SectionsComponent implements OnInit{
   ) {}
 
   ngOnInit() {
+
     this.route.params.subscribe((params: Params) => {
       this.chapters = [];
       this.law_id = params['id'];
@@ -49,6 +50,18 @@ export class SectionsComponent implements OnInit{
     //     }
     //   }
     // });
+
+    $(document).ready(function() {
+      $('.collapse.in').prev('.panel-heading').addClass('active');
+      $('#accordion, #bs-collapse')
+        .on('show.bs.collapse', function(a) {
+          $(a.target).prev('.panel-heading').addClass('active');
+        })
+        .on('hide.bs.collapse', function(a) {
+          $(a.target).prev('.panel-heading').removeClass('active');
+        });
+    });
+
   }
 
 
@@ -64,3 +77,4 @@ export class SectionsComponent implements OnInit{
     });
   }
 }
+
