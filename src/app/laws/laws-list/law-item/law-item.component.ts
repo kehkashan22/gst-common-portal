@@ -13,6 +13,7 @@ export class LawItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }

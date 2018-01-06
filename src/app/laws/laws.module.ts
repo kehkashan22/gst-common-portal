@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { SectionsComponent } from './sections/sections.component';
 import { LawsDetailsComponent } from './laws-details/laws-details.component';
 import { RulesComponent } from './rules/rules.component';
+import { HomeComponent } from 'app/core/home/home.component';
 
 @NgModule({
   declarations: [
