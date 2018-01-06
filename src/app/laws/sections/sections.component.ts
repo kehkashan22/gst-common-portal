@@ -8,7 +8,7 @@ import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
   templateUrl: './sections.component.html',
   styleUrls: ['./sections.component.css']
 })
-export class SectionsComponent implements OnInit, AfterViewInit {
+export class SectionsComponent implements OnInit{
   law_id: string;
   act_id: string;
   chapters = [];
@@ -51,20 +51,7 @@ export class SectionsComponent implements OnInit, AfterViewInit {
     // });
   }
 
-  ngAfterViewInit(): void {
-    // document.querySelectorAll('a[href^=\'#\']').
-    // forEach(node => {
-    //   node.addEventListener('click', e => {
-    //     e.preventDefault();
-    //     console.log(e.target.href);
-    //   });
-    // })
-    const anchors = document.querySelectorAll('a[href^=\'#\']');
-    let index = 0;
-    for ( index  = 0; index < anchors.length; index++ ) {
-      console.log(anchors[index]);
-}
-  }
+
 
   toSection(chap_id, name) {
     this.router.navigate(['/section'], {
