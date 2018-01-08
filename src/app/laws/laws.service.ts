@@ -48,6 +48,22 @@ export class LawsService {
     });
   }
 
+  getNotifications(law_id, act_id) {
+    return new Promise((resolve, reject) => {
+      this.firestore
+        .collection('laws')
+        .doc(law_id)
+        .collection('acts')
+        .doc(act_id)
+        .collection('notifications')
+        .get()
+        .then(snapshot => {
+          console.log(snapshot);
+          resolve(snapshot);
+        });
+    });
+  }
+
   getRules(law_id, act_id) {
     return new Promise((resolve, reject) => {
       this.firestore

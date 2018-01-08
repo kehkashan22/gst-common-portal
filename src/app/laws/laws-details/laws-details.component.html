@@ -7,9 +7,9 @@
             </div>
             <div class="panel-body">{{ act.name }}</div>
         </div>
-         
-        
-<!--         
+
+
+<!--
         <div class="panel panel-success">
         <div class="panel-heading">
                 <h4>Heading</h4>
@@ -28,14 +28,15 @@
             </div>
         </div>
 
+
         <div>
-            <div class="card-body">
+            <div class="card-body" (click)="toNotifications(act.id)">
                 <button type="button" class="list-group-item list-group-item-action btn-lg btn-info text">Notifications</button>
             </div>
         </div>
 
     </div>
-</div> 
+</div>
 
 
 
@@ -54,19 +55,19 @@
                     <div style="cursor: pointer;" (click)="toSections(act.id)">
                              Sections
                         </div>
-                
+
                         <div style="cursor: pointer;" (click)="toRules(act.id)">
                             <div>
                                 Rules
                             </div>
                         </div>
-                
+
                         <div>
                             <div>
                                Notifications
                             </div>
                         </div>
-                
+
                     </div>
                 </div>
             </div>
@@ -74,4 +75,3 @@
     </div> -->
 
 
- 
