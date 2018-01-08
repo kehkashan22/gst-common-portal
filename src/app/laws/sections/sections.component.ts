@@ -1,7 +1,6 @@
 import { LawsService } from './../laws.service';
 import { Component, OnInit } from '@angular/core';
-import { Params, Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { Params, Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-sections',
@@ -51,16 +50,16 @@ export class SectionsComponent implements OnInit{
     //   }
     // });
 
-    $(document).ready(function() {
-      $('.collapse.in').prev('.panel-heading').addClass('active');
-      $('#accordion, #bs-collapse')
-        .on('show.bs.collapse', function(a) {
-          $(a.target).prev('.panel-heading').addClass('active');
-        })
-        .on('hide.bs.collapse', function(a) {
-          $(a.target).prev('.panel-heading').removeClass('active');
-        });
-    });
+    // $(document).ready(function() {
+    //   $('.collapse.in').prev('.panel-heading').addClass('active');
+    //   $('#accordion, #bs-collapse')
+    //     .on('show.bs.collapse', function(a) {
+    //       $(a.target).prev('.panel-heading').addClass('active');
+    //     })
+    //     .on('hide.bs.collapse', function(a) {
+    //       $(a.target).prev('.panel-heading').removeClass('active');
+    //     });
+    // });
 
   }
 

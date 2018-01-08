@@ -43,4 +43,8 @@ export class LawsDetailsComponent implements OnInit {
     this.router.navigate(['act/', act_id, 'rules'], {relativeTo: this.route});
   }
 
+  toNotifications(act_id) {
+    this.router.navigate(['act/', act_id, 'notifications'], {relativeTo: this.route});
+  }
+
 }
