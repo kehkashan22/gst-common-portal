@@ -1,7 +1,7 @@
- <hr>
+
  <div class="row">
-    <div class="col-xs-12" *ngFor="let act of acts">
-       <div class="panel panel-success">
+    <div class="col-xs-12 col-lg-12" *ngFor="let act of acts">
+       <div class="panel panel">
             <div class="panel-heading">
                 <h4> {{ act.title }}</h4>
             </div>
@@ -18,19 +18,20 @@
 
         <div style="cursor: pointer;" (click)="toSections(act.id)">
             <div class="card-body">
-                <button type="button" class="list-group-item list-group-item-action btn-lg btn-info">Sections</button>
+                <button type="button" class="list-group-item list-group-item-action btn-lg btn-info text">Sections</button>
             </div>
         </div>
 
         <div style="cursor: pointer;" (click)="toRules(act.id)">
-            <div>
-                <button type="button" class="list-group-item list-group-item-action btn-lg btn-info">Rules</button>
+            <div class="card-body">
+                <button type="button" class="list-group-item list-group-item-action btn-lg btn-info text">Rules</button>
             </div>
         </div>
 
-        <div style="cursor: pointer;" (click)="toNotifications(act.id)">
-            <div>
-                <button type="button" class="list-group-item list-group-item-action btn-lg btn-info">Notifications</button>
+
+        <div>
+            <div class="card-body" (click)="toNotifications(act.id)">
+                <button type="button" class="list-group-item list-group-item-action btn-lg btn-info text">Notifications</button>
             </div>
         </div>
 
