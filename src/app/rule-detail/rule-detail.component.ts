@@ -12,14 +12,17 @@ import * as firebase from 'firebase';
   styleUrls: ['./rule-detail.component.css']
 })
 export class RuleDetailComponent implements OnInit {
+  htmlAnalysis: any;
   rule = {
     id: '',
     video_url: '',
     name: '',
     number: '',
     related_sections: [],
+    related_notifications: [],
     footnotes: [],
-    text: ''
+    text: '',
+    analysis: ''
   };
 
   htmlText: any;
@@ -56,11 +59,7 @@ export class RuleDetailComponent implements OnInit {
               ...snap.data()
             };
 
-            this.rule = {
-              ...this.rule,
-              ...rule
-            }
-            this.htmlText = this._dom.bypassSecurityTrustHtml(this.rule.text);
+            this.populateRule(rule);
 
         });
       }else if (this.name) {
@@ -71,15 +70,20 @@ export class RuleDetailComponent implements OnInit {
               id: doc.id,
               ...doc.data()
             };
-            this.rule = {
-              ...this.rule,
-              ...rule
-            }
-            this.htmlText = this._dom.bypassSecurityTrustHtml(this.rule.text);
+            this.populateRule(rule);
           });
         });
       }
 
     });
+  }
+
+  populateRule(rule) {
+    this.rule = {
+      ...this.rule,
+      ...rule
+    }
+    this.htmlText = this._dom.bypassSecurityTrustHtml(this.rule.text);
+    this.htmlAnalysis = this._dom.bypassSecurityTrustHtml(this.rule.analysis);
   }
 }

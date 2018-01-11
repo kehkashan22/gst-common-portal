@@ -19,6 +19,7 @@ export class NotificationsComponent implements OnInit {
   isDesc = false;
   column = 'quiz';
   direction: number;
+  daterange: any;
 
   public options: any = {
     locale: { format: 'DD-MM-YYYY' },
@@ -91,6 +92,17 @@ export class NotificationsComponent implements OnInit {
     );
 
     console.log(this.notifications);
+}
+
+toNotification(notification_name) {
+  console.log(notification_name);
+  this.router.navigate(['/notification'], {
+    queryParams: {
+      law_id: this.law_id,
+      act_id: this.act_id,
+      name: notification_name
+    }
+  });
 }
 
 }
