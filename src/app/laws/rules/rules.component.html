@@ -23,16 +23,38 @@
               </div>
               <!-- end of #accordion -->
           
-            </div>
-            <!-- end of wrap -->
-          
+<div class="row">
+    <div class="col-md-12 col-sm-6" *ngFor="let chapter of chapters">
+      <div class="panel-group wrap" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel">
+          <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Chapter {{chapter.number}}: {{ chapter.name }}
+              </a>
+            </h4>
           </div>
-          <!-- end of container -->
-<!-- 
+          <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body" style="cursor: pointer;" class="list-group-item" *ngFor="let rule of chapter.rules" (click)="toRule(chapter.id, rule.name)">
+              Rules {{rule.number}} {{rule.name}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end of #accordion -->
+
+    </div>
+  </div>
+
+  <!-- end of wrap -->
+
+
+<!-- end of container -->
+<!--
           <div class="row">
               <div class="col-xs-12"  *ngFor="let chapter of chapters">
                 <h1> Chapter {{chapter.number}}: {{ chapter.name }}</h1>
-          
+
                   <hr>
                 <ul class="list-group">
                   <li

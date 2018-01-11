@@ -1,3 +1,4 @@
+import { NotificationDetailModule } from './notification-detail/notification-detail.module';
 import { RuleDetailModule } from './rule-detail/rule-detail.module';
 import { SectionDetailComponent } from './section-detail/section-detail.component';
 
@@ -17,10 +18,16 @@ import { CoreModule } from './core/core.module';
 import { LawsComponent } from './laws/laws.component';
 import { LawsModule } from './laws/laws.module';
 import { SectionDetailModule } from './section-detail/section-detail.module';
-
+import { Daterangepicker } from 'ng2-daterangepicker';
 import {ScrollToModule} from 'ng2-scroll-to';
 
 
+import { environment } from '../environments/environment';
+/* For Firebase Related */
+import * as firebase from'firebase';
+
+export const firebaseConfig = environment.firebaseConfig;
+firebase.initializeApp(firebaseConfig);
 @NgModule({
   declarations: [
     AppComponent
@@ -36,7 +43,9 @@ import {ScrollToModule} from 'ng2-scroll-to';
     LawsModule,
     SectionDetailModule,
     RuleDetailModule,
+    NotificationDetailModule,
     ScrollToModule.forRoot(),
+    Daterangepicker
   ],
   bootstrap: [AppComponent],
   providers: [

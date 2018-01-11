@@ -1,24 +1,25 @@
-import { SectionDetailService } from './section-detail.service';
-import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { NotificationDetailService } from './notification-detail.service';
+import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
 
 @Component({
-  selector: 'app-section-detail',
-  templateUrl: './section-detail.component.html',
-  styleUrls: ['./section-detail.component.css']
+  selector: 'app-notification-detail',
+  templateUrl: './notification-detail.component.html',
+  styleUrls: ['./notification-detail.component.css']
 })
-export class SectionDetailComponent implements OnInit {
-  section = {
+export class NotificationDetailComponent implements OnInit {
+
+  notification = {
     id: '',
     video_url: '',
     name: '',
     number: '',
+    related_sections: '',
     related_rules: [],
-    related_notifications: [],
     footnotes: [],
     text: '',
     analysis: ''
@@ -30,9 +31,9 @@ export class SectionDetailComponent implements OnInit {
   act_id: string;
   chap_id: string;
   name: string;
-  section_id: string;
+  notification_id: string;
   constructor(
-    private _section: SectionDetailService,
+    private _notification: NotificationDetailService,
     private route: ActivatedRoute,
     private router: Router,
     private _dom: DomSanitizer
@@ -44,50 +45,50 @@ export class SectionDetailComponent implements OnInit {
       this.law_id = params['law_id'];
       this.act_id = params['act_id'];
       this.chap_id = params['chap_id'];
-      this.section_id = params['section_id'] || '';
+      this.notification_id = params['notification_id'] || '';
       this.name = params['name'] || '';
-      if (this.section_id) {
-        this._section
-          .getSectionById(
+      if (this.notification_id) {
+        this._notification
+          .getNotificationById(
             this.law_id,
             this.act_id,
             this.chap_id,
-            this.section_id
+            this.notification_id
           )
           .then((snap: firebase.firestore.DocumentSnapshot) => {
-            const section = {
+            const notification = {
               id: snap.id,
               ...snap.data()
             };
-            this.populateSection(section);
+            this.populateNotification(notification);
           });
       } else if (this.name) {
-        this._section
-          .getSection(this.law_id, this.act_id, this.chap_id, this.name)
+        this._notification
+          .getNotification(this.law_id, this.act_id, this.chap_id, this.name)
           .then((snap: any[]) => {
-            console.log('here');
             snap.forEach(doc => {
-              const section = {
+              const notification = {
                 id: doc.id,
                 ...doc.data()
               };
-              this.populateSection(section);
+              this.populateNotification(notification);
             });
           });
       }
     });
   }
 
-  populateSection(section) {
-    this.section = {
-      ...this.section,
-      ...section
+  populateNotification(notification: any) {
+    this.notification = {
+      ...this.notification,
+      ...notification
     };
     this.htmlText = this._dom.bypassSecurityTrustHtml(
-      this.section.text
+      this.notification.text
     );
     this.htmlAnalysis = this._dom.bypassSecurityTrustHtml(
-      this.section.analysis
+      this.notification.analysis
     );
   }
+
 }

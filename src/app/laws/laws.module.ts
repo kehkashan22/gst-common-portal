@@ -13,6 +13,9 @@ import { LawsDetailsComponent } from './laws-details/laws-details.component';
 import { RulesComponent } from './rules/rules.component';
 import { HomeComponent } from 'app/core/home/home.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { LawsStartComponent } from './laws-start/laws-start.component';
+import { ActsListComponent } from './acts-list/acts-list.component';
+import { ActDescComponent } from './act-desc/act-desc.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { NotificationsComponent } from './notifications/notifications.component'
     LawsDetailsComponent,
     SectionsComponent,
     RulesComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    LawsStartComponent,
+    ActsListComponent,
+    ActDescComponent
 ],
   imports: [
     CommonModule,
