@@ -1,9 +1,23 @@
 
 <div class="row">
-  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 web-div">
     <app-law-item
       *ngFor="let lawEl of laws; let i = index"
       [law]="lawEl"
       [index]="lawEl.id"></app-law-item>
+  </div>
+  <div class = "mob-div">
+          <a style="cursor: pointer;">
+          <div class="dropdown">
+              <button class="btn btn-primary btn-lg dropdown-toggle width" type="button" data-toggle="dropdown" >Acts
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu width">
+                <li  *ngFor="let lawEl of laws; let i = index"><a [routerLink]="[lawEl.id]"
+                  routerLinkActive="active"
+                  class="box clearfix">{{ lawEl.name | uppercase }}</a></li>
+              </ul>
+            </div> 
+          </a>
+        
   </div>
 </div>
