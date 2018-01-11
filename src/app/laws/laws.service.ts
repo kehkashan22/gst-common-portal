@@ -5,6 +5,7 @@ import 'firebase/firestore';
 @Injectable()
 export class LawsService {
   firestore = firebase.firestore();
+  acts: any[] = [];
   constructor() {}
 
   getLaws() {
@@ -27,6 +28,20 @@ export class LawsService {
         .get()
         .then(snapshot => {
           const acts = [];
+          resolve(snapshot);
+        });
+    });
+  }
+
+  getAct(law_id, act_id) {
+    return new Promise((resolve, reject) => {
+      this.firestore
+        .collection('laws')
+        .doc(law_id)
+        .collection('acts')
+        .doc(act_id)
+        .get()
+        .then(snapshot => {
           resolve(snapshot);
         });
     });
@@ -118,5 +133,14 @@ export class LawsService {
           resolve(snapshot);
         });
     });
+  }
+
+  setActs(acts) {
+    console.log('SETTING ACTS', acts);
+      this.acts = acts;
+  }
+
+  getStoredAct(act_id) {
+    return this.acts.find(act => act.id === act_id);
   }
 }

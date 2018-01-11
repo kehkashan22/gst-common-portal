@@ -1,5 +1,5 @@
 import { LawsService } from './../laws.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Params, Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -7,11 +7,12 @@ import { Params, Router, ActivatedRoute } from '@angular/router';
   templateUrl: './sections.component.html',
   styleUrls: ['./sections.component.css']
 })
-export class SectionsComponent implements OnInit{
+export class SectionsComponent implements OnInit, OnDestroy {
   law_id: string;
   act_id: string;
   chapters = [];
   fragment = '';
+  private sub: any;
   constructor(
     private _law: LawsService,
     private route: ActivatedRoute,
@@ -19,9 +20,10 @@ export class SectionsComponent implements OnInit{
   ) {}
 
   ngOnInit() {
-
-    this.route.params.subscribe((params: Params) => {
+    console.log(this.route.pathFromRoot);
+    this.sub = this.route.parent.params.subscribe((params: Params) => {
       this.chapters = [];
+      console.log(params);
       this.law_id = params['id'];
       this.act_id = params['act_id'];
       console.log(this.law_id, this.act_id);
@@ -33,25 +35,11 @@ export class SectionsComponent implements OnInit{
             id: doc.id,
             ...doc.data()
           });
-          console.log(doc.id, '=>', doc.data());
+          this.chapters.sort((a, b) => (a.number > b.number) ? 1 : ((b.number > a.number) ? -1 : 0) );
         });
       });
     });
-
-    // this.route.fragment.subscribe(fragment => { this.fragment = fragment; });
-
-    // this.router.events.subscribe(s => {
-    //   if (s instanceof NavigationEnd) {
-    //     const tree = this.router.parseUrl(this.router.url);
-    //     if (tree.fragment) {
-    //       const element = document.querySelector('#' + tree.fragment);
-    //       if (element) { element.scrollIntoView(true); }
-    //     }
-    //   }
-    // });
   }
-
-
 
   toSection(chap_id, name) {
     this.router.navigate(['/section'], {
@@ -63,5 +51,8 @@ export class SectionsComponent implements OnInit{
       }
     });
   }
-}
 
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
+}

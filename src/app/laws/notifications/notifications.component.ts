@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { LawsService } from './../laws.service';
 import { Params, Router, ActivatedRoute } from '@angular/router';
 import { DaterangePickerComponent } from 'ng2-daterangepicker';
@@ -9,7 +9,7 @@ import * as moment from 'moment';
   templateUrl: './notifications.component.html',
   styleUrls: ['./notifications.component.css']
 })
-export class NotificationsComponent implements OnInit {
+export class NotificationsComponent implements OnInit, OnDestroy {
 
   law_id: string;
   act_id: string;
@@ -20,6 +20,7 @@ export class NotificationsComponent implements OnInit {
   column = 'quiz';
   direction: number;
   daterange: any;
+  private sub: any;
 
   public options: any = {
     locale: { format: 'DD-MM-YYYY' },
@@ -45,7 +46,7 @@ export class NotificationsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.params.subscribe((params: Params) => {
+    this.sub = this.route.parent.params.subscribe((params: Params) => {
       this.notifications = [];
       this.law_id = params['id'];
       this.act_id = params['act_id'];
@@ -103,6 +104,10 @@ toNotification(notification_name) {
       name: notification_name
     }
   });
+}
+
+ngOnDestroy() {
+  this.sub.unsubscribe();
 }
 
 }

@@ -1,3 +1,6 @@
+import { ActDescComponent } from './act-desc/act-desc.component';
+import { ActsListComponent } from './acts-list/acts-list.component';
+import { LawsStartComponent } from './laws-start/laws-start.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
@@ -9,11 +12,14 @@ import { LawsDetailsComponent } from './laws-details/laws-details.component';
 
 const lawsRoutes: Routes = [
   { path: '', component: LawsComponent, children: [
-    // { path: 'new', component: RecipeEditComponent },
-    { path: ':id', component: LawsDetailsComponent },
-    { path: ':id/act/:act_id/sections', component: SectionsComponent },
-    { path: ':id/act/:act_id/rules', component: RulesComponent },
-    { path: ':id/act/:act_id/notifications', component: NotificationsComponent },
+    { path: '', component: LawsStartComponent },
+    { path: ':id', component: ActsListComponent },
+    { path: ':id/act/:act_id', component: LawsDetailsComponent, children: [
+      { path: 'desc', component: ActDescComponent },
+      { path: 'sections', component: SectionsComponent },
+      { path: 'rules', component: RulesComponent },
+      { path: 'notifications', component: NotificationsComponent },
+    ]},
   ] },
 ];
 

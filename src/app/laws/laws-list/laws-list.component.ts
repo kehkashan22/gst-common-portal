@@ -20,5 +20,4 @@ export class LawsListComponent implements OnInit {
     });
   });
   }
-
 }

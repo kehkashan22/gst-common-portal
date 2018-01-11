@@ -1,17 +1,18 @@
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { LawsService } from './../laws.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-rules',
   templateUrl: './rules.component.html',
   styleUrls: ['./rules.component.css']
 })
-export class RulesComponent implements OnInit {
+export class RulesComponent implements OnInit, OnDestroy {
 
   law_id: string;
   act_id: string;
   chapters = [];
+  private sub: any;
   constructor(
     private _law: LawsService,
     private route: ActivatedRoute,
@@ -19,7 +20,7 @@ export class RulesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.route.params.subscribe((params: Params) => {
+    this.sub = this.route.parent.params.subscribe((params: Params) => {
       this.chapters = [];
       this.law_id = params['id'];
       this.act_id = params['act_id'];
@@ -32,7 +33,7 @@ export class RulesComponent implements OnInit {
             id: doc.id,
             ...doc.data()
           });
-          console.log(doc.id, '=>', doc.data());
+          this.chapters.sort((a, b) => (a.number > b.number) ? 1 : ((b.number > a.number) ? -1 : 0) );
         });
       });
     });
@@ -47,5 +48,9 @@ export class RulesComponent implements OnInit {
         name
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 }
