@@ -21,6 +21,9 @@ import { SectionDetailModule } from './section-detail/section-detail.module';
 import { Daterangepicker } from 'ng2-daterangepicker';
 import {ScrollToModule} from 'ng2-scroll-to';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CollapsibleModule } from 'angular2-collapsible';
+
 
 import { environment } from '../environments/environment';
 /* For Firebase Related */
@@ -44,6 +47,8 @@ firebase.initializeApp(firebaseConfig);
     SectionDetailModule,
     RuleDetailModule,
     NotificationDetailModule,
+    BrowserAnimationsModule,
+    CollapsibleModule,
     ScrollToModule.forRoot(),
     Daterangepicker
   ],
