@@ -1,43 +1,10 @@
 
 
-          <div class="wow bounceIn col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 text-center">
-              <div class="section-title">
-                <h2>Do you have Questions?</h2>
-                <p>Lorem ipsum dolor sit amet, maecenas eget vestibulum justo imperdiet.</p>
-              </div>
-            </div>
-      
-            <div class="wow fadeInUp col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10" data-wow-delay="0.9s" *ngFor="let chapter of chapters">
-              <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                 <div class="panel panel-default">
-                     <div class="panel-heading" role="tab" id="headingThree">
-                        <h4 class="panel-title">
-                          <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                              Chapter {{chapter.number}}: {{ chapter.name }}
-                          </a>
-                        </h4>
-                    </div>
-                     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                        <div class="panel-body"
-                        style="cursor: pointer;"
-                        class="list-group-item"
-                       *ngFor="let section of chapter.sections"
-                       (click)="toSection(chapter.id, section.name)"
-                        >
-                       <p> Sections {{section.number}} : {{section.name}}</p>
-                        </div>
-                      </div>
-                  </div>
-      
-                </div>
-            </div>
-
-
 
             <!-- ........................................................................... -->
 
-            
-         <div class="container">
+
+
             <div class="col-xs-12 col-lg-12" *ngFor="let chapter of chapters">
               <div class="panel-group wrap" id="accordion" role="tablist" aria-multiselectable="true">
                 <div class="panel">
@@ -60,7 +27,7 @@
                 </div>
               </div>
               <!-- end of #accordion -->
-            </div>
+
             <!-- end of wrap -->
 
           <!-- end of container -->
@@ -69,26 +36,8 @@
 
 
 
-          
-          
-      
-<!--
-  <hr>
-<div class="container">
-    <div class="col-xs-12 panel"  *ngFor="let chapter of chapters">
-     <div class="panel-heading"><h4> Chapter {{chapter.number}}: {{ chapter.name }}</h4></div>
-     <div class="panel-group wrap" id="bs-collapse">
-      <ul class="list-group">
-        <li
-        style="cursor: pointer;"
-          class="list-group-item"
-          *ngFor="let section of chapter.sections"
-          (click)="toSection(chapter.id, section.name)"
-          >
-         <div class="panel-body">Sections {{section.number}} : {{section.name}}</div>
-      </li>
-      </ul>
-    </div>
-    </div>
-  </div>   -->
+
+
+
+
 
