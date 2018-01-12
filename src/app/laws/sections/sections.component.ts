@@ -35,11 +35,39 @@ export class SectionsComponent implements OnInit, OnDestroy {
             id: doc.id,
             ...doc.data()
           });
-          this.chapters.sort((a, b) => (a.number > b.number) ? 1 : ((b.number > a.number) ? -1 : 0) );
+          // this.chapters.sort((a, b) => (a.number > b.number) ? 1 : ((b.number > a.number) ? -1 : 0) );
+          this.chapters.sort((a, b) => {
+            return this.fromRoman(a.number) - this.fromRoman(b.number)
+        });
         });
       });
     });
   }
+
+  sortRomanIds() {
+
+}
+
+fromRoman(s) {
+  s = s.toUpperCase();
+  let sum = 0, i = 0, next, val;
+  const romans = {
+      M: 1000, D: 500, C: 100, L: 50, X: 10, V: 5, I: 1
+  };
+  while ( i < s.length) {
+      val = s.charAt( i++ );
+      if (!romans[val]) {
+        return NaN;
+      }
+      val = romans[val];
+      next = romans[(s.charAt(i) || 'N')] || 0;
+      if (next > val) {
+        val *= -1;
+      }
+      sum += val;
+  }
+  return sum
+}
 
   toSection(chap_id, name) {
     this.router.navigate(['/section'], {
