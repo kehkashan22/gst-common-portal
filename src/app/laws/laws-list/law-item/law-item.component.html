@@ -1,51 +1,13 @@
-<!-- <div class="col-sm-6 col-md-12 col-lg-12 col-xs-12 app">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
-                 <div class="list-group">
-                    <a tyle="cursor: pointer;" [routerLink]="[index]" routerLinkActive="active" class="box clearfix" class="list-group-item active text-center">
-                        <h4>{{ law.name | uppercase }}</h4>
-                        <hr>
-                        <p>{{ law.title }}</p>
-                    </a>
-                </div> 
-            </div>
-        </div>
-    </div>
-</div> -->
-
-<a style="cursor: pointer;"  (click)="toActs()" routerLinkActive="active" class="list-group-item clearfix" >
-    <div class="pull-left">
-        <h4 class="list-group-item-heading">{{ law.name | uppercase }}</h4>
-        <p class="list-group-item-text">{{ law.title }}</p>
-    </div>
-    <!-- <span class="pull-right">
-<img
-[src]="recipe.imagePath"
-alt="{{ recipe.name }}"
-class="img-responsive"
-style="max-height: 50px;">
-</span> -->
+<a
+  style="cursor: pointer;"
+  (click)="toActs()"
+  routerLinkActive="active"
+  class="list-group-item clearfix">
+  <div class="pull-left">
+    <h4 class="list-group-item-heading">{{ law.name }}</h4>
+    <p class="list-group-item-text">{{ law.title }}</p>
+  </div>
 </a>
-
-<!-- 
-   <div class="col-lg-12 col-md-4 col-sm-6 col-xs-12" style="cursor: pointer;">
-        <a style="cursor: pointer;"
-       
-        routerLinkActive="active"
-        class="box clearfix">
-          <div class="hovereffect">
-              <img class="img-responsive" src="assets/image/blue.jpg" alt="">
-                  <div class="overlay">
-                      <h2>{{ law.name | uppercase }}</h2>
-                      <p>
-                          {{ law.title }}
-                      </p>
-                  </div>
-          </div>
-      </a>
-    </div> -->
-
 
 
 <!--
@@ -63,7 +25,7 @@ style="max-height: 50px;">
 
                   </a>
                 </div>  -->
-<!-- <span class="pull-right">
+                 <!-- <span class="pull-right">
                           <img
                             [src]="law.imagePath"
                             alt="{{ law.name }}"

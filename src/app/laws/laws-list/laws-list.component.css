@@ -32,10 +32,10 @@
     .web-div{
         display:none;
     }
-}  
+}
 
- @media (min-width:1200px) and (max-width:1600px){
+ @media (min-width:1200px){
     .mob-div{
         display:none;
     }
-} 
+}
