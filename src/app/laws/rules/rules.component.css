@@ -1,3 +1,20 @@
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
+.panel-title > a:before {
+    float: right !important;
+    font-family: FontAwesome;
+    content:"\f055";
+    padding-right: 5px;
+}
+.panel-title > a.collapsed:before {
+    float: right !important;
+    content:"\f056";
+}
+.panel-title > a:hover,
+.panel-title > a:active,
+.panel-title > a:focus  {
+    text-decoration:none;
+}
+
 .panel-body {
     padding: 1px;
 }
@@ -99,3 +116,12 @@ a:active {
   border-radius: 0;
   transition: border-radius linear 0s;
 }
+
+.parent {cursor:pointer;}
+.active{
+  color:blue;
+}
+.active+div{
+  display:block !important;
+}
+

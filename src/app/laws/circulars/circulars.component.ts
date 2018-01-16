@@ -11,6 +11,7 @@ import * as moment from 'moment';
 })
 export class CircularsComponent implements OnInit, OnDestroy {
 
+  filter: any;
   law_id: string;
   act_id: string;
   circulars = [];
@@ -21,6 +22,7 @@ export class CircularsComponent implements OnInit, OnDestroy {
   direction: number;
   daterange: any;
   private sub: any;
+  p = 1;
 
   public options: any = {
     locale: { format: 'DD-MM-YYYY' },

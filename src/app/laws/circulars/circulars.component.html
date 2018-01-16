@@ -1,7 +1,7 @@
 <label for="daterangeInput">Select date range of circulars:</label>
   <input type="text" name="daterangeInput" daterangepicker [options]="options" (selected)="selectedDate($event, daterange)" />
-
-
+  <label for="search">Search:</label>
+  <input class="form-control" type="text" name="search" [(ngModel)]="filter">
 
   <hr>
     <table class="table table-striped">
@@ -29,7 +29,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let circular of circulars">
+      <tr *ngFor="let circular of circulars | filter:filter | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
         <td (click) = "toCircular(circular.name)">
           {{circular.name}}
         </td>
@@ -48,3 +48,4 @@
       </tr>
     </tbody>
   </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>

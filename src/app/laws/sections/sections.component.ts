@@ -12,6 +12,9 @@ export class SectionsComponent implements OnInit, OnDestroy {
   act_id: string;
   chapters = [];
   fragment = '';
+  filter = '';
+  filter2 = '';
+  p = 1;
   private sub: any;
   constructor(
     private _law: LawsService,

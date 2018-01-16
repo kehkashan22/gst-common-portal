@@ -21,7 +21,8 @@ export class NotificationsComponent implements OnInit, OnDestroy {
   direction: number;
   daterange: any;
   private sub: any;
-
+  filter = '';
+  p = 1;
   public options: any = {
     locale: { format: 'DD-MM-YYYY' },
     alwaysShowCalendars: false,

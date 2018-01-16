@@ -1,100 +1,116 @@
 <div class="container">
-    <div class="row">
-      <div class="col-lg-6 vid__wrapper" >
+  <div class="row">
+    <div class="col-lg-6 vid__wrapper">
 
-        <video controls class="video" *ngIf="notification.video_url">
-          <source [src]="notification.video_url" type="video/mp4" />
-        </video>
+      <video controls class="video" *ngIf="notification.video_url">
+        <source [src]="notification.video_url" type="video/mp4" />
+      </video>
 
 
 
-        <div class="panel-group" id="accordion">
-        <div class="panel panel-info">
-          <div class="panel-heading head">
-          <h3 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse1">Related Rules:</h3>
-          <div *ngIf="notification.related_rules.length === 0">
-              <span>No Related Rules</span>
+      <div class="panel-group" id="accordion">
+
+        <!--footnotes-->
+        <div class="panel panel-info" *ngIf="notification.footnotes.length !== 0">
+          <div class="panel-heading">
+            <div>
+              <h3 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse2">Footnotes:</h3>
             </div>
           </div>
-            <div id="collapse1" class="panel-collapse collapse in">
-          <div *ngIf="notification.related_rules.length !== 0">
-            <div *ngFor="let rule of notification.related_rules" >
-              <!-- <Link to={`/rule?law_id=${rule.law_id}&act_id=${rule.act_id}&chap_id=${rule.chap_id}&rule_id=${rule.rule_id}`} target="_blank"> Rule {rule.id}. {rule.rule_title}
-              </Link> -->
-              <div class="panel-body" target="_blank" routerLink="/rule" [queryParams]="{
+          <div id="collapse2" class="panel-collapse collapse">
+            <div *ngFor="let footnote of notification.footnotes">
+              <div class="panel-body">Footnote {{footnote.id}}. {{footnote.note}}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RELATED RULES -->
+        <div class="panel panel-info" *ngIf="notification.related_rules.length !== 0">
+          <div class="panel-heading head">
+            <h3 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse1">Related Rules:</h3>
+          </div>
+          <div id="collapse1" class="panel-collapse collapse in">
+            <div>
+              <div *ngFor="let rule of notification.related_rules">
+                <div class="panel-body" target="_blank" routerLink="/rule" [queryParams]="{
                 law_id: rule.law_id,
                 act_id: rule.act_id,
                 chap_id: rule.chap_id,
                 rule_id: rule.rule_id
               }">
-              Rule {{rule.id}}. {{rule.rule_title}}
+                  Rule {{rule.id}}. {{rule.rule_title}}
+                </div>
+              </div>
             </div>
           </div>
-          </div>
-        </div>
 
         </div>
 
         <!-- RELATED SECTIONS -->
-        <div class="panel panel-info">
-            <div class="panel-heading">
+        <div class="panel panel-info" *ngIf="notification.related_sections.length !== 0">
+          <div class="panel-heading">
             <h3 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse1">Related Sections:</h3>
-            <div *ngIf="notification.related_sections.length === 0">
-                <span>No Related Sections</span>
-              </div>
-            </div>
-              <div id="collapse1" class="panel-collapse collapse in">
-            <div *ngIf="notification.related_sections.length !== 0">
-              <div *ngFor="let section of notification.related_sections" >
-                <!-- <Link to={`/rule?law_id=${rule.law_id}&act_id=${rule.act_id}&chap_id=${rule.chap_id}&rule_id=${rule.rule_id}`} target="_blank"> Rule {rule.id}. {rule.rule_title}
-                </Link> -->
+          </div>
+          <div id="collapse1" class="panel-collapse collapse in">
+            <div>
+              <div *ngFor="let section of notification.related_sections">
                 <div class="panel-body" target="_blank" routerLink="/section" [queryParams]="{
                   law_id: section.law_id,
                   act_id: section.act_id,
                   chap_id: section.chap_id,
                   section_id: section.section_id
                 }">
-                Section {{section.id}}. {{section.section_title}}
-              </div>
-            </div>
-            </div>
-          </div>
-
-          </div>
-
-
-          <div class="panel panel-info">
-            <div class="panel-heading">
-         <div *ngIf="notification.footnotes.length !== 0">
-                <h3 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse2">Footnotes:</h3></div>
-              </div>
-                <div id="collapse2" class="panel-collapse collapse">
-                  <div *ngFor="let footnote of notification.footnotes">
-                    <div class="panel-body">Footnote {{footnote.id}}. {{footnote.note}}</div>
-                  </div>
+                  Section {{section.id}}. {{section.section_title}}
+                </div>
               </div>
             </div>
           </div>
+        </div>
+
+        <!-- RELATED CIRCULARS -->
+        <div class="panel panel-info" *ngIf="notification.related_circulars.length !== 0">
+          <div class="panel-heading">
+            <h3 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse2">Related circulars:</h3>
+            <span class="glyphicon glyphicon-menu-down pull-right"></span>
+          </div>
+          <div id="collapse2" class="panel-collapse collapse in">
+            <div>
+              <div *ngFor="let circular of notification.related_circulars">
+                <div class="panel-body" target="_blank" routerLink="/circular" [queryParams]="{
+                              law_id: circular.law_id,
+                              act_id: circular.act_id,
+                              name: circular.circular_name
+                              }">
+                  Circular {{circular.id}}. {{circular.circular_name}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
+    </div>
 
-
-      <div class="container">
+    <!-- NOTIFICATION -->
+    <div class="container">
       <div class="col-lg-6 clsScroll scrollbar panel-group" id="style-2">
         <div class="panel panel-info">
-        <div class="force-overflow panel-heading"><h4>{{notification.name}}</h4></div>
-        <div class="panel-body" [innerHTML]="htmlText"></div>
+          <div class="force-overflow panel-heading">
+            <h4>{{notification.name}}</h4>
+          </div>
+          <div class="panel-body" [innerHTML]="htmlText"></div>
         </div>
-        <!-- <div class="content" dangerouslySetInnerHTML={{ __html: this.props.notification.text }} /> -->
-          <hr>
-          <div class="panel panel-info">
-              <div class="force-overflow panel-heading"><h4>Analysis</h4></div>
-              <div class="panel-body" [innerHTML]="htmlAnalysis"></div>
-              </div>
+        <hr>
+        <div class="panel panel-info">
+          <div class="force-overflow panel-heading">
+            <h4>Analysis</h4>
+          </div>
+          <div class="panel-body" [innerHTML]="htmlAnalysis"></div>
+        </div>
       </div>
 
     </div>
 
 
-    </div>
   </div>
-
+</div>

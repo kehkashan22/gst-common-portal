@@ -1,3 +1,4 @@
+import { CircularDetailComponent } from './circular-detail/circular-detail.component';
 import { NotificationDetailComponent } from './notification-detail/notification-detail.component';
 import { RuleDetailComponent } from './rule-detail/rule-detail.component';
 import { SectionDetailComponent } from './section-detail/section-detail.component';
@@ -15,6 +16,7 @@ const appRoutes: Routes = [
   { path: 'section', component: SectionDetailComponent },
   { path: 'rule', component: RuleDetailComponent },
   { path: 'notification', component: NotificationDetailComponent },
+  { path: 'circular', component: CircularDetailComponent }
 ];
 
 @NgModule({
