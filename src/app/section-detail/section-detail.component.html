@@ -11,7 +11,9 @@
       <div class="panel-group" id="accordion">
         <div class="panel panel-info">
           <div class="panel-heading">
+              <span  class="glyphicon glyphicon-menu-down pull-right"></span>
             <h3 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse1">Related Rules:</h3>
+            
             <div *ngIf="section.related_rules.length === 0">
               <span>No Related Rules</span>
             </div>
@@ -38,12 +40,13 @@
         <!-- RELATED NOTIFICATIONS -->
         <div class="panel panel-info">
           <div class="panel-heading">
-            <h3 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse1">Related notifications:</h3>
+            <h3 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse2">Related notifications:</h3>
+            <span  class="glyphicon glyphicon-menu-down pull-right"></span>
             <div *ngIf="section.related_notifications.length === 0">
               <span>No Related Notifications</span>
             </div>
           </div>
-          <div id="collapse1" class="panel-collapse collapse in">
+          <div id="collapse2" class="panel-collapse collapse in">
             <div *ngIf="section.related_notifications.length !== 0">
               <div *ngFor="let notification of section.related_notifications">
                 <!-- <Link to={`/rule?law_id=${rule.law_id}&act_id=${rule.act_id}&chap_id=${rule.chap_id}&rule_id=${rule.rule_id}`} target="_blank"> Rule {rule.id}. {rule.rule_title}
@@ -65,10 +68,12 @@
         <div class="panel panel-info">
           <div class="panel-heading">
             <div *ngIf="section.footnotes.length !== 0">
-              <h3 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse2">Footnotes:</h3>
+                <span  class="glyphicon glyphicon-menu-down pull-right"></span>
+              <h3 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse3">Footnotes:</h3>
+             
             </div>
           </div>
-          <div id="collapse2" class="panel-collapse collapse">
+          <div id="collapse3" class="panel-collapse collapse">
             <div *ngFor="let footnote of section.footnotes">
               <div class="panel-body">Footnote {{footnote.id}}. {{footnote.note}}</div>
             </div>
@@ -78,28 +83,26 @@
     </div>
 
 
-    <div class="container">
-      <div class="col-lg-6 clsScroll scrollbar panel-group" id="style-2">
-        <div class="panel panel-info">
-          <div class="force-overflow panel-heading">
-            <h4>{{section.name}}</h4>
-            <p>hello</p>
-          </div>
-          <div class="panel-body" [innerHTML]="htmlText"></div>
-        </div>
-        <!-- <div class="content" dangerouslySetInnerHTML={{ __html: this.props.section.text }} /> -->
-        <hr>
-        <div class="panel panel-info">
-          <div class="force-overflow panel-heading">
-            <h4>Analysis</h4>
-            <p>hello2</p>
-          </div>
-          <div class="panel-body" [innerHTML]="htmlAnalysis"></div>
-        </div>
+
+
+<div>
+<div class="container">
+    <div class="col-lg-6 clsScroll scrollbar panel-group" id="style-2">
+    <ul class="nav nav-tabs  panel-info" id="myTab" role="tablist">
+        <li class="nav-item active">
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">{{section.name}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Analysis</a>
+        </li>
+      </ul>
+      <div class="tab-content panel" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab" [innerHTML]="htmlText"></div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab" [innerHTML]="htmlAnalysis"></div>
       </div>
-
-    </div>
-
+</div>
+</div>      
+</div>
 
   </div>
 </div>

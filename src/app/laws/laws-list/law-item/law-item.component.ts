@@ -20,6 +20,7 @@ export class LawItemComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+ 
   }
 
   toActs() {
@@ -36,5 +37,11 @@ export class LawItemComponent implements OnInit {
     }
 
   }
+
+  onEdit()
+  {
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+  }
+  
 
 }
