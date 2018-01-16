@@ -26,7 +26,7 @@ h3 {
 
 
 div[class*='col-'] {
-  padding: 30px 15px;
+  padding: 0px 0px;
 }
 
 .wrap {
@@ -66,7 +66,7 @@ a:active {
 }
 
 .panel-heading {
-  background-color: #009688;
+  background-color: #6571b5;
   border-radius: 0;
   border: none;
   color: #fff;
@@ -76,9 +76,9 @@ a:active {
 .panel-title a {
   display: block;
   color: #fff;
-  padding: 15px;
+  padding: 10px;
   position: relative;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
 }
 
@@ -98,56 +98,4 @@ a:active {
 .panel:last-child .panel-heading.active {
   border-radius: 0;
   transition: border-radius linear 0s;
-}
-/* #bs-collapse icon scale option */
-
-.panel-heading a:before {
-  content: '\e146';
-  position: absolute;
-  font-family: 'Material Icons';
-  right: 5px;
-  top: 10px;
-  font-size: 24px;
-  transition: all 0.5s;
-  transform: scale(1);
-}
-
-.panel-heading.active a:before {
-  content: ' ';
-  transition: all 0.5s;
-  transform: scale(0);
-}
-
-#bs-collapse .panel-heading a:after {
-  content: ' ';
-  font-size: 24px;
-  position: absolute;
-  font-family: 'Material Icons';
-  right: 5px;
-  top: 10px;
-  transform: scale(0);
-  transition: all 0.5s;
-}
-
-#bs-collapse .panel-heading.active a:after {
-  content: '\e909';
-  transform: scale(1);
-  transition: all 0.5s;
-}
-/* #accordion rotate icon option */
-
-#accordion .panel-heading a:before {
-  content: '\e316';
-  font-size: 24px;
-  position: absolute;
-  font-family: 'Material Icons';
-  right: 5px;
-  top: 10px;
-  transform: rotate(180deg);
-  transition: all 0.5s;
-}
-
-#accordion .panel-heading.active a:before {
-  transform: rotate(0deg);
-  transition: all 0.5s;
 }
