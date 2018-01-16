@@ -1,0 +1,117 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 vid__wrapper">
+
+      <video controls class="video" *ngIf="circular.video_url">
+        <source [src]="circular.video_url" type="video/mp4" />
+      </video>
+
+
+
+      <div class="panel-group" id="accordion">
+
+        <!--FOOTNOTES -->
+
+        <div class="panel panel-info" *ngIf="circular.footnotes.length !== 0">
+          <div class="panel-heading">
+            <div>
+              <h3 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse2">Footnotes:</h3>
+            </div>
+          </div>
+          <div id="collapse2" class="panel-collapse collapse">
+            <div *ngFor="let footnote of circular.footnotes">
+              <div class="panel-body">Footnote {{footnote.id}}. {{footnote.note}}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RELATED SECTIONS -->
+        <div class="panel panel-info" *ngIf="circular.related_sections.length !== 0">
+          <div class="panel-heading">
+            <h3 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse1">Related Sections:</h3>
+          </div>
+          <div id="collapse1" class="panel-collapse collapse in">
+            <div>
+              <div *ngFor="let section of circular.related_sections">
+                <div class="panel-body" target="_blank" routerLink="/section" [queryParams]="{
+                  law_id: section.law_id,
+                  act_id: section.act_id,
+                  chap_id: section.chap_id,
+                  section_id: section.section_id
+                }">
+                  Section {{section.id}}. {{section.section_title}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RELATED RULES -->
+        <div class="panel panel-info" *ngIf="circular.related_rules.length !== 0">
+          <div class="panel-heading head">
+            <h3 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse1">Related Rules:</h3>
+          </div>
+          <div id="collapse1" class="panel-collapse collapse in">
+            <div>
+              <div *ngFor="let rule of circular.related_rules">
+                <div class="panel-body" target="_blank" routerLink="/rule" [queryParams]="{
+                  law_id: rule.law_id,
+                  act_id: rule.act_id,
+                  chap_id: rule.chap_id,
+                  rule_id: rule.rule_id
+                }">
+                  Rule {{rule.id}}. {{rule.rule_title}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--RELATED NOTIFICATIONS-->
+        <div class="panel panel-info" *ngIf="circular.related_notifications.length !== 0">
+          <div class="panel-heading">
+            <h3 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse1">Related notifications:</h3>
+            <span class="glyphicon glyphicon-menu-down pull-right"></span>
+          </div>
+          <div id="collapse1" class="panel-collapse collapse in">
+            <div>
+              <div *ngFor="let notification of circular.related_notifications">
+                <div class="panel-body" target="_blank" routerLink="/notification" [queryParams]="{
+                  law_id: notification.law_id,
+                  act_id: notification.act_id,
+                  chap_id: notification.chap_id,
+                  notification_id: notification.notification_id
+                  }">
+                  Notification {{notification.id}}. {{notification.notification_name}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="col-lg-6 clsScroll scrollbar panel-group" id="style-2">
+        <div class="panel panel-info">
+          <div class="force-overflow panel-heading">
+            <h4>{{circular.name}}</h4>
+          </div>
+          <div class="panel-body" [innerHTML]="htmlText"></div>
+        </div>
+        <hr>
+        <div class="panel panel-info">
+          <div class="force-overflow panel-heading">
+            <h4>Analysis</h4>
+          </div>
+          <div class="panel-body" [innerHTML]="htmlAnalysis"></div>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</div>

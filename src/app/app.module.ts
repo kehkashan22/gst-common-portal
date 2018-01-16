@@ -1,3 +1,5 @@
+import { FormsModule } from '@angular/forms';
+import { CircularDetailModule } from './circular-detail/circular-detail.module';
 import { NotificationDetailModule } from './notification-detail/notification-detail.module';
 import { RuleDetailModule } from './rule-detail/rule-detail.module';
 import { SectionDetailComponent } from './section-detail/section-detail.component';
@@ -20,12 +22,15 @@ import { LawsModule } from './laws/laws.module';
 import { SectionDetailModule } from './section-detail/section-detail.module';
 import { Daterangepicker } from 'ng2-daterangepicker';
 import {ScrollToModule} from 'ng2-scroll-to';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { Ng2OrderModule } from 'ng2-order-pipe';
 
 
 
 import { environment } from '../environments/environment';
 /* For Firebase Related */
 import * as firebase from'firebase';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 export const firebaseConfig = environment.firebaseConfig;
 firebase.initializeApp(firebaseConfig);
@@ -38,6 +43,7 @@ firebase.initializeApp(firebaseConfig);
     HttpModule,
     AppRoutingModule,
     SharedModule,
+    FormsModule,
     ShoppingListModule,
     AuthModule,
     CoreModule,
@@ -46,7 +52,11 @@ firebase.initializeApp(firebaseConfig);
     RuleDetailModule,
     NotificationDetailModule,
     ScrollToModule.forRoot(),
-    Daterangepicker
+    Daterangepicker,
+    CircularDetailModule,
+    Ng2SearchPipeModule,
+    Ng2OrderModule,
+    NgxPaginationModule
   ],
   bootstrap: [AppComponent],
   providers: [

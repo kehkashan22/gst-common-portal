@@ -8,10 +8,14 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./rules.component.css']
 })
 export class RulesComponent implements OnInit, OnDestroy {
+  selected: any;
 
   law_id: string;
   act_id: string;
   chapters = [];
+  filter = '';
+  filter2 = '';
+  p = 1;
   private sub: any;
   constructor(
     private _law: LawsService,
@@ -72,6 +76,14 @@ export class RulesComponent implements OnInit, OnDestroy {
       }
     });
   }
+
+  select(item) {
+    console.log(item);
+    this.selected = (this.selected === item ? null : item);
+ }
+ isActive(item) {
+   return this.selected === item;
+ }
 
   ngOnDestroy() {
     this.sub.unsubscribe();

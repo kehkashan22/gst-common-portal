@@ -1,6 +1,7 @@
 <label for="daterangeInput">Select date range of Notifications:</label>
   <input type="text" name="daterangeInput" daterangepicker [options]="options" (selected)="selectedDate($event, daterange)" />
-
+  <label for="search">Search:</label>
+  <input class="form-control" type="text" name="search" [(ngModel)]="filter">
 
 
   <hr>
@@ -25,7 +26,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let notification of notifications">
+      <tr *ngFor="let notification of notifications | filter: filter | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
         <td (click) = "toNotification(notification.name)">
           {{notification.name}}
         </td>
@@ -41,3 +42,4 @@
       </tr>
     </tbody>
   </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>

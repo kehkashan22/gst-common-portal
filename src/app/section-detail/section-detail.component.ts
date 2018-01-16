@@ -19,6 +19,7 @@ export class SectionDetailComponent implements OnInit {
     number: '',
     related_rules: [],
     related_notifications: [],
+    related_circulars: [],
     footnotes: [],
     text: '',
     analysis: ''

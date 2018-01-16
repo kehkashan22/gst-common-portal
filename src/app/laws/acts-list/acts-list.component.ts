@@ -10,6 +10,8 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 export class ActsListComponent implements OnInit {
   id: number;
   acts = [];
+  filter = '';
+  p = 1;
   constructor(
     private _law: LawsService,
     private route: ActivatedRoute,

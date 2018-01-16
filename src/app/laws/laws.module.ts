@@ -1,5 +1,9 @@
+import { Ng2OrderModule } from 'ng2-order-pipe';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 import { LawsListComponent } from './laws-list/laws-list.component';
 import { LawsService } from './laws.service';
@@ -18,6 +22,7 @@ import { ActsListComponent } from './acts-list/acts-list.component';
 import { ActDescComponent } from './act-desc/act-desc.component';
 import { CircularsComponent } from './circulars/circulars.component';
 
+
 @NgModule({
   declarations: [
     LawsComponent,
@@ -34,9 +39,13 @@ import { CircularsComponent } from './circulars/circulars.component';
 ],
   imports: [
     CommonModule,
+    FormsModule,
     LawsRoutingModule,
     RouterModule,
-    Daterangepicker
+    Daterangepicker,
+    Ng2SearchPipeModule,
+    Ng2OrderModule,
+    NgxPaginationModule
   ],
   providers: [LawsService]
 })
