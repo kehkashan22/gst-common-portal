@@ -1,9 +1,17 @@
-<label for="daterangeInput">Select date range of Notifications:</label>
-  <input type="text" name="daterangeInput" daterangepicker [options]="options" (selected)="selectedDate($event, daterange)" />
+<!-- <label class="sty-date" for="daterangeInput">Select date range of Notifications:</label>
+  <input type="text" name="daterangeInput" daterangepicker [options]="options" (selected)="selectedDate($event, daterange)" /> -->
+
+      <div class="panel panel-default">
+        <div class="panel-heading" for="daterangeInput">Select date range of Notifications:</div>
+        <div class="panel-body">
+            <input type="text" name="daterangeInput" daterangepicker [options]="options" (selected)="selectedDate($event, daterange)" />
+        </div>
+      </div>
+    
 
 
 
-  <hr>
+  
     <table class="table table-striped">
     <thead class="head">
       <tr>

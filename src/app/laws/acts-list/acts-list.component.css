@@ -1,11 +1,60 @@
 
-.panel{
- border-color: #6571b5;
- padding-top:2px;
- font-weight:bold;
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+
+.dis{
+  text-align: center;
+  text-transform: lowercase;
 }
 
 .title{
   font-weight:bold;
   font-size:18px;
+  text-align: center;
+  padding-top:10px;
 }
+
+.list-type2{
+  margin:10px;
+  }
+  
+  .list-type2 ol{
+  counter-reset: li;
+  list-style: none;
+  *list-style: decimal;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  padding: 0;
+  /* margin-bottom: 4em; */
+  }
+  
+  .list-type2 ol ol{
+  margin: 0 0 0 2em;
+  }
+  
+  .list-type2 a{
+  position: relative;
+  display: block;
+  *padding: .4em; 
+  margin: .5em 0; 
+  /* background: #FC756F; */
+  border:#6571b5 solid 2px;
+  border-radius: 5px;
+  color:#3f3f3f;
+  text-decoration: none;
+  transition: all .4s ease-in-out;
+  }
+  
+  .list-type2 a:hover{
+  background: #d6d4d4;
+  text-decoration:none;
+  transform: scale(1.05);
+  }  
+
+  hr {
+    width:50%;
+    padding:0px;
+    margin-top:0px;
+  }
+
+  
