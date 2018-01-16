@@ -24,7 +24,7 @@ export class LawItemComponent implements OnInit {
   }
 
   toActs() {
-    if ( this.law.name.toLowerCase() === 'sgst') {
+    if ( this.law.name.toLowerCase() === 'sgst' || this.law.name.toLowerCase() === 'utgst') {
       this.router.navigate([this.index], {relativeTo: this.route});
     } else {
       this._law.getActs(this.index).then((snap: any[]) => {

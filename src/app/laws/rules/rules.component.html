@@ -11,7 +11,7 @@
           </div>
           <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body" style="cursor: pointer;" class="list-group-item" *ngFor="let rule of chapter.rules" (click)="toRule(chapter.id, rule.name)">
-              Rules {{rule.number}} {{rule.name}}
+              Rule {{rule.number}}: {{rule.name}}
             </div>
           </div>
         </div>

@@ -16,7 +16,7 @@ export class NotificationDetailService {
       .doc(law_id)
       .collection('acts')
       .doc(act_id)
-      .collection('notifications_detail')
+      .collection('notification_details')
       .where('name', '==', notification_name)
         .get()
         .then(snapshot => {
@@ -32,7 +32,7 @@ export class NotificationDetailService {
       .doc(law_id)
       .collection('acts')
       .doc(act_id)
-      .collection('notifications_detail')
+      .collection('notification_details')
       .doc(notification_id)
         .get()
         .then(snapshot => {

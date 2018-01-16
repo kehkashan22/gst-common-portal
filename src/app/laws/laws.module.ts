@@ -16,6 +16,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { LawsStartComponent } from './laws-start/laws-start.component';
 import { ActsListComponent } from './acts-list/acts-list.component';
 import { ActDescComponent } from './act-desc/act-desc.component';
+import { CircularsComponent } from './circulars/circulars.component';
 
 @NgModule({
   declarations: [
@@ -26,9 +27,10 @@ import { ActDescComponent } from './act-desc/act-desc.component';
     SectionsComponent,
     RulesComponent,
     NotificationsComponent,
-    LawsStartComponent,
+    LawsStartComponent,
     ActsListComponent,
-    ActDescComponent
+    ActDescComponent,
+    CircularsComponent
 ],
   imports: [
     CommonModule,
