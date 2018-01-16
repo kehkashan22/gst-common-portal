@@ -5,18 +5,18 @@ import { DaterangePickerComponent } from 'ng2-daterangepicker';
 import * as moment from 'moment';
 
 @Component({
-  selector: 'app-notifications',
-  templateUrl: './notifications.component.html',
-  styleUrls: ['./notifications.component.css']
+  selector: 'app-circulars',
+  templateUrl: './circulars.component.html',
+  styleUrls: ['./circulars.component.css']
 })
-export class NotificationsComponent implements OnInit, OnDestroy {
+export class CircularsComponent implements OnInit, OnDestroy {
 
   law_id: string;
   act_id: string;
-  notifications = [];
-  tempNoti = [];
+  circulars = [];
+  tempCirc = [];
   fragment = '';
-  isDesc = true;
+  isDesc = false;
   column = 'quiz';
   direction: number;
   daterange: any;
@@ -47,20 +47,20 @@ export class NotificationsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.sub = this.route.parent.params.subscribe((params: Params) => {
-      this.notifications = [];
+      this.circulars = [];
       this.law_id = params['id'];
       this.act_id = params['act_id'];
       console.log(this.law_id, this.act_id);
-      this._law.getNotifications(this.law_id, this.act_id).then((snap: any[]) => {
-        this.notifications = [];
+      this._law.getCirculars(this.law_id, this.act_id).then((snap: any[]) => {
+        this.circulars = [];
         console.log('here');
         snap.forEach(doc => {
-          this.notifications.push({
+          this.circulars.push({
             id: doc.id,
             ...doc.data()
           });
           this.sortByName();
-          this.tempNoti = this.notifications.slice();
+          this.tempCirc = this.circulars.slice();
           console.log(doc.id, '=>', doc.data());
         });
       });
@@ -72,7 +72,7 @@ export class NotificationsComponent implements OnInit, OnDestroy {
     this.column = property;
     const direction = this.isDesc ? 1 : -1;
 
-    this.notifications.sort((a, b) => {
+    this.circulars.sort((a, b) => {
         if (a[property] < b[property]) {
           return -1 * direction;
         } else if (a[property] > b[property]) {
@@ -88,7 +88,7 @@ export class NotificationsComponent implements OnInit, OnDestroy {
     this.column = 'name';
     const direction = this.isDesc ? 1 : -1;
 
-    this.notifications.sort(function(a, b) {
+    this.circulars.sort(function(a, b) {
       if (a.year < b.year) {
         return -1 * direction;
       }else if (a.year > b.year) {
@@ -106,25 +106,25 @@ export class NotificationsComponent implements OnInit, OnDestroy {
   }
 
   public selectedDate(value: any, datepicker?: any) {
-    this.notifications = this.tempNoti.slice();
+    this.circulars = this.tempCirc.slice();
     const start = value.start;
     const end = value.end;
-      this.notifications = this.notifications.filter(
-        notification =>
-          moment(notification.date) >= start
-          && moment(notification.date) <= end
+      this.circulars = this.circulars.filter(
+        circular =>
+          moment(circular.date) >= start
+          && moment(circular.date) <= end
     );
 
-    console.log(this.notifications);
+    console.log(this.circulars);
 }
 
-toNotification(notification_name) {
-  console.log(notification_name);
-  this.router.navigate(['/notification'], {
+toCircular(circular_name) {
+  console.log(circular_name);
+  this.router.navigate(['/circular'], {
     queryParams: {
       law_id: this.law_id,
       act_id: this.act_id,
-      name: notification_name
+      name: circular_name
     }
   });
 }
@@ -134,3 +134,4 @@ ngOnDestroy() {
 }
 
 }
+

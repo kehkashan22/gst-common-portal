@@ -83,6 +83,7 @@ export class RuleDetailComponent implements OnInit {
       ...this.rule,
       ...rule
     }
+    console.log(this.rule.related_notifications);
     this.htmlText = this._dom.bypassSecurityTrustHtml(this.rule.text);
     this.htmlAnalysis = this._dom.bypassSecurityTrustHtml(this.rule.analysis);
   }

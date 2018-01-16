@@ -1,4 +1,4 @@
-<label for="daterangeInput">Select date range of Notifications:</label>
+<label for="daterangeInput">Select date range of circulars:</label>
   <input type="text" name="daterangeInput" daterangepicker [options]="options" (selected)="selectedDate($event, daterange)" />
 
 
@@ -8,9 +8,13 @@
     <thead class="head">
       <tr>
         <th (click)="sortByName()" class="col-md-3">
-          Notification No.
+          Circular No.
           <i class="fa" [ngClass]="{'fa-sort': column != 'name', 'fa-sort-asc': (column == 'name' && isDesc), 'fa-sort-desc': (column == 'name' && !isDesc) }" aria-hidden="true"> </i>
         </th>
+        <th (click)="sort('name')" class="col-md-3">
+            File No.
+            <i class="fa" [ngClass]="{'fa-sort': column != 'file_no', 'fa-sort-asc': (column == 'file_no' && isDesc), 'fa-sort-desc': (column == 'file_no' && !isDesc) }" aria-hidden="true"> </i>
+          </th>
         <th (click)="sort('date')" class="col-md-2">
           Date
           <i class="fa" [ngClass]="{'fa-sort': column != 'date', 'fa-sort-asc': (column == 'date' && isDesc), 'fa-sort-desc': (column == 'date' && !isDesc) }" aria-hidden="true"> </i>
@@ -25,18 +29,21 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let notification of notifications">
-        <td (click) = "toNotification(notification.name)">
-          {{notification.name}}
+      <tr *ngFor="let circular of circulars">
+        <td (click) = "toCircular(circular.name)">
+          {{circular.name}}
+        </td>
+        <td (click) = "toCircular(circular.name)">
+            {{circular.file_no}}
         </td>
         <td>
-          {{notification.date}}
+          {{circular.date}}
         </td>
         <td>
-          {{notification.subject}}
+          {{circular.subject}}
         </td>
         <td>
-            <a [href]="notification.pdf" target="_blank">Link</a>
+            <a [href]="circular.pdf" target="_blank">Link</a>
           </td>
       </tr>
     </tbody>

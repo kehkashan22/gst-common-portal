@@ -1,3 +1,4 @@
+import { CircularsComponent } from './circulars/circulars.component';
 import { ActDescComponent } from './act-desc/act-desc.component';
 import { ActsListComponent } from './acts-list/acts-list.component';
 import { LawsStartComponent } from './laws-start/laws-start.component';
@@ -19,6 +20,7 @@ const lawsRoutes: Routes = [
       { path: 'sections', component: SectionsComponent },
       { path: 'rules', component: RulesComponent },
       { path: 'notifications', component: NotificationsComponent },
+      { path: 'circulars', component: CircularsComponent },
     ]},
   ] },
 ];
