@@ -146,6 +146,22 @@ export class LawsService {
     });
   }
 
+  getRuleChapters(law_id, rule_id) {
+    return new Promise((resolve, reject) => {
+      this.firestore
+        .collection('laws')
+        .doc(law_id)
+        .collection('rules')
+        .doc(rule_id)
+        .collection('chapters')
+        .get()
+        .then(snapshot => {
+          console.log(snapshot);
+          resolve(snapshot);
+        });
+    });
+  }
+
   getSectionDetails(law_id, act_id, chap_id, section_name) {
     const collectionRef = this.firestore
       .collection('laws')

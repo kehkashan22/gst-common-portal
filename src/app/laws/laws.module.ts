@@ -10,7 +10,6 @@ import {NgxPaginationModule} from 'ngx-pagination';
 
 import { LawsListComponent } from './laws-list/laws-list.component';
 import { LawsService } from './laws.service';
-import { LawItemComponent } from './laws-list/law-item/law-item.component';
 import { Daterangepicker } from 'ng2-daterangepicker';
 import { LawsComponent } from 'app/laws/laws.component';
 import { LawsRoutingModule } from './laws-routing.module';
@@ -29,7 +28,6 @@ import { ActsComponent } from './acts/acts.component';
   declarations: [
     LawsComponent,
     LawsListComponent,
-    LawItemComponent,
     LawsDetailsComponent,
     SectionsComponent,
     RulesComponent,
