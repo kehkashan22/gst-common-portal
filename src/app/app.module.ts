@@ -29,7 +29,7 @@ import { Ng2OrderModule } from 'ng2-order-pipe';
 
 import { environment } from '../environments/environment';
 /* For Firebase Related */
-import * as firebase from'firebase';
+import * as firebase from 'firebase';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 export const firebaseConfig = environment.firebaseConfig;

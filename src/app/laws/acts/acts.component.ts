@@ -1,16 +1,16 @@
-import { ActivatedRoute, Router, Params } from '@angular/router';
 import { LawsService } from './../laws.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 
 @Component({
-  selector: 'app-rules',
-  templateUrl: './rules.component.html',
-  styleUrls: ['./rules.component.css']
+  selector: 'app-acts',
+  templateUrl: './acts.component.html',
+  styleUrls: ['./acts.component.css']
 })
-export class RulesComponent implements OnInit, OnDestroy {
+export class ActsComponent implements OnInit, OnDestroy {
   law_id: string;
   private sub: any;
-  rules = [];
+  acts = [];
   constructor(private _law: LawsService,
     private route: ActivatedRoute,
     private router: Router) { }
@@ -20,15 +20,15 @@ export class RulesComponent implements OnInit, OnDestroy {
       console.log(params);
       this.law_id = params['id'];
       console.log(this.law_id);
-      this._law.getRules(this.law_id).then((snap: any[]) => {
-        this.rules = [];
+      this._law.getActs(this.law_id).then((snap: any[]) => {
+        this.acts = [];
         console.log('here');
         snap.forEach(doc => {
-          this.rules.push({
+          this.acts.push({
             id: doc.id,
             ...doc.data()
           });
-          console.log(this.rules);
+          console.log(this.acts);
         });
       });
     });
@@ -37,4 +37,5 @@ export class RulesComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
+
 }

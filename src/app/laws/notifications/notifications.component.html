@@ -1,22 +1,10 @@
-<!-- <label class="sty-date" for="daterangeInput">Select date range of Notifications:</label>
-  <input type="text" name="daterangeInput" daterangepicker [options]="options" (selected)="selectedDate($event, daterange)" /> -->
+<label for="daterangeInput">Select date range of Notifications:</label>
+  <input type="text" name="daterangeInput" daterangepicker [options]="options" (selected)="selectedDate($event, daterange)" />
+  <label for="search">Search:</label>
+  <input class="form-control" type="text" name="search" [(ngModel)]="filter">
 
-      <div class="col-lg-6 search-box-style-1">
-        <div class="input-style date-box" for="daterangeInput">Select date range:&nbsp;</div>
-       
-        <div class="input-style date-box">
-            <i class="glyphicon glyphicon-calendar fa fa-calendar pull-left"></i>
-            <input class="date-box-1 pointer" type="text" name="daterangeInput" daterangepicker [options]="options" (selected)="selectedDate($event, daterange)" />
-        </div>
-      </div>
 
-      <div class="col-lg-6">
-      <div class="search-box offset-md-9">
-           <input class="form-control search-box-style-1" type="text" name="search" placeholder="Search by chapter"><p></p>
-         </div> 
-        </div>  
-
-  <div class="col-lg-12">
+  <hr>
     <table class="table table-striped">
     <thead class="head">
       <tr>
@@ -55,8 +43,3 @@
     </tbody>
   </table>
   <pagination-controls (pageChange)="p = $event"></pagination-controls>
-</div>
-
-
-
-    

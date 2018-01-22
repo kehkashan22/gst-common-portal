@@ -12,7 +12,7 @@ import { HomeComponent } from './core/home/home.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'laws', loadChildren: './laws/laws.module#LawsModule' },
+  { path: 'wiki', loadChildren: './laws/laws.module#LawsModule' },
   { path: 'section', component: SectionDetailComponent },
   { path: 'rule', component: RuleDetailComponent },
   { path: 'notification', component: NotificationDetailComponent },

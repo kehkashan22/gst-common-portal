@@ -125,20 +125,3 @@ a:active {
   display:block !important;
 }
 
-.search-box{
-  width:50%;
-  float: left;
-  padding:5px;
-  float:right;
-  
-}
-
-.search-box-style{
-  border: 1px solid #6571b5;
-  padding: 10px;
-  height: 40px;
-  border-radius: 5px;
-  outline: none;
-  color: #9DBFAF;
-  
-}

@@ -11,7 +11,7 @@ export class LawsListComponent implements OnInit {
   constructor( private _laws: LawsService) { }
 
   ngOnInit() {
-    this._laws.getLaws().then((snapshot: any[]) => {
+    this._laws.getUmbrella().then((snapshot: any[]) => {
       snapshot.forEach((doc) => {
         this.laws.push({
             id: doc.id,

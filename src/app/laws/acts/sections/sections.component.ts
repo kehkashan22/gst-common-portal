@@ -1,4 +1,5 @@
-import { LawsService } from './../laws.service';
+import { LawsService } from 'app/laws/laws.service';
+
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Params, Router, ActivatedRoute } from '@angular/router';
 
@@ -25,10 +26,10 @@ export class SectionsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     console.log(this.route.pathFromRoot);
     this.sub = this.route.parent.params.subscribe((params: Params) => {
+      const id = this.route.pathFromRoot[this.route.pathFromRoot.length - 3].snapshot.params['id'];
       this.chapters = [];
-      console.log(params);
-      this.law_id = params['id'];
-      this.act_id = params['act_id'];
+      this.law_id = id;
+      this.act_id = this.route.pathFromRoot[this.route.pathFromRoot.length - 1].snapshot.params['act_id'];
       console.log(this.law_id, this.act_id);
       this._law.getSections(this.law_id, this.act_id).then((snap: any[]) => {
         this.chapters = [];

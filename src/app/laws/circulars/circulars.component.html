@@ -1,22 +1,15 @@
-<div class="panel panel-default">
-    <div class="panel-heading input-style" for="daterangeInput">Select date range of Notifications:</div>
-    <div class="panel-body input-style">
-        <input type="text" name="daterangeInput" daterangepicker [options]="options" (selected)="selectedDate($event, daterange)" />
-</div>
-  
-  </div>
-  
-  
-  <br>
+<label for="daterangeInput">Select date range of circulars:</label>
+  <input type="text" name="daterangeInput" daterangepicker [options]="options" (selected)="selectedDate($event, daterange)" />
+  <label for="search">Search:</label>
+  <input class="form-control" type="text" name="search" [(ngModel)]="filter">
 
-
+  <hr>
     <table class="table table-striped">
     <thead class="head">
       <tr>
         <th (click)="sortByName()" class="col-md-3">
           Circular No.
           <i class="fa" [ngClass]="{'fa-sort': column != 'name', 'fa-sort-asc': (column == 'name' && isDesc), 'fa-sort-desc': (column == 'name' && !isDesc) }" aria-hidden="true"> </i>
-          <input class="form-control search" type="text" name="search" placeholder="Search.." [(ngModel)]="filter"> 
         </th>
         <th (click)="sort('name')" class="col-md-3">
             File No.

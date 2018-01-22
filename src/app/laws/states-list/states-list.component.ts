@@ -3,13 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 
 @Component({
-  selector: 'app-acts-list',
-  templateUrl: './acts-list.component.html',
-  styleUrls: ['./acts-list.component.css']
+  selector: 'app-states-list',
+  templateUrl: './states-list.component.html',
+  styleUrls: ['./states-list.component.css']
 })
-export class ActsListComponent implements OnInit {
+export class StatesListComponent implements OnInit {
   id: number;
-  acts = [];
+  states = [];
   filter = '';
   p = 1;
   constructor(
@@ -22,12 +22,12 @@ export class ActsListComponent implements OnInit {
     this.route.params
     .subscribe(
       (params: Params) => {
-        this.acts = [];
+        this.states = [];
         this.id = params['id'];
-        this._law.getActs(this.id).then((snap: any[]) => {
-          this.acts = [];
+        this._law.getUmbrellaLaws(this.id).then((snap: any[]) => {
+          this.states = [];
           snap.forEach(doc => {
-            this.acts.push({
+            this.states.push({
               id: doc.id,
               ...doc.data()
             });
