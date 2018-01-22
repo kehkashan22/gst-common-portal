@@ -4,6 +4,7 @@
     <app-law-item
       *ngFor="let lawEl of laws; let i = index"
       [law]="lawEl"
+      [law_id]="lawEl.law_id"
       [index]="lawEl.id"></app-law-item>
   </div>
 

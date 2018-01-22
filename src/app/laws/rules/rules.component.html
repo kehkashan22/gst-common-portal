@@ -1,59 +1,11 @@
-
-   <label for="search">Search by chapter</label>
-   <input class="form-control" type="text" name="search" [(ngModel)]="filter">
-
-   <label for="search2">Search by Rule</label>
-   <input class="form-control" type="text" name="search2" [(ngModel)]="filter2">
-
-<hr>
-    <div class="col-lg-12" >
-      <div class="panel-group wrap" role="tablist" aria-multiselectable="true"
-      *ngFor="let chapter of chapters | filter:filter | paginate: { itemsPerPage: 10, currentPage: p }; let i = index"
-      [attr.id]="'accordion_' + i">
-        <div class="panel">
-          <div class="panel-heading" role="tab" id="headingOne">
-            <h4 class="panel-title">
-              <a role="button" data-toggle="collapse"
-                aria-expanded="true"
-                aria-controls="collapseOne"
-                [attr.data-parent]="'#accordion_' + i" [attr.href]="'#collapseOne_' + i"
-                >
-                Chapter {{chapter.number}}: {{ chapter.name }}
-              </a>
-            </h4>
-          </div>
-          <div [attr.id]="'collapseOne_' + i" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-            <div class="panel-body" style="cursor: pointer;" class="list-group-item" *ngFor="let rule of chapter.rules | filter:filter2 | orderBy: 'number' : false; let i = index" (click)="toRule(chapter.id, rule.name)">
-              Rule {{rule.number}}: {{rule.name}}
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- end of #accordion -->
-      <pagination-controls (pageChange)="p = $event"></pagination-controls>
-    </div>
-
-
-
-  <!-- end of wrap -->
-
-
-<!-- end of container -->
-<!--
-          <div class="row">
-              <div class="col-xs-12"  *ngFor="let chapter of chapters">
-                <h1> Chapter {{chapter.number}}: {{ chapter.name }}</h1>
-
-                  <hr>
-                <ul class="list-group">
-                  <li
-                  style="cursor: pointer;"
-                    class="list-group-item"
-                    *ngFor="let rule of chapter.rules"
-                    (click)="toRule(chapter.id, rule.name)"
-                    >
-                    Rules {{rule.number}} {{rule.name}}
-                </li>
-                </ul>
-              </div>
-            </div> -->
+<div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select rule
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li *ngFor="let rule of rules">
+      <a [routerLink]="[rule.id, 'sections']">{{rule.name}}</a>
+    </li>
+  </ul>
+</div>
+<router-outlet></router-outlet>

@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class LawItemComponent implements OnInit {
 
   @Input() law;
+  @Input() law_id;
   @Input() index: string;
 
   constructor(
@@ -20,28 +21,27 @@ export class LawItemComponent implements OnInit {
   ) { }
 
   ngOnInit() {
- 
+
   }
 
   toActs() {
-    if ( this.law.name.toLowerCase() === 'sgst' || this.law.name.toLowerCase() === 'utgst') {
+    if ( this.law.id.toLowerCase() === 'sgst' ) {
       this.router.navigate([this.index], {relativeTo: this.route});
     } else {
-      this._law.getActs(this.index).then((snap: any[]) => {
+      this._law.getUmbrellaLaws(this.index).then((snap: any[]) => {
         let act_id = '';
         snap.forEach(doc => {
-           act_id = doc.id;
-           this.router.navigate([this.index, 'act', act_id, 'desc'], {relativeTo: this.route});
+           act_id = doc.data().law_id;
+           this.router.navigate([act_id, 'law', 'desc'], {relativeTo: this.route});
         });
       });
     }
 
   }
 
-  onEdit()
-  {
+  onEdit() {
     document.body.scrollTop = document.documentElement.scrollTop = 0;
   }
-  
+
 
 }

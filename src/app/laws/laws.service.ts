@@ -19,11 +19,48 @@ export class LawsService {
     });
   }
 
-  getActs(id) {
+  getUmbrella() {
+    return new Promise((resolve, reject) => {
+      this.firestore
+        .collection('umberella')
+        .get()
+        .then(snapshot => {
+          resolve(snapshot);
+        });
+    });
+  }
+
+  getUmbrellaLaws(id) {
+    return new Promise((resolve, reject) => {
+      this.firestore
+        .collection('umberella')
+        .doc(id)
+        .collection('laws')
+        .get()
+        .then(snapshot => {
+          resolve(snapshot);
+        });
+    });
+  }
+
+  getLaw(law_id) {
     return new Promise((resolve, reject) => {
       this.firestore
         .collection('laws')
-        .doc(id)
+        .doc(law_id)
+        .get()
+        .then(snapshot => {
+          resolve(snapshot);
+        });
+    });
+  }
+
+
+  getActs(law_id) {
+    return new Promise((resolve, reject) => {
+      this.firestore
+        .collection('laws')
+        .doc(law_id)
         .collection('acts')
         .get()
         .then(snapshot => {
@@ -95,14 +132,12 @@ export class LawsService {
     });
   }
 
-  getRules(law_id, act_id) {
+  getRules(law_id) {
     return new Promise((resolve, reject) => {
       this.firestore
         .collection('laws')
         .doc(law_id)
-        .collection('acts')
-        .doc(act_id)
-        .collection('rules_chapters')
+        .collection('rules')
         .get()
         .then(snapshot => {
           console.log(snapshot);

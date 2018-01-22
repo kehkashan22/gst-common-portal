@@ -1,0 +1,11 @@
+<div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Act
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li *ngFor="let act of acts">
+      <a [routerLink]="[act.id, 'sections']">{{act.name}}</a>
+    </li>
+  </ul>
+</div>
+<router-outlet></router-outlet>

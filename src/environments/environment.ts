@@ -13,4 +13,5 @@ export const environment = {
     storageBucket: 'expensify-75abf.appspot.com',
     messagingSenderId: '988452474417'
   }
+
 };

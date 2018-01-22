@@ -1,10 +1,14 @@
-<div class="panel-heading">
-    <h4> {{ act.name }}</h4>
+<div *ngIf="law">
+  <div class="panel-heading" >
+    <h4> {{ law.name }}</h4>
 </div>
-<div class="panel-body">{{ act.title }}</div>
+<div class="panel-body">{{ law.title }}</div>
 <div>
 
-  <h3>Levied By: {{act.levied_by}}</h3>
-  <h3>On: {{act.levied_on}}</h3>
-  <h3>Of: {{act.levied_of}}</h3>
+  <h3>Levied By: {{law.levied_by}}</h3>
+  <h3>On: {{law.levied_on}}</h3>
+  <h3>Of: {{law.levied_of}}</h3>
 </div>
+</div>
+
+

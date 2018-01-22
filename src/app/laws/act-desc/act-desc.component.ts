@@ -12,7 +12,7 @@ export class ActDescComponent implements OnInit, OnDestroy {
 
   id: string;
   act_id: string;
-  act = {
+  law = {
     name: '',
     title: '',
     year: '',
@@ -32,10 +32,8 @@ export class ActDescComponent implements OnInit, OnDestroy {
     .subscribe(
       (params: Params) => {
         this.id = params['id'];
-        this.act_id = params['act_id']
-        this._law.getAct(this.id, this.act_id).then((doc: any) => {
-          console.log(this.act);
-            this.act = {
+        this._law.getLaw(this.id).then((doc: any) => {
+            this.law = {
               id: doc.id,
               ...doc.data()
             };
