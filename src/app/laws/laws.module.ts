@@ -1,3 +1,4 @@
+import { ChaptersComponent } from './rules/chapters/chapters.component';
 import { SectionsComponent } from './acts/sections/sections.component';
 import { StatesListComponent } from './states-list/states-list.component';
 import { Ng2OrderModule } from 'ng2-order-pipe';
@@ -37,7 +38,8 @@ import { ActsComponent } from './acts/acts.component';
     StatesListComponent,
     ActDescComponent,
     CircularsComponent,
-    ActsComponent
+    ActsComponent,
+    ChaptersComponent
 ],
   imports: [
     CommonModule,

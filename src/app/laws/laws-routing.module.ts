@@ -36,7 +36,7 @@ const lawsRoutes: Routes = [
             path: 'rules',
             component: RulesComponent,
             children: [
-              { path: ':rule_id/sections', component: ChaptersComponent }
+              { path: ':rule_id/rule-list', component: ChaptersComponent }
             ]
           },
           { path: 'notifications', component: NotificationsComponent },
