@@ -25,7 +25,7 @@ export class SectionsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     console.log(this.route.pathFromRoot);
-    this.sub = this.route.parent.params.subscribe((params: Params) => {
+    this.sub = this.route.params.subscribe((params: Params) => {
       const id = this.route.pathFromRoot[this.route.pathFromRoot.length - 3].snapshot.params['id'];
       this.chapters = [];
       this.law_id = id;

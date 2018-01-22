@@ -8,14 +8,14 @@ export class RuleDetailService {
   firestore = firebase.firestore();
   constructor() {}
 
-  getRule(law_id, act_id, chap_id, rule_name) {
+  getRule(law_id, rule_id, chap_id, rule_name) {
     return new Promise((resolve, reject) => {
       this.firestore
       .collection('laws')
       .doc(law_id)
-      .collection('acts')
-      .doc(act_id)
-      .collection('rules_chapters')
+      .collection('rules')
+      .doc(rule_id)
+      .collection('chapters')
       .doc(chap_id)
       .collection('rules')
       .where('name', '==', rule_name)
@@ -26,14 +26,14 @@ export class RuleDetailService {
     });
   }
 
-  getRuleById(law_id, act_id, chap_id, rule_id) {
+  getRuleById(law_id, rule_parent_id, chap_id, rule_id) {
     return new Promise((resolve, reject) => {
       this.firestore
       .collection('laws')
       .doc(law_id)
-      .collection('acts')
-      .doc(act_id)
-      .collection('rules_chapters')
+      .collection('rules')
+      .doc(rule_parent_id)
+      .collection('chapters')
       .doc(chap_id)
       .collection('rules')
       .doc(rule_id)

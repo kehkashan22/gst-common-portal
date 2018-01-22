@@ -36,9 +36,9 @@
               <div *ngFor="let rule of section.related_rules">
                 <div class="panel-body" target="_blank" routerLink="/rule" [queryParams]="{
               law_id: rule.law_id,
-              act_id: rule.act_id,
+              rule_id: rule.rule_parent_id,
               chap_id: rule.chap_id,
-              rule_id: rule.rule_id
+              r_id: rule.rule_id
             }">
                   Rule {{rule.id}}. {{rule.rule_title}}
                 </div>

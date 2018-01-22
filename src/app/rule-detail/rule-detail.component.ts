@@ -28,7 +28,7 @@ export class RuleDetailComponent implements OnInit {
 
   htmlText: any;
   law_id: string;
-  act_id: string;
+  rule_parent_id: string;
   chap_id: string;
   name: string;
   rule_id: string;
@@ -46,12 +46,13 @@ export class RuleDetailComponent implements OnInit {
     .subscribe(params => {
       // Defaults to 0 if no query param provided.
       this.law_id = params['law_id'];
-      this.act_id = params['act_id'];
+      this.rule_parent_id = params['rule_id'];
       this.chap_id = params['chap_id'];
       this.name = params['name'] || '';
-      this.rule_id = params['rule_id'] || '';
+      this.rule_id = params['r_id'] || '';
       if (this.rule_id) {
-        this._rule.getRuleById(this.law_id, this.act_id, this.chap_id, this.rule_id).then((snap: firebase.firestore.DocumentSnapshot) => {
+        this._rule.getRuleById(this.law_id, this.rule_parent_id, this.chap_id, this.rule_id)
+          .then((snap: firebase.firestore.DocumentSnapshot) => {
           console.log('here');
           console.log(snap);
 
@@ -64,7 +65,7 @@ export class RuleDetailComponent implements OnInit {
 
         });
       }else if (this.name) {
-        this._rule.getRule(this.law_id, this.act_id, this.chap_id, this.name).then((snap: any[]) => {
+        this._rule.getRule(this.law_id, this.rule_parent_id, this.chap_id, this.name).then((snap: any[]) => {
           console.log('here');
           snap.forEach(doc => {
             const rule = {

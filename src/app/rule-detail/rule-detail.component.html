@@ -59,16 +59,13 @@
       </div>
 
       <!-- RELATED CIRCULAR -->
-      <div class="panel panel-info">
+      <div class="panel panel-info" *ngIf="rule.related_circulars.length !== 0">
         <div class="panel-heading">
           <h3 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse2">Related circulars:</h3>
           <span class="glyphicon glyphicon-menu-down pull-right"></span>
-          <div *ngIf="rule.related_circulars.length === 0">
-            <span>No Related circulars</span>
-          </div>
         </div>
         <div id="collapse2" class="panel-collapse collapse in">
-          <div *ngIf="rule.related_circulars.length !== 0">
+          <div>
             <div *ngFor="let circular of rule.related_circulars">
               <div class="panel-body" target="_blank" routerLink="/circular" [queryParams]="{
                               law_id: circular.law_id,
