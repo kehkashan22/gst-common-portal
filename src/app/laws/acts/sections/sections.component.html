@@ -3,8 +3,8 @@
 
 <div  class="col-lg-12">
   <h3>{{act.name}}, {{act.year}}</h3>
-    <label for="search">Search by chapter</label>
-    <input class="form-control" type="text" name="search" [(ngModel)]="filter">
+    <!-- <label for="search">Search by chapter</label> -->
+    <input class="form-control search-box pointer" type="text" name="search" placeholder="Search by chapter..." [(ngModel)]="filter">
     <hr>
 
     <div *ngFor="let chapter of chapters | filter:filter | paginate: { itemsPerPage: 10, currentPage: p }; let i = index"

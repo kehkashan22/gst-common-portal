@@ -1,7 +1,11 @@
 
-  <h3>{{rule.name}}, {{rule.year}}</h3>
-  <label for="search">Search by chapter</label>
-   <input class="form-control" type="text" name="search" [(ngModel)]="filter">
+  
+  <div class="col-lg-12">
+      <h3>{{rule.name}}, {{rule.year}}</h3>
+      <!-- <label for="search">Search by chapter</label> -->
+       <input class="form-control search-box pointer" type="text" name="search"  placeholder="Search by chapter..." [(ngModel)]="filter">
+ 
+  
 
 
 <hr>
@@ -31,3 +35,4 @@
       <!-- end of #accordion -->
       <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>
+  </div>

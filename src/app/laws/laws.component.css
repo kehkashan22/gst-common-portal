@@ -3,3 +3,8 @@
     width:100%;
 }
  
+.border{
+    border-right: rgb(208, 206, 206) solid 1px;
+    margin-bottom: 20px;    
+}
+
