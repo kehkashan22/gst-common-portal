@@ -46,7 +46,7 @@ export class NotificationDetailComponent implements OnInit {
       this.law_id = params['law_id'];
       this.act_id = params['act_id'];
       this.chap_id = params['chap_id'];
-      this.notification_id = params['notification_id'] || '';
+      this.notification_id = params['id'] || '';
       this.name = params['name'] || '';
       if (this.notification_id) {
         this._notification
