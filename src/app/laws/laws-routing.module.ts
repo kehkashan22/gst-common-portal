@@ -25,13 +25,15 @@ const lawsRoutes: Routes = [
         component: LawsDetailsComponent,
         children: [
           { path: 'desc', component: ActDescComponent },
-          {
-            path: 'acts',
-            component: ActsComponent,
-            children: [
-              { path: ':act_id/sections', component: SectionsComponent }
-            ]
-          },
+          { path: 'acts/:act_id/sections', component: SectionsComponent },
+          // {
+          //   path: 'acts',
+          //   component: ActsComponent,
+          //   children: [
+          //     { path: ':act_id/sections', component: SectionsComponent }
+          //   ]
+          // },
+          { path: 'rules/:rule_id/rule-list', component: ChaptersComponent },
           {
             path: 'rules',
             component: RulesComponent,
@@ -39,7 +41,7 @@ const lawsRoutes: Routes = [
               { path: ':rule_id/rule-list', component: ChaptersComponent }
             ]
           },
-          { path: 'notifications', component: NotificationsComponent },
+          { path: 'notifications/:act_id/notification_list', component: NotificationsComponent },
           { path: 'circulars', component: CircularsComponent }
         ]
       }

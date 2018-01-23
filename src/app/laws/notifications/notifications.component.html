@@ -1,4 +1,6 @@
 
+<div class="box">
+<p>{{noti_act.name}}</p>
 <div class="col-lg-7 search-box pointer">
   <div class="col-lg-4"><label for="daterangeInput">Select date:</label></div>
   <div class="col-lg-2 pointer"><input type="text" class="date-style" name="daterangeInput" daterangepicker [options]="options" (selected)="selectedDate($event, daterange)" /></div>
@@ -9,7 +11,7 @@
   <label for="search">Search:</label> -->
   <input class="form-control search-box pointer" type="text" name="search" placeholder="Search..." [(ngModel)]="filter">
 </div>  
-
+</div>
 
   <hr>
     <table class="table table-striped">
@@ -34,8 +36,8 @@
     </thead>
     <tbody>
       <tr *ngFor="let notification of notifications | filter: filter | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
-        <td (click) = "toNotification(notification.name)">
-          {{notification.name}}
+        <td>
+          <a (click)="toNotification(notification.name)" style="cursor: pointer;">{{notification.name}}</a>
         </td>
         <td>
           {{notification.date}}

@@ -26,7 +26,7 @@
 }
 
 
-h3 {
+/* h3 {
   color: #fff;
   font-size: 24px;
   text-align: center;
@@ -35,7 +35,7 @@ h3 {
   border-bottom: 1px solid #eee;
   margin-bottom: 30px;
   font-weight: 300;
-}
+} */
 
 
 .wrap {
@@ -112,3 +112,19 @@ a:active {
 
 /* ................................................................. */
 
+.search-box{
+  border:#6571B5 solid 1px;
+  border-radius: 5px;
+  padding:4px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.drop-style{
+  background-color: transparent;
+  color:#6571B5;
+  border-bottom: #6571B5 solid 6px;
+  width:40%;
+}

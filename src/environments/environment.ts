@@ -13,5 +13,12 @@ export const environment = {
     storageBucket: 'expensify-75abf.appspot.com',
     messagingSenderId: '988452474417'
   }
-
+  // firebaseConfig: {
+  //   apiKey: 'AIzaSyDrPHDMhID01Gt39lPW0f0K-obnKh7iBeo',
+  //   authDomain: 'gst-common-portal.firebaseapp.com',
+  //   databaseURL: 'https://gst-common-portal.firebaseio.com',
+  //   projectId: 'gst-common-portal',
+  //   storageBucket: 'gst-common-portal.appspot.com',
+  //   messagingSenderId: '985198041045'
+  // }
 };

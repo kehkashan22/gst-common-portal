@@ -1,36 +1,61 @@
+<div class="col-lg-12 col-sm-10 col-md-12">
+  <ul class="nav nav-tabs">
+    <li role="presentation" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <a routerLink="desc">Description</a>
+    </li>
+    <!-- <li role="presentation" routerLinkActive="active">
+      <a [routerLink]="['acts']">Acts</a>
+    </li> -->
 
-    <div class="col-lg-12 col-sm-10 col-md-12">
-      <ul class="nav nav-tabs">
-        <li role="presentation"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{exact: true}">
-            <a routerLink = "desc">Description</a>
-        </li>
-        <li role="presentation"
-            routerLinkActive="active">
-            <a [routerLink]="['acts']">Acts</a>
-        </li>
-        <li role="presentation"
-            routerLinkActive="active">
-            <a [routerLink]="['rules']">Rules</a>
-        </li>
-        <li role="presentation"
-            routerLinkActive="active">
-          <a [routerLink]="['notifications']">Notifications</a>
-        </li>
-        <li role="presentation"
-            routerLinkActive="active">
-          <a [routerLink]="['circulars']">Circulars</a>
+
+
+
+    <li class="dropdown" role="presentation" routerLinkActive="active">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Acts
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li *ngFor="let act of acts">
+            <a [routerLink]="['acts', act.id, 'sections']">{{act.name}}</a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="dropdown" role="presentation" routerLinkActive="active">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Rules
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li *ngFor="let rule of rules">
+              <a [routerLink]="['rules', rule.id, 'rule-list']">{{rule.name}}</a>
+            </li>
+          </ul>
+      </li>
+
+    <!-- <li role="presentation" routerLinkActive="active">
+      <a [routerLink]="['rules']">Rules</a>
+    </li> -->
+
+    <li class="dropdown" role="presentation" routerLinkActive="active">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">Notifications
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li *ngFor="let notification of notifications">
+          <a [routerLink]="['notifications', notification.id, 'notification_list']">{{notification.name}}</a>
         </li>
       </ul>
-    </div>
+    </li>
 
-  <div class="row">
-    <div class="col-lg-12 col-sm-10 col-md-12">
-      <router-outlet></router-outlet>
-    </div>
+
+    <li role="presentation" routerLinkActive="active">
+      <a [routerLink]="['circulars']">Circulars</a>
+    </li>
+  </ul>
+</div>
+
+<div class="row">
+  <div class="col-lg-12 col-sm-10 col-md-12">
+    <router-outlet></router-outlet>
   </div>
-
-
-
-
+</div>

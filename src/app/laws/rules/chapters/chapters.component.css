@@ -1,0 +1,130 @@
+
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
+.panel-title > a:before {
+    float: right !important;
+    font-family: FontAwesome;
+    content:"\f056";
+    padding-right: 5px;
+}
+.panel-title > a.collapsed:before {
+    float: right !important;
+    content:"\f055";
+}
+.panel-title > a:hover,
+.panel-title > a:active,
+.panel-title > a:focus  {
+    text-decoration: none;
+}
+
+.h4, .h5, .h6, h4, h5, h6 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.h4, h4 {
+    font-size: 16px;
+}
+
+
+/* h3 {
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+  margin-top: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 30px;
+  font-weight: 300;
+} */
+
+
+.wrap {
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+}
+
+a:focus,
+a:hover,
+a:active {
+  outline: 0;
+  text-decoration: none;
+}
+
+.panel {
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-color: #fff;
+  background: none;
+  box-shadow: none;
+}
+
+.panel:last-child {
+  border-bottom: none;
+}
+
+.panel-group > .panel:first-child .panel-heading {
+  border-radius: 4px 4px 0 0;
+}
+
+.panel-group .panel {
+  border-radius: 0;
+}
+
+.panel-group .panel + .panel {
+  margin-top: 0;
+}
+
+.panel-heading {
+  background-color: #6571B5;
+  border-radius: 0;
+  border: none;
+  color: #fff;
+  padding: 0;
+}
+
+.panel-title a {
+  display: block;
+  color: #fff;
+  padding: 10px;
+  position: relative;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.panel-body {
+  background: #fff;
+}
+
+.panel:last-child .panel-body {
+  border-radius: 0 0 4px 4px;
+}
+
+.panel:last-child .panel-heading {
+  border-radius: 0 0 4px 4px;
+  transition: border-radius 0.3s linear 0.2s;
+}
+
+.panel:last-child .panel-heading.active {
+  border-radius: 0;
+  transition: border-radius linear 0s;
+}
+
+
+/* ................................................................. */
+
+.search-box{
+  border:#6571B5 solid 1px;
+  border-radius: 5px;
+  padding:4px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.drop-style{
+  background-color: transparent;
+  color:#6571B5;
+  border-bottom: #6571B5 solid 6px;
+  width:40%;
+}

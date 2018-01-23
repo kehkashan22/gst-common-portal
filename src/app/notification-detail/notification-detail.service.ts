@@ -14,7 +14,7 @@ export class NotificationDetailService {
       this.firestore
       .collection('laws')
       .doc(law_id)
-      .collection('acts')
+      .collection('notifications')
       .doc(act_id)
       .collection('notification_details')
       .where('name', '==', notification_name)
@@ -30,7 +30,7 @@ export class NotificationDetailService {
       this.firestore
       .collection('laws')
       .doc(law_id)
-      .collection('acts')
+      .collection('notifications')
       .doc(act_id)
       .collection('notification_details')
       .doc(notification_id)

@@ -100,14 +100,41 @@ export class LawsService {
     });
   }
 
+  getNotificationActs(law_id) {
+    return new Promise((resolve, reject) => {
+      this.firestore
+        .collection('laws')
+        .doc(law_id)
+        .collection('notifications')
+        .get()
+        .then(snapshot => {
+          resolve(snapshot);
+        });
+    });
+  }
+
+  getNotificationAct(law_id, act_id) {
+    return new Promise((resolve, reject) => {
+      this.firestore
+        .collection('laws')
+        .doc(law_id)
+        .collection('notifications')
+        .doc(act_id)
+        .get()
+        .then(snapshot => {
+          resolve(snapshot);
+        });
+    });
+  }
+
   getNotifications(law_id, act_id) {
     return new Promise((resolve, reject) => {
       this.firestore
         .collection('laws')
         .doc(law_id)
-        .collection('acts')
-        .doc(act_id)
         .collection('notifications')
+        .doc(act_id)
+        .collection('notifications_list')
         .get()
         .then(snapshot => {
           console.log(snapshot);
@@ -141,6 +168,20 @@ export class LawsService {
         .get()
         .then(snapshot => {
           console.log(snapshot);
+          resolve(snapshot);
+        });
+    });
+  }
+
+  getRule(law_id, rule_id) {
+    return new Promise((resolve, reject) => {
+      this.firestore
+        .collection('laws')
+        .doc(law_id)
+        .collection('rules')
+        .doc(rule_id)
+        .get()
+        .then(snapshot => {
           resolve(snapshot);
         });
     });
@@ -186,9 +227,9 @@ export class LawsService {
     const collectionRef = this.firestore
       .collection('laws')
       .doc(law_id)
-      .collection('acts')
+      .collection('rules')
       .doc(act_id)
-      .collection('rules_chapters')
+      .collection('chapters')
       .doc(chap_id)
       .collection('rules');
 
@@ -203,7 +244,6 @@ export class LawsService {
   }
 
   setActs(acts) {
-    console.log('SETTING ACTS', acts);
       this.acts = acts;
   }
 
