@@ -122,9 +122,9 @@ export class NotificationsComponent implements OnInit, OnDestroy {
       } else if (a.year > b.year) {
         return 1 * direction;
       } else if (a.year === b.year) {
-        if (a.number < b.number) {
+        if (+a.number < +b.number) {
           return -1 * direction;
-        } else if (a.number > b.number) {
+        } else if (+a.number > +b.number) {
           return 1 * direction;
         } else {
           return 0;
