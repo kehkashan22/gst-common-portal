@@ -19,6 +19,7 @@ export class RuleDetailComponent implements OnInit {
     name: '',
     number: '',
     related_sections: [],
+    related_rules: [],
     related_notifications: [],
     related_circulars: [],
     footnotes: [],

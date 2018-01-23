@@ -42,6 +42,5 @@ export class LawsListComponent implements OnInit {
         });
       });
     }
-    // document.body.scrollTop = document.documentElement.scrollTop = 0;
   }
 }

@@ -1,3 +1,5 @@
+
+<p>{{noti_act.name}}</p>
 <label for="daterangeInput">Select range of dates:</label>
   <input type="text" name="daterangeInput" daterangepicker [options]="options" (selected)="selectedDate($event, daterange)" />
   <label for="search">Search:</label>
@@ -27,8 +29,8 @@
     </thead>
     <tbody>
       <tr *ngFor="let notification of notifications | filter: filter | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
-        <td (click) = "toNotification(notification.name)">
-          {{notification.name}}
+        <td>
+          <a (click)="toNotification(notification.name)" style="cursor: pointer;">{{notification.name}}</a>
         </td>
         <td>
           {{notification.date}}

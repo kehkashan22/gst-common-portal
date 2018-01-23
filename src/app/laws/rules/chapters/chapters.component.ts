@@ -1,3 +1,4 @@
+import { Subscription } from 'rxjs/Subscription';
 import { LawsService } from 'app/laws/laws.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
@@ -8,8 +9,14 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./chapters.component.css']
 })
 export class ChaptersComponent implements OnInit, OnDestroy {
+  sub2: Subscription;
   law_id: string;
   rule_id: string;
+  rule = {
+    id: '',
+    name: '',
+    year: ''
+  }
   chapters = [];
   fragment = '';
   filter = '';
@@ -23,33 +30,43 @@ export class ChaptersComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    console.log(this.route.pathFromRoot);
     this.sub = this.route.params.subscribe((params: Params) => {
-      const id = this.route.pathFromRoot[this.route.pathFromRoot.length - 3].snapshot.params['id'];
       this.chapters = [];
-      this.law_id = id;
-      this.rule_id = this.route.pathFromRoot[this.route.pathFromRoot.length - 1].snapshot.params['rule_id'];
-      console.log(this.law_id, this.rule_id);
-      this._law.getRuleChapters(this.law_id, this.rule_id).then((snap: any[]) => {
-        this.chapters = [];
-        console.log('here');
-        snap.forEach(doc => {
-          this.chapters.push({
-            id: doc.id,
-            ...doc.data()
-          });
-          // this.chapters.sort((a, b) => (a.number > b.number) ? 1 : ((b.number > a.number) ? -1 : 0) );
-          this.chapters.sort((a, b) => {
-            return this.fromRoman(a.number) - this.fromRoman(b.number)
-        });
-        });
+      this.sub2 = this.route.parent.params.subscribe((parent: Params) => {
+        this.law_id = parent['id'];
       });
+      this.rule_id = params['rule_id'];
+      console.log(this.law_id, this.rule_id);
+      this.getRule();
+      this.getChapters();
     });
   }
 
-  sortRomanIds() {
+  getRule() {
+    this._law.getRule(this.law_id, this.rule_id).then((snap: any) => {
+      this.rule = {
+        id: snap.id,
+        ...snap.data()
+      }
+    });
+  }
 
-}
+  getChapters() {
+    this._law.getRuleChapters(this.law_id, this.rule_id).then((snap: any[]) => {
+      this.chapters = [];
+      console.log('here');
+      snap.forEach(doc => {
+        this.chapters.push({
+          id: doc.id,
+          ...doc.data()
+        });
+        // this.chapters.sort((a, b) => (a.number > b.number) ? 1 : ((b.number > a.number) ? -1 : 0) );
+        this.chapters.sort((a, b) => {
+          return this.fromRoman(a.number) - this.fromRoman(b.number)
+      });
+      });
+    });
+  }
 
 fromRoman(s) {
   s = s.toUpperCase();
@@ -85,6 +102,7 @@ fromRoman(s) {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+    this.sub2.unsubscribe();
   }
 }
 
