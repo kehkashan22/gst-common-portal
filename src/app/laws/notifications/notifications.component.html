@@ -1,7 +1,14 @@
-<label for="daterangeInput">Select range of dates:</label>
-  <input type="text" name="daterangeInput" daterangepicker [options]="options" (selected)="selectedDate($event, daterange)" />
-  <label for="search">Search:</label>
-  <input class="form-control" type="text" name="search" [(ngModel)]="filter">
+
+<div class="col-lg-7 search-box pointer">
+  <div class="col-lg-4"><label for="daterangeInput">Select date:</label></div>
+  <div class="col-lg-2 pointer"><input type="text" class="date-style" name="daterangeInput" daterangepicker [options]="options" (selected)="selectedDate($event, daterange)" /></div>
+</div>
+
+<div class="col-lg-5">
+<!--   
+  <label for="search">Search:</label> -->
+  <input class="form-control search-box pointer" type="text" name="search" placeholder="Search..." [(ngModel)]="filter">
+</div>  
 
 
   <hr>

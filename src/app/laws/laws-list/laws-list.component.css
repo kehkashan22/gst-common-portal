@@ -31,3 +31,19 @@
     display: none;
   }
 }
+
+.list-style{
+  margin:10px;
+  border-radius: 5px;
+  box-shadow: 5px;
+  border:#6571b5 solid 1px;
+  text-align: center;
+}
+
+.active:hover{
+  background-color: #6571b5;
+}
+
+.active{
+  background-color: #8f9ace;
+}

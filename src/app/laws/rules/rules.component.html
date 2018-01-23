@@ -1,5 +1,6 @@
 <div class="dropdown">
-  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select rule
+  <div class="col-lg-7">
+  <button class="btn btn-primary dropdown-toggle drop-style" type="button" data-toggle="dropdown">Select rule
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
@@ -8,4 +9,11 @@
     </li>
   </ul>
 </div>
+
+  <div class="col-lg-5">
+      <!-- <label for="search">Search:</label> -->
+      <input class="form-control search-box pointer" type="text" name="search"  placeholder="Search..." [(ngModel)]="filter">
+  </div> 
+</div>
 <router-outlet></router-outlet>
+

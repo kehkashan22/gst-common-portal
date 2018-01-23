@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 web-div">
-    <a style="cursor: pointer;" *ngFor="let lawEl of laws; let i = index" (click)="toActs(i, lawEl)" class="list-group-item"
+    <a style="cursor: pointer;" *ngFor="let lawEl of laws; let i = index" (click)="toActs(i, lawEl)" class="list-group-item list-style"
       [class.active]="i === selectedRow">
       <p>{{ lawEl.name }}</p>
     </a>
@@ -22,3 +22,5 @@
 
   </div>
 </div>
+
+

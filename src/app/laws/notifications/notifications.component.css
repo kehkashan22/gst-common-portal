@@ -3,9 +3,18 @@
 }
 
 .head {
-  background-color: darkcyan;
+  background-color: #6571B5;
   color: white;
   text-align: center;
 }
 
 
+.search-box{
+  border:#6571B5 solid 1px;
+  border-radius: 5px;
+  padding:4px;
+}
+
+.date-style{
+  border:0px;
+}

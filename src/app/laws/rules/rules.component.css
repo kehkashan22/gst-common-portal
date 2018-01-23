@@ -125,3 +125,21 @@ a:active {
   display:block !important;
 }
 
+
+  
+.search-box{
+  border:#6571B5 solid 1px;
+  border-radius: 5px;
+  padding:4px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.drop-style{
+  background-color: transparent;
+  color:#6571B5;
+  border-bottom: #6571B5 solid 6px;
+  width:40%;
+}
