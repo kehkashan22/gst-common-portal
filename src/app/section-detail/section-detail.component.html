@@ -25,25 +25,51 @@
           </div>
         </div>
 
+        <!-- RELATED SECTIONS -->
+        <div class="panel panel-info" *ngIf="section.related_sections.length !== 0">
+          <div class="panel-heading"  data-toggle="collapse" href="#related-sections">
+            <span class="glyphicon glyphicon-menu-down pull-right"></span>
+            <h3 class="panel-title">Related Sections:</h3>
+          </div>
+          <div id="related-sections" class="panel-collapse collapse in">
+            <ul class="list-group">
+
+
+
+              <a *ngFor="let section of section.related_sections" class="list-group-item" target="_blank" routerLink="/section" [queryParams]="{
+                law_id: section.law_id,
+                act_id: section.act_id,
+                chap_id: section.chap_id,
+                section_id: section.section_id
+              }">
+                Section {{section.id}}. {{section.section_title}}
+
+              </a>
+            </ul>
+
+          </div>
+        </div>
+
         <!-- RELATED RULES -->
         <div class="panel panel-info" *ngIf="section.related_rules.length !== 0">
-          <div class="panel-heading">
+          <div class="panel-heading" data-toggle="collapse"  href="#collapse1">
             <span class="glyphicon glyphicon-menu-down pull-right"></span>
-            <h3 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse1">Related Rules:</h3>
+            <h3 class="panel-title" >Related Rules:</h3>
           </div>
           <div id="collapse1" class="panel-collapse collapse in">
-            <div>
-              <div *ngFor="let rule of section.related_rules">
-                <div class="panel-body" target="_blank" routerLink="/rule" [queryParams]="{
+            <ul class="list-group">
+
+
+              <a class="list-group-item" *ngFor="let rule of section.related_rules" target="_blank" routerLink="/rule" [queryParams]="{
               law_id: rule.law_id,
               rule_id: rule.rule_parent_id,
               chap_id: rule.chap_id,
               r_id: rule.rule_id
             }">
-                  Rule {{rule.id}}. {{rule.rule_title}}
-                </div>
-              </div>
-            </div>
+                Rule {{rule.id}}. {{rule.rule_title}}
+              </a>
+
+            </ul>
           </div>
 
         </div>
@@ -55,7 +81,7 @@
             <span class="glyphicon glyphicon-menu-down pull-right"></span>
           </div>
           <div id="collapse2" class="panel-collapse collapse in">
-            <div >
+            <div>
               <div *ngFor="let notification of section.related_notifications">
                 <div class="panel-body" target="_blank" routerLink="/notification" [queryParams]="{
                 law_id: notification.law_id,
@@ -77,7 +103,7 @@
           </div>
           <div id="collapse2" class="panel-collapse collapse in">
             <div *ngIf="section.related_circulars.length !== 0">
-              <div >
+              <div>
                 <div class="panel-body" target="_blank" routerLink="/circular" [queryParams]="{
                           law_id: circular.law_id,
                           act_id: circular.act_id,

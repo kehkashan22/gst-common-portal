@@ -17,6 +17,7 @@ export class SectionDetailComponent implements OnInit {
     video_url: '',
     name: '',
     number: '',
+    related_sections: [],
     related_rules: [],
     related_notifications: [],
     related_circulars: [],
