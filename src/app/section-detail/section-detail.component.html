@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-6 vid__wrapper">
+    <div class="col-lg-5 vid__wrapper">
 
       <video controls class="video" *ngIf="section.video_url">
         <source [src]="section.video_url" type="video/mp4" />
@@ -27,7 +27,7 @@
 
         <!-- RELATED SECTIONS -->
         <div class="panel panel-info" *ngIf="section.related_sections.length !== 0">
-          <div class="panel-heading"  data-toggle="collapse" href="#related-sections">
+          <div class="panel-heading" data-toggle="collapse" href="#related-sections">
             <span class="glyphicon glyphicon-menu-down pull-right"></span>
             <h3 class="panel-title">Related Sections:</h3>
           </div>
@@ -52,9 +52,9 @@
 
         <!-- RELATED RULES -->
         <div class="panel panel-info" *ngIf="section.related_rules.length !== 0">
-          <div class="panel-heading" data-toggle="collapse"  href="#collapse1">
+          <div class="panel-heading" data-toggle="collapse" href="#collapse1">
             <span class="glyphicon glyphicon-menu-down pull-right"></span>
-            <h3 class="panel-title" >Related Rules:</h3>
+            <h3 class="panel-title">Related Rules:</h3>
           </div>
           <div id="collapse1" class="panel-collapse collapse in">
             <ul class="list-group">
@@ -76,8 +76,8 @@
 
         <!-- RELATED NOTIFICATIONS -->
         <div class="panel panel-info" *ngIf="section.related_notifications.length !== 0">
-          <div class="panel-heading">
-            <h3 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse2">Related notifications:</h3>
+          <div class="panel-heading" data-toggle="collapse" href="#collapse2">
+            <h3 class="panel-title" >Related notifications:</h3>
             <span class="glyphicon glyphicon-menu-down pull-right"></span>
           </div>
           <div id="collapse2" class="panel-collapse collapse in">
@@ -97,8 +97,8 @@
 
         <!-- RELATED CIRCULARS -->
         <div class="panel panel-info" *ngFor="let circular of section.related_circulars">
-          <div class="panel-heading">
-            <h3 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse2">Related circulars:</h3>
+          <div class="panel-heading" data-toggle="collapse" href="#collapse2">
+            <h3 class="panel-title">Related circulars:</h3>
             <span class="glyphicon glyphicon-menu-down pull-right"></span>
           </div>
           <div id="collapse2" class="panel-collapse collapse in">
@@ -125,7 +125,7 @@
 
     <div>
       <div class="container">
-        <div class="col-lg-6 clsScroll scrollbar panel-group" id="style-2">
+        <div class="col-lg-7 clsScroll scrollbar panel-group" id="style-2">
           <ul class="nav nav-tabs  panel-info" id="myTab" role="tablist">
             <li class="nav-item active">
               <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Bare Act</a>
@@ -136,8 +136,8 @@
           </ul>
           <div class="tab-content panel" id="myTabContent">
             <div class="tab-pane fade in active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                {{section.name}}
-                <div [innerHTML]="htmlText"></div>
+              <strong>{{section.name}}</strong>
+              <div [innerHTML]="htmlText"></div>
             </div>
 
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab" [innerHTML]="htmlAnalysis"></div>

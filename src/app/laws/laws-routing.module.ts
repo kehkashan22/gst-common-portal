@@ -1,3 +1,4 @@
+import { OrdersComponent } from './orders/orders.component';
 import { ChaptersComponent } from './rules/chapters/chapters.component';
 import { ActsComponent } from './acts/acts.component';
 import { StatesListComponent } from './states-list/states-list.component';
@@ -26,23 +27,10 @@ const lawsRoutes: Routes = [
         children: [
           { path: 'desc', component: ActDescComponent },
           { path: 'acts/:act_id/sections', component: SectionsComponent },
-          // {
-          //   path: 'acts',
-          //   component: ActsComponent,
-          //   children: [
-          //     { path: ':act_id/sections', component: SectionsComponent }
-          //   ]
-          // },
           { path: 'rules/:rule_id/rule-list', component: ChaptersComponent },
-          {
-            path: 'rules',
-            component: RulesComponent,
-            children: [
-              { path: ':rule_id/rule-list', component: ChaptersComponent }
-            ]
-          },
           { path: 'notifications/:act_id/notification_list', component: NotificationsComponent },
-          { path: 'circulars', component: CircularsComponent }
+          { path: 'circulars', component: CircularsComponent },
+          { path: 'orders', component: OrdersComponent }
         ]
       }
     ]

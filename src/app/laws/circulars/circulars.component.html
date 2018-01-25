@@ -8,9 +8,9 @@
 <div class="col-lg-5">
     <!-- <label for="search">Search:</label> -->
     <input class="form-control search-box pointer" type="text" name="search"  placeholder="Search..." [(ngModel)]="filter">
-</div>   
-</div>  
-  
+</div>
+</div>
+
   <hr>
     <table class="table table-striped">
     <thead class="head">
@@ -42,7 +42,7 @@
           {{circular.name}}
         </td>
         <td (click) = "toCircular(circular.name)">
-            {{circular.file_no}}
+            {{circular.fileno}}
         </td>
         <td>
           {{circular.date}}

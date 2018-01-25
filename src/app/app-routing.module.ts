@@ -2,12 +2,10 @@ import { CircularDetailComponent } from './circular-detail/circular-detail.compo
 import { NotificationDetailComponent } from './notification-detail/notification-detail.component';
 import { RuleDetailComponent } from './rule-detail/rule-detail.component';
 import { SectionDetailComponent } from './section-detail/section-detail.component';
-import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { LawsComponent } from './laws/laws.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { HomeComponent } from './core/home/home.component';
 
 const appRoutes: Routes = [

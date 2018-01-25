@@ -22,6 +22,7 @@ import { LawsStartComponent } from './laws-start/laws-start.component';
 import { ActDescComponent } from './act-desc/act-desc.component';
 import { CircularsComponent } from './circulars/circulars.component';
 import { ActsComponent } from './acts/acts.component';
+import { OrdersComponent } from './orders/orders.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { ActsComponent } from './acts/acts.component';
     ActDescComponent,
     CircularsComponent,
     ActsComponent,
-    ChaptersComponent
+    ChaptersComponent,
+    OrdersComponent
 ],
   imports: [
     CommonModule,
