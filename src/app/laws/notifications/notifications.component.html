@@ -20,6 +20,10 @@
     <table class="table table-bordered">
     <thead class="head">
       <tr>
+          <th (click)="sort('subject')" class="col-lg-6 text-center">
+              Subject
+              <i class="fa" [ngClass]="{'fa-sort': column != 'subject', 'fa-sort-asc': (column == 'subject' && isDesc), 'fa-sort-desc': (column == 'subject' && !isDesc) }" aria-hidden="true"> </i>
+            </th>
         <th (click)="sortByName()" class="col-lg-3 text-center">
           Notification No.
           <i class="fa" [ngClass]="{'fa-sort': column != 'name', 'fa-sort-asc': (column == 'name' && isDesc), 'fa-sort-desc': (column == 'name' && !isDesc) }" aria-hidden="true"> </i>
@@ -28,10 +32,6 @@
           Date
           <i class="fa" [ngClass]="{'fa-sort': column != 'date', 'fa-sort-asc': (column == 'date' && isDesc), 'fa-sort-desc': (column == 'date' && !isDesc) }" aria-hidden="true"> </i>
         </th>
-        <th (click)="sort('subject')" class="col-lg-6 text-center">
-          Subject
-          <i class="fa" [ngClass]="{'fa-sort': column != 'subject', 'fa-sort-asc': (column == 'subject' && isDesc), 'fa-sort-desc': (column == 'subject' && !isDesc) }" aria-hidden="true"> </i>
-        </th>
         <th class="col-lg-1 text-center">
           PDF
         </th>
@@ -39,14 +39,14 @@
     </thead>
     <tbody>
       <tr *ngFor="let notification of notifications | filter: filter | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
+          <td>
+              {{notification.subject}}
+            </td>
         <td class="text-center">
           <a (click)="toNotification(notification.name)" style="cursor: pointer;">{{notification.name}}</a>
         </td>
         <td class="text-center">
           {{notification.date}}
-        </td>
-        <td>
-          {{notification.subject}}
         </td>
         <td class="text-center">
             <a [href]="notification.pdf" target="_blank" >Link</a>
