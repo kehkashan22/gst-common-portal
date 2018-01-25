@@ -164,7 +164,7 @@ export class LawsService {
       this.firestore
         .collection('laws')
         .doc(law_id)
-        .collection('orders')
+        .collection('circulars')
         .doc(law_id)
         .collection('orders_list')
         .get()
