@@ -143,14 +143,30 @@ export class LawsService {
     });
   }
 
-  getCirculars(law_id, act_id) {
+  getCircularList(law_id) {
     return new Promise((resolve, reject) => {
       this.firestore
         .collection('laws')
         .doc(law_id)
-        .collection('acts')
-        .doc(act_id)
         .collection('circulars')
+        .doc(law_id)
+        .collection('circulars_list')
+        .get()
+        .then(snapshot => {
+          console.log(snapshot);
+          resolve(snapshot);
+        });
+    });
+  }
+
+  getOrderList(law_id) {
+    return new Promise((resolve, reject) => {
+      this.firestore
+        .collection('laws')
+        .doc(law_id)
+        .collection('orders')
+        .doc(law_id)
+        .collection('orders_list')
         .get()
         .then(snapshot => {
           console.log(snapshot);

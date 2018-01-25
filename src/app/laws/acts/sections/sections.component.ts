@@ -1,12 +1,12 @@
-import { LawsService } from "app/laws/laws.service";
+import { LawsService } from 'app/laws/laws.service';
 
-import { Component, OnInit, OnDestroy } from "@angular/core";
-import { Params, Router, ActivatedRoute } from "@angular/router";
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Params, Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: "app-sections",
-  templateUrl: "./sections.component.html",
-  styleUrls: ["./sections.component.css"]
+  selector: 'app-sections',
+  templateUrl: './sections.component.html',
+  styleUrls: ['./sections.component.css']
 })
 export class SectionsComponent implements OnInit, OnDestroy {
   law_id: string;
@@ -17,7 +17,7 @@ export class SectionsComponent implements OnInit, OnDestroy {
     year: ''
   }
   chapters = [];
-  fragment = "";
+  fragment = '';
   filter = '';
   filter2 = '';
   p = 1;
