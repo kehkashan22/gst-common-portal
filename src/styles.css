@@ -2,3 +2,7 @@
 body {
   background-image: url("assets/image/webbg.png");
 }
+
+.ngx-pagination .current {
+  background: #6571b5;
+  }

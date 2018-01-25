@@ -81,17 +81,16 @@
             <span class="glyphicon glyphicon-menu-down pull-right"></span>
           </div>
           <div id="collapse2" class="panel-collapse collapse in">
-            <div>
-              <div *ngFor="let notification of section.related_notifications">
-                <div class="panel-body" target="_blank" routerLink="/notification" [queryParams]="{
+              <ul class="list-group">
+              
+                <a class="list-group-item"  *ngFor="let notification of section.related_notifications" target="_blank" routerLink="/notification" [queryParams]="{
                 law_id: notification.law_id,
                 act_id: notification.act_id,
                 id: notification.notification_id
                 }">
                   Notification {{notification.id}}. {{notification.notification_name}}
-                </div>
-              </div>
-            </div>
+              </a>
+            </ul>
           </div>
         </div>
 
@@ -125,7 +124,7 @@
 
     <div>
       <div class="container">
-        <div class="col-lg-7 clsScroll scrollbar panel-group" id="style-2">
+        <div class="col-lg-7  panel-group" id="style-2">
           <ul class="nav nav-tabs  panel-info" id="myTab" role="tablist">
             <li class="nav-item active">
               <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Bare Act</a>
@@ -135,12 +134,32 @@
             </li>
           </ul>
           <div class="tab-content panel" id="myTabContent">
-            <div class="tab-pane fade in active" id="home" role="tabpanel" aria-labelledby="home-tab">
-              <strong>{{section.name}}</strong>
-              <div [innerHTML]="htmlText"></div>
+            <div class="tab-pane fade in active clsScroll scrollbar height style-2" id="home" role="tabpanel"  aria-labelledby="home-tab">
+                <strong>{{section.name}}</strong>
+                <div [innerHTML]="htmlText" ></div>
             </div>
 
-            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab" [innerHTML]="htmlAnalysis"></div>
+            <div class="tab-pane fade height clsScroll scrollbar style-2" id="profile" role="tabpanel" aria-labelledby="profile-tab" [innerHTML]="htmlAnalysis" ></div>
+          </div>
+          <hr>
+              <!-- RELATED NOTIFICATIONS -->
+        <div class="panel panel-info" *ngIf="section.related_notifications.length !== 0">
+            <div class="panel-heading" data-toggle="collapse"  href="#collapse2">
+                <span class="glyphicon glyphicon-menu-down pull-right"></span>
+              <h3 class="panel-title">Related notifications:</h3>
+            </div>
+            <div id="collapse2" class="panel-collapse collapse in">
+                <ul class="list-group">
+                
+                  <a class="list-group-item"  *ngFor="let notification of section.related_notifications" target="_blank" routerLink="/notification" [queryParams]="{
+                  law_id: notification.law_id,
+                  act_id: notification.act_id,
+                  id: notification.notification_id
+                  }">
+                    Notification {{notification.id}}. {{notification.notification_name}}
+                </a>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

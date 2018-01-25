@@ -101,8 +101,8 @@ div.panel-heading {
   margin-bottom: -1px;
 }
 .nav-tabs > li > a {
-  color: #000000;
-  font-weight: 600;
+  color: #3f3f3f;
+  font-weight: 400; 
   margin-right: 2px;
   line-height: 1.42857143;
   border: none;
@@ -115,11 +115,12 @@ div.panel-heading {
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
-  color: #f2545f;
+  color: #394091;
   cursor: default;
   background-color: transparent;
   border: 1px solid transparent;
-  border-bottom-color: #999;
+  border-bottom-color:#394091;
+  border-bottom-width: 3.1414px;
   font-family: 'Roboto', sans-serif;
 }
 .tab-content {

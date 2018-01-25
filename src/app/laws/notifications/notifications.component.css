@@ -22,3 +22,19 @@
 .box{
   padding-bottom: 20px;
 }
+
+.heading {
+  margin: 0px;
+  /* border-top:1px solid #6571b5;  */
+  /* border-bottom:2px solid #6571b5;  */
+  font-size: 18px;
+  padding:5px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  color:  #34367d;
+  
+}
+
+.chapter-name{
+  padding-bottom:20px;
+}
