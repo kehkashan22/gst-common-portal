@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display|Roboto');
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
 .panel-title > a:before {
     float: right !important;
@@ -75,7 +75,7 @@ a:active {
 }
 
 .panel-heading {
-  background-color: #6571B5;
+  background-color: #6d7ab2;
   border-radius: 0;
   border: none;
   color: #fff;
@@ -128,3 +128,25 @@ a:active {
   border-bottom: #6571B5 solid 6px;
   width:40%;
 }
+
+.heading {
+  margin: 0px;
+  /* border-top:1px solid #6571b5;  */
+  /* border-bottom:2px solid #6571b5;  */
+  font-size: 18px;
+  position: absolute;
+  padding:5px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  color:#34367d;
+}
+
+.box{
+  padding-bottom: 20px;
+}
+
+
+/* .................................. */
+
+
+

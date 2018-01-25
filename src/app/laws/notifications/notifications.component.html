@@ -1,54 +1,59 @@
 
-<div class="box">
-<p>{{noti_act.name}}</p>
-<div class="col-lg-7 search-box pointer">
-  <div class="col-lg-4"><label for="daterangeInput">Select date:</label></div>
-  <div class="col-lg-2 pointer"><input type="text" class="date-style" name="daterangeInput" daterangepicker [options]="options" (selected)="selectedDate($event, daterange)" /></div>
+<div class="box col-lg-12">
+<div class="chapter-name"><h3 class="heading">{{noti_act.name}}</h3></div>
+
+<div  class="box col-lg-12"                                                                                                                                                                     >
+<div class="col-lg-7 search-box">
+  <div class="col-lg-4 pointer"><label for="daterangeInput">Select date:</label></div>
+  <div class="col-lg-2 pointer"><input type="text" class="date-style pointer" name="daterangeInput" daterangepicker [options]="options" (selected)="selectedDate($event, daterange)" /></div>
 </div>
 
 <div class="col-lg-5">
 <!--   
   <label for="search">Search:</label> -->
-  <input class="form-control search-box pointer" type="text" name="search" placeholder="Search..." [(ngModel)]="filter">
+  <input class="form-control search-box" type="text" name="search" placeholder="Search..." [(ngModel)]="filter">
 </div>  
 </div>
 
   <hr>
-    <table class="table table-striped">
+  <div class="col-lg-12">
+    <table class="table table-bordered">
     <thead class="head">
       <tr>
-        <th (click)="sortByName()" class="col-md-3">
+        <th (click)="sortByName()" class="col-lg-3 text-center">
           Notification No.
           <i class="fa" [ngClass]="{'fa-sort': column != 'name', 'fa-sort-asc': (column == 'name' && isDesc), 'fa-sort-desc': (column == 'name' && !isDesc) }" aria-hidden="true"> </i>
         </th>
-        <th (click)="sort('date')" class="col-md-2">
+        <th (click)="sort('date')" class="col-lg-2 text-center">
           Date
           <i class="fa" [ngClass]="{'fa-sort': column != 'date', 'fa-sort-asc': (column == 'date' && isDesc), 'fa-sort-desc': (column == 'date' && !isDesc) }" aria-hidden="true"> </i>
         </th>
-        <th (click)="sort('subject')" class="col-md-5">
+        <th (click)="sort('subject')" class="col-lg-6 text-center">
           Subject
           <i class="fa" [ngClass]="{'fa-sort': column != 'subject', 'fa-sort-asc': (column == 'subject' && isDesc), 'fa-sort-desc': (column == 'subject' && !isDesc) }" aria-hidden="true"> </i>
         </th>
-        <th class="col-md-2">
-          PDF Link
+        <th class="col-lg-1 text-center">
+          PDF
         </th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let notification of notifications | filter: filter | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
-        <td>
+        <td class="text-center">
           <a (click)="toNotification(notification.name)" style="cursor: pointer;">{{notification.name}}</a>
         </td>
-        <td>
+        <td class="text-center">
           {{notification.date}}
         </td>
         <td>
           {{notification.subject}}
         </td>
-        <td>
-            <a [href]="notification.pdf" target="_blank">Link</a>
+        <td class="text-center">
+            <a [href]="notification.pdf" target="_blank" >Link</a>
           </td>
       </tr>
     </tbody>
   </table>
   <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+</div>
