@@ -1,28 +1,28 @@
 .pointer {
     cursor: pointer;
   }
-  
+
   .head {
     background-color: #6571B5;
     color: white;
     text-align: center;
   }
-  
-  
+
+
   .search-box{
     border:#6571B5 solid 1px;
     border-radius: 5px;
     padding:4px;
   }
-  
+
   .date-style{
     border:0px;
   }
-  
+
   .box{
     padding-bottom: 20px;
   }
-  
+
   .heading {
     margin: 0px;
     /* border-top:1px solid #6571b5;  */
@@ -32,9 +32,13 @@
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
     color:  #34367d;
-    
+
   }
-  
+
   .chapter-name{
     padding-bottom:20px;
+  }
+
+  .my-pagination{
+    background: red;
   }

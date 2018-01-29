@@ -10,14 +10,14 @@ export class CircularDetailService {
   firestore = firebase.firestore();
   constructor() {}
 
-  getCircular(law_id, act_id, chap_id, circular_name) {
+  getCircular(law_id, circular_name, type) {
     return new Promise((resolve, reject) => {
       this.firestore
       .collection('laws')
       .doc(law_id)
-      .collection('acts')
-      .doc(act_id)
-      .collection('circular_details')
+      .collection('circulars')
+      .doc(law_id)
+      .collection(type + '_details')
       .where('name', '==', circular_name)
         .get()
         .then(snapshot => {
@@ -26,14 +26,14 @@ export class CircularDetailService {
     });
   }
 
-  getCircularById(law_id, act_id, chap_id, circular_id) {
+  getCircularById(law_id, circular_id, type) {
     return new Promise((resolve, reject) => {
       this.firestore
       .collection('laws')
       .doc(law_id)
-      .collection('acts')
-      .doc(act_id)
-      .collection('circular_details')
+      .collection('circulars')
+      .doc(law_id)
+      .collection(type + '_details')
       .doc(circular_id)
         .get()
         .then(snapshot => {

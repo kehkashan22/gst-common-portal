@@ -82,7 +82,7 @@
           </div>
           <div id="collapse2" class="panel-collapse collapse in">
               <ul class="list-group">
-              
+
                 <a class="list-group-item"  *ngFor="let notification of section.related_notifications" target="_blank" routerLink="/notification" [queryParams]="{
                 law_id: notification.law_id,
                 act_id: notification.act_id,
@@ -95,7 +95,7 @@
         </div>
 
         <!-- RELATED CIRCULARS -->
-        <div class="panel panel-info" *ngFor="let circular of section.related_circulars">
+        <div class="panel panel-info">
           <div class="panel-heading" data-toggle="collapse" href="#collapse2">
             <h3 class="panel-title">Related circulars:</h3>
             <span class="glyphicon glyphicon-menu-down pull-right"></span>
@@ -103,12 +103,12 @@
           <div id="collapse2" class="panel-collapse collapse in">
             <div *ngIf="section.related_circulars.length !== 0">
               <div>
-                <div class="panel-body" target="_blank" routerLink="/circular" [queryParams]="{
+                <div *ngFor="let circular of section.related_circulars" class="panel-body" target="_blank" routerLink="/circular" [queryParams]="{
                           law_id: circular.law_id,
-                          act_id: circular.act_id,
-                          name: circular.circular_name
+                          id: circular.circular_id,
+                          type: circular.type
                           }">
-                  Circular {{circular.id}}. {{circular.circular_name}}
+                  {{circular.id}}. {{circular.circular_name}}
                 </div>
               </div>
             </div>
@@ -150,7 +150,7 @@
             </div>
             <div id="collapse2" class="panel-collapse collapse in">
                 <ul class="list-group">
-                
+
                   <a class="list-group-item"  *ngFor="let notification of section.related_notifications" target="_blank" routerLink="/notification" [queryParams]="{
                   law_id: notification.law_id,
                   act_id: notification.act_id,

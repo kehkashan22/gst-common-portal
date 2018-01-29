@@ -67,6 +67,27 @@
           </div>
         </div>
 
+        <!--RELATED NOTIFICATIONS-->
+        <div class="panel panel-info" *ngIf="notification.related_notifications.length !== 0">
+          <div class="panel-heading">
+            <h3 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse1">Related notifications:</h3>
+            <span class="glyphicon glyphicon-menu-down pull-right"></span>
+          </div>
+          <div id="collapse1" class="panel-collapse collapse in">
+            <div>
+              <div *ngFor="let notification of notification.related_notifications">
+                <div class="panel-body" target="_blank" routerLink="/notification" [queryParams]="{
+                law_id: notification.law_id,
+                act_id: notification.act_id,
+                id: notification.notification_id
+                }">
+                  Notification {{notification.id}}. {{notification.notification_name}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- RELATED CIRCULARS -->
         <div class="panel panel-info" *ngIf="notification.related_circulars.length !== 0">
           <div class="panel-heading">
@@ -76,13 +97,13 @@
           <div id="collapse2" class="panel-collapse collapse in">
             <div>
               <div *ngFor="let circular of notification.related_circulars">
-                <div class="panel-body" target="_blank" routerLink="/circular" [queryParams]="{
-                              law_id: circular.law_id,
-                              act_id: circular.act_id,
-                              name: circular.circular_name
+                <a class="panel-body" target="_blank" routerLink='/circular' [queryParams]="{
+                                law_id: circular.law_id,
+                                id: circular.circular_id,
+                                type: circular.type
                               }">
                   Circular {{circular.id}}. {{circular.circular_name}}
-                </div>
+                            </a>
               </div>
             </div>
           </div>

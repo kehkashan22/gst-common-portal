@@ -15,7 +15,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
   law_id: string;
   act_id: string;
   orders = [];
-  tempCirc = [];
+  tempOrders = [];
   fragment = '';
   isDesc = false;
   column = 'quiz';
@@ -61,7 +61,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
             ...doc.data()
           });
           this.sortByName();
-          this.tempCirc = this.orders.slice();
+          this.tempOrders = this.orders.slice();
           console.log(doc.id, '=>', doc.data());
         });
       });
@@ -107,7 +107,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
   }
 
   public selectedDate(value: any, datepicker?: any) {
-    this.orders = this.tempCirc.slice();
+    this.orders = this.tempOrders.slice();
     const start = value.start;
     const end = value.end;
       this.orders = this.orders.filter(
@@ -119,13 +119,13 @@ export class OrdersComponent implements OnInit, OnDestroy {
     console.log(this.orders);
 }
 
-toOrder(order_name) {
-  console.log(order_name);
-  this.router.navigate(['/order'], {
+toOrder(id) {
+  console.log(id);
+  this.router.navigate(['/circular'], {
     queryParams: {
       law_id: this.law_id,
-      act_id: this.act_id,
-      name: order_name
+      name: id,
+      type: 'order'
     }
   });
 }
