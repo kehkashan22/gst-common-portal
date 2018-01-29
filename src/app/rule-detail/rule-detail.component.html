@@ -9,18 +9,18 @@
       </section>
 
       <div *ngIf="rule.footnotes.length !== 0">
-          <h3>Footnotes:</h3>
-          <span class="glyphicon glyphicon-menu-down pull-right"></span>
-          <ul>
-            <li *ngFor="let footnote of rule.footnotes">
-              Footnote {{footnote.id}}. {{footnote.note}}
-            </li>
-          </ul>
-        </div>
-<!-- RELATED SECTIONS -->
+        <h3>Footnotes:</h3>
+        <span class="glyphicon glyphicon-menu-down pull-right"></span>
+        <ul>
+          <li *ngFor="let footnote of rule.footnotes">
+            Footnote {{footnote.id}}. {{footnote.note}}
+          </li>
+        </ul>
+      </div>
+      <!-- RELATED SECTIONS -->
       <div *ngIf="rule.related_sections.length !== 0">
         <h3>Related Sections</h3>
-        <ul >
+        <ul>
           <li *ngFor="let section of rule.related_sections">
             <a target="_blank" routerLink="/section" [queryParams]="{
                 law_id: section.law_id,
@@ -37,29 +37,29 @@
       </div>
 
 
-        <!-- RELATED RULES -->
-        <div class="panel panel-info" *ngIf="rule.related_rules.length !== 0">
-            <div class="panel-heading" data-toggle="collapse"  href="#collapse1">
-              <span class="glyphicon glyphicon-menu-down pull-right"></span>
-              <h3 class="panel-title" >Related Rules:</h3>
-            </div>
-            <div id="collapse1" class="panel-collapse collapse in">
-              <ul class="list-group">
+      <!-- RELATED RULES -->
+      <div class="panel panel-info" *ngIf="rule.related_rules.length !== 0">
+        <div class="panel-heading" data-toggle="collapse" href="#collapse1">
+          <span class="glyphicon glyphicon-menu-down pull-right"></span>
+          <h3 class="panel-title">Related Rules:</h3>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse in">
+          <ul class="list-group">
 
 
-                <a class="list-group-item" *ngFor="let rule of rule.related_rules" target="_blank" routerLink="/rule" [queryParams]="{
+            <a class="list-group-item" *ngFor="let rule of rule.related_rules" target="_blank" routerLink="/rule" [queryParams]="{
                 law_id: rule.law_id,
                 rule_id: rule.rule_parent_id,
                 chap_id: rule.chap_id,
                 r_id: rule.rule_id
               }">
-                  Rule {{rule.id}}. {{rule.rule_title}}
-                </a>
+              Rule {{rule.id}}. {{rule.rule_title}}
+            </a>
 
-              </ul>
-            </div>
+          </ul>
+        </div>
 
-          </div>
+      </div>
 
       <!--RELATED NOTIFICATIONS-->
       <div class="panel panel-info" *ngIf="rule.related_notifications.length !== 0">
@@ -73,7 +73,6 @@
               <div class="panel-body" target="_blank" routerLink="/notification" [queryParams]="{
                 law_id: notification.law_id,
                 act_id: notification.act_id,
-                chap_id: notification.chap_id,
                 id: notification.notification_id
                 }">
                 Notification {{notification.id}}. {{notification.notification_name}}
@@ -93,9 +92,9 @@
           <div>
             <div *ngFor="let circular of rule.related_circulars">
               <div class="panel-body" target="_blank" routerLink="/circular" [queryParams]="{
-                              law_id: circular.law_id,
-                              act_id: circular.act_id,
-                              name: circular.circular_name
+                                law_id: circular.law_id,
+                                id: circular.circular_id,
+                                type: circular.type
                               }">
                 Circular {{circular.id}}. {{circular.circular_name}}
               </div>

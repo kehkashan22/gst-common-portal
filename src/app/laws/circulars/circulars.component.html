@@ -8,9 +8,9 @@
 <div class="col-lg-5 pull-right">
     <!-- <label for="search">Search:</label> -->
     <input class="form-control search-box" type="text" name="search"  placeholder="Search..." [(ngModel)]="filter">
-</div>   
-</div>  
-  
+</div>
+</div>
+
   <hr>
   <div class="table-responsive">
     <table class="table table-bordered">
@@ -26,15 +26,15 @@
         </th>
         <th (click)="sort('name')" class="col-md-3 text-center">
             File No.
-            <i class="fa" [ngClass]="{'fa-sort': column != 'file_no', 'fa-sort-asc': (column == 'file_no' && isDesc), 'fa-sort-desc': (column == 'file_no' && !isDesc) }" aria-hidden="true"> </i>
+            <i class="fa" [ngClass]="{'fa-sort': column != 'fileno', 'fa-sort-asc': (column == 'fileno' && isDesc), 'fa-sort-desc': (column == 'fileno' && !isDesc) }" aria-hidden="true"> </i>
           </th>
         <th (click)="sort('date')" class="col-md-3 text-center">
           Date
           <i class="fa" [ngClass]="{'fa-sort': column != 'date', 'fa-sort-asc': (column == 'date' && isDesc), 'fa-sort-desc': (column == 'date' && !isDesc) }" aria-hidden="true"> </i>
         </th>
-       
+
         <th class="col-md-1 text-center">
-          PDF 
+          PDF
         </th>
       </tr>
     </thead>
@@ -43,10 +43,10 @@
           <td>
               {{circular.subject}}
             </td>
-        <td (click) = "toCircular(circular.name)">
-          {{circular.name}}
+        <td>
+          <a (click)="toCircular(circular.name)">{{circular.name}}</a>
         </td>
-        <td (click) = "toCircular(circular.name)">
+        <td>
             {{circular.fileno}}
         </td>
         <td>

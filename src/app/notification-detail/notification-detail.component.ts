@@ -1,3 +1,5 @@
+import { Subscription } from 'rxjs/Subscription';
+import { OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotificationDetailService } from './notification-detail.service';
 import { Component, OnInit } from '@angular/core';
@@ -11,7 +13,9 @@ import 'firebase/firestore';
   templateUrl: './notification-detail.component.html',
   styleUrls: ['./notification-detail.component.css']
 })
-export class NotificationDetailComponent implements OnInit {
+export class NotificationDetailComponent implements OnInit, OnDestroy {
+  sub: Subscription;
+
 
   notification = {
     id: '',
@@ -20,6 +24,7 @@ export class NotificationDetailComponent implements OnInit {
     number: '',
     related_sections: [],
     related_rules: [],
+    related_notifications: [],
     related_circulars: [],
     footnotes: [],
     text: '',
@@ -41,8 +46,9 @@ export class NotificationDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      // Defaults to 0 if no query param provided.
+    this.sub = this.route.queryParams.subscribe(params => {
+      this.resetAllValues();
+      console.log('reset?', this.notification);
       this.law_id = params['law_id'];
       this.act_id = params['act_id'];
       this.chap_id = params['chap_id'];
@@ -91,5 +97,26 @@ export class NotificationDetailComponent implements OnInit {
       this.notification.analysis
     );
   }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }
+
+  resetAllValues() {
+    this.notification = {
+      id: '',
+      video_url: '',
+      name: '',
+      number: '',
+      related_sections: [],
+      related_rules: [],
+      related_notifications: [],
+      related_circulars: [],
+      footnotes: [],
+      text: '',
+      analysis: ''
+    };
+  }
+
 
 }

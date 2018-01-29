@@ -12,6 +12,7 @@ import 'firebase/firestore';
   styleUrls: ['./circular-detail.component.css']
 })
 export class CircularDetailComponent implements OnInit {
+  type: any;
 
   circular = {
     id: '',
@@ -21,6 +22,7 @@ export class CircularDetailComponent implements OnInit {
     related_sections: [],
     related_rules: [],
     related_notifications: [],
+    related_circulars: [],
     footnotes: [],
     text: '',
     analysis: ''
@@ -32,7 +34,7 @@ export class CircularDetailComponent implements OnInit {
   act_id: string;
   chap_id: string;
   name: string;
-  circular_id: string;
+  search_id: string;
   constructor(
     private _circular: CircularDetailService,
     private route: ActivatedRoute,
@@ -44,17 +46,15 @@ export class CircularDetailComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       // Defaults to 0 if no query param provided.
       this.law_id = params['law_id'];
-      this.act_id = params['act_id'];
-      this.chap_id = params['chap_id'];
-      this.circular_id = params['circular_id'] || '';
+      this.search_id = params['id'] || '';
       this.name = params['name'] || '';
-      if (this.circular_id) {
+      this.type = params['type'] || 'circular';
+      if (this.search_id) {
         this._circular
           .getCircularById(
             this.law_id,
-            this.act_id,
-            this.chap_id,
-            this.circular_id
+            this.search_id,
+            this.type
           )
           .then((snap: firebase.firestore.DocumentSnapshot) => {
             const circular = {
@@ -65,7 +65,7 @@ export class CircularDetailComponent implements OnInit {
           });
       } else if (this.name) {
         this._circular
-          .getCircularById(this.law_id, this.act_id, this.chap_id, this.name)
+          .getCircular(this.law_id, this.name, this.type)
           .then((snap: any[]) => {
             snap.forEach(doc => {
               const circular = {

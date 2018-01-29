@@ -67,23 +67,43 @@
           </div>
         </div>
 
-        <!--RELATED NOTIFICATIONS-->
+        <!-- RELATED NOTIFICATIONS -->
         <div class="panel panel-info" *ngIf="circular.related_notifications.length !== 0">
-          <div class="panel-heading">
-            <h3 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse1">Related notifications:</h3>
+          <div class="panel-heading" data-toggle="collapse" href="#collapse2">
+            <h3 class="panel-title">Related notifications:</h3>
             <span class="glyphicon glyphicon-menu-down pull-right"></span>
           </div>
-          <div id="collapse1" class="panel-collapse collapse in">
-            <div>
-              <div *ngFor="let notification of circular.related_notifications">
-                <div class="panel-body" target="_blank" routerLink="/notification" [queryParams]="{
-                  law_id: notification.law_id,
-                  act_id: notification.act_id,
-                  chap_id: notification.chap_id,
-                  notification_id: notification.notification_id
-                  }">
-                  Notification {{notification.id}}. {{notification.notification_name}}
-                </div>
+          <div id="collapse2" class="panel-collapse collapse in">
+            <ul class="list-group">
+
+              <a class="list-group-item" *ngFor="let notification of circular.related_notifications" target="_blank" routerLink="/notification"
+                [queryParams]="{
+                      law_id: notification.law_id,
+                      act_id: notification.act_id,
+                      id: notification.notification_id
+                      }">
+                Notification {{notification.id}}. {{notification.notification_name}}
+              </a>
+            </ul>
+          </div>
+        </div>
+
+        <!-- RELATED CIRCULARS -->
+        <div class="panel panel-info">
+          <div class="panel-heading" data-toggle="collapse" href="#collapse2">
+            <h3 class="panel-title">Related circulars:</h3>
+            <span class="glyphicon glyphicon-menu-down pull-right"></span>
+          </div>
+          <div id="collapse2" class="panel-collapse collapse in">
+            <div *ngIf="circular.related_circulars.length !== 0">
+              <div>
+                <a *ngFor="let circular of circular.related_circulars" class="list-group-item" target="_blank" routerLink="/circular" [queryParams]="{
+                                law_id: circular.law_id,
+                                id: circular.circular_id,
+                                type: circular.type
+                                }">
+                    {{circular.id}}. {{circular.circular_name}}
+                </a>
               </div>
             </div>
           </div>

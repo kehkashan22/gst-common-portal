@@ -119,13 +119,13 @@ export class CircularsComponent implements OnInit, OnDestroy {
     console.log(this.circulars);
 }
 
-toCircular(circular_name) {
-  console.log(circular_name);
+toCircular(circular_id) {
+  console.log(circular_id);
   this.router.navigate(['/circular'], {
     queryParams: {
       law_id: this.law_id,
-      act_id: this.act_id,
-      name: circular_name
+      name: circular_id,
+      type: 'circular'
     }
   });
 }

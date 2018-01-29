@@ -3,6 +3,6 @@ body {
   background-image: url("assets/image/webbg.png");
 }
 
-.ngx-pagination .current {
+.my-pagination /deep/ .ngx-pagination .current {
   background: #6571b5;
   }
