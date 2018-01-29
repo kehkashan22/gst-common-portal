@@ -11,6 +11,7 @@ export class RulesComponent implements OnInit, OnDestroy {
   law_id: string;
   private sub: any;
   rules = [];
+  filter = [];
   constructor(private _law: LawsService,
     private route: ActivatedRoute,
     private router: Router) { }

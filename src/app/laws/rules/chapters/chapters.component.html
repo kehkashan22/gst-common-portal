@@ -25,7 +25,7 @@
 
       <hr>
       <div class="col-lg-12">
-        <div class="panel-group wrap" role="tablist" aria-multiselectable="true" *ngFor="let chapter of chapters | filter:filter | paginate: { id: 'first', itemsPerPage: 10, currentPage: p }; let i = index"
+        <div class="panel-group wrap" role="tablist" aria-multiselectable="true" *ngFor="let chapter of chapters | filter:filter | paginate: { id: 'first', itemsPerPage: 10, currentPage: p1 }; let i = index"
           [attr.id]="'accordion_' + i">
           <div class="panel">
             <div class="panel-heading" role="tab" id="headingOne">
@@ -45,7 +45,7 @@
           </div>
         </div>
         <!-- end of #accordion -->
-        <pagination-controls (pageChange)="p = $event" id="first"></pagination-controls>
+        <pagination-controls (pageChange)="p1 = $event" id="first"></pagination-controls>
       </div>
     </div>
     <div id="rules" class="tab-pane fade">
