@@ -17,10 +17,12 @@ export class SectionsComponent implements OnInit, OnDestroy {
     year: ''
   }
   chapters = [];
+  sections = [];
   fragment = '';
   filter = '';
   filter2 = '';
-  p = 1;
+  p1 = 1;
+  p2 = 1;
   private sub: any;
   private sub2: any;
   constructor(
@@ -33,6 +35,7 @@ export class SectionsComponent implements OnInit, OnDestroy {
     this.sub = this.route.params.subscribe((params: Params) => {
       // const id = this.route.pathFromRoot[this.route.pathFromRoot.length - 3].snapshot.params['id'];
       this.chapters = [];
+      this.sections = [];
       this.sub2 = this.route.parent.params.subscribe((parent: Params) => {
         this.law_id = parent['id'];
       });
@@ -46,13 +49,15 @@ export class SectionsComponent implements OnInit, OnDestroy {
   getSections() {
     this._law.getSections(this.law_id, this.act_id).then((snap: any[]) => {
       this.chapters = [];
+      this.sections = [];
       console.log('here');
       snap.forEach(doc => {
         this.chapters.push({
           id: doc.id,
           ...doc.data()
         });
-        // this.chapters.sort((a, b) => (a.number > b.number) ? 1 : ((b.number > a.number) ? -1 : 0) );
+        this.sections.push(...doc.data().sections)
+        this.sections.sort((a, b) => (a.number > b.number) ? 1 : ((b.number > a.number) ? -1 : 0) );
         this.chapters.sort((a, b) => {
           return this.fromRoman(a.number) - this.fromRoman(b.number);
         });

@@ -18,10 +18,12 @@ export class ChaptersComponent implements OnInit, OnDestroy {
     year: ''
   }
   chapters = [];
+  rules = [];
   fragment = '';
   filter = '';
   filter2 = '';
-  p = 1;
+  p1 = 1;
+  p2 = 1;
   private sub: any;
   constructor(
     private _law: LawsService,
@@ -32,6 +34,7 @@ export class ChaptersComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.sub = this.route.params.subscribe((params: Params) => {
       this.chapters = [];
+      this.rules = [];
       this.sub2 = this.route.parent.params.subscribe((parent: Params) => {
         this.law_id = parent['id'];
       });
@@ -54,13 +57,15 @@ export class ChaptersComponent implements OnInit, OnDestroy {
   getChapters() {
     this._law.getRuleChapters(this.law_id, this.rule_id).then((snap: any[]) => {
       this.chapters = [];
+      this.rules = [];
       console.log('here');
       snap.forEach(doc => {
         this.chapters.push({
           id: doc.id,
           ...doc.data()
         });
-        // this.chapters.sort((a, b) => (a.number > b.number) ? 1 : ((b.number > a.number) ? -1 : 0) );
+        this.rules.push(...doc.data().rules)
+        this.rules.sort((a, b) => (a.number > b.number) ? 1 : ((b.number > a.number) ? -1 : 0) );
         this.chapters.sort((a, b) => {
           return this.fromRoman(a.number) - this.fromRoman(b.number)
       });

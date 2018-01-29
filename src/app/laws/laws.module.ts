@@ -1,3 +1,4 @@
+import { ArticlesComponent } from './articles/articles.component';
 import { ChaptersComponent } from './rules/chapters/chapters.component';
 import { SectionsComponent } from './acts/sections/sections.component';
 import { StatesListComponent } from './states-list/states-list.component';
@@ -23,6 +24,7 @@ import { ActDescComponent } from './act-desc/act-desc.component';
 import { CircularsComponent } from './circulars/circulars.component';
 import { ActsComponent } from './acts/acts.component';
 import { OrdersComponent } from './orders/orders.component';
+import { CaseLawsComponent } from './case-laws/case-laws.component';
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import { OrdersComponent } from './orders/orders.component';
     CircularsComponent,
     ActsComponent,
     ChaptersComponent,
-    OrdersComponent
+    OrdersComponent,
+    CaseLawsComponent,
+    ArticlesComponent
 ],
   imports: [
     CommonModule,
