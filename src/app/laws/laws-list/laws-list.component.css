@@ -1,5 +1,22 @@
-.width {
+.width-drop {
   width: 100%;
+  background-color: #6571b5;
+  padding:0px 0px;
+  font-size: 16px;
+  color:#fff;
+}
+.dropdown-menu{
+  font-size:12px;
+  align:center;
+}
+
+.row{
+    margin-right: 0px; 
+    margin-left: 0px; 
+}
+
+.gutter{
+  margin-left:0px;
 }
 
 @media (min-width: 360px) and (max-width: 640px) {
@@ -26,14 +43,28 @@
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 992px) and (max-width: 1200px) {
+  .web-div{
+    display: none;
+  }
+}
+
+
+@media (min-width: 1201px) {
   .mob-div {
     display: none;
   }
 }
 
+@media (max-width: 1200px) {
+  .web-div {
+    display: none;
+  } 
+}
+
+
 .list-style{
-  margin:10px;
+  margin:10px; 
   border-radius: 5px;
   box-shadow: 5px;
   border:#6571b5 solid 1px;
@@ -42,8 +73,10 @@
 
 .active:hover{
   background-color: #34367d;
+  color:#fff;
 }
 
 .active{
   background-color: #34367d;
+  color:#fff;
 }

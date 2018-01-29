@@ -12,7 +12,7 @@
 }
 
 .search-box{
-  border:#6571B5 solid 1px;
+  /* border:#6571B5 solid 1px; */
   border-radius: 5px;
 }
 
@@ -31,4 +31,35 @@ a:hover{
 .act-name{
   margin:5px;
 }
-  
+
+
+@media (min-width: 360px) and (max-width: 640px) {
+  .mob-div{
+    margin-bottom:40px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .mob-div{
+    margin-bottom:40px;
+  }
+}
+
+@media (min-width: 970px) and (max-width: 1200px) {
+  .mob-div{
+    margin-bottom:40px;
+  }
+}
+
+@media (min-width: 100px) and (max-width: 1000px) {
+  .mob-div{
+    margin-bottom:40px;
+  }
+}
+
+
+@media (min-width: 1201px) {
+  .web-div {
+    margin-bottom:0px;
+  }
+}
