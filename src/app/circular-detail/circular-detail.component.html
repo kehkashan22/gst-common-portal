@@ -39,7 +39,7 @@
                   chap_id: section.chap_id,
                   section_id: section.section_id
                 }">
-                  Section {{section.id}}. {{section.section_title}}
+                  {{section.id}}. {{section.section_title}}
                 </div>
               </div>
             </div>
@@ -60,7 +60,7 @@
                   chap_id: rule.chap_id,
                   rule_id: rule.rule_id
                 }">
-                  Rule {{rule.id}}. {{rule.rule_title}}
+                 {{rule.id}}. {{rule.rule_title}}
                 </div>
               </div>
             </div>
@@ -82,21 +82,21 @@
                       act_id: notification.act_id,
                       id: notification.notification_id
                       }">
-                Notification {{notification.id}}. {{notification.notification_name}}
+                {{notification.id}}. {{notification.notification_name}}
               </a>
             </ul>
           </div>
         </div>
 
         <!-- RELATED CIRCULARS -->
-        <div class="panel panel-info">
-          <div class="panel-heading" data-toggle="collapse" href="#collapse2">
+        <div class="panel panel-info" *ngIf="circular.related_circulars.length !== 0">
+          <div class="panel-heading" data-toggle="collapse" href="#related-circulars">
             <h3 class="panel-title">Related circulars:</h3>
             <span class="glyphicon glyphicon-menu-down pull-right"></span>
           </div>
-          <div id="collapse2" class="panel-collapse collapse in">
-            <div *ngIf="circular.related_circulars.length !== 0">
-              <div>
+          <div id="related-circulars" class="panel-collapse collapse in">
+
+            <ul class="list-group">
                 <a *ngFor="let circular of circular.related_circulars" class="list-group-item" target="_blank" routerLink="/circular" [queryParams]="{
                                 law_id: circular.law_id,
                                 id: circular.circular_id,
@@ -104,8 +104,8 @@
                                 }">
                     {{circular.id}}. {{circular.circular_name}}
                 </a>
-              </div>
-            </div>
+              </ul>
+
           </div>
         </div>
 
