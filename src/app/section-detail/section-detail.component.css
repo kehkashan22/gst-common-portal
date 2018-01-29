@@ -87,7 +87,8 @@ background-color: transparent;
 color: #f2545f;
 cursor: default;
 background-color: transparent;
-border: 1px solid transparent;
+border: 1px solid  #999;
+border-radius: 3px 3px 0px 0px;
 border-bottom-color: #999;
 font-family: 'Roboto', sans-serif;
 }

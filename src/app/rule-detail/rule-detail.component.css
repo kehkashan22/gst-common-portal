@@ -7,3 +7,110 @@
     background-size: cover;
 
 }
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+.video{
+  width: 100%;
+  margin: 20px;
+  padding-right: 5px;
+}
+
+.clsScroll{
+  height:100%;
+  overflow-y:scroll;
+}
+
+.style-2::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+.style-2::-webkit-scrollbar
+{
+  width: 6px;
+	background-color: #F5F5F5;
+}
+
+.style-2::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #bebebe;
+}
+
+.panel-heading{
+  padding: 3px 45px;
+  cursor: pointer;
+}
+
+/* .....................tabs style.......... */
+
+#program h4 {
+  color: #808080;
+  font-size: 12px;
+  font-family: 'Roboto', sans-serif;
+}
+
+#program h3 {
+margin-top: 16px;
+font-family: 'Roboto', sans-serif;
+}
+
+#program .program-divider {
+  border: 1px solid #f9f9f9;
+  margin-top: 32px;
+  margin-bottom: 42px;
+}
+
+#program span {
+  padding-right: 12px;
+}
+
+#program img {
+border-radius: 50%;
+}
+
+.nav-tabs {
+margin-bottom: 20px;
+}
+.nav-tabs > li {
+float: left;
+margin-bottom: -1px;
+}
+.nav-tabs > li > a {
+color: #000000;
+font-weight: 600;
+margin-right: 2px;
+line-height: 1.42857143;
+border: none;
+border-radius: 0px;
+font-family: 'Roboto', sans-serif;
+}
+.nav-tabs > li > a:hover {
+background-color: transparent;
+}
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+color: #f2545f;
+cursor: default;
+background-color: transparent;
+border: 1px solid  #999;
+border-radius: 3px 3px 0px 0px;
+border-bottom-color: #999;
+font-family: 'Roboto', sans-serif;
+}
+/* .tab-content {
+padding-top: 20px;
+} */
+
+h2{
+  font-family: 'Roboto', sans-serif;
+}
+
+.height{
+  height: 75vh;
+}
+
