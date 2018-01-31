@@ -61,7 +61,9 @@
       <div class="col-lg-12">
         <div class="list-group">
           <a *ngFor="let rule of rules | filter:filter2 | paginate: {id: 'second', itemsPerPage: 10, currentPage: p2 }; let j = index"
-            class="list-group-item">
+          (click)="toRule(rule.chap_id, rule.name)"
+          style="cursor: pointer;"
+          class="list-group-item">
             Rule {{rule.number}}: {{rule.name}}</a>
         </div>
         <pagination-controls (pageChange)="p2 = $event" id="second"></pagination-controls>
