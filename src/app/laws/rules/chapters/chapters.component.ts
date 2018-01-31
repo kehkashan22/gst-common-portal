@@ -64,8 +64,17 @@ export class ChaptersComponent implements OnInit, OnDestroy {
           id: doc.id,
           ...doc.data()
         });
-        this.rules.push(...doc.data().rules)
-        this.rules.sort((a, b) => (a.number > b.number) ? 1 : ((b.number > a.number) ? -1 : 0) );
+        doc.data().rules.forEach(element => {
+          this.rules.push({
+            chap_id: doc.id,
+            ...element
+          })
+        });
+
+        const collator = new Intl.Collator(undefined, {numeric: true, sensitivity: 'base'});
+        this.rules.sort((a, b) => {
+          return collator.compare(a.number, b.number)
+        });
         this.chapters.sort((a, b) => {
           return this.fromRoman(a.number) - this.fromRoman(b.number)
       });

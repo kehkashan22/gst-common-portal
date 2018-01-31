@@ -64,7 +64,9 @@
       <div class="col-lg-12">
         <div class="list-group">
           <a *ngFor="let section of sections | filter:filter2 | paginate: {id: 'second', itemsPerPage: 10, currentPage: p2 }; let j = index"
-            class="list-group-item">
+          (click)="toSection(section.chap_id, section.name)"
+          style="cursor: pointer;"
+          class="list-group-item">
             Section {{section.number}}: {{section.name}}</a>
         </div>
         <pagination-controls (pageChange)="p2 = $event" id="second"></pagination-controls>

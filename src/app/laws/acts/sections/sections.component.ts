@@ -56,11 +56,15 @@ export class SectionsComponent implements OnInit, OnDestroy {
           id: doc.id,
           ...doc.data()
         });
-        this.sections.push(...doc.data().sections)
-        this.sections.sort((a, b) => (a.number > b.number) ? 1 : ((b.number > a.number) ? -1 : 0) );
-        this.chapters.sort((a, b) => {
-          return this.fromRoman(a.number) - this.fromRoman(b.number);
+        doc.data().sections.forEach(element => {
+          this.sections.push({
+            chap_id: doc.id,
+            ...element
+          })
         });
+        const collator = new Intl.Collator(undefined, {numeric: true, sensitivity: 'base'});
+        this.sections.sort((a, b) =>  collator.compare(a.number, b.number));
+        this.chapters.sort((a, b) => this.fromRoman(a.number) - this.fromRoman(b.number));
       });
     });
   }
@@ -71,7 +75,6 @@ export class SectionsComponent implements OnInit, OnDestroy {
         id: snap.id,
         ...snap.data()
       };
-      console.log('ACTING', this.act);
     });
   }
 
@@ -115,6 +118,7 @@ export class SectionsComponent implements OnInit, OnDestroy {
       }
     });
   }
+
 
   ngOnDestroy() {
     this.sub.unsubscribe();

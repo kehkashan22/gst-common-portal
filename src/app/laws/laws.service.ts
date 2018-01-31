@@ -175,6 +175,22 @@ export class LawsService {
     });
   }
 
+  getArticleList(law_id){
+    return new Promise((resolve, reject) => {
+      this.firestore
+        .collection('laws')
+        .doc(law_id)
+        .collection('articles')
+        .doc(law_id)
+        .collection('articles_list')
+        .get()
+        .then(snapshot => {
+          console.log(snapshot);
+          resolve(snapshot);
+        });
+    });
+  }
+
   getRules(law_id) {
     return new Promise((resolve, reject) => {
       this.firestore

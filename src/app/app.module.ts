@@ -1,3 +1,4 @@
+import { ArticleDetailModule } from './article-detail/article-detail.module';
 import { FormsModule } from '@angular/forms';
 import { CircularDetailModule } from './circular-detail/circular-detail.module';
 import { NotificationDetailModule } from './notification-detail/notification-detail.module';
@@ -46,6 +47,7 @@ firebase.initializeApp(firebaseConfig);
     LawsModule,
     SectionDetailModule,
     RuleDetailModule,
+    ArticleDetailModule,
     NotificationDetailModule,
     ScrollToModule.forRoot(),
     Daterangepicker,

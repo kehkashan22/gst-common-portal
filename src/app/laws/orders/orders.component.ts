@@ -90,11 +90,11 @@ export class OrdersComponent implements OnInit, OnDestroy {
     const direction = this.isDesc ? 1 : -1;
 
     this.orders.sort(function(a, b) {
-      if (a.year < b.year) {
+      if (+a.year < +b.year) {
         return -1 * direction;
-      }else if (a.year > b.year) {
+      }else if (+a.year > +b.year) {
         return 1 * direction;
-      }else if ( a.year === b.year ) {
+      }else if ( +a.year === +b.year ) {
         if (+a.number > +b.number) {
           return -1 * direction;
         }else if (+a.number < +b.number) {
