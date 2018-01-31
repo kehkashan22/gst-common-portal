@@ -110,19 +110,25 @@ div.panel-heading {
   font-family: 'Roboto', sans-serif;
 }
 .nav-tabs > li > a:hover {
-  background-color: transparent;
+  background-color: rgba(166, 176, 226, 0.501);
+  border: #464880 1px solid;
+  border-radius: 3px 3px 0px 0px;
 }
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
-  color: #394091;
+  color: #464880;
   cursor: default;
   background-color: transparent;
   border: 1px solid transparent;
-  border-bottom-color:#394091;
+  border-bottom-color:#464880;
   border-bottom-width: 3.1414px;
   font-family: 'Roboto', sans-serif;
 }
+
+/* li.active > a:hover{
+    background-color: #009688;
+} */
 .tab-content {
   padding-top: 20px;
 }

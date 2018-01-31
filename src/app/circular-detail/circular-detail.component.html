@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-6 vid__wrapper">
+    <div class="col-lg-5 vid__wrapper">
 
       <video controls class="video" *ngIf="circular.video_url">
         <source [src]="circular.video_url" type="video/mp4" />
@@ -8,74 +8,57 @@
 
 
 
-      <div class="panel-group" id="accordion">
+      <div class="panel-group">
 
-        <!--FOOTNOTES -->
-
-        <div class="panel panel-info" *ngIf="circular.footnotes.length !== 0">
-          <div class="panel-heading">
-            <div>
-              <h3 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse2">Footnotes:</h3>
-            </div>
-          </div>
-          <div id="collapse2" class="panel-collapse collapse">
-            <div *ngFor="let footnote of circular.footnotes">
-              <div class="panel-body">Footnote {{footnote.id}}. {{footnote.note}}</div>
-            </div>
-          </div>
-        </div>
+       
 
         <!-- RELATED SECTIONS -->
         <div class="panel panel-info" *ngIf="circular.related_sections.length !== 0">
-          <div class="panel-heading">
-            <h3 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse1">Related Sections:</h3>
+          <div class="panel-heading pan-heading" data-toggle="collapse" href="#related-section">
+            <h3 class="panel-title">Related Sections: <i class="fa fa-angle-down pull-right"></i></h3>
           </div>
-          <div id="collapse1" class="panel-collapse collapse in">
-            <div>
-              <div *ngFor="let section of circular.related_sections">
-                <div class="panel-body" target="_blank" routerLink="/section" [queryParams]="{
+          <div id="related-section" class="panel-collapse collapse in">
+              <ul class="list-group" >
+                <a class="list-group-item" *ngFor="let section of circular.related_sections" target="_blank" routerLink="/section" [queryParams]="{
                   law_id: section.law_id,
                   act_id: section.act_id,
                   chap_id: section.chap_id,
                   section_id: section.section_id
                 }">
                   {{section.id}}. {{section.section_title}}
-                </div>
-              </div>
-            </div>
-          </div>
+              </a>
+              </ul>
+        </div>
+   
+
         </div>
 
         <!-- RELATED RULES -->
         <div class="panel panel-info" *ngIf="circular.related_rules.length !== 0">
-          <div class="panel-heading head">
-            <h3 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse1">Related Rules:</h3>
+          <div class="panel-heading pan-heading" data-toggle="collapse" href="#related-rules">
+            <h3 class="panel-title">Related Rules:<i class="fa fa-angle-down pull-right"></i></h3>
           </div>
-          <div id="collapse1" class="panel-collapse collapse in">
-            <div>
-              <div *ngFor="let rule of circular.related_rules">
-                <div class="panel-body" target="_blank" routerLink="/rule" [queryParams]="{
+          <div id="related-rules" class="panel-collapse collapse in">
+              <ul class="list-group">
+                <a class="list-group-item" *ngFor="let rule of circular.related_rules" target="_blank" routerLink="/rule" [queryParams]="{
                   law_id: rule.law_id,
                   act_id: rule.act_id,
                   chap_id: rule.chap_id,
                   rule_id: rule.rule_id
                 }">
                  {{rule.id}}. {{rule.rule_title}}
-                </div>
-              </div>
-            </div>
+              </a>
+              </ul>
           </div>
         </div>
 
         <!-- RELATED NOTIFICATIONS -->
         <div class="panel panel-info" *ngIf="circular.related_notifications.length !== 0">
-          <div class="panel-heading" data-toggle="collapse" href="#collapse2">
-            <h3 class="panel-title">Related notifications:</h3>
-            <span class="glyphicon glyphicon-menu-down pull-right"></span>
+          <div class="panel-heading pan-heading">
+            <h3 class="panel-title" data-toggle="collapse" href="#related-notification">Related notifications: <i class="fa fa-angle-down pull-right"></i></h3>
           </div>
-          <div id="collapse2" class="panel-collapse collapse in">
+          <div id="related-notification" class="panel-collapse collapse in">
             <ul class="list-group">
-
               <a class="list-group-item" *ngFor="let notification of circular.related_notifications" target="_blank" routerLink="/notification"
                 [queryParams]="{
                       law_id: notification.law_id,
@@ -90,12 +73,10 @@
 
         <!-- RELATED CIRCULARS -->
         <div class="panel panel-info" *ngIf="circular.related_circulars.length !== 0">
-          <div class="panel-heading" data-toggle="collapse" href="#related-circulars">
-            <h3 class="panel-title">Related circulars:</h3>
-            <span class="glyphicon glyphicon-menu-down pull-right"></span>
+          <div class="panel-heading pan-heading">
+            <h3 class="panel-title" data-toggle="collapse" href="#related-circular">Related circulars: <i class="fa fa-angle-down pull-right"></i></h3>
           </div>
-          <div id="related-circulars" class="panel-collapse collapse in">
-
+          <div id="related-circular" class="panel-collapse collapse in">
             <ul class="list-group">
                 <a *ngFor="let circular of circular.related_circulars" class="list-group-item" target="_blank" routerLink="/circular" [queryParams]="{
                                 law_id: circular.law_id,
@@ -113,8 +94,57 @@
     </div>
 
 
+<!-- ............................. -->
+
+
+<div class="container">
+    <div  class="col-lg-7 panel-group" id="style-2">
+        <ul class="nav nav-tabs  panel-info pan-border" id="myTab" role="tablist">
+            <li class="nav-item active">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">{{type | uppercase}}</a>
+            </li>
+            <li class="nav-item" *ngIf="circular.analysis">
+              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Analysis</a>
+            </li>
+          </ul>
+          <div class="tab-content panel" id="myTabContent">
+              <div class="tab-pane fade in active clsScroll scrollbar height style-2" id="home" role="tabpanel"  aria-labelledby="home-tab">
+                <div class="contain-head">
+                    <strong>{{circular.name}}</strong>
+                </div>
+                  
+                  <div class="contain" [innerHTML]="htmlText" ></div>
+              </div>
+              <div *ngIf="circular.analysis" class="tab-pane fade height clsScroll scrollbar style-2" id="profile" role="tabpanel" aria-labelledby="profile-tab" [innerHTML]="htmlAnalysis"></div>
+            </div>
+            <hr>
+
+             <!--FOOTNOTES -->
+
+        <div class="panel panel-info" *ngIf="circular.footnotes.length !== 0">
+            <div class="panel-heading pan-heading">
+                <h3 class="panel-title">Footnotes:</h3>
+            </div>
+              <div *ngFor="let footnote of circular.footnotes">
+                <div class="panel-body">Footnote {{footnote.id}}. {{footnote.note}}</div>
+              </div>
+          </div>
+    </div>
+  </div>
+
+
+
+</div>
+</div>
+
+
+
+
+
+<!-- 
+
     <div class="container">
-      <div class="col-lg-6 clsScroll scrollbar panel-group" id="style-2">
+      <div class="col-lg-7 clsScroll scrollbar panel-group" id="style-2">
         <div class="panel panel-info">
           <div class="force-overflow panel-heading">
             <h4>{{circular.name}}</h4>
@@ -130,8 +160,4 @@
         </div>
       </div>
 
-    </div>
-
-
-  </div>
-</div>
+    </div> -->

@@ -1,14 +1,14 @@
 <div class="col-lg-12">
   <div>
-    <ul class="nav nav-pills">
-      <li class="active">
+    <ul class="nav nav-pills pill-style">
+      <li class="active pill-color">
         <a data-toggle="pill" href="#chapters">By Chapter</a>
       </li>
       <li>
         <a data-toggle="pill" href="#sections">By Section</a>
       </li>
     </ul>
-  </div>
+  </div>  
   <hr>
   <div class="tab-content">
     <!--Chapters-->
@@ -18,7 +18,7 @@
           <h3 class="heading">{{act.name}}, {{act.year}}</h3>
         </div>
         <div class="col-lg-5 pull-right">
-          <input class="form-control search-box pointer" type="text" name="search" placeholder="Search by chapter..." [(ngModel)]="filter">
+          <input class="form-control search-box" type="text" name="search" placeholder="Search by chapter..." [(ngModel)]="filter">
         </div>
       </div>
       <hr>
