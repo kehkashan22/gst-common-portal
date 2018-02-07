@@ -1,0 +1,25 @@
+<div *ngIf="author">
+  <h1>{{author.name}}</h1>
+  <img class="img-thumbnail rounded" width="100" [src]="author.image_uri" alt="Author" *ngIf="author">
+  <p>Bio: {{author.bio}}</p>
+  <hr>
+  <h2>Experience: {{author.experience}}</h2>
+  <h2>Location: {{author.location}}</h2>
+  <h2>Qualification: {{author.qualification}}</h2>
+</div>
+<hr>
+<div *ngIf="articles.length !== 0">
+  <div class="card" *ngFor="let article of articles; let i = index">
+    <div class="card-body">
+      <h4 class="card-title">{{article.heading}}</h4>
+      <p class="card-text">{{article.excerpt}}</p>
+      <hr>
+      <p class="card-text">{{article.date | date}}</p>
+      <p class="card-text">{{article.base}}</p>
+      <a class="btn btn-primary" [routerLink]="['/article']" [queryParams]="{
+              law_id: article.law_id,
+              list_id: article.article_id
+            }">Read More</a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+.card {
+  /* Add shadows to create the "card" effect */
+  transition: 0.3s;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.card-body {
+  padding: 2px 16px;
+}
+
+/* fieldset, label { margin: 0; padding: 0; }
+body{ margin: 20px; }
+h1 { font-size: 1.5em; margin: 10px; }
+.rating {
+  border: none;
+  float: left;
+}
+.rating > input { display: none; }
+.rating > label:before {
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+.rating > .half:before {
+  content: "\f089";
+  position: absolute;
+}
+.rating > label {
+  color: #ddd;
+ float: right;
+}
+.rating > input:checked ~ label,
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  }
+.rating > input:checked + label:hover,
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label,  selection
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } */
+
+.stars-outer {
+  display: inline-block;
+  position: relative;
+  font-family: FontAwesome;
+}
+
+.stars-outer::before {
+  content: "\f006 \f006 \f006 \f006 \f006";
+}
+
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+
+.stars-inner::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  color: #f8ce0b;
+}

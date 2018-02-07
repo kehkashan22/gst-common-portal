@@ -1,3 +1,4 @@
+import { AuthService } from './auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 
@@ -7,9 +8,14 @@ import * as firebase from 'firebase';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  loadedFeature = 'recipe';
+  loadedFeature = 'wiki';
+  name = '';
+  constructor(public _authStart: AuthService) {}
 
   ngOnInit() {
+    // this._authStart.user.subscribe((data) => {
+    //     this.name = data ? data.displayName : 'guest';
+    // });
   }
 
   onNavigate(feature: string) {

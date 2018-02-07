@@ -5,22 +5,25 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { AuthService } from '../auth/auth.service';
+import { NotifyService } from 'app/auth/notify.service';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     HomeComponent
-  ],
+],
   imports: [
     CommonModule,
-    AppRoutingModule
+    RouterModule
   ],
   exports: [
-    AppRoutingModule,
+    // AppRoutingModule,
     HeaderComponent
   ],
   providers: [
-    AuthService
+    AuthService,
+    NotifyService
   ]
 })
 export class CoreModule {}

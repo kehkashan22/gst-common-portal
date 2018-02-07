@@ -1,3 +1,6 @@
+import { PipesModule } from './pipes/pipes.module';
+import { AuthGuard } from './auth/auth-guard.service';
+import { StarsService } from './shared/stars.service';
 import { ArticleDetailModule } from './article-detail/article-detail.module';
 import { FormsModule } from '@angular/forms';
 import { CircularDetailModule } from './circular-detail/circular-detail.module';
@@ -20,25 +23,32 @@ import { LawsComponent } from './laws/laws.component';
 import { LawsModule } from './laws/laws.module';
 import { SectionDetailModule } from './section-detail/section-detail.module';
 import { Daterangepicker } from 'ng2-daterangepicker';
-import {ScrollToModule} from 'ng2-scroll-to';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 
 import { environment } from '../environments/environment';
 /* For Firebase Related */
 import * as firebase from 'firebase';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { RoundPipe } from 'app/pipes/round.pipe';
 
 export const firebaseConfig = environment.firebaseConfig;
-firebase.initializeApp(firebaseConfig);
+// firebase.initializeApp(firebaseConfig);
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
+
     HttpModule,
     AppRoutingModule,
     FormsModule,
@@ -49,16 +59,18 @@ firebase.initializeApp(firebaseConfig);
     RuleDetailModule,
     ArticleDetailModule,
     NotificationDetailModule,
-    ScrollToModule.forRoot(),
     Daterangepicker,
     CircularDetailModule,
     Ng2SearchPipeModule,
     Ng2OrderModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    PipesModule
   ],
   bootstrap: [AppComponent],
   providers: [
-    LawsService
+    LawsService,
+    StarsService,
+    AuthGuard
   ]
 })
 export class AppModule { }

@@ -1,10 +1,14 @@
-import { ArticleDetailService } from './article-detail.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { AuthorsService } from "./../author-profile/authors.service";
+import { StarsService } from "./../shared/stars.service";
+import { AuthService } from "./../auth/auth.service";
+import { ArticleDetailService } from "./article-detail.service";
+import { ActivatedRoute, Router } from "@angular/router";
+import { Component, OnInit } from "@angular/core";
+import { DomSanitizer } from "@angular/platform-browser";
 
-import * as firebase from 'firebase/app';
-import 'firebase/firestore';
+import * as firebase from "firebase/app";
+import "firebase/firestore";
+import { Observable } from "rxjs/Observable";
 
 @Component({
   selector: 'app-article-detail',
@@ -12,22 +16,12 @@ import 'firebase/firestore';
   styleUrls: ['./article-detail.component.css']
 })
 export class ArticleDetailComponent implements OnInit {
+  userId = '';
   type: any;
-
-  article = {
-    id: '',
-    video_url: '',
-    name: '',
-    number: '',
-    related_sections: [],
-    related_rules: [],
-    related_notifications: [],
-    related_circulars: [],
-    footnotes: [],
-    text: '',
-    analysis: ''
-  };
-
+  stars: Observable<any>;
+  avgRating: Observable<any>;
+  article: any;
+  author: any;
   htmlText: any;
   htmlAnalysis: any;
   law_id: string;
@@ -35,46 +29,76 @@ export class ArticleDetailComponent implements OnInit {
   chap_id: string;
   name: string;
   search_id: string;
+  userRating: Observable<any>;
   constructor(
     private _article: ArticleDetailService,
     private route: ActivatedRoute,
     private router: Router,
-    private _dom: DomSanitizer
+    private _dom: DomSanitizer,
+    private _auth: AuthService,
+    private _star: StarsService,
+    private _author: AuthorsService
   ) {}
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      // Defaults to 0 if no query param provided.
+      this._auth.user.subscribe(userData => {
+        this.userId = userData.uid;
+        console.log('user ID: ', this.userId);
+      });
       this.law_id = params['law_id'];
       this.search_id = params['id'] || '';
       this.name = params['list_id'] || '';
       if (this.search_id) {
         this._article
-          .getArticleById(
-            this.law_id,
-            this.search_id
-          )
+          .getArticleById(this.law_id, this.search_id)
           .then((snap: firebase.firestore.DocumentSnapshot) => {
-            const article = {
+            const article: any = {
               id: snap.id,
               ...snap.data()
             };
             this.populateArticle(article);
+            this.getAuthor(article.author_id);
+            this.getAvgArticleRating();
+            this.getUserRating();
           });
       } else if (this.name) {
-        this._article
-          .getArticle(this.law_id, this.name)
-          .then((snap: any[]) => {
-            snap.forEach(doc => {
-              const article = {
-                id: doc.id,
-                ...doc.data()
-              };
-              this.populateArticle(article);
-            });
+        this._article.getArticle(this.law_id, this.name).then((snap: any[]) => {
+          snap.forEach(doc => {
+            const article = {
+              id: doc.id,
+              ...doc.data()
+            };
+            this.populateArticle(article);
+            this.getAuthor(article.author_id);
+            this.getAvgArticleRating();
+            this.getUserRating();
           });
+        });
       }
     });
+  }
+
+  getAuthor(author_id) {
+    this._author.getAuthor(author_id).then((doc: any) => {
+      this.author = {
+        id: doc.id,
+        ...doc.data()
+      };
+    });
+  }
+
+  getAvgArticleRating() {
+    this.stars = this._star.getArticleStars(this.article.list_id);
+    console.log(this.stars);
+    this.avgRating = this._star.getAvgRating(this.stars);
+    console.log(this.avgRating);
+  }
+
+  getUserRating() {
+    const userStars = this._star.getUserArticleStars(this.userId, this.article.list_id);
+    this.userRating = this._star.getAvgRating(userStars);
+      // console.log('rating', rating);
   }
 
   populateArticle(article: any) {
@@ -82,12 +106,19 @@ export class ArticleDetailComponent implements OnInit {
       ...this.article,
       ...article
     };
-    this.htmlText = this._dom.bypassSecurityTrustHtml(
-      this.article.text
-    );
+    this.htmlText = this._dom.bypassSecurityTrustHtml(this.article.text);
     this.htmlAnalysis = this._dom.bypassSecurityTrustHtml(
       this.article.analysis
     );
   }
 
+  starHandler(value) {
+    console.log('inside star handler');
+    this._star.setStar(
+      this.userId,
+      this.author.id,
+      this.article.list_id,
+      value
+    );
+  }
 }
