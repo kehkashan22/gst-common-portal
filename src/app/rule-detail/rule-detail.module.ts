@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { RuleDetailService } from './rule-detail.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -8,7 +9,8 @@ import { RuleDetailComponent } from './rule-detail.component';
 @NgModule({
   imports: [
     CommonModule,
-    RuleDetailRoutingModule
+    RuleDetailRoutingModule,
+    RouterModule
   ],
   declarations: [RuleDetailComponent],
   providers: [RuleDetailService]

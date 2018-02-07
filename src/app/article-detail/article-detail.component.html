@@ -1,17 +1,40 @@
 <div class="container">
-    <div class="row">
+    <div class="row" *ngIf="article">
+      <img class="img-thumbnail rounded" width="100" [src]="author.image_uri" alt="Author" *ngIf="author">
+      <span> <a [routerLink]="['/author', article.author_id]">{{article.by}}</a> </span>
+        <p *ngIf="author">{{author.bio}}</p>
+
+        <span>Avg Rating</span> <span>{{ avgRating | async | round }}</span>
+
+        <h5>Your current rating: </h5>
+        <fieldset class="rating">
+          <ng-container  *ngFor="let num of [5, 4, 3, 2, 1]">
+              <!-- full star -->
+              <input (click)="starHandler(num)"
+                    [id]="'star'+num"
+                    [value]="num-0.5"
+                    name="rating"
+                    type="radio"
+                    [checked]="num === (userRating | async) " />
+              <label class="full" [for]="'star'+num"></label>
+              <!-- half star -->
+              <input (click)="starHandler(num-0.5)"
+                     [value]="num-0.5"
+                     [id]="'halfstar'+num"
+                     name="rating"
+                     type="radio"
+                     [checked]="num === ((userRating | async) + 0.5)"  />
+              <label class="half" [for]="'halfstar'+num"></label>
+          </ng-container>
+        </fieldset>
+        <span>{{ userRating | async }}</span>
+        <hr>
+        <p>{{article.base}}</p>
           <div class="panel panel-info">
-            <div class="force-overflow panel-heading">
+            <div class="panel-heading">
               <h4>{{article.heading}}</h4>
             </div>
             <div class="panel-body" [innerHTML]="htmlText"></div>
-          </div>
-          <hr>
-          <div class="panel panel-info">
-            <div class="force-overflow panel-heading">
-              <h4>Analysis</h4>
-            </div>
-            <div class="panel-body" [innerHTML]="htmlAnalysis"></div>
           </div>
         </div>
 

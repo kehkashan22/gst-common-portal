@@ -12,7 +12,6 @@ import * as moment from 'moment';
 })
 export class NotificationsComponent implements OnInit, OnDestroy {
   sub2: Subscription;
-
   law_id: string;
   act_id: string;
   noti_act = {

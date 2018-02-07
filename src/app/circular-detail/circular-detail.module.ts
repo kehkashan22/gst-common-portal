@@ -4,11 +4,13 @@ import { CommonModule } from '@angular/common';
 
 import { CircularDetailRoutingModule } from './circular-detail-routing.module';
 import { CircularDetailComponent } from './circular-detail.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
-    CircularDetailRoutingModule
+    CircularDetailRoutingModule,
+    RouterModule
   ],
   declarations: [CircularDetailComponent],
   providers: [CircularDetailService]

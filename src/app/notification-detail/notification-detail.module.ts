@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { NotificationDetailRoutingModule } from './notification-detail-routing.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
-    NotificationDetailRoutingModule
+    NotificationDetailRoutingModule,
+    RouterModule
   ],
   declarations: [NotificationDetailComponent],
   providers: [NotificationDetailService]

@@ -1,3 +1,9 @@
+import { AuthorsService } from './../author-profile/authors.service';
+import { PipesModule } from './../pipes/pipes.module';
+import { RoundPipe } from './../pipes/round.pipe';
+import { ArticleItemComponent } from './articles/article-item/article-item.component';
+
+import { CoreModule } from './../core/core.module';
 import { ArticlesComponent } from './articles/articles.component';
 import { ChaptersComponent } from './rules/chapters/chapters.component';
 import { SectionsComponent } from './acts/sections/sections.component';
@@ -27,6 +33,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { CaseLawsComponent } from './case-laws/case-laws.component';
 
 
+
 @NgModule({
   declarations: [
     LawsComponent,
@@ -43,18 +50,26 @@ import { CaseLawsComponent } from './case-laws/case-laws.component';
     ChaptersComponent,
     OrdersComponent,
     CaseLawsComponent,
-    ArticlesComponent
+    ArticlesComponent,
+    ArticleItemComponent
 ],
   imports: [
     CommonModule,
     FormsModule,
     LawsRoutingModule,
+    CoreModule,
     RouterModule,
     Daterangepicker,
     Ng2SearchPipeModule,
     Ng2OrderModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    PipesModule
   ],
-  providers: [LawsService]
+  exports: [
+    ArticlesComponent,
+    ArticleItemComponent
+  ],
+  providers: [LawsService,
+  AuthorsService]
 })
 export class LawsModule {}
