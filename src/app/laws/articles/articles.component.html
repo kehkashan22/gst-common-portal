@@ -1,17 +1,58 @@
 <div class="box">
-    <div class="col-lg-5">
+    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 pull-right">
       <!-- <label for="search">Search:</label> -->
-      <input class="form-control search-box pointer" type="text" name="search" placeholder="Search..." [(ngModel)]="filter">
+      <input class="form-control search-box" type="text" name="search" placeholder="Search..." [(ngModel)]="filter">
     </div>
 </div>
 <hr>
-<div class="card" *ngFor="let article of articles | filter:filter | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
+
+
+<!-- <div class="card" *ngFor="let article of articles | filter:filter | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
     <div class="card-body">
-      <h4 class="card-title">{{article.heading}}</h4>
+      <div class="area-head">
+        <img class="artical-img" src="http://placehold.it/150x200/DC143C/FFFFFF" alt="img">
+      </div>
+
+       <div class="area">
+          <h4 class="card-title">{{article.heading}}</h4>
       <p class="card-text">{{article.excerpt}}</p>
       <hr>
       <p class="card-text"><b>Author:</b> {{article.by}}</p>
       <p class="card-text">{{article.date | date}}</p>
       <a class="btn btn-primary" (click)="toArticle(article.id)">Read More</a>
+       </div> 
+       
     </div>
+  </div> -->
+
+  
+
+
+  <div class="container-fluid"  *ngFor="let article of articles | filter:filter | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
+      <div class="row">
+          <div class="col-12 col-md-12 col-sm-12 col-xs-12 mt-3">
+              <div class="card article col-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="card-horizontal">
+                      <div class="card-body card-area web-div mob-div">
+                            <h4 class="card-title">{{article.heading}}</h4>
+                          <p class="card-text">{{article.excerpt}}</p>
+                          <div class="col-lg-3 col-md-3 col-xs-12 col-sm-12">
+                              <p class="card-text"><b>Author:</b> {{article.by}}</p>
+                              <p class="card-text">{{article.date | date}}</p>
+                              <a class="btn btn-primary" (click)="toArticle(article.id)">Read More</a>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- <div class="card-footer">
+                      <small class="text-muted">Last updated 3 mins ago</small>
+                  </div> -->
+              </div>  
+          </div>
+      </div>
   </div>
+
+  
+
+
+
+

@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display|Roboto');
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
+
+
 .panel-title > a:before {
     float: right !important;
     font-family: FontAwesome;
@@ -22,7 +24,7 @@
 }
 
 .h4, h4 {
-    font-size: 16px;
+    font-size: 1.5rem;
 }
 
 
@@ -62,21 +64,26 @@ a:active {
   margin-top: 0;
 }
 
-.panel-heading {
-  background-color: #6d7ab2;
+/* .panel-heading {
+  background-color: #E1CCEF;
+  border-bottom: 2px solid #6571b5;
   border-radius: 0;
   border: none;
-  color: #fff;
+  color: #6571b5;
   padding: 0;
-}
+} */
 
 .panel-title a {
   display: block;
-  color: #fff;
-  padding: 10px;
+  color: #6571b5;
+  /* padding: 10px; */
   position: relative;
-  font-size: 14px;
+  font-size: 1.5rem;
   font-weight: 400;
+}
+.panel-group > .panel:first-child .panel-heading {
+  border-radius: 4px 4px 0 0;
+  border-left: 8px solid #ff5a5f;
 }
 
 .panel-body {
@@ -95,6 +102,33 @@ a:active {
 .panel:last-child .panel-heading.active {
   border-radius: 0;
   transition: border-radius linear 0s;
+}
+
+.chapter-num{
+  border-radius: 0;
+  border: none;
+  color: #6571b5;
+  padding: 5px;
+  font-weight:bold;
+}
+
+.chapter-name{
+  border-radius: 0;
+  border: none;
+  color: #3f3f3f;
+}
+
+.chapter-names{
+  color: #3f3f3f;
+  font-weight:200;
+}
+
+.chapter-nums{
+  border-radius: 0;
+  border: none;
+  color: #6571b5;
+  padding: 5px;
+  font-weight:bold;
 }
 
 
@@ -121,8 +155,7 @@ a:active {
   margin: 0px;
   /* border-top:1px solid #6571b5;  */
   /* border-bottom:2px solid #6571b5;  */
-  font-size: 18px;
-  position: absolute;
+  font-size: 2rem;
   padding:5px;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
@@ -137,19 +170,112 @@ a:active {
 
 .pill-style>li.active>a, .pill-style>li.active>a:focus, .pill-style>li.active>a:hover {
 color: #ff5a5f;
- background-color: #fff;   
- border: #6571B5 1px solid;
- border-radius:3px; 
+ background-color: rgb(214, 214, 214);   
+ /* border: #6571B5 1px solid; */
+ border-radius:5px 5px 5px 5px; 
+
+ 
 }
 
 a {
   color: #3f3f3f;
   text-decoration: none;
   font-weight:bold;
+ 
 }
 
-.nav>li>a {
+.nav-pills>li.active>a {
   position: relative;
   display: block;
-  padding: 1px 16px;
+  color:#fff;
+  background-color: #6571b5;
+  /* padding: 1px 16px; */
 }
+
+ 
+.btn{
+	text-decoration:none;
+	color:#ff5a5f;
+	font-size: 1.2rem;
+	font-weight:bold;
+	padding:0 15px;
+	line-height:32px;
+	height: auto;
+	display:inline-block;
+  text-align:center;
+  border:1px solid #6571b5;
+	/* background-color:#DDDDDD; */
+}
+
+.btn:hover{
+  background-color:#6571b5;
+  color:#fff;
+}
+
+.btn.pill{
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.btn-group > li > .btn.round:not(:first-child):not(:last-child), .btn-group >  li > .btn.pill:not(:first-child):not(:last-child){
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+
+.btn-group > li > .btn.round:first-child, .btn-group > li > .btn.pill:first-child{
+  -webkit-border-top-right-radius: 0;
+  -webkit-border-bottom-right-radius: 0;
+  -moz-border-radius-topright: 0;
+  -moz-border-radius-bottomright: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.btn-group > li > .btn.round:last-child, .btn-group > li > .btn.pill:last-child{
+  -webkit-border-top-left-radius: 0;
+  -webkit-border-bottom-left-radius: 0;
+  -moz-border-radius-topleft: 0;
+  -moz-border-radius-bottomleft: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.btn-group .btn + .btn{
+	border-left: 1px solid rgba(0, 0, 0, .1);
+	margin-left:-1px;
+}
+
+
+ @media (min-width: 360px) and (max-width: 640px) {
+  .mob-div {
+    margin-bottom:40px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .mob-div {
+    margin-bottom:40px;
+  }
+}
+
+@media (min-width: 970px) and (max-width: 1200px) {
+  .mob-div {
+    margin-bottom:40px;
+  }
+}
+
+@media (min-width: 100px) and (max-width: 1000px) {
+  .mob-div {
+    margin-bottom:40px;
+  }
+}
+
+@media (min-width: 996px) and (max-width: 1200px) {
+  .mob-div{
+    margin-bottom:10px;
+  }
+}  
+
+

@@ -1,12 +1,12 @@
 <div class="row">
-  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 web-div">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 web-div">
     <a style="cursor: pointer;" *ngFor="let lawEl of laws; let i = index" (click)="toActs(i, lawEl)" class="list-group-item list-style"
       [class.active]="i === selectedRow">
       <p>{{ lawEl.name }}</p>
     </a>
   </div>
 
-  <div class="mob-div col-lg-12 ">
+  <div class="mob-div col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <a style="cursor: pointer;">
       <div class="dropdown">
         <button class="btn btn-primary btn-lg dropdown-toggle width-drop" type="button" data-toggle="dropdown">Acts

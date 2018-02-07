@@ -1,18 +1,21 @@
 
-<div class="box">
-<div class="col-lg-6 search-box pointer pull-left">
-  <div class="col-lg-4"><label for="daterangeInput">Select date:</label></div>
-  <div class="col-lg-2"><input type="text" class="date-style pointer" name="daterangeInput" daterangepicker [options]="options" (selected)="selectedDate($event, daterange)" /></div>
-</div>
+<div class="box col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-<div class="col-lg-5 pull-right">
-    <!-- <label for="search">Search:</label> -->
-    <input class="form-control search-box" type="text" name="search"  placeholder="Search..." [(ngModel)]="filter">
-</div>
-</div>
+  <div class="box col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12 search-box mob-div">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pointer"><label for="daterangeInput">Select date:</label></div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 pointer"><input type="text" class="date-style pointer" name="daterangeInput" daterangepicker [options]="options" (selected)="selectedDate($event, daterange)" /></div>
+      </div>
+
+      <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 pull-right">
+          <!-- <label for="search">Search:</label> -->
+          <input class="form-control search-box mob-div" type="text" name="search"  placeholder="Search..." [(ngModel)]="filter">
+      </div>
+ </div>
+
 
   <hr>
-  <div class="table-responsive">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 table-responsive">
     <table class="table table-bordered">
     <thead class="head">
       <tr>
@@ -58,5 +61,7 @@
       </tr>
     </tbody>
   </table>
-</div>
+
   <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div> 
+</div> 
