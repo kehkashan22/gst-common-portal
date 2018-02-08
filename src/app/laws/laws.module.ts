@@ -1,7 +1,7 @@
+import { SharedModule } from './../shared/shared.module';
 import { AuthorsService } from './../author-profile/authors.service';
 import { PipesModule } from './../pipes/pipes.module';
 import { RoundPipe } from './../pipes/round.pipe';
-import { ArticleItemComponent } from './articles/article-item/article-item.component';
 
 import { CoreModule } from './../core/core.module';
 import { ArticlesComponent } from './articles/articles.component';
@@ -50,8 +50,7 @@ import { CaseLawsComponent } from './case-laws/case-laws.component';
     ChaptersComponent,
     OrdersComponent,
     CaseLawsComponent,
-    ArticlesComponent,
-    ArticleItemComponent
+    ArticlesComponent
 ],
   imports: [
     CommonModule,
@@ -63,11 +62,11 @@ import { CaseLawsComponent } from './case-laws/case-laws.component';
     Ng2SearchPipeModule,
     Ng2OrderModule,
     NgxPaginationModule,
-    PipesModule
+    PipesModule,
+    SharedModule
   ],
   exports: [
-    ArticlesComponent,
-    ArticleItemComponent
+    ArticlesComponent
   ],
   providers: [LawsService,
   AuthorsService]

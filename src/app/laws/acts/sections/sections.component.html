@@ -2,17 +2,39 @@
   <div>
     <ul class="nav nav-pills pill-style">
       <li class="active pill-color">
-        <a data-toggle="pill" href="#chapters">By Chapter</a>
-      </li>
-      <li>
         <a data-toggle="pill" href="#sections">By Section</a>
       </li>
+      <li>
+        <a data-toggle="pill" href="#chapters">By Chapter</a>
+      </li>
     </ul>
-  </div>  
+  </div>
   <hr>
   <div class="tab-content">
+
+    <!--SECTIONS-->
+    <div id="sections" class="tab-pane fade in active">
+      <div class="box">
+        <div class="col-lg-7 pull-left">
+          <h3 class="heading">{{act.name}}, {{act.year}}</h3>
+        </div>
+        <div class="col-lg-5 pull-right">
+          <input class="form-control search-box pointer" type="text" name="search" placeholder="Search by sections..." [(ngModel)]="filter2">
+        </div>
+      </div>
+      <hr>
+      <div class="col-lg-12">
+        <div class="list-group">
+          <a *ngFor="let section of sections | filter:filter2 | paginate: {id: 'second', itemsPerPage: 10, currentPage: p2 }; let j = index"
+            (click)="toSection(section.chap_id, section.name)" style="cursor: pointer;" class="list-group-item">
+            Section {{section.number}}: {{section.name}}</a>
+        </div>
+        <pagination-controls (pageChange)="p2 = $event" id="second"></pagination-controls>
+      </div>
+    </div>
+
     <!--Chapters-->
-    <div id="chapters" class="tab-pane fade in active">
+    <div id="chapters" class="tab-pane fade">
       <div class="box">
         <div class="col-lg-7 pull-left">
           <h3 class="heading">{{act.name}}, {{act.year}}</h3>
@@ -50,28 +72,7 @@
       </div>
     </div>
 
-    <!--SECTIONS-->
-    <div id="sections" class="tab-pane fade">
-      <div class="box">
-        <div class="col-lg-7 pull-left">
-          <h3 class="heading">{{act.name}}, {{act.year}}</h3>
-        </div>
-        <div class="col-lg-5 pull-right">
-          <input class="form-control search-box pointer" type="text" name="search" placeholder="Search by sections..." [(ngModel)]="filter2">
-        </div>
-      </div>
-      <hr>
-      <div class="col-lg-12">
-        <div class="list-group">
-          <a *ngFor="let section of sections | filter:filter2 | paginate: {id: 'second', itemsPerPage: 10, currentPage: p2 }; let j = index"
-          (click)="toSection(section.chap_id, section.name)"
-          style="cursor: pointer;"
-          class="list-group-item">
-            Section {{section.number}}: {{section.name}}</a>
-        </div>
-        <pagination-controls (pageChange)="p2 = $event" id="second"></pagination-controls>
-      </div>
-    </div>
+
 
   </div>
 

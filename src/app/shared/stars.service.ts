@@ -44,7 +44,7 @@ export class StarsService {
   getAvgRating(stars): Observable<any> {
     return stars.map(arr => {
       const ratings = arr.map(v => v.value)
-      return ratings.length ? ratings.reduce((total, val) => total + val) / arr.length : 'not reviewed'
+      return ratings.length ? ratings.reduce((total, val) => total + val) / arr.length : 0;
     });
   }
 }

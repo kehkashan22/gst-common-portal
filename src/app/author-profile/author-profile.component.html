@@ -8,18 +8,53 @@
   <h2>Qualification: {{author.qualification}}</h2>
 </div>
 <hr>
+
+<!--KEHKASHAN START-->
 <div *ngIf="articles.length !== 0">
   <div class="card" *ngFor="let article of articles; let i = index">
-    <div class="card-body">
-      <h4 class="card-title">{{article.heading}}</h4>
-      <p class="card-text">{{article.excerpt}}</p>
-      <hr>
-      <p class="card-text">{{article.date | date}}</p>
-      <p class="card-text">{{article.base}}</p>
-      <a class="btn btn-primary" [routerLink]="['/article']" [queryParams]="{
-              law_id: article.law_id,
-              list_id: article.article_id
-            }">Read More</a>
-    </div>
+      <app-article-item [law_id]="article.law_id" [article]="article" [index]="i">
+        </app-article-item>
   </div>
 </div>
+
+<!-- <div class="card-body">
+    <div class="card-content">
+      <div class="description">
+        <h4>{{article.heading}}</h4>
+        <h5 class="card-text">{{article.base}}</h5>
+      </div>
+      <div class="card-img">
+        <img [src]="article.uri" class="img-responsive" alt="">
+      </div>
+      <div class="description">
+        <p class="summary">{{article.excerpt}}</p>
+        <a class="pull-right" [routerLink]="['/article']" [queryParams]="{
+                  law_id: article.law_id,
+                  list_id: article.article_id
+                }">Read More</a>
+      </div>
+      <br>
+      <hr>
+      <div class="card__action row">
+        <div class="card__author col-lg-8">
+          <div class="card__author-dp">
+            <img [src]="author.image_uri" class="img-thumbnail" alt="author" *ngIf="author">
+          </div>
+          <div class="card__author-content">
+            <a [routerLink]="['/author', article.author_id]">{{article.by}}</a>
+            <p>
+              {{article.date | date}}
+            </p>
+          </div>
+        </div>
+         <div class="stars pull-right col-lg-4">
+                <span>{{ avgRating | async | round }}</span>
+                <div class="stars-outer">
+                  <div class="stars-inner" [style.width]="((avgRating | async | round)*20)+'%'"></div>
+                </div>
+              </div>
+      </div>
+    </div>
+  </div> -->
+
+<!--Kehkashan END-->
