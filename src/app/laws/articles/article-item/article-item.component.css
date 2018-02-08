@@ -1,22 +1,3 @@
-.card {
-  /* Add shadows to create the "card" effect */
-  transition: 0.3s;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  border-radius: 5px;
-  padding: 20px;
-  margin: 10px;
-}
-
-/* On mouse-over, add a deeper shadow */
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-
-/* Add some padding inside the card container */
-.card-body {
-  padding: 2px 16px;
-}
 
 /* fieldset, label { margin: 0; padding: 0; }
 body{ margin: 20px; }
@@ -72,3 +53,9 @@ h1 { font-size: 1.5em; margin: 10px; }
   content: "\f005 \f005 \f005 \f005 \f005";
   color: #f8ce0b;
 }
+
+img {
+  
+}
+
+

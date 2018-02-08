@@ -1,25 +1,68 @@
-<div *ngIf="author">
-  <h1>{{author.name}}</h1>
-  <img class="img-thumbnail rounded" width="100" [src]="author.image_uri" alt="Author" *ngIf="author">
-  <p>Bio: {{author.bio}}</p>
-  <hr>
-  <h2>Experience: {{author.experience}}</h2>
-  <h2>Location: {{author.location}}</h2>
-  <h2>Qualification: {{author.qualification}}</h2>
-</div>
-<hr>
-<div *ngIf="articles.length !== 0">
-  <div class="card" *ngFor="let article of articles; let i = index">
-    <div class="card-body">
-      <h4 class="card-title">{{article.heading}}</h4>
-      <p class="card-text">{{article.excerpt}}</p>
-      <hr>
-      <p class="card-text">{{article.date | date}}</p>
-      <p class="card-text">{{article.base}}</p>
-      <a class="btn btn-primary" [routerLink]="['/article']" [queryParams]="{
-              law_id: article.law_id,
-              list_id: article.article_id
-            }">Read More</a>
+<!-- <div *ngIf="author">
+    <div class="col-lg-2 prof-img">
+        <img class="img-thumbnail rounded" width="100" [src]="author.image_uri" alt="Author" *ngIf="author">
     </div>
-  </div>
+    <div class="col-lg-10 prof-info">
+        <h1>{{author.name}}</h1>
+        <p>{{author.bio}}</p>
+        <h6>Experience: {{author.experience}}</h6>
+        <h6>Location: {{author.location}}</h6>
+        <h6>Qualification: {{author.qualification}}</h6>
+    </div>
+</div> -->
+
+
+<div class="profile__container" *ngIf="author">
+    <div class="profile">
+        <div class="profile_img">
+            <img class="img-thumbnail rounded" [src]="author.image_uri" alt="Author" *ngIf="author">
+        </div>
+        <div class="profile_name">
+            <h1>{{author.name}}</h1>
+            <p>{{author.bio}}</p>
+        </div>
+    </div>
+</div>
+
+<div class="profile_detail">
+    <div class="profile_detail__experience">
+        <h6>Experience: {{author.experience}}</h6>
+    </div>
+    <div class="profile_detail__location">
+        <i class="fa fa-map-marker"></i><span>{{author.location}}</span>
+    </div>
+    <div class="profile_detail__qualification">
+        <h6>Qualification: {{author.qualification}}</h6>
+    </div>
+
+</div>
+
+
+
+<div class="col-lg-12" *ngIf="articles.length !== 0">
+    <div class="card" *ngFor="let article of articles; let i = index">
+        <div class="card-body">
+            <div>
+                <div class="col-lg-12">
+                    <h3 class="card-title artical-head">{{article.heading}}</h3>
+                </div>
+                <div class="img-responsive center-block artical-img">
+                    <img class="rounded mx-auto d-block" [src]="article.uri" class="img-responsive" alt="">
+                </div>
+                <div class="col-lg-12 artical-text">
+                    <p class="card-text">{{article.baseS}}</p>
+                </div>
+            </div>
+
+            <hr>
+            <div class="col-lg-12">
+                <p class="card-text">{{article.date | date}}</p>
+                <p class="card-text">{{article.base}}</p>
+                <a class="btn btn-primary" [routerLink]="['/article']" [queryParams]="{
+                  law_id: article.law_id,
+                  list_id: article.article_id
+                }">Read More</a>
+            </div>
+        </div>
+    </div>
 </div>
