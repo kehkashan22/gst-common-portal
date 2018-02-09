@@ -1,226 +1,128 @@
-.img-thumbnail{
-    border-top: 1px solid #3f3f33;
-    border-bottom: 1px solid #3f3f33;
-    border-radius: 50%;
-}
-.profile__container {
+@import url('https://fonts.googleapis.com/css?family=Oswald:500');
+
+/*top bar for profile*/
+
+.profile {
     margin-left: auto;
     margin-right: auto;
 }
 
-.profile {
+.profile__details {
     display: grid;
-    grid-template-columns: 130px auto;
-    grid-template-rows:  1fr;
-  }
-
-.profile_img{
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  margin-left: 20px;
+    grid-template-columns: 160px auto;
+    grid-template-rows: 1fr;
 }
 
-.profile_name{
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 1;
-  grid-row-end: 3;
-  margin-left: 16px;
-}
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-.profile_detail{
-    display:grid;
-    margin-top:15px;
-    grid-template-columns: repeat(3, 1fr) ;
-    grid-template-rows: 1fr; 
-    text-align: center; 
-    border: 1px solid #3f3f33;
-}
-
-.profile_detail__experience, 
-.profile_detail__location, 
-.profile_detail__qualification {
-    align-self: center;
-}
-
-.profile_detail__location > i {
-    margin: 5px;
-}
-/*KEHKASHAN START*/
-.card {
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px;
-  border: 1px solid rgba(0,0,0,.1);
-  transition: 0.3s ease;
-  -webkit-transition: 0.3s ease;
-  background: #fff;
-  border-radius: 3px;
-  box-shadow: 0 3px 7px -3px rgba(0, 0, 0, 0.3);
-  /* margin: 0 auto 1.6%; */
-  overflow: hidden;
-  position: relative;
-  font-size: 14px;
-  line-height: 1.45em;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* .card-body {
-  display: flex;
-  flex-direction: column;
-}
-
-.stars-outer {
-  display: inline-block;
-  position: relative;
-  font-family: FontAwesome;
-}
-
-.stars-outer::before {
-  content: "\f006 \f006 \f006 \f006 \f006";
-  color: #c4c1c1;
-
-}
-
-.stars-inner {
-  position: absolute;
-  top: 0;
-  left: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 0;
-}
-
-.stars-inner::before {
-  content: "\f005 \f005 \f005 \f005 \f005";
-  color: #f8ce0b;
-}
-
-.description a {
-  color: #75d13b;
-  margin-bottom: 10px;
-  cursor: pointer;
-}
-.description a:after {
-  transition: all 0.3s ease;
-  -webkit-transition: all 0.3s ease;
-  content: "\f061";
-  font-family: FontAwesome;
-  margin-left: -10px;
-  opacity: 0;
-  vertical-align: middle;
-}
-.description a:hover:after {
-  margin-left: 5px;
-  opacity: 1;
-}
-
-.description p {
-  position: relative;
-  margin: 0;
-  padding-top: 20px;
-}
-.description p:after {
-  content: "";
-  background: #75d13b;
-  height: 2px;
-  width: 10%;
-  position: absolute;
-  top: 6px;
-  left: 0;
-}
-
-h5 {
-  color: #9b9b9b;
-  line-height: 1.2em;
-  font-weight: 400;
-  margin: 1.2% 0;
-}
-
-.card__action {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  margin: 0 !important;
-}
-
-.card__author {
-  padding-left: 0 !important;
-}
-
-.card__author img,
-.card__author-content {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.card__author img {
-  height: 50px;
-  border-radius: 50%;
-  margin-right: 0.6em;
-}
-
-.stars {
-  vertical-align: middle;
-  margin-left: auto;
-  text-align: right;
-  padding-right: 0 !important;
-}
-
-.card__author {
-  display: grid;
-  grid-template-columns: 60px 1fr;
-}
-
-.card__author-content {
-  align-self: center;
-}
-
-.card__author-content > a {
-  color: #3f3f3f;
-}
-
-.card__author-content > p {
-  margin-bottom: 0 !important;
-  color: #9b9b9b;
-  font-size: 1.2rem;
-  font-weight: 400 !important;
-  letter-spacing: 0 !important;
-  line-height: 20px !important;
-}
-
-.col-lg-4 {
-  height: 100% !important;
-}
-
-@media (min-width: 992px) {
-  .card-body {
-    display: grid;
-    grid-template-columns: 33.33% auto;
-  }
-
-  .card-img {
+.profile__details__img {
     grid-column-start: 1;
     grid-column-end: 2;
-    margin-right: 10px;
-    min-height: 33.33%;
-    overflow: hidden;
-  }
+    grid-row-start: 1;
+    grid-row-end: 2;
+    margin-left: 20px;
+    margin-bottom: 14px;
+}
 
-  .card-content {
+.profile__details__img>img {
+    border: 1px solid #3f3f33;
+    padding: 5px;
+    height: 150px !important;
+    width: 150px !important;
+    object-fit: cover;
+}
+
+.profile__details__name {
     grid-column-start: 2;
     grid-column-end: 3;
-    padding: 16px;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    margin-left: 16px;
+    margin-bottom: 14px;
+}
+
+.profile__details__name > h1 {
+    font-family: 'Oswald', sans-serif;
+    margin-top: 0 !important;
+}
+
+.profile__details__name h5 {
+    margin-bottom: 0;
+}
+
+.profile__details__name p {
+    position: relative;
+    margin: 0;
+    padding-top: 20px;
+  }
+  .profile__details__name p:after {
+    content: "";
+    background: #75d13b;
+    height: 2px;
+    width: 10%;
+    /*POSITION*/
+    position: absolute;
+    top: 6px;
+    left: 0;
   }
 
-  .card-img > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-} */
+
+/*Second bar*/
+
+.profile_detail {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    text-align: center;
+    border: #969696 1px solid;
+}
+
+.profile_detail__experience,
+.profile_detail__location,
+.profile_detail__qualification {
+    align-self: center;
+    
+    padding: 20px;
+}
+
+.profile_detail__location>i {
+    margin: 5px;
+}
+
+.profile_detail__qualification>i {
+    margin: 5px;
+}
+
+.profile_detail__experience>i {
+    margin: 5px;
+}
+
+
+/*KEHKASHAN START*/
+
+.card {
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 1);
+    transition: 0.3s ease;
+    -webkit-transition: 0.3s ease;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 0 3px 7px -3px rgba(0, 0, 0, 0.3);
+    /* margin: 0 auto 1.6%; */
+    overflow: hidden;
+    position: relative;
+    font-size: 14px;
+    line-height: 1.45em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.profile__card {
+    margin: 10px;
+}
+
+.article__card {
+    margin: 10px 50px 10px 50px;
+}
+
 
 /*KEHKASHAN END*/

@@ -12,35 +12,44 @@
 </div> -->
 
 
-<div class="profile__container" *ngIf="author">
-    <div class="profile">
-        <div class="profile_img">
+<div class="card profile__card" *ngIf="author">
+    <div class="profile__details">
+        <div class="profile__details__img">
             <img class="img-thumbnail rounded" [src]="author.image_uri" alt="Author" *ngIf="author">
         </div>
-        <div class="profile_name">
+        <div class="profile__details__name">
             <h1>{{author.name}}</h1>
+            <h5>{{author.qualification}}</h5>
             <p>{{author.bio}}</p>
         </div>
     </div>
+    <div class="profile_detail">
+        <div class="profile_detail__experience">
+            <i class="fa fa-trophy"></i><span>No. of Posts </span>
+            <p *ngIf="articles.length > 0">{{articles.length}}</p>
+        </div>
+        <div class="profile_detail__location">
+            <i class="fa fa-map-marker"></i><span>Location</span>
+            <p> {{author.location}}</p>
+        </div>
+        <div class="profile_detail__qualification">
+            <i class="fa fa-mortar-board"></i><span>Company </span>
+            <p>{{author.company}}</p>
+        </div>
+        <div class="profile_detail__experience">
+            <i class="fa fa-trophy"></i><span>Designation </span>
+            <p>{{author.designation}}</p>
+        </div>
+    
+    </div>
 </div>
 
-<div class="profile_detail">
-    <div class="profile_detail__experience">
-        <h6>Experience: {{author.experience}}</h6>
-    </div>
-    <div class="profile_detail__location">
-        <i class="fa fa-map-marker"></i><span>{{author.location}}</span>
-    </div>
-    <div class="profile_detail__qualification">
-        <h6>Qualification: {{author.qualification}}</h6>
-    </div>
 
-</div>
 <hr>
 
 <!--KEHKASHAN START-->
 <div *ngIf="articles.length !== 0">
-  <div class="card" *ngFor="let article of articles; let i = index">
+  <div class="card article__card" *ngFor="let article of articles; let i = index">
       <app-article-item [law_id]="article.law_id" [article]="article" [index]="i">
         </app-article-item>
   </div>
