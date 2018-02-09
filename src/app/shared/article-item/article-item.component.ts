@@ -1,9 +1,11 @@
-import { AuthorsService } from './../../../author-profile/authors.service';
-import { AuthService } from './../../../auth/auth.service';
-import { StarsService } from './../../../shared/stars.service';
+
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { AuthService } from 'app/auth/auth.service';
+import { StarsService } from 'app/shared/stars.service';
+import { AuthorsService } from 'app/author-profile/authors.service';
+
 
 @Component({
   selector: 'app-article-item',
@@ -55,5 +57,10 @@ export class ArticleItemComponent implements OnInit {
         ...doc.data()
       }
     });
+  }
+
+  getUrl() {
+    const uri = 'url(\'' + this.article.uri + '\')';
+    return uri;
   }
 }

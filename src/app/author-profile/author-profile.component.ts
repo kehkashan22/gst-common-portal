@@ -29,17 +29,6 @@ export class AuthorProfileComponent implements OnInit {
         console.log(this.author);
       });
       this.articles = this._authors.getArticleListByAuthor(this.author_id);
-      // .then((articles: any[]) => {
-      //   console.log(articles);
-      //   console.log(
-      //     articles[0]
-      //   );
-      //   articles.forEach(element => {
-      //     console.log(element);
-      //   });
-      //   this.articles.push(...articles);
-      //   console.log(this.articles);
-      // })
     });
   }
 

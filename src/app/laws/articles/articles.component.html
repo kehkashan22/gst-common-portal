@@ -5,7 +5,7 @@
     </div>
 </div>
 <hr>
-<div class="container-fluid" *ngFor="let article of articles | filter:filter | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
+<div class="card" *ngFor="let article of articles | filter:filter | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
     <app-article-item [law_id]="law_id" [article]="article" [index]="i">
     </app-article-item>
 </div>

@@ -41,7 +41,7 @@ export class AuthorsService {
               snapshot2.forEach(element => {
                 articles.push({
                   law_id: doc.id,
-                  article_id: element.id,
+                  id: element.id,
                   ...element.data()
                 });
               });
