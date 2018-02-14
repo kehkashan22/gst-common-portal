@@ -1,10 +1,14 @@
 
 .panel{
- background-color: #6571b5;
- color:#fff;
+border-left:8px solid #ff5a5f; 
+border: #c9c8c8 1px solid;
+ color:#3f3f3f;
+ background-color: #fff;
  padding:0px;
- padding-left:5px;
- margin: 2px;
+ padding-left:18px;
+ /* margin: 2px; */
+ border-radius: 4px;
+ /* box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);  */
 }
 
 .title{
@@ -12,8 +16,9 @@
 }
 
 .search-box{
-  /* border:#6571B5 solid 1px; */
+  border:#6571B5 solid 1px;
   border-radius: 5px;
+  padding:4px;
 }
 
 .pointer {
@@ -25,8 +30,8 @@
 }
 
 a:hover{
-  border:#6571b5 solid 1px;
-}
+   border-left:8px solid #6571b5;
+} 
 
 .act-name{
   margin:5px;
@@ -63,3 +68,6 @@ a:hover{
     margin-bottom:0px;
   }
 }
+
+/* ................................... */
+

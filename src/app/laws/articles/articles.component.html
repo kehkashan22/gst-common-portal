@@ -1,11 +1,16 @@
 <div class="box">
-    <div class="col-lg-5">
-      <!-- <label for="search">Search:</label> -->
-      <input class="form-control search-box pointer" type="text" name="search" placeholder="Search..." [(ngModel)]="filter">
+    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 pull-right">
+        <!-- <label for="search">Search:</label> -->
+        <input class="form-control search-box" type="text" name="search" placeholder="Search..." [(ngModel)]="filter">
     </div>
 </div>
 <hr>
 <div class="card" *ngFor="let article of articles | filter:filter | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
     <app-article-item [law_id]="law_id" [article]="article" [index]="i">
     </app-article-item>
-  </div>
+</div>
+<!-- 
+<div class="container-fluid" *ngFor="let article of articles | filter:filter | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
+    <app-article-item [law_id]="law_id" [article]="article" [index]="i">
+    </app-article-item>
+</div> -->

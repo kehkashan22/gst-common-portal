@@ -30,7 +30,7 @@ export class StarsService {
     const starsRef = this.afs.collection('stars', ref => ref.where('userId', '==', userId).where('articleId', '==', articleId) );
     return starsRef.valueChanges();
   }
-
+  
   // Create or update star
   setStar(userId, authorId, articleId, value) {
     // Star document data

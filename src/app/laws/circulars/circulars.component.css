@@ -23,3 +23,34 @@
   .box{
     padding-bottom: 20px;
   }
+
+  @media (min-width: 360px) and (max-width: 640px) {
+    .mob-div {
+      margin:5px;
+    }
+  }
+  
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .mob-div {
+      margin:5px;
+    }
+  }
+  
+  @media (min-width: 970px) and (max-width: 1200px) {
+    .mob-div {
+      margin:5px;
+    }
+  }
+  
+  @media (min-width: 100px) and (max-width: 1000px) {
+    .mob-div {
+      margin:5px;
+    }
+  }
+  
+  @media (min-width: 996px) and (max-width: 1200px) {
+    .mob-div{
+      margin:5px;
+    }
+  } 
+  

@@ -11,8 +11,9 @@
 
 .video{
   width: 100%;
-  margin: 20px;
-  padding-right: 5px;
+  margin: 1px;
+  padding: 7px;
+  box-shadow: inset 1px 1px 40px 0 rgba(0, 0, 0, 0.45);
 }
 
 .clsScroll{
