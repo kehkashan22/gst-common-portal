@@ -22,9 +22,9 @@ const lawsRoutes: Routes = [
     component: LawsComponent,
     children: [
       { path: '', component: LawsStartComponent },
-      { path: ':id', component: StatesListComponent },
+      { path: ':law_id', component: StatesListComponent },
       {
-        path: ':id/law',
+        path: ':law_id/law/:id',
         component: LawsDetailsComponent,
         children: [
           { path: 'desc', component: ActDescComponent },

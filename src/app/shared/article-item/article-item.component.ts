@@ -31,10 +31,11 @@ export class ArticleItemComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.userId = this._auth.user.subscribe(userData => {
-      this.userId = userData.uid;
-      console.log('user ID: ', this.userId);
-    });
+    // this.userId = this._auth.user.subscribe(userData => {
+    //   if (userData) {
+    //     this.userId = userData.uid;
+    //   }
+    // });
     this.stars = this._star.getArticleStars(this.article.id);
     console.log(this.stars);
     this.avgRating = this._star.getAvgRating(this.stars);

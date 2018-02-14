@@ -1,3 +1,5 @@
+import { UserModule } from './user/user.module';
+import { PreventLoggedInAccessService } from './auth/prevent-logged-in-access.service';
 import { PipesModule } from './pipes/pipes.module';
 import { AuthGuard } from './auth/auth-guard.service';
 import { StarsService } from './shared/stars.service';
@@ -29,26 +31,28 @@ import { Ng2OrderModule } from 'ng2-order-pipe';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-
+import { AngularFireStorageModule } from 'angularfire2/storage';
 
 import { environment } from '../environments/environment';
 /* For Firebase Related */
 import * as firebase from 'firebase';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { RoundPipe } from 'app/pipes/round.pipe';
+import { DropZoneDirective } from './drop-zone.directive';
 
 export const firebaseConfig = environment.firebaseConfig;
 // firebase.initializeApp(firebaseConfig);
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DropZoneDirective
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
-
+    AngularFireStorageModule,
     HttpModule,
     AppRoutingModule,
     FormsModule,
@@ -64,13 +68,15 @@ export const firebaseConfig = environment.firebaseConfig;
     Ng2SearchPipeModule,
     Ng2OrderModule,
     NgxPaginationModule,
-    PipesModule
+    PipesModule,
+    UserModule
   ],
   bootstrap: [AppComponent],
   providers: [
     LawsService,
     StarsService,
-    AuthGuard
+    AuthGuard,
+    PreventLoggedInAccessService
   ]
 })
 export class AppModule { }

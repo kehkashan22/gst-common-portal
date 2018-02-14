@@ -37,7 +37,6 @@ export class ActDescComponent implements OnInit, OnDestroy {
               id: doc.id,
               ...doc.data()
             };
-            console.log(doc.id, '=>', doc.data());
         });
       }
     );

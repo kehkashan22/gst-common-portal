@@ -21,9 +21,7 @@ export class LawsDetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.sub = this.route.params.subscribe((params: Params) => {
-      console.log(params);
       this.law_id = params['id'];
-      console.log(this.law_id);
       this.getActs();
       this.getRules();
       this.getNotifications();
@@ -37,26 +35,23 @@ export class LawsDetailsComponent implements OnInit, OnDestroy {
   getActs() {
     this._law.getActs(this.law_id).then((snap: any[]) => {
       this.acts = [];
-      console.log('here');
+
       snap.forEach(doc => {
         this.acts.push({
           id: doc.id,
           ...doc.data()
         });
-        console.log(this.acts);
       });
     });
   }
   getRules() {
     this._law.getRules(this.law_id).then((snap: any[]) => {
       this.rules = [];
-      console.log('here');
       snap.forEach(doc => {
         this.rules.push({
           id: doc.id,
           ...doc.data()
         });
-        console.log(this.rules);
       });
     });
   }
@@ -64,13 +59,12 @@ export class LawsDetailsComponent implements OnInit, OnDestroy {
   getNotifications() {
     this._law.getNotificationActs(this.law_id).then((snap: any[]) => {
       this.notifications = [];
-      console.log('here');
+
       snap.forEach(doc => {
         this.notifications.push({
           id: doc.id,
           ...doc.data()
         });
-        console.log(this.rules);
       });
     });
   }

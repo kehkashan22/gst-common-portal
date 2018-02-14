@@ -1,41 +1,166 @@
-<div class="container">
-    <div class="row" *ngIf="article">
-      <img class="img-thumbnail rounded" width="100" [src]="author.image_uri" alt="Author" *ngIf="author">
-      <span> <a [routerLink]="['/author', article.author_id]">{{article.by}}</a> </span>
-        <p *ngIf="author">{{author.bio}}</p>
+<div class="row article-container">
+  <div class="col-lg-12 col-md-12" *ngIf="article">
+    <div>
+      <div>
+        <p class="date">{{article.date | date }}</p>
+      </div>
+      <div class="col-lg-12">
+        <h1 class="mb-0">{{article.heading}}</h1>
+        <p class="base">{{article.base}}</p>
 
-        <span>Avg Rating</span> <span>{{ avgRating | async | round }}</span>
+        <hr class="byline">
 
-        <h5>Your current rating: </h5>
-        <fieldset class="rating">
-          <ng-container  *ngFor="let num of [5, 4, 3, 2, 1]">
-              <!-- full star -->
-              <input (click)="starHandler(num)"
-                    [id]="'star'+num"
-                    [value]="num-0.5"
-                    name="rating"
-                    type="radio"
-                    [checked]="num === (userRating | async) " />
-              <label class="full" [for]="'star'+num"></label>
-              <!-- half star -->
-              <input (click)="starHandler(num-0.5)"
-                     [value]="num-0.5"
-                     [id]="'halfstar'+num"
-                     name="rating"
-                     type="radio"
-                     [checked]="num === ((userRating | async) + 0.5)"  />
-              <label class="half" [for]="'halfstar'+num"></label>
-          </ng-container>
-        </fieldset>
-        <span>{{ userRating | async }}</span>
-        <hr>
-        <p>{{article.base}}</p>
-          <div class="panel panel-info">
-            <div class="panel-heading">
-              <h4>{{article.heading}}</h4>
-            </div>
-            <div class="panel-body" [innerHTML]="htmlText"></div>
-          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-12" *ngIf="article">
+    <blockquote class="blockquote">
+      <p>{{article.excerpt}}</p>
+    </blockquote>
+    <div>
+      <img [src]="article.uri" width="720" alt="">
+    </div>
+    <hr>
+  </div>
+  <div class="col-lg-12" [innerHTML]="htmlText"></div>
+</div>
+
+
+<div class="row article-container">
+  <div class="col-lg-8">
+    <div class="panel-group" *ngIf="article">
+
+      <!-- RELATED SECTIONS -->
+      <div class="panel panel-info" *ngIf="article.related_sections.length !== 0">
+        <div class="panel-heading pan-heading" data-toggle="collapse" href="#related-sections">
+          <h3 class="panel-title">Related Sections:
+            <i class="fa fa-angle-down pull-right"></i>
+          </h3>
+        </div>
+        <div id="related-sections" class="panel-collapse collapse in">
+          <ul class="list-group">
+            <a *ngFor="let section of article.related_sections" class="list-group-item" target="_blank" routerLink="/section" [queryParams]="{
+                  law_id: article.law_id,
+                  act_id: article.act_id,
+                  chap_id: article.chap_id,
+                  section_id: article.section_id
+                }">
+              Section {{article.id}}. {{article.section_title}}
+
+            </a>
+          </ul>
+
+        </div>
+      </div>
+
+      <!-- RELATED RULES -->
+      <div class="panel panel-info" *ngIf="article.related_rules.length !== 0">
+        <div class="panel-heading pan-heading" data-toggle="collapse" href="#related-rules">
+          <h3 class="panel-title">Related Rules:
+            <i class="fa fa-angle-down pull-right"></i>
+          </h3>
+        </div>
+        <div id="related-rules" class="panel-collapse collapse in">
+          <ul class="list-group">
+
+
+            <a class="list-group-item" *ngFor="let rule of article.related_rules" target="_blank" routerLink="/rule" [queryParams]="{
+                law_id: rule.law_id,
+                rule_id: rule.rule_parent_id,
+                chap_id: rule.chap_id,
+                r_id: rule.rule_id
+              }">
+              Rule {{rule.id}}. {{rule.rule_title}}
+            </a>
+
+          </ul>
         </div>
 
       </div>
+
+      <!-- RELATED NOTIFICATIONS -->
+      <div class="panel panel-info" *ngIf="article.related_notifications.length !== 0">
+        <div class="panel-heading pan-heading" data-toggle="collapse" href="#related-notification">
+          <h3 class="panel-title">Related notifications:
+            <i class="fa fa-angle-down pull-right"></i>
+          </h3>
+        </div>
+        <div id="related-notification" class="panel-collapse collapse in">
+          <ul class="list-group">
+
+            <a class="list-group-item" *ngFor="let notification of article.related_notifications" target="_blank" routerLink="/notification"
+              [queryParams]="{
+                  law_id: notification.law_id,
+                  act_id: notification.act_id,
+                  id: notification.notification_id
+                  }">
+              Notification {{notification.id}}. {{notification.notification_name}}
+            </a>
+          </ul>
+        </div>
+      </div>
+
+      <!-- RELATED CIRCULARS -->
+      <div class="panel panel-info">
+        <div class="panel-heading pan-heading" data-toggle="collapse" href="#related-circular">
+          <h3 class="panel-title">Related circulars:
+            <i class="fa fa-angle-down pull-right"></i>
+          </h3>
+        </div>
+        <div id="related-circular" class="panel-collapse collapse in">
+          <ul class="list-group">
+            <div *ngIf="article.related_circulars.length !== 0">
+              <a *ngFor="let circular of article.related_circulars" class="list-group-item" target="_blank" routerLink="/circular" [queryParams]="{
+                                  law_id: circular.law_id,
+                                  id: circular.circular_id,
+                                  type: circular.type
+                                  }">
+                {{circular.id}}. {{circular.circular_name}}
+              </a>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="star-container col-lg-4">
+    <div *ngIf="article">
+      <p class="author">by
+        <span>
+          <a [routerLink]="['/author', article.author_id]">{{article.by | uppercase}}</a>
+        </span>
+      </p>
+
+    </div>
+    <div class="inner">
+      <div class="histo">
+        <fieldset class="rating">
+          <ng-container *ngFor="let num of [5, 4, 3, 2, 1]">
+
+            <input (click)="starHandler(num)" [id]="'star'+num" [value]="num-0.5" name="rating" type="radio" [checked]="num === (userRating | async) "
+            />
+            <label class="full" [for]="'star'+num"></label>
+
+            <input (click)="starHandler(num-0.5)" [value]="num-0.5" [id]="'halfstar'+num" name="rating" type="radio" [checked]="num === ((userRating | async) + 0.5)"
+            />
+            <label class="half" [for]="'halfstar'+num"></label>
+          </ng-container>
+        </fieldset>
+      </div>
+      <div class="avg-rating">
+        <span class="rating-num">{{avgRating | async | round}}</span>
+        <div class="rating-stars">
+          <div class="stars-outer">
+            <div class="stars-inner" [style.width]="((avgRating | async | round)*20)+'%'"></div>
+          </div>
+        </div>
+        <div class="rating-users">
+          <i class="icon-user"></i> total rating
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

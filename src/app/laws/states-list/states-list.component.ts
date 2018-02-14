@@ -23,7 +23,7 @@ export class StatesListComponent implements OnInit {
     .subscribe(
       (params: Params) => {
         this.states = [];
-        this.id = params['id'];
+        this.id = params['law_id'];
         this._law.getUmbrellaLaws(this.id).then((snap: any[]) => {
           this.states = [];
           snap.forEach(doc => {

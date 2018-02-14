@@ -17,6 +17,13 @@ export class LawsListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+
+    this.route.firstChild.params.subscribe(params => {
+      const id = params['law_id'];
+      console.log('child route:', id);
+      this.selectedRow = id;
+      console.log(this.selectedRow);
+    });
     this._laws.getUmbrella().then((snapshot: any[]) => {
       snapshot.forEach(doc => {
         this.laws.push({
@@ -28,15 +35,15 @@ export class LawsListComponent implements OnInit {
   }
 
   toActs(index, lawEl) {
-    this.selectedRow = index;
+    this.selectedRow = lawEl.id;
     if (lawEl.id.toLowerCase() === 'sgst') {
       this.router.navigate([lawEl.id], { relativeTo: this.route });
     } else {
       this._laws.getUmbrellaLaws(lawEl.id).then((snap: any[]) => {
-        let act_id = '';
+        let law_id = '';
         snap.forEach(doc => {
-          act_id = doc.data().law_id;
-          this.router.navigate([act_id, 'law', 'desc'], {
+          law_id = doc.data().law_id;
+          this.router.navigate([lawEl.id, 'law', law_id, 'desc'], {
             relativeTo: this.route
           });
         });

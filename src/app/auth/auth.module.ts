@@ -7,6 +7,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireStorageModule } from 'angularfire2/storage';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
@@ -21,7 +22,8 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     AuthRoutingModule,
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireStorageModule
   ]
 })
 export class AuthModule {}

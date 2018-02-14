@@ -94,7 +94,7 @@ export class LawsService {
         .collection('chapters')
         .get()
         .then(snapshot => {
-          console.log(snapshot);
+
           resolve(snapshot);
         });
     });
@@ -137,7 +137,7 @@ export class LawsService {
         .collection('notifications_list')
         .get()
         .then(snapshot => {
-          console.log(snapshot);
+
           resolve(snapshot);
         });
     });
@@ -153,7 +153,7 @@ export class LawsService {
         .collection('circulars_list')
         .get()
         .then(snapshot => {
-          console.log(snapshot);
+
           resolve(snapshot);
         });
     });
@@ -169,13 +169,13 @@ export class LawsService {
         .collection('orders_list')
         .get()
         .then(snapshot => {
-          console.log(snapshot);
+
           resolve(snapshot);
         });
     });
   }
 
-  getArticleList(law_id){
+  getArticleList(law_id) {
     return new Promise((resolve, reject) => {
       this.firestore
         .collection('laws')
@@ -185,7 +185,7 @@ export class LawsService {
         .collection('articles_list')
         .get()
         .then(snapshot => {
-          console.log(snapshot);
+
           resolve(snapshot);
         });
     });
@@ -199,7 +199,7 @@ export class LawsService {
         .collection('rules')
         .get()
         .then(snapshot => {
-          console.log(snapshot);
+
           resolve(snapshot);
         });
     });
@@ -229,7 +229,7 @@ export class LawsService {
         .collection('chapters')
         .get()
         .then(snapshot => {
-          console.log(snapshot);
+
           resolve(snapshot);
         });
     });
