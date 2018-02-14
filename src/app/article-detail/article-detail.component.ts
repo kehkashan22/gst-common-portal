@@ -1,14 +1,14 @@
-import { AuthorsService } from "./../author-profile/authors.service";
-import { StarsService } from "./../shared/stars.service";
-import { AuthService } from "./../auth/auth.service";
-import { ArticleDetailService } from "./article-detail.service";
-import { ActivatedRoute, Router } from "@angular/router";
-import { Component, OnInit } from "@angular/core";
-import { DomSanitizer } from "@angular/platform-browser";
+import { AuthorsService } from './../author-profile/authors.service';
+import { StarsService } from './../shared/stars.service';
+import { AuthService } from './../auth/auth.service';
+import { ArticleDetailService } from './article-detail.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
-import * as firebase from "firebase/app";
-import "firebase/firestore";
-import { Observable } from "rxjs/Observable";
+import * as firebase from 'firebase/app';
+import 'firebase/firestore';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-article-detail',
@@ -36,8 +36,7 @@ export class ArticleDetailComponent implements OnInit {
     private router: Router,
     private _dom: DomSanitizer,
     private _auth: AuthService,
-    private _star: StarsService,
-    private _author: AuthorsService
+    private _star: StarsService
   ) {}
 
   ngOnInit() {
@@ -58,7 +57,6 @@ export class ArticleDetailComponent implements OnInit {
               ...snap.data()
             };
             this.populateArticle(article);
-            this.getAuthor(article.author_id);
             this.getAvgArticleRating();
             this.getUserRating();
           });
@@ -70,7 +68,6 @@ export class ArticleDetailComponent implements OnInit {
               ...doc.data()
             };
             this.populateArticle(article);
-            this.getAuthor(article.author_id);
             this.getAvgArticleRating();
             this.getUserRating();
           });
@@ -79,14 +76,14 @@ export class ArticleDetailComponent implements OnInit {
     });
   }
 
-  getAuthor(author_id) {
-    this._author.getAuthor(author_id).then((doc: any) => {
-      this.author = {
-        id: doc.id,
-        ...doc.data()
-      };
-    });
-  }
+  // getAuthor(author_id) {
+  //   this._author.getAuthor(author_id).then((doc: any) => {
+  //     this.author = {
+  //       id: doc.id,
+  //       ...doc.data()
+  //     };
+  //   });
+  // }
 
   getAvgArticleRating() {
     this.stars = this._star.getArticleStars(this.article.list_id);
@@ -116,7 +113,7 @@ export class ArticleDetailComponent implements OnInit {
     console.log('inside star handler');
     this._star.setStar(
       this.userId,
-      this.author.id,
+      this.article.author_id,
       this.article.list_id,
       value
     );

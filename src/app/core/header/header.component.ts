@@ -17,7 +17,7 @@ export class HeaderComponent {
   }
 
   isAuthenticated() {
-    return true;
+    return this.authService.isAuthenticated();
     // !!this.authService.user;
       // this.authService.isAuthenticated().subscribe(data => {
       //   return data ? true : false;

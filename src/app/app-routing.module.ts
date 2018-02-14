@@ -1,3 +1,8 @@
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+
+import { HomeComponent } from './core/home/home.component';
+import { NotFoundComponent } from './core/not-found/not-found.component';
 import { AuthGuard } from './auth/auth-guard.service';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
 import { CircularDetailComponent } from './circular-detail/circular-detail.component';
@@ -5,13 +10,14 @@ import { NotificationDetailComponent } from './notification-detail/notification-
 import { RuleDetailComponent } from './rule-detail/rule-detail.component';
 import { SectionDetailComponent } from './section-detail/section-detail.component';
 import { LawsComponent } from './laws/laws.component';
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
-
-import { HomeComponent } from './core/home/home.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  {
+    path: 'user',
+    loadChildren: './user/user.module#UserModule',
+    canActivate: [AuthGuard]
+  },
   {
     path: 'wiki',
     loadChildren: './laws/laws.module#LawsModule',
@@ -49,6 +55,7 @@ const appRoutes: Routes = [
     loadChildren: './author-profile/author-profile.module#AuthorProfileModule',
     canActivate: [AuthGuard]
   }
+  // { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
