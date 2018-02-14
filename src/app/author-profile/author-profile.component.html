@@ -20,27 +20,56 @@
         <div class="profile__details__name">
             <h1>{{author.name}}</h1>
             <h5>{{author.qualification}}</h5>
-            <p>{{author.bio}}</p>
+            <div class="quote-container">
+                <p>{{author.bio}}</p>
+            </div>
+            
+
+        </div>
+        <div class="profile__details__rating">
+            <div class="author__stars">
+                
+                <div class="author__star_rating">{{ authorAvg | async | round }}</div>
+                <div class="author__star_align">
+                    <div class="author__stars-outer">
+                        <div class="author__stars-inner" [style.width]="((authorAvg | async | round)*20)+'%'"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile__detail__social">
+                <div><i class="fa fa-globe"><span>fhconline.in</span></i></div>
+                <div><i class="fa fa-envelope-o"><span>farooqhaqueclasses@gmail.com</span></i></div>
+            </div>
         </div>
     </div>
+   
+    <hr class="style14">
+   
+    
+
     <div class="profile_detail">
-        <div class="profile_detail__experience">
-            <i class="fa fa-trophy"></i><span>No. of Posts </span>
+        <div class="profile_detail__nopost">
+            <i class="fa fa-edit" style="font-size:20px;"></i>
+            <h5>No. of Posts </h5>
             <p *ngIf="articles.length > 0">{{articles.length}}</p>
         </div>
         <div class="profile_detail__location">
-            <i class="fa fa-map-marker"></i><span>Location</span>
+            <i class="fa fa-map-marker" style="font-size:20px;"></i>
+            <h5>Location</h5>
             <p> {{author.location}}</p>
         </div>
         <div class="profile_detail__qualification">
-            <i class="fa fa-mortar-board"></i><span>Company </span>
+            <i class="fa fa-mortar-board" style="font-size:20px;"></i>
+            <h5>Company </h5>
             <p>{{author.company}}</p>
         </div>
-        <div class="profile_detail__experience">
-            <i class="fa fa-trophy"></i><span>Designation </span>
+        <div class="profile_detail__designation">
+            <i class="fa fa-trophy" style="font-size:20px;"></i>
+            <h5>Designation</h5>
             <p>{{author.designation}}</p>
         </div>
-    
+
     </div>
 </div>
 
@@ -48,12 +77,15 @@
 <hr>
 
 <!--KEHKASHAN START-->
-<div *ngIf="articles.length !== 0">
-  <div class="card article__card" *ngFor="let article of articles; let i = index">
-      <app-article-item [law_id]="article.law_id" [article]="article" [index]="i">
-        </app-article-item>
-  </div>
+<div class="column">
+    <div *ngIf="articles.length !== 0">
+        <div class="article__card" *ngFor="let article of articles; let i = index">
+            <app-article-item [law_id]="article.law_id" [article]="article" [index]="i">
+            </app-article-item>
+        </div>
+    </div>
 </div>
+
 
 <!-- <div class="card-body">
     <div class="card-content">
