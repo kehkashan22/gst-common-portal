@@ -9,6 +9,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
 import { Observable } from 'rxjs/Observable';
+import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-article-detail',
@@ -30,6 +31,7 @@ export class ArticleDetailComponent implements OnInit {
   name: string;
   search_id: string;
   userRating: Observable<any>;
+  exists = false;
   constructor(
     private _article: ArticleDetailService,
     private route: ActivatedRoute,
@@ -87,14 +89,21 @@ export class ArticleDetailComponent implements OnInit {
 
   getAvgArticleRating() {
     this.stars = this._star.getArticleStars(this.article.list_id);
-    console.log(this.stars);
     this.avgRating = this._star.getAvgRating(this.stars);
-    console.log(this.avgRating);
   }
 
   getUserRating() {
     const userStars = this._star.getUserArticleStars(this.userId, this.article.list_id);
     this.userRating = this._star.getAvgRating(userStars);
+    this.userRating.subscribe(data => this.exists = data
+    //   {
+    //   console.log(data);
+    //   console.log(this.exists);
+    //  this.exists = !!data
+    //  console.log(this.exists);
+    //  return this.exists
+    //   }
+    )
       // console.log('rating', rating);
   }
 
@@ -118,4 +127,5 @@ export class ArticleDetailComponent implements OnInit {
       value
     );
   }
+  
 }

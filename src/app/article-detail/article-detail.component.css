@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400);
 @import url(https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
-
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Muli|Nanum+Gothic|Roboto');
 .article-container {
   padding: 0 10px;
   margin: 0 5px;
@@ -13,12 +14,13 @@
   font-weight: 300;
   font-size: 2.3em;
 }
-/* .byline {
+.byline {
   margin-top: 13px;
   margin-bottom: 20px;
   border: 0;
   border-top: 1px solid #eee;
-} */
+  margin-top:0;
+} 
 
 blockquote {
   margin-left: 10px;
@@ -49,13 +51,16 @@ blockquote > p {
 
 /*GOOGLE STYLE*/
 .star-container {
+  display:grid;
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: -1px 2px 4px rgba(0,0,0,.25), 1px 1px 3px rgba(0,0,0,.1);
   margin: 0 auto;
-  background-color: #efefef;
-  padding: 4px;
+  position: relative;
+  padding:0px;
 }
 
 .inner {
-  padding: 1em;
   background-color: white;
   overflow: hidden;
   position: relative;
@@ -66,19 +71,23 @@ blockquote > p {
 
 .avg-rating {
   float: left;
-  width: 45%;
-  margin-right: 5%;
+  width: 30%;
+  height:120px;
   text-align: center;
+  background-color: #34367d;
+  color:#fff;
+  font-size:17px;
 }
 
 .rating-num {
   font-family: "Roboto", Helvetica;
   color: #737373;
   font-weight: 300;
-  color: #333333;
-  font-size: 56px;
+  color: #fff;
+  font-size: 73px;
   font-weight: 100;
   line-height: 1em;
+  padding-top:15px;
 }
 
 .rating-stars {
@@ -92,12 +101,16 @@ blockquote > p {
 
 .rating-users {
   font-size: 14px;
+  font-family: 'Roboto', sans-serif;
 }
 
 .histo {
   float: left;
-  width: 50%;
-  font-size: 13px;
+  width: 70%;
+  font-size: 16px;
+  justify-items: center;
+  grid-template-columns: 100%;
+  display:grid;
 }
 
 .stars-outer {
@@ -105,11 +118,11 @@ blockquote > p {
   position: relative;
   font-family: FontAwesome;
 }
-
+/* 
 .stars-outer::before {
   content: "\f006 \f006 \f006 \f006 \f006";
   color: #c4c1c1;
-}
+} */
 
 .stars-inner {
   position: absolute;
@@ -122,7 +135,7 @@ blockquote > p {
 
 .stars-inner::before {
   content: "\f005 \f005 \f005 \f005 \f005";
-  color: #737373;
+  color: #333333;
 }
 
 /*User Rating*/
@@ -163,4 +176,124 @@ label {
 .rating > label:hover ~ input:checked ~ label,
 selection .rating > input:checked ~ label:hover ~ label {
   color: #ffed85;
+}
+
+
+    
+h1 {
+  margin-bottom: 0;
+}
+
+
+
+.article___img{
+ text-align: center;
+}
+
+.article__img {
+  width:70%;
+  height:300px;
+  object-fit:cover;
+}
+
+.article__body{
+ width:80%;
+ margin-right:auto;
+ margin-left:auto;
+ font-size:16px;
+ margin-top:38px;
+ font-family: 'Nanum Gothic', sans-serif;
+}
+
+
+hr.style14 { 
+  border: 0; 
+  height: 1px; 
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+}
+.author{
+  font-size: 16px;
+  color:#333333;
+}
+
+.rating_template{
+  color:#333333;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.panel-heading{
+  margin: 0px;
+  /* border-top:1px solid #6571b5;  */
+  /* border-bottom:2px solid #6571b5;  */
+  font-size: 2rem;
+  padding:5px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  color:#34367d;
+  padding:3px 16px;
+}
+
+.pan-heading{
+  background-color: #6571b5;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+}
+
+.panel-info {
+  border-color: #6571b5;
+}
+
+.card__author {
+  padding-left: 0 !important;
+  justify-items: center;
+}
+
+.card__author img,
+.card__author-content {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.card__author img {
+  height: 72px;
+  border-radius: 50%;
+  margin-top:3px;
+  margin-right: 5.6em;
+}
+
+.stars {
+  vertical-align: middle;
+  margin-left: auto;
+  text-align: center;
+  padding-right: 0 !important;
+}
+
+.card__author {
+  display: grid;
+  grid-template-columns: 60px auto;
+  /* grid-template-rows: 1fr 1fr; */
+}
+
+.card__author-content {
+  align-self: center;
+}
+
+.card__author-content > a {
+  color: #3f3f3f;
+}
+
+.card__author-content > p {
+  margin-bottom: 0 !important;
+  color: #9b9b9b;
+  font-size: 1.2rem;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+  line-height: 20px !important;
+}
+
+.related{
+ margin-right:auto;
+ margin-left:auto; 
+ width:70;
 }
