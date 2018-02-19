@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
-.video{
+
+.panel-heading > .pan-title:before {
+  float: right !important;
+  font-family: FontAwesome;
+  content:"\f078";
+  padding-right: 5px;
+}
+.panel-heading.collapsed > .pan-title:before {
+  float: right !important;
+  content:"\f077";
+}
+
+.video{ 
   width: 100%;
   margin: 1px;
   padding: 7px;
@@ -11,20 +23,20 @@
   overflow-y:scroll;
 }
 
-.style-2::-webkit-scrollbar-track
+.container_scroll::-webkit-scrollbar-track
 {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 	border-radius: 10px;
 	background-color: #F5F5F5;
 }
 
-.style-2::-webkit-scrollbar
+.container_scroll::-webkit-scrollbar
 {
   width: 6px;
 	background-color: #F5F5F5;
 }
 
-.style-2::-webkit-scrollbar-thumb
+.container_scroll::-webkit-scrollbar-thumb
 {
 	border-radius: 10px;
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
@@ -115,16 +127,29 @@ h2{
    /* text-align:center; */
    font-size: 18px;
 }
-
+  
 .pan-heading{
-  background-color: #6571b5;
-  color:#fff;
+  background-color: #6571b53c;
+
+  padding:12px; 
 }
 
+.panel-title{
+  font-weight:bold;
+  color:#6571b5;
+}
 
+.fa-book,
+.fa-file-text-o,
+.fa-bell-o,
+.fa-bullhorn,
+.fa-pencil-square-o
+{
+ padding-right:10px;
+}
 
 .panel-info{
-  border-color: #6571b5;
+   border-color: #ddd; 
 }
 
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {

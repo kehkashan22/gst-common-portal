@@ -1,6 +1,6 @@
 .box {
-  padding: 20px;
-  margin: 10px;
+  padding: 15px;
+  margin-bottom: 5px;
 }
 
 .card{
@@ -24,4 +24,8 @@
   line-height: 1.45em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.search-box{
+  border: 1px solid #6571b5;
 }
