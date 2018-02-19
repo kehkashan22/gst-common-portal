@@ -33,79 +33,9 @@
     <div class="article__body">
         <div [innerHTML]="htmlText"></div>
     </div>
-
-
-    <div class="star-container card_rating col-lg-4 col-md-12 col-xs-12 col-sm-12 pull-right">
-            <div *ngIf="article">
-                <!-- <p class="author">by
-                    <span>
-              <a [routerLink]="['/author', article.author_id]">{{article.by | uppercase}}</a>
-            </span>
-         
-                </p> -->
-              
-    
-            </div>
-    
-            <div class="inner">
-                <div class="histo">
-
-                        <div class="card__author col-lg-8 col-md-12 col-xs-12 col-sm-12">
-                                <div class="card__author-dp">
-                                 <img _ngcontent-c1="" alt="Author" class="img-thumbnail rounded" src="https://media1.popsugar-assets.com/files/thumbor/bp72LRboS8pdPlVvLXRz1QDxOYI/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2015/07/08/991/n/1922398/53f34b16_edit_img_image_1090627_1436394745_INT_AntMan_PaulRuddEvangelineLilly_070715_CLUELESS_SQUARE/i/Paul-Rudd-Clueless-Interview-Video.jpg">
-                                </div>
-                                <div class="card__author-content">
-                                  <a [routerLink]="['/author', article.author_id]">{{article.by}}</a>
-                                  <p>
-                                    {{article.date | date}}
-                                  </p>
-                                </div>
-                              </div>
-    
-                  
-                        <!-- <div class="rating-users">
-                            <div *ngIf="exists; else none">
-                                <p class="rating_template">Your current Rating </p>
-                            </div>
-                            <ng-template #none>
-                                <p class="rating_template">Rate this article!</p>
-                            </ng-template>
-                        </div> -->
-                        
-                        <fieldset class="rating" data-toggle="tooltip" data-placement="top" title="Rate this article">
-                            <ng-container *ngFor="let num of [5, 4, 3, 2, 1]">
-    
-                                <input (click)="starHandler(num)" [id]="'star'+num" [value]="num-0.5" name="rating" type="radio" [checked]="num === (userRating | async) " />
-                                <label class="full" [for]="'star'+num"></label>
-    
-                                <input (click)="starHandler(num-0.5)" [value]="num-0.5" [id]="'halfstar'+num" name="rating" type="radio" [checked]="num === ((userRating | async) + 0.5)" />
-                                <label class="half" [for]="'halfstar'+num"></label>
-                            </ng-container>
-                        </fieldset>
-                    
-    
-                </div>
-                <div class="avg-rating">
-                    <span class="rating-num">{{avgRating | async | round}}</span>
-                    <!-- <div class="rating-stars">
-                        <div class="stars-outer">
-                            <div class="stars-inner" [style.width]="((avgRating | async | round)*20)+'%'"></div>
-                        </div>
-                    </div> -->
-                    <div class="rating-users">
-                      Average rating !
-                    </div>
-                </div>
-    
-            </div>
-    
-    
-    
-        </div>
-    
 </div>
-<hr class="style14">
 
+<hr class="style14">
 
 
 
@@ -209,6 +139,77 @@
     </div>
 </div>
 
+
+<div class="star-container card_rating col-lg-4 col-md-12 col-xs-12 col-sm-12 pull-right">
+        <div *ngIf="article">
+            <!-- <p class="author">by
+                <span>
+          <a [routerLink]="['/author', article.author_id]">{{article.by | uppercase}}</a>
+        </span>
+     
+            </p> -->
+          
+
+        </div>
+
+        <div class="inner">
+            <div class="histo">
+
+                    <div class="card__author col-lg-8 col-md-12 col-xs-12 col-sm-12">
+                            <div class="card__author-dp">
+                             <img _ngcontent-c1="" alt="Author" class="img-thumbnail rounded" src="https://media1.popsugar-assets.com/files/thumbor/bp72LRboS8pdPlVvLXRz1QDxOYI/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2015/07/08/991/n/1922398/53f34b16_edit_img_image_1090627_1436394745_INT_AntMan_PaulRuddEvangelineLilly_070715_CLUELESS_SQUARE/i/Paul-Rudd-Clueless-Interview-Video.jpg">
+                            </div>
+                            <div class="card__author-content">
+                              <a [routerLink]="['/author', article.author_id]">{{article.by}}</a>
+                              <p>
+                                {{article.date | date}}
+                              </p>
+
+                              
+                            </div>
+
+                          </div>
+
+              
+                    
+                    <fieldset class="rating" data-toggle="tooltip" data-placement="top" title="Rate this article">
+                        <ng-container *ngFor="let num of [5, 4, 3, 2, 1]">
+
+                            <input (click)="starHandler(num)" [id]="'star'+num" [value]="num-0.5" name="rating" type="radio" [checked]="num === (userRating | async) " />
+                            <label class="full" [for]="'star'+num"></label>
+
+                            <input (click)="starHandler(num-0.5)" [value]="num-0.5" [id]="'halfstar'+num" name="rating" type="radio" [checked]="num === ((userRating | async) + 0.5)" />
+                            <label class="half" [for]="'halfstar'+num"></label>
+                        </ng-container>
+                    </fieldset>
+                 
+                      <div class="rating-users">
+                        <div *ngIf="exists; else none">
+                            <p class="rating_template">Your current Rating </p>
+                        </div>
+                        <ng-template #none>
+                            <p class="rating_template">Rate this article!</p>
+                        </ng-template>
+                    </div>  
+                
+            </div>
+
+            <div class="avg_rating_grid">
+                    <div class="avg-rating">
+                            <span class="rating-num">{{avgRating | async | round}}</span>
+                             <div class="rating-stars">
+                                <div class="stars-outer">
+                                    <div class="stars-inner" [style.width]="((avgRating | async | round)*20)+'%'"></div>
+                                </div>
+                            </div> 
+                            <div class="rating-users">
+                              Average rating 
+                            </div>
+                        </div>
+            </div>
+        
+        </div>
+    </div>
 
 
 <!-- 

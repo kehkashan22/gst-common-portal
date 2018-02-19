@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400);
 @import url(https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 @import url('https://fonts.googleapis.com/css?family=Roboto');
-@import url('https://fonts.googleapis.com/css?family=Muli|Nanum+Gothic|Roboto');
+@import url('https://fonts.googleapis.com/css?family=Muli');
 .article-container {
   padding: 0 10px;
   margin: 0 5px;
@@ -71,12 +71,22 @@ blockquote > p {
 
 .avg-rating {
   float: left;
-  width: 30%;
-  height:120px;
+  width: 100%;
   text-align: center;
-  background-color: #34367d;
+  background-color: #6571b5;
   color:#fff;
-  font-size:17px;
+  font-size:15px;
+  padding-top:5%;
+  vertical-align: center;
+  height:152px;
+
+}
+
+.avg_rating_grid{
+  display: grid;
+  background-color:#6571b5;
+  height:40%;
+
 }
 
 .rating-num {
@@ -84,16 +94,15 @@ blockquote > p {
   color: #737373;
   font-weight: 300;
   color: #fff;
-  font-size: 73px;
+  font-size: 65px;
   font-weight: 100;
   line-height: 1em;
-  padding-top:15px;
+  margin-top:5%;
 }
 
 .rating-stars {
   font-size: 1em;
   color: #e3e3e3;
-  margin-bottom: 0.5em;
 }
 .rating-stars .active {
   color: #737373;
@@ -118,11 +127,12 @@ blockquote > p {
   position: relative;
   font-family: FontAwesome;
 }
-/* 
+
 .stars-outer::before {
   content: "\f006 \f006 \f006 \f006 \f006";
   color: #c4c1c1;
-} */
+  font-size:12px;
+} 
 
 .stars-inner {
   position: absolute;
@@ -135,7 +145,8 @@ blockquote > p {
 
 .stars-inner::before {
   content: "\f005 \f005 \f005 \f005 \f005";
-  color: #333333;
+  color: #fff;
+  font-size:12px;
 }
 
 /*User Rating*/
@@ -219,7 +230,7 @@ hr.style14 {
 .rating_template{
   color:#333333;
   font-size: 16px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Muli', sans-serif;
 }
 
 .panel-heading{
