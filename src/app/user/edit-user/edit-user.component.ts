@@ -1,3 +1,6 @@
+import { User } from './../../core/user';
+import { DaterangePickerComponent } from 'ng2-daterangepicker';
+import { Router } from '@angular/router';
 import { AuthService } from 'app/auth/auth.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
@@ -9,12 +12,8 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { tap } from 'rxjs/operators';
 import * as firebase from 'firebase';
-interface User {
-  uid: string;
-  email?: string | null;
-  photoURL?: string;
-  displayName?: string;
-}
+import * as moment from 'moment';
+
 
 @Component({
   selector: 'app-edit-user',
@@ -22,6 +21,7 @@ interface User {
   styleUrls: ['./edit-user.component.css']
 })
 export class EditUserComponent implements OnInit {
+  member_since: any;
   userForm: FormGroup;
   user: User;
   image: string;
@@ -36,10 +36,38 @@ export class EditUserComponent implements OnInit {
   // State for dropzone CSS toggling
   isHovering: boolean;
 
+  qualifications = [
+    'Graduate',
+    'Post Graduate',
+    'CA in Practice',
+    'CA in Job/Business',
+    'CFA',
+    'CS',
+    'CMA',
+    'MBA',
+    'LLB/Advocate',
+    'Student - CA/CS/CMA',
+    'Student - Other',
+    'Other'
+  ];
+
+  dob: moment.Moment;
+  options3: any = {
+    locale: {
+      format: 'MMM DD, YYYY'
+    },
+    alwaysShowCalendars: false,
+    singleDatePicker: true,
+    showDropdowns: true
+  };
+
+  @ViewChild(DaterangePickerComponent) private picker: DaterangePickerComponent;
+
   constructor(
     public auth: AuthService,
     private storage: AngularFireStorage,
-    private db: AngularFirestore
+    private db: AngularFirestore,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -50,7 +78,14 @@ export class EditUserComponent implements OnInit {
       console.log(this.user);
       this.userForm.patchValue({
         userData: {
-          displayName: this.user.displayName
+          displayName: this.user.displayName,
+          photoURL: this.user.photoURL,
+          dob: moment(this.user.dob).format('MMM DD, YYYY'),
+          mob: this.user.mob,
+          qualification: this.user.qualification,
+          designation: this.user.designation,
+          member_since: moment(this.user.member_since).format('MMM DD, YYYY'),
+          company: this.user.company
         }
       });
       this.image = this.user.photoURL;
@@ -58,9 +93,20 @@ export class EditUserComponent implements OnInit {
 
     this.userForm = new FormGroup({
       userData: new FormGroup({
-        displayName: new FormControl(null, Validators.required)
+        displayName: new FormControl(null, Validators.required),
+        mob: new FormControl(null, [
+          Validators.minLength(10),
+          Validators.maxLength(10),
+          Validators.pattern('[0-9]+')
+        ]),
+        dob: new FormControl(null),
+        qualification: new FormControl('Choose'),
+        designation: new FormControl(null),
+        member_since: new FormControl(null),
+        company: new FormControl(null)
       })
     });
+
   }
 
   /** IMAGE  */
@@ -114,14 +160,23 @@ export class EditUserComponent implements OnInit {
     );
   }
 
+  public selectedDate(value: any, datepicker?: any) {
+    this.dob = value.start.format();
+  }
+
+  public selectedMemberDate(value: any, datepicker?: any) {
+    this.member_since = value.start.format();
+  }
+
   onSubmit() {
     this.user = {
       ...this.user,
       ...this.userForm.value.userData,
-      photoURL: this.image
+      photoURL: this.image,
+      dob: this.dob || this.user.dob,
+      member_since: this.member_since || this.user.member_since
     };
-    console.log(this.user);
     this.auth.updateUserData(this.user);
-    this.userForm.reset();
+    this.router.navigate(['user']);
   }
 }

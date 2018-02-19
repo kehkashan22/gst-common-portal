@@ -8,7 +8,7 @@
                   <a class="btn pill" data-toggle="pill" href="#chapters">By Chapter</a>
                 </li>
               </ul>
-        </div> 
+        </div>
 
   <hr>
   <div class="tab-content">
@@ -31,15 +31,15 @@
           <div class="panel">
             <div class="panel-heading" role="tab" id="headingOne">
               <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" [attr.data-parent]="'#accordion_' + i"
-                  [attr.href]="'#collapseOne_' + i">
+                <a role="button" data-toggle="collapse" aria-expanded="false" aria-controls="collapseOne" [attr.data-parent]="'#accordion_' + i"
+                  [attr.href]="'#collapseOne_' + i" class="claps">
                   <span class="chapter-num panel-group">
                       Chapter {{chapter.number}}
                   </span>
                   <span class="chapter-name">
                       {{ chapter.name }}
                   </span>
-                  
+
                 </a>
               </h4>
             </div>
@@ -72,7 +72,7 @@
           style="cursor: pointer;"
           class="list-group-item">
            <span class="chapter-nums"> Rule {{rule.number}}</span>
-            <span class="chapter-names"> {{rule.name}}</span>        
+            <span class="chapter-names"> {{rule.name}}</span>
           </a>
         </div>
         <pagination-controls (pageChange)="p2 = $event" id="second"></pagination-controls>

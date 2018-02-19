@@ -5,18 +5,12 @@ import { ArticleItemComponent } from './article-item/article-item.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    PipesModule
-  ],
-  declarations: [ArticleItemComponent],
-  providers: [
-    AuthService,
-    StarsService
-  ],
-  exports: [ArticleItemComponent]
+  imports: [CommonModule, RouterModule, PipesModule],
+  declarations: [ArticleItemComponent, LoaderComponent],
+  providers: [AuthService, StarsService],
+  exports: [ArticleItemComponent, LoaderComponent]
 })
-export class SharedModule { }
+export class SharedModule {}

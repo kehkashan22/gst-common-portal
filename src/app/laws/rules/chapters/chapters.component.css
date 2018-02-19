@@ -1,15 +1,17 @@
 
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
+
 .panel-title > a:before {
   float: right !important;
   font-family: FontAwesome;
-  content:"\f056";
+  content:"\f068";
   padding-right: 5px;
 }
 .panel-title > a.collapsed:before {
   float: right !important;
-  content:"\f055";
+  content:"\f067";
 }
+
 .panel-title > a:hover,
 .panel-title > a:active,
 .panel-title > a:focus  {
@@ -157,29 +159,29 @@ color: #3f3f3f;
     font-weight: 500;
     color:#34367d;
   }
-  
+
   .box{
     padding-bottom: 20px;
   }
-  
+
   /* ...................pill styling............... */
 
   .pill-style>li.active>a, .pill-style>li.active>a:focus, .pill-style>li.active>a:hover {
     color: #ff5a5f;
-     background-color: rgb(214, 214, 214);   
+     background-color: rgb(214, 214, 214);
      /* border: #6571B5 1px solid; */
-     border-radius:5px 5px 5px 5px; 
-    
-     
+     border-radius:5px 5px 5px 5px;
+
+
     }
-    
+
     a {
       color: #3f3f3f;
       text-decoration: none;
       font-weight:bold;
-     
+
     }
-    
+
     .nav-pills>li.active>a {
       position: relative;
       display: block;
@@ -187,8 +189,8 @@ color: #3f3f3f;
       background-color: #6571b5;
       /* padding: 1px 16px; */
     }
-    
-     
+
+
     .btn{
       text-decoration:none;
       color:#ff5a5f;
@@ -202,23 +204,23 @@ color: #3f3f3f;
       border:1px solid #48487d
       /* background-color:#DDDDDD; */
     }
-    
+
     .btn:hover{
       background-color:#fff;
     }
-    
+
     .btn.pill{
       -webkit-border-radius: 10px;
       -moz-border-radius: 10px;
       border-radius: 10px;
     }
-    
+
     .btn-group > li > .btn.round:not(:first-child):not(:last-child), .btn-group >  li > .btn.pill:not(:first-child):not(:last-child){
       -webkit-border-radius: 0;
       -moz-border-radius: 0;
       border-radius: 0;
     }
-    
+
     .btn-group > li > .btn.round:first-child, .btn-group > li > .btn.pill:first-child{
       -webkit-border-top-right-radius: 0;
       -webkit-border-bottom-right-radius: 0;
@@ -227,7 +229,7 @@ color: #3f3f3f;
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }
-    
+
     .btn-group > li > .btn.round:last-child, .btn-group > li > .btn.pill:last-child{
       -webkit-border-top-left-radius: 0;
       -webkit-border-bottom-left-radius: 0;
@@ -236,7 +238,7 @@ color: #3f3f3f;
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
-    
+
     .btn-group .btn + .btn{
       border-left: 1px solid rgba(0, 0, 0, .1);
       margin-left:-1px;
@@ -249,29 +251,28 @@ color: #3f3f3f;
         margin-bottom:40px;
       }
     }
-    
+
     @media (min-width: 768px) and (max-width: 1024px) {
       .mob-div {
         margin-bottom:40px;
       }
     }
-    
+
     @media (min-width: 970px) and (max-width: 1200px) {
       .mob-div {
         margin-bottom:40px;
       }
     }
-    
+
     @media (min-width: 100px) and (max-width: 1000px) {
       .mob-div {
         margin-bottom:40px;
       }
     }
-    
+
     @media (min-width: 996px) and (max-width: 1200px) {
       .mob-div{
         margin-bottom:10px;
       }
-    }  
-    
-    
+    }
+

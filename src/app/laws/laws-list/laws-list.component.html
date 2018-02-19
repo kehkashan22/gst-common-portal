@@ -14,7 +14,7 @@
         </button>
         <ul class="dropdown-menu width">
           <li *ngFor="let lawEl of laws; let i = index">
-            <a (click)="toActs(i, lawEl)" class="list-group-item" [class.active]="i === selectedRow" class="box clearfix">{{ lawEl.name }}</a>
+            <a (click)="toActs(i, lawEl)" class="list-group-item" [class.active]="lawEl.id === selectedRow" class="box clearfix">{{ lawEl.name }}</a>
           </li>
         </ul>
       </div>

@@ -3,8 +3,17 @@
     <form [formGroup]="userForm" (ngSubmit)="signup()">
 
       <h3>New User Signup</h3>
-      <p class="button is-small" routerLink="/signin">Already Registered?</p>
+      <p class="button is-small" [routerLink]="['signin']">Already Registered?</p>
       <hr>
+
+      <div class="form-group">
+          <label for="displayName">Name</label>
+          <input class="form-control" type="displayName" id="displayName"  formControlName="displayName" required>
+      </div>
+
+      <div *ngIf="formErrors.displayName" class="help-block">
+          {{ formErrors.displayName }}
+        </div>
 
       <div class="form-group">
         <label for="email">Email</label>

@@ -4,7 +4,7 @@ import { NgForm, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
-type UserFields = 'email' | 'password';
+type UserFields = 'displayName' | 'email' | 'password';
 type FormErrors = { [u in UserFields]: string };
 
 @Component({
@@ -17,10 +17,14 @@ export class SignupComponent implements OnInit {
   newUser = true; // to toggle login or signup form
   passReset = false; // set to true when password reset is triggered
   formErrors: FormErrors = {
+    'displayName': '',
     'email': '',
     'password': '',
   };
   validationMessages = {
+    'displayName': {
+      'required': 'Name is required.',
+    },
     'email': {
       'required': 'Email is required.',
       'email': 'Email must be a valid email',
@@ -39,11 +43,19 @@ export class SignupComponent implements OnInit {
   private router: Router) { }
 
   ngOnInit() {
+    this.auth.user.subscribe(data => {
+      if (data) {
+        this.router.navigate(['/']);
+      }
+    });
     this.buildForm();
   }
 
   buildForm() {
     this.userForm = this.fb.group({
+      'displayName': ['', [
+        Validators.required
+      ]],
       'email': ['', [
         Validators.required,
         Validators.email,
@@ -59,7 +71,7 @@ export class SignupComponent implements OnInit {
   }
 
   signup() {
-    this.auth.emailSignUp(this.userForm.value['email'], this.userForm.value['password']);
+    this.auth.emailSignUp(this.userForm.value['displayName'], this.userForm.value['email'], this.userForm.value['password']);
   }
 
     // Updates validation state on form changes.

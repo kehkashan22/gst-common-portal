@@ -102,6 +102,7 @@ h5 {
   margin-left: auto;
   text-align: right;
   padding-right: 0 !important;
+  padding-left: 0 !important;
 }
 
 .card__author {

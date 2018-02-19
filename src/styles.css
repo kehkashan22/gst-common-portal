@@ -5,4 +5,34 @@ body {
 
 .my-pagination /deep/ .ngx-pagination .current {
   background: #6571b5;
-  }
+}
+
+.daterangepicker /deep/ td.active,
+.daterangepicker td.active:hover {
+  background-color: #6571b5 !important;
+}
+
+.daterangepicker /deep/ td.in-range {
+  background-color: #8792cc !important;
+}
+
+.daterangepicker /deep/ .ranges li {
+  color: #6571b5 !important;
+}
+
+.daterangepicker /deep/ .ranges li.active,
+.ranges li:hover {
+  background: #6571b5 !important;
+  border: 1px solid #6571b5 !important;
+  color: #fff !important;
+}
+
+.daterangepicker /deep/ .btn-success, .daterangepicker /deep/ .btn-success:focus{
+  color: #fff;
+  background-color: #6571b5;
+  border-color: #6571b5;
+}
+
+.daterangepicker /deep/ .input-mini.active {
+  border: 1px solid #6571b5 !important;
+}
