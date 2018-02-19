@@ -1,3 +1,5 @@
+import { User } from './../core/user';
+import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -6,21 +8,15 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { NotifyService } from './notify.service';
 
-import { Observable } from 'rxjs/Observable';
 import { switchMap, take, map, tap } from 'rxjs/operators';
 
-interface User {
-  uid: string;
-  email?: string | null;
-  photoURL?: string;
-  displayName?: string;
-}
+
 
 @Injectable()
 export class AuthService {
 
   user: Observable<User | null>;
-
+  check: Observable<boolean | null>;
   constructor(private afAuth: AngularFireAuth,
               private afs: AngularFirestore,
               private router: Router,
@@ -35,8 +31,12 @@ export class AuthService {
         }
       });
 
-      this.afAuth.authState.subscribe(data => {
-        console.log('AUTH', data);
+      this.check = this.afAuth.authState.switchMap(data => {
+        if ( data ) {
+          return Observable.of(true);
+        } else {
+          return Observable.of(null);
+        }
       })
   }
 
@@ -50,20 +50,34 @@ export class AuthService {
   private oAuthLogin(provider: firebase.auth.AuthProvider) {
     return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
-        this.notify.update('Welcome to Firestarter!!!', 'success');
-        this.router.navigate(['/wiki']);
-        return this.updateUserData(credential.user);
+        this.router.navigate(['/']);
+        this.afs.doc<User>(`users/${credential.user.uid}`).snapshotChanges().pipe(
+          take(1),
+          map((userEl) => !!userEl),
+          tap((userEl) => {
+            if (!userEl) {
+              return this.updateUserData(credential.user);
+            } else {
+              return null;
+            }
+          }),
+        );
+
       })
       .catch((error) => this.handleError(error) );
   }
 
   //// Email/Password Auth ////
 
-  emailSignUp(email: string, password: string) {
+  emailSignUp(displayName: string, email: string, password: string) {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
       .then((user) => {
         // this.notify.update('Welcome to Firestarter!!!', 'success');
-        this.router.navigate(['/signin']);
+        this.router.navigate(['/auth/login']);
+        user = {
+          ...user,
+          displayName
+        }
         return this.updateUserData(user); // if using firestore
       })
       .catch((error) => this.handleError(error) );
@@ -72,9 +86,7 @@ export class AuthService {
   emailLogin(email: string, password: string) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((user) => {
-        // this.notify.update('Welcome to Firestarter!!!', 'success')
-        this.router.navigate(['/wiki']);
-        return this.updateUserData(user); // if using firestore
+        this.router.navigate(['/']);
       })
       .catch((error) => this.handleError(error) );
   }
@@ -90,7 +102,7 @@ export class AuthService {
 
   signOut() {
     this.afAuth.auth.signOut().then(() => {
-        this.router.navigate(['/signin']);
+        this.router.navigate(['/auth/login']);
     });
   }
 
@@ -100,6 +112,7 @@ export class AuthService {
     this.notify.update(error.message, 'error');
   }
 
+
   // Sets user data to firestore after succesful login
    updateUserData(user: User) {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
@@ -108,8 +121,14 @@ export class AuthService {
       email: user.email || null,
       displayName: user.displayName || 'nameless user',
       photoURL: user.photoURL || 'https://goo.gl/Fz9nrQ',
+      dob: user.dob || null,
+      mob: user.mob || null,
+      qualification: user.qualification || null,
+      designation: user.designation || null,
+      member_since: user.member_since || null,
+      company: user.company || null
     };
-    return userRef.set(data);
+    return userRef.set(data, {merge: true});
   }
 
   isAuthenticated() {

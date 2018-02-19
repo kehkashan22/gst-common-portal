@@ -21,7 +21,7 @@ export class LawsListComponent implements OnInit {
     this.route.firstChild.params.subscribe(params => {
       const id = params['law_id'];
       console.log('child route:', id);
-      this.selectedRow = id;
+      this.selectedRow = id || 'none';
       console.log(this.selectedRow);
     });
     this._laws.getUmbrella().then((snapshot: any[]) => {

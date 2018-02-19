@@ -1,0 +1,53 @@
+<div class="form-wrapper">
+  <h2>
+    Account
+  </h2>
+  <h3>
+    Edit your account settings and change your password here.
+  </h3>
+</div>
+<hr>
+
+<div class="form-section" id="form-item-email" *ngIf="_auth.user | async as user">
+  <h4>Email</h4>
+
+  <div id="tooltip-reference-email" class="tooltip-reference">
+    <div class="input-group w100p">
+      <div class="form-control">
+        Your email address is
+        <b>{{user.email}}</b>
+      </div>
+
+      <a class="input-group-addon edit-handle" (click)="updateEmail()">
+        <span class="fa fa-pencil"></span>
+      </a>
+
+    </div>
+  </div>
+</div>
+<hr>
+<div class="form-section">
+  <h4>Password</h4>
+  <div class="input-group-custom input-group-icon">
+    <input type="text" placeholder="Enter Current Password" required/>
+    <div class="input-icon">
+      <i class="fa fa-user"></i>
+    </div>
+
+  </div>
+
+  <div class="input-group-custom input-group-icon">
+    <input type="text" placeholder="Enter New Password" required/>
+    <div class="input-icon">
+      <i class="fa fa-user"></i>
+    </div>
+
+  </div>
+
+  <div class="input-group-custom input-group-icon">
+    <input type="text" placeholder="Re-type New Password" required/>
+    <div class="input-icon">
+      <i class="fa fa-user"></i>
+    </div>
+  </div>
+</div>

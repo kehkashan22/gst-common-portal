@@ -10,27 +10,23 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AuthService } from './auth.service';
 
 import { Observable } from 'rxjs/Observable';
-import { map, take, tap } from 'rxjs/operators';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/do';
 
 @Injectable()
 export class PreventLoggedInAccessService implements CanActivate {
-  constructor(
-    private auth: AuthService,
-    private router: Router
-  ) {}
+  constructor(private auth: AuthService, private router: Router) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | boolean {
-    return this.auth.user.pipe(
-      take(1),
-      map(user => !!user),
-      tap(loggedIn => {
-        if (loggedIn) {
-          this.router.navigate(['/']);
-        }
-      })
-    );
+    if (!this.auth.isAuthenticated()) {
+      return true;
+    } else {
+      this.router.navigate(['/']);
+      return false;
+    }
   }
 }

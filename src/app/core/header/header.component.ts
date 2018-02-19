@@ -9,18 +9,14 @@ import { AuthService } from '../../auth/auth.service';
 })
 export class HeaderComponent {
   constructor(
-    private authService: AuthService) {
+    public auth: AuthService) {
   }
 
   onLogout() {
-    this.authService.signOut();
+    this.auth.signOut();
   }
 
   isAuthenticated() {
-    return this.authService.isAuthenticated();
-    // !!this.authService.user;
-      // this.authService.isAuthenticated().subscribe(data => {
-      //   return data ? true : false;
-      // });
+    return this.auth.isAuthenticated();
   }
 }

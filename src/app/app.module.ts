@@ -1,3 +1,4 @@
+import { SharedModule } from './shared/shared.module';
 import { UserModule } from './user/user.module';
 import { PreventLoggedInAccessService } from './auth/prevent-logged-in-access.service';
 import { PipesModule } from './pipes/pipes.module';
@@ -69,7 +70,8 @@ export const firebaseConfig = environment.firebaseConfig;
     Ng2OrderModule,
     NgxPaginationModule,
     PipesModule,
-    UserModule
+    UserModule,
+    SharedModule
   ],
   bootstrap: [AppComponent],
   providers: [

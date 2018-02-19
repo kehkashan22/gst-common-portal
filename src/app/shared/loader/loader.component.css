@@ -1,4 +1,10 @@
-
+.inner-loader {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
 
 @-webkit-keyframes Hy8gaEg9Zvf_ByOwb9bvf_Animation {
   0% {

@@ -1,3 +1,4 @@
+import { PreventLoggedInAccessService } from './auth/prevent-logged-in-access.service';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
@@ -54,8 +55,13 @@ const appRoutes: Routes = [
     path: 'author',
     loadChildren: './author-profile/author-profile.module#AuthorProfileModule',
     canActivate: [AuthGuard]
-  }
-  // { path: '**', component: NotFoundComponent }
+  },
+  {
+    path: 'auth',
+    loadChildren: './auth/auth.module#AuthModule',
+    canActivate: [PreventLoggedInAccessService]
+  },
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
