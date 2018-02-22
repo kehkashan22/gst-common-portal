@@ -31,6 +31,7 @@
             <li>
               <div>
                 <span>Signed in as:</span>
+                <img class="inside" [src]="user.photoURL || 'https://goo.gl/knVFYJ'">
                 <p>{{user.displayName}}</p>
                 <span> {{user.email}} </span>
               </div>
@@ -48,3 +49,5 @@
     </div>
   </div>
 </nav>
+
+

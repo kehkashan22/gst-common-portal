@@ -40,6 +40,7 @@ import * as firebase from 'firebase';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { RoundPipe } from 'app/pipes/round.pipe';
 import { DropZoneDirective } from './drop-zone.directive';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 export const firebaseConfig = environment.firebaseConfig;
 // firebase.initializeApp(firebaseConfig);
@@ -71,7 +72,8 @@ export const firebaseConfig = environment.firebaseConfig;
     NgxPaginationModule,
     PipesModule,
     UserModule,
-    SharedModule
+    SharedModule,
+    NgbModule.forRoot()
   ],
   bootstrap: [AppComponent],
   providers: [

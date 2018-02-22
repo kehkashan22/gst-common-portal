@@ -1,15 +1,24 @@
 <app-header></app-header>
+<div *ngIf="_notify.msg | async as msg" [ngClass]="{
+              'alert alert-dismissable fade in': true,
+             'alert-danger': msg.style === 'error',
+             'alert-success': msg.style === 'success',
+             'alert-info': msg.style === 'info'
+            }">
+  <a  class="close" (click)="_notify.clear()" aria-label="close">&times;</a>
+  {{ msg.content }}
+</div>
+
 <div [hidden]="!loading" class="loader">
-      <app-loader></app-loader>
+  <app-loader></app-loader>
 </div>
 
 <div class="container app-card" [hidden]="loading">
   <div class="row">
     <div class="col-md-12 col-md-12 col-sm-12 col-xs-12">
       <div>
-      <router-outlet></router-outlet>
+        <router-outlet></router-outlet>
+      </div>
     </div>
   </div>
 </div>
-</div>
-

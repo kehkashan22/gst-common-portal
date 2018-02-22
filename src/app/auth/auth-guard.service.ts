@@ -22,6 +22,7 @@ export class AuthGuard implements CanActivate {
       map((user) => !!user),
       tap((loggedIn) => {
         if (!loggedIn) {
+          this.notify.update('You must be logged in to access the page!', 'error');
           this.router.navigate(['/auth/login']);
         }
       }),
