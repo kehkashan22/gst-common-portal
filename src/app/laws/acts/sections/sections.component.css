@@ -1,16 +1,35 @@
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display|Roboto');
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
 
+.chapter{
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.chapter-num{
+  border-radius: 0;
+  border: none;
+  color: #6571b5;
+  padding: 0px 5px 0px 0px;
+  font-weight:bold;
+}
+
+.chapter-name{
+  border-radius: 0;
+  border: none;
+  color: #3f3f3f;
+}
 
 .panel-title > a:before {
     float: right !important;
     font-family: FontAwesome;
-    content:"\f056";
+    content:"\f056"; /* - */
     padding-right: 5px;
 }
-.panel-title > a.collapsed:before {
+.panel-title > a.collapsed:before { /* CLOSED */
     float: right !important;
-    content:"\f055";
+    content:"\f055"; /* + */
 }
 .panel-title > a:hover,
 .panel-title > a:active,
@@ -86,6 +105,7 @@ a:active {
   border-left: 8px solid #ff5a5f;
 }
 
+
 .panel-body {
   background: #fff;
 }
@@ -104,19 +124,7 @@ a:active {
   transition: border-radius linear 0s;
 }
 
-.chapter-num{
-  border-radius: 0;
-  border: none;
-  color: #6571b5;
-  padding: 5px;
-  font-weight:bold;
-}
 
-.chapter-name{
-  border-radius: 0;
-  border: none;
-  color: #3f3f3f;
-}
 
 .chapter-names{
   color: #3f3f3f;
@@ -127,7 +135,7 @@ a:active {
   border-radius: 0;
   border: none;
   color: #6571b5;
-  padding: 5px;
+  padding: 0px 5px 0px 0px;
   font-weight:bold;
 }
 
@@ -246,6 +254,10 @@ a {
 	border-left: 1px solid rgba(0, 0, 0, .1);
 	margin-left:-1px;
 }
+
+
+/* ............pagination........ */
+
 
 
  @media (min-width: 360px) and (max-width: 640px) {

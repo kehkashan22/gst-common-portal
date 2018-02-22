@@ -1,15 +1,35 @@
 
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
 
+.chapter{
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.chapter-num{
+  border-radius: 0;
+  border: none;
+  color: #6571b5;
+  padding: 0px 5px 0px 0px;
+  font-weight:bold;
+}
+
+.chapter-name{
+  border-radius: 0;
+  border: none;
+  color: #3f3f3f;
+}
+
 .panel-title > a:before {
   float: right !important;
   font-family: FontAwesome;
-  content:"\f068";
+  content:"\f056";
   padding-right: 5px;
 }
 .panel-title > a.collapsed:before {
   float: right !important;
-  content:"\f067";
+  content:"\f055";
 }
 
 .panel-title > a:hover,
@@ -104,19 +124,7 @@ border-radius: 0;
 transition: border-radius linear 0s;
 }
 
-.chapter-num{
-border-radius: 0;
-border: none;
-color: #6571b5;
-padding: 5px;
-font-weight:bold;
-}
 
-.chapter-name{
-border-radius: 0;
-border: none;
-color: #3f3f3f;
-}
 .chapter-names{
   color: #3f3f3f;
   font-weight:200;
@@ -126,7 +134,7 @@ color: #3f3f3f;
   border-radius: 0;
   border: none;
   color: #6571b5;
-  padding: 5px;
+  padding: 0px 5px 0px 0px;
   font-weight:bold;
 }
 

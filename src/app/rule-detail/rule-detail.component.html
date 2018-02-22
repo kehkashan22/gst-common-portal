@@ -2,11 +2,10 @@
   <div class="row">
     <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 vid__wrapper">
 
-      <section class="video-background" *ngIf="rule.video_url">
-        <video controls class="video">
+        <video controls class="video"  *ngIf="rule.video_url">
           <source [src]="rule.video_url" type="video/mp4" />
         </video>
-      </section>
+     
 
  
 
@@ -15,7 +14,10 @@
              <!-- RELATED SECTIONS -->
       <div class="panel panel-info" *ngIf="rule.related_sections.length !== 0">
           <div class="panel-heading pan-heading" data-toggle="collapse" href="#related-sections">
-              <h3 class="panel-title">Related Sections:<i class="fa fa-angle-down pull-right"></i></h3>
+              <h3 class="panel-title  pan-title">
+                  <i class="fa fa-book"></i> 
+                Related Sections:
+               </h3>
             </div>  
               <div id="related-sections" class="panel-collapse collapse in">
                 <ul class="list-group">
@@ -35,7 +37,10 @@
         <!-- RELATED RULES -->
         <div class="panel panel-info" *ngIf="rule.related_rules.length !== 0">
           <div class="panel-heading pan-heading" data-toggle="collapse" href="#related-rules">
-            <h3 class="panel-title">Related Rules: <i class="fa fa-angle-down pull-right"></i></h3>
+            <h3 class="panel-title  pan-title">
+                <i class="fa fa-file-text-o"></i>
+              Related Rules: 
+            </h3>
           </div>
           <div id="related-rules" class="panel-collapse collapse in">
             <ul class="list-group">
@@ -55,7 +60,10 @@
         <!--RELATED NOTIFICATIONS-->
         <div class="panel panel-info" *ngIf="rule.related_notifications.length !== 0">
           <div class="panel-heading pan-heading">
-            <h3 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#related-notification">Related notifications:<i class="fa fa-angle-down pull-right"></i></h3>
+            <h3 class="panel-title  pan-title" data-toggle="collapse" data-parent="#accordion" href="#related-notification">
+                <i class="fa fa-bell-o"></i> 
+              Related notifications:
+              </h3>
           </div>
           <div id="related-notification" class="panel-collapse collapse in">
             <ul class="list-group">
@@ -73,7 +81,10 @@
         <!-- RELATED CIRCULAR -->
         <div class="panel panel-info" *ngIf="rule.related_circulars.length !== 0">
           <div class="panel-heading pan-heading">
-            <h3 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#related-circular">Related circulars: <i class="fa fa-angle-down pull-right"></i></h3>
+            <h3 class="panel-title  pan-title" data-toggle="collapse" data-parent="#accordion" href="#related-circular">
+                <i class="fa fa-bullhorn"></i>
+              Related circulars: 
+              </h3>
           </div>
           <div id="related-circular" class="panel-collapse collapse in">
             <ul class="list-group">
@@ -118,7 +129,7 @@
                  <!-- FOOTNOTES -->
                   <div class="panel panel-info" *ngIf="rule.footnotes.length !== 0">
                       <div class="panel-heading pan-heading">
-                            <h3 class="panel-title">Footnotes:</h3>
+                            <h3 class="panel-title"><i class="fa fa-pencil-square-o"></i>Footnotes:</h3>
                         </div>
                   
                         <div *ngFor="let footnote of rule.footnotes">
