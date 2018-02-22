@@ -52,7 +52,7 @@
           </div>
         </div>
         <!-- end of #accordion -->
-        <pagination-controls (pageChange)="p1 = $event" id="first"></pagination-controls>
+        <pagination-controls (pageChange)="p1 = $event" class="my-pagination" id="first"></pagination-controls>
       </div>
     </div>
     <div id="rules" class="tab-pane fade in active">
@@ -75,7 +75,7 @@
             <span class="chapter-names"> {{rule.name}}</span>
           </a>
         </div>
-        <pagination-controls (pageChange)="p2 = $event" id="second"></pagination-controls>
+        <pagination-controls (pageChange)="p2 = $event" class="my-pagination" id="second"></pagination-controls>
       </div>
     </div>
   </div>

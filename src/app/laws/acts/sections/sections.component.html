@@ -29,7 +29,7 @@
             (click)="toSection(section.chap_id, section.name)" style="cursor: pointer;" class="list-group-item">
             Section {{section.number}}: {{section.name}}</a>
         </div>
-        <pagination-controls (pageChange)="p2 = $event" id="second"></pagination-controls>
+        <pagination-controls (pageChange)="p2 = $event" class="my-pagination" id="second"></pagination-controls>
       </div>
     </div>
 
@@ -51,16 +51,19 @@
             <div class="panel-group wrap" id="accordion" role="tablist" aria-multiselectable="true">
               <div class="panel">
                 <div class="panel-heading" role="tab" id="headingOne">
-                  <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" [attr.data-parent]="'#accordion_' + i"
-                      [attr.href]="'#collapseOne_' + i">
+                  <div class="panel-title">
+                    <a role="button" data-toggle="collapse" aria-expanded="false" [attr.aria-controls]="'collapseOne_' + i" [attr.data-parent]="'#accordion_' + i"
+                      [attr.href]="'#collapseOne_' + i" class="collapsed">
 
-
-                      <span class="chapter-num panel-group"> Chapter {{chapter.number}} </span>
-                    <span class="chapter-name"> {{ chapter.name }}</span>
-
+                    <div class="chapter">
+                        <div class="chapter-num"> Chapter </div>
+                        <div class="chapter-num">{{chapter.number}} </div>
+                        <div class="chapter-name"> {{ chapter.name }}</div>
+    
+                    </div>
+                     
                     </a>
-                  </h4>
+                  </div>
                 </div>
                 <div [attr.id]="'collapseOne_' + i" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                   <div class="panel-body" style="cursor: pointer;" class="list-group-item" *ngFor="let section of chapter.sections; let i = index"
@@ -72,12 +75,12 @@
             </div>
           </div>
         </div>
-        <pagination-controls (pageChange)="p1 = $event" id="first"></pagination-controls>
+        <pagination-controls (pageChange)="p1 = $event" class="my-pagination modal-6" id="first"></pagination-controls>
       </div>
     </div>
 
   </div>
-
+  
 
 </div>
 

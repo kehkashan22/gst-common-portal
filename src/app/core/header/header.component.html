@@ -22,28 +22,39 @@
 
 
         <li class="dropdown" *ngIf="auth.user | async as user">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <a role="button" class="dropdown-toggle" data-toggle="dropdown" href="#">
             <img width="20" class="rounded" [src]="user.photoURL || 'https://goo.gl/knVFYJ'">
             <span class="caret"></span>
           </a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" style="width: 300px;">
 
             <li>
               <div>
-                <span>Signed in as:</span>
-                <p>{{user.displayName}}</p>
-                <span> {{user.email}} </span>
+                      <div id="header__profile">
+                        <div class="header__profile_img_container">
+                            <img id="profile_img" alt="Author" [src]="user.photoURL">
+                        </div>
+                           <div id="header__profile_inner">
+                    <p id="profile__name">{{user.displayName}}</p>
+                   <span id="profile__email"> {{user.email}} </span>
+                  
+               
+                </div>
+                </div>
+               
+                
               </div>
-              <hr>
+              <hr id="header_line">
             </li>
             <li>
-              <a style="cursor: pointer;" routerLink="/user">Your Profile</a>
+              <a class="pull-right" style="cursor: pointer;" routerLink="/user">Your Profile</a>
             </li>
             <li>
-              <a style="cursor: pointer;" (click)="onLogout()">Logout</a>
+              <a class="pull-right" style="cursor: pointer;" (click)="onLogout()">Logout</a>
             </li>
           </ul>
         </li>
+
       </ul>
     </div>
   </div>
