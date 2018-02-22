@@ -15,19 +15,26 @@
     <!--SECTIONS-->
     <div id="sections" class="tab-pane fade in active">
       <div class="box">
-        <div class="col-lg-7 pull-left">
+        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 pull-left">
           <h3 class="heading">{{act.name}}, {{act.year}}</h3>
         </div>
-        <div class="col-lg-5 pull-right">
+        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 pull-right">
           <input class="form-control search-box" type="text" name="search" placeholder="Search by sections..." [(ngModel)]="filter2">
         </div>
       </div>
       <hr>
-      <div class="col-lg-12">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="list-group">
           <a class="list-group-item" *ngFor="let section of sections | filter:filter2 | paginate: {id: 'second', itemsPerPage: 10, currentPage: p2 }; let j = index"
             (click)="toSection(section.chap_id, section.name)" style="cursor: pointer;" class="list-group-item">
-            Section {{section.number}}: {{section.name}}</a>
+            <div class="chapter">
+                <div class="chapter-nums">Section {{section.number}} </div>  
+                <div class="chapter-names">  {{section.name}} </div>
+            </div>
+        
+
+          
+          </a>
         </div>
         <pagination-controls (pageChange)="p2 = $event" class="my-pagination" id="second"></pagination-controls>
       </div>
@@ -65,16 +72,23 @@
                     </a>
                   </div>
                 </div>
-                <div [attr.id]="'collapseOne_' + i" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                <div [attr.id]="'collapseOne_' + i" class="panel-collapse collapse" role="tabpanel" 
+                      aria-labelledby="headingOne">
                   <div class="panel-body" style="cursor: pointer;" class="list-group-item" *ngFor="let section of chapter.sections; let i = index"
                     (click)="toSection(chapter.id, section.name)">
-                    Section {{section.number}}: {{section.name}}
+
+                    <div class="chapter">
+                      <div class="chapter-nums">Section {{section.number}}</div>
+                      <div class="chapter-names">{{section.name}}</div>
+                    </div>
+                  
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
         <pagination-controls (pageChange)="p1 = $event" class="my-pagination modal-6" id="first"></pagination-controls>
       </div>
     </div>

@@ -18,7 +18,6 @@
 .chapter-name{
   border-radius: 0;
   border: none;
-
   color: #3f3f3f;
 }
 
@@ -136,7 +135,7 @@ a:active {
   border-radius: 0;
   border: none;
   color: #6571b5;
-  padding: 5px;
+  padding: 0px 5px 0px 0px;
   font-weight:bold;
 }
 

@@ -33,12 +33,12 @@
               <h4 class="panel-title">
                 <a role="button" data-toggle="collapse" aria-expanded="false" aria-controls="collapseOne" [attr.data-parent]="'#accordion_' + i"
                   [attr.href]="'#collapseOne_' + i" class="claps">
-                  <span class="chapter-num panel-group">
-                      Chapter {{chapter.number}}
-                  </span>
-                  <span class="chapter-name">
-                      {{ chapter.name }}
-                  </span>
+
+                  <div class="chapter">
+                    <div class="chapter-num">Chapter</div>
+                    <div class="chapter-num">{{chapter.number}}</div>
+                    <div class="chapter-name">{{ chapter.name }}</div>  
+                  </div>
 
                 </a>
               </h4>
@@ -71,8 +71,11 @@
           (click)="toRule(rule.chap_id, rule.name)"
           style="cursor: pointer;"
           class="list-group-item">
-           <span class="chapter-nums"> Rule {{rule.number}}</span>
-            <span class="chapter-names"> {{rule.name}}</span>
+          <div class="chapter">
+              <div class="chapter-nums"> Rule {{rule.number}}</div>
+              <div class="chapter-names"> {{rule.name}}</div>
+          </div>
+       
           </a>
         </div>
         <pagination-controls (pageChange)="p2 = $event" class="my-pagination" id="second"></pagination-controls>
