@@ -50,6 +50,7 @@ export class AuthService {
   private oAuthLogin(provider: firebase.auth.AuthProvider) {
     return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
+        this.notify.clear();
         this.router.navigate(['/']);
         this.afs.doc<User>(`users/${credential.user.uid}`).snapshotChanges().pipe(
           take(1),
@@ -73,6 +74,7 @@ export class AuthService {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
       .then((user) => {
         // this.notify.update('Welcome to Firestarter!!!', 'success');
+        this.notify.clear();
         this.router.navigate(['/auth/login']);
         user = {
           ...user,
@@ -86,6 +88,7 @@ export class AuthService {
   emailLogin(email: string, password: string) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((user) => {
+        this.notify.clear();
         this.router.navigate(['/']);
       })
       .catch((error) => this.handleError(error) );

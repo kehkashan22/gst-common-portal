@@ -19,7 +19,7 @@
         <b>{{user.email}}</b>
       </div>
 
-      <a class="input-group-addon"  (click)="modal.open()">
+      <a class="input-group-addon edit-handle">
         <span class="fa fa-pencil"></span>
       </a>
 
@@ -68,10 +68,12 @@
     <div class="alert alert-danger" *ngIf="!passwordForm.controls.confirmPassword.pristine && passwordForm.controls.confirmPassword.errors?.MatchPassword">
         Password do not match!
     </div>
-    <input type="submit" class="btn btn-primary" value="submit" >
+
   </form>
   <div class="alert alert-danger" *ngIf="errMsg">
       {{errMsg}}
   </div>
+  <hr>
+  <input type="submit" class="btn btn-primary" value="submit" >
 </div>
 </div>
