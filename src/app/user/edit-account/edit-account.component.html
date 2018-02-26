@@ -8,6 +8,7 @@
 </div>
 <hr>
 
+<div class="edit__user">
 <div class="form-section" id="form-item-email" *ngIf="_auth.user | async as user">
   <h4>Email</h4>
 
@@ -18,7 +19,7 @@
         <b>{{user.email}}</b>
       </div>
 
-      <a class="input-group-addon edit-handle"  (click)="modal.open()">
+      <a class="input-group-addon"  (click)="modal.open()">
         <span class="fa fa-pencil"></span>
       </a>
 
@@ -29,7 +30,7 @@
 <hr>
 <div class="form-section">
   <h4>Password</h4>
-  <form [formGroup]="passwordForm" (ngSubmit)="onSubmit()">
+  <form  [formGroup]="passwordForm" (ngSubmit)="onSubmit()">
     <div class="input-group-custom input-group-icon">
       <input type="password" id="oldPassword" formControlName="oldPassword" [formGroup]="passwordForm" placeholder="Enter Current Password"
         required/>
@@ -72,4 +73,5 @@
   <div class="alert alert-danger" *ngIf="errMsg">
       {{errMsg}}
   </div>
+</div>
 </div>

@@ -1,7 +1,18 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400);
 @import url(https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
-@import url('https://fonts.googleapis.com/css?family=Roboto');
-@import url('https://fonts.googleapis.com/css?family=Muli');
+@import url('https://fonts.googleapis.com/css?family=Muli|Open+Sans:400,700');
+
+.panel-heading > .pan-title:before {
+  float: right !important;
+  font-family: FontAwesome;
+  content:"\f078";
+  padding-right: 5px;
+}
+.panel-heading.collapsed > .pan-title:before {
+  float: right !important;
+  content:"\f077";
+}
+
 .article-container {
   padding: 0 10px;
   margin: 0 5px;
@@ -213,7 +224,7 @@ h1 {
  margin-left:auto;
  font-size:16px;
  margin-top:38px;
- font-family: 'Nanum Gothic', sans-serif;
+ font-family: 'Open Sans', sans-serif;
 }
 
 
@@ -239,16 +250,16 @@ hr.style14 {
   /* border-bottom:2px solid #6571b5;  */
   font-size: 2rem;
   padding:5px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Muli', sans-serif;
   font-weight: 500;
   color:#34367d;
   padding:3px 16px;
 }
 
 .pan-heading{
-  background-color: #6571b5;
-  color: #fff;
-  font-family: 'Roboto', sans-serif;
+  background-color: #6571b53c;
+  padding:12px; 
+  font-family: 'Muli', sans-serif;
 }
 
 .panel-info {

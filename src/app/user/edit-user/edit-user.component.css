@@ -31,7 +31,7 @@ h2 {
   color: #b9b9b9;
 }
 h4 {
-  color: #C68FAA;
+  color: #464880;
 }
 input,
 /* input[type="radio"] + label,
@@ -52,13 +52,13 @@ select {
 }
 input:focus {
   outline: 0;
-  border-color:  #D7B2C4;
+  border-color:  #464880;
 }
 input:focus + .input-icon i {
-  color: #C68FAA;
+  color: #464880;
 }
 input:focus + .input-icon:after {
-  border-right-color: #C68FAA;
+  border-right-color: #464880;
 }
 /* input[type="radio"] {
   display: none;
@@ -88,7 +88,7 @@ select:focus,
 select:active {
   /* background-color: #C68FAA; */
   /* color: #fff; */
-  border-color:  #D7B2C4;
+  border-color:  #464880;
 }
 /* input[type="checkbox"] {
   display: none;
@@ -224,11 +224,11 @@ select option {
   padding-right: 0;
 }
 input.ng-touched.ng-invalid.ng-dirty {
-  border: 1px solid rgb(241, 140, 140) !important;
+  border: 1px solid #464880 !important;
 }
 
 .daterangepicker td.active, .daterangepicker td.active:hover {
-  background-color: #C68FAA !important;
+  background-color: #464880 !important;
 }
 
 @media only screen and (max-width: 540px) {
@@ -238,3 +238,13 @@ input.ng-touched.ng-invalid.ng-dirty {
   }
 }
 
+.edit__user{
+  border-left:1px solid #eee;
+  padding-left:10px;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #464880;
+  border-color: #464880;
+}

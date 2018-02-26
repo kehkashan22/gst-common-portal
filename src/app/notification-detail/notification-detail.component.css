@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Muli|Open+Sans:400,700');
 
 .panel-heading > .pan-title:before {
   float: right !important;
@@ -52,12 +52,13 @@
 #program h4 {
   color: #808080;
   font-size: 12px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Muli', sans-serif;
+  font-weight:700;
 }
 
 #program h3 {
 margin-top: 16px;
-font-family: 'Roboto', sans-serif;
+font-family: 'Muli', sans-serif;
 }
 
 #program .program-divider {
@@ -83,12 +84,13 @@ margin-bottom: -1px;
 }
 .nav-tabs > li > a {
 color: #48487d;
-font-weight: 600;
 margin-right: 2px;
 line-height: 1.42857143;
 border: none;
 border-radius: 0px;
-font-family: 'Roboto', sans-serif;
+font-weight:700;
+font-size:16px;
+font-family: 'Muli', sans-serif;
 }
 .nav-tabs > li > a:hover {
 background-color: transparent;
@@ -101,15 +103,14 @@ cursor: default;
 background-color: transparent;
 border-bottom: 2px  solid  #6571b5;
 border-radius: 3px 3px 0px 0px;
+font-weight:bold 700;
 /* border-bottom-color: #6571b5; */
-font-family: 'Roboto', sans-serif;
+font-family: 'Muli', sans-serif;
 }    
-.tab-content {
-padding-top: 10px;
-} 
+
 
 h2{
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Muli', sans-serif;
 }
 
 .height{
@@ -118,10 +119,11 @@ h2{
 
 .contain{
   padding:10px;
+  font-family: 'Muli', sans-serif;
 }
 
 .contain-head{
-   padding:20px;
+   padding-bottom:5px;
    color: #3f3f3f;
    /* text-align:center; */
    font-size: 18px;
@@ -129,7 +131,6 @@ h2{
   
 .pan-heading{
   background-color: #6571b53c;
-
   padding:12px; 
 }
 
