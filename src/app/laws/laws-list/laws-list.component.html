@@ -12,14 +12,14 @@
         <button class="btn btn-primary btn-lg dropdown-toggle width-drop" type="button" data-toggle="dropdown">Acts
           <span class="caret"></span>
         </button>
-        <ul class="dropdown-menu width">
+        <ul class="dropdown-menu">
           <li *ngFor="let lawEl of laws; let i = index">
             <a (click)="toActs(i, lawEl)" class="list-group-item" [class.active]="lawEl.id === selectedRow" class="box clearfix">{{ lawEl.name }}</a>
           </li>
         </ul>
       </div>
     </a>
-
+    
   </div>
 </div>
 

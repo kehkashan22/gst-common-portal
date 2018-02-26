@@ -1,0 +1,35 @@
+.box{
+    padding-top:20px;
+}
+.card__author-dp{
+    width:70%;
+   margin-right:auto;
+   margin-left:auto;
+   border-radius: 50% !important; 
+}
+
+.box{
+    border:#eee 1px solid;
+}
+
+.list-group-item {
+    border:0 !important;
+    /* background-color: #6571b5; */
+}
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+    z-index: 2;
+    color: #fff;
+    background-color: #6571b5;
+    border-color: #6571b5;
+}
+
