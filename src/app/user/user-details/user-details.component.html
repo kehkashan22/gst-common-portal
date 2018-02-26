@@ -2,12 +2,19 @@
 <div class="edit__user">
         <div>
                 <div *ngIf="auth.user | async as user">
-                    <h3>{{ user.displayName }}</h3>
+                    Name: <h3>{{ user.displayName }}</h3>
+                    Company: <p>{{user.company}}</p>
+                    Designation: <p>{{user.designation}}</p>
+                    Date of Birth: <p>{{user.dob | date: 'mediumDate'}}</p>
+                    Email: <p>{{user.email}}</p>
+                    ICAI/ICSI/CMA Member Since: <p>{{user.member_since | date: 'mediumDate'}}</p>
+                    Mobile No.:<p>{{user.mob}}</p>
+                    Qualification: <p>{{user.qualification}}</p>
                     <img  [src]="user.photoURL" width="300">
                 </div>
             </div>
             <hr>
             <div>
               <p>BOOKMARKS</p>
-            </div>            
+            </div>
 </div>
