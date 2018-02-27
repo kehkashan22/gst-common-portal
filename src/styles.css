@@ -84,3 +84,31 @@ body {
   object-fit: cover;
 }
 
+/* ....................well............ */
+
+.well{
+  min-height: 20px;
+  padding: 11px;
+  color: #48487d;
+  margin-bottom: 20px;
+  background-color: #6571b53c;
+  border: 1px solid #e3e3e3;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+.badge {
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  background-color:#ed7272;
+  border-radius: 50%;
+}

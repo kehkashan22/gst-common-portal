@@ -2,10 +2,15 @@
     padding-top:20px;
 }
 .card__author-dp{
-    width:70%;
-   margin-right:auto;
-   margin-left:auto;
+    /* width:90%; */
+    text-align: center;
    border-radius: 50% !important; 
+}
+
+.img-thumbnail{
+    width:200px;
+    height:200px;
+    object-fit: cover;
 }
 
 .box{
@@ -33,3 +38,13 @@
     border-color: #6571b5;
 }
 
+.profile_icon{
+    display:grid;
+    grid-template-columns:25px auto;
+}
+
+.fa-user,
+.fa-edit,
+.fa-address-card-o {
+    font-size:16px;
+}

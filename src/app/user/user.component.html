@@ -1,13 +1,35 @@
-<div class="col-lg-3 profile__sidebar box">
-        <div class="card__author-dp">
-                <img _ngcontent-c6="" alt="author" class="img-thumbnail" src="https://media1.popsugar-assets.com/files/thumbor/bp72LRboS8pdPlVvLXRz1QDxOYI/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2015/07/08/991/n/1922398/53f34b16_edit_img_image_1090627_1436394745_INT_AntMan_PaulRuddEvangelineLilly_070715_CLUELESS_SQUARE/i/Paul-Rudd-Clueless-Interview-Video.jpg">
+<div class="col-lg-3 profile__sidebar box" *ngIf="auth.user | async as user">
+        <div class="card__author-dp" >
+                <img alt="author" class="img-thumbnail" [src]="user.photoURL">
+                <!-- <h5>{{user.displayName}}</h5> -->
             </div>
             
          <hr>    
     <ul class="list-group">
-        <li style="cursor: pointer;" class="list-group-item" [routerLink]="['/user']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="fa fa-user" style="font-size:16px"></i> Profile</li>
-        <li style="cursor: pointer;" class="list-group-item" [routerLink]="['edit-profile']"  routerLinkActive="active"><i class="fa fa-edit" style="font-size:16px"></i> Edit Profile</li>
-        <li style="cursor: pointer;" class="list-group-item" [routerLink]="['edit-account']"  routerLinkActive="active"><i class="fa fa-address-card-o" style="font-size:16px"></i> Edit Account</li>
+        <li style="cursor: pointer;" class="list-group-item" 
+         [routerLink]="['/user']" routerLinkActive="active"
+         [routerLinkActiveOptions]="{exact: true}">
+        <div class="profile_icon">
+               <div><i class="fa fa-user"></i></div> 
+        <div>Profile</div>
+    </div>
+    </li>
+
+        <li style="cursor: pointer;" class="list-group-item" 
+        [routerLink]="['edit-profile']"  routerLinkActive="active">
+        <div class="profile_icon">
+            <div><i class="fa fa-edit"></i></div>
+            <div>Edit Profile</div>
+        </div>
+        </li>
+
+        <li style="cursor: pointer;" class="list-group-item" 
+        [routerLink]="['edit-account']"  routerLinkActive="active">
+        <div class="profile_icon">
+            <div><i class="fa fa-address-card-o"></i></div>
+            <div> Edit Account</div>
+        </div>
+        </li>
     </ul>
 </div>
 <div class="col-lg-9">

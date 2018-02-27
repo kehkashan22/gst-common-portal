@@ -101,7 +101,7 @@
 
 
 <div class="container">
-    <div  class="col-lg-7 col-md-7 col-sm-12 col-xs-12   panel-group" id="style-2">
+    <div  class="col-lg-7 col-md-7 col-sm-12 col-xs-12   panel-group" id="container_scroll">
         <ul class="nav nav-tabs  panel-info pan-border" id="myTab" role="tablist">
             <li class="nav-item active">
               <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">{{type | uppercase}}</a>
@@ -111,14 +111,14 @@
             </li>
           </ul>
           <div class="tab-content panel" id="myTabContent">
-              <div class="tab-pane fade in active clsScroll scrollbar height style-2" id="home" role="tabpanel"  aria-labelledby="home-tab">
+              <div class="tab-pane fade in active clsScroll scrollbar height container_scroll" id="home" role="tabpanel"  aria-labelledby="home-tab">
                 <div class="contain-head">
                     <strong>{{circular.name}}</strong>
                 </div>
 
                   <div class="contain" [innerHTML]="htmlText" ></div>
               </div>
-              <div *ngIf="circular.analysis" class="tab-pane fade height clsScroll scrollbar style-2" id="profile" role="tabpanel" aria-labelledby="profile-tab" [innerHTML]="htmlAnalysis"></div>
+              <div *ngIf="circular.analysis" class="tab-pane fade height clsScroll scrollbar container_scroll" id="profile" role="tabpanel" aria-labelledby="profile-tab" [innerHTML]="htmlAnalysis"></div>
             </div>
             <hr>
 

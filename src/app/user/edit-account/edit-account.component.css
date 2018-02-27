@@ -6,6 +6,7 @@
 
 .btn-primary{
   background-color: #6571b5;
+  width:100%;
 }
 
 .btn-primary:active:hover,
@@ -19,6 +20,7 @@
   background-color: #464880;
   border-color: #464880;
 }
+
 
 h2 {
   color: #29303b;

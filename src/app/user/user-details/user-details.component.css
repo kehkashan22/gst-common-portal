@@ -1,4 +1,68 @@
+
+h2 {
+  color: #29303b;
+  text-align: center;
+  line-height: 1!important;
+  font-weight: 700!important;
+  font-size: 22px;
+  margin: 20px 0 3px;
+}
+
+ h3 {
+  font-size: 15px;
+  font-weight: 300;
+  color: #afaeae;
+  text-align: center;
+  margin: 0 0 15px;
+  line-height: 25px;
+}
+
+
 .edit__user{
     border-left:1px solid #eee;
     padding-left:10px;
   }
+
+  .profile_title{
+    color:#3f3f3f;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight:bold;
+  }
+  
+  hr.style14 { 
+    border: 0; 
+    height: 1px; 
+    background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  }
+
+  .profile_text{
+    color:#3f3f3f;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight:300;
+  }
+
+  
+.profile_info{
+  display:grid;
+  grid-template-columns:250px auto;
+}
+
+  /* .profile_title {
+    position: relative;
+    margin: 0;
+    padding-top: 20px;
+  }
+  .profile_title:before {
+    content: "";
+    background: #75d13b;
+    height: 2px;
+    width: 10%;
+
+    position: absolute;
+    top: 6px;
+    left: 0;
+  }  */
