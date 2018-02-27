@@ -31,6 +31,7 @@ export class StatesListComponent implements OnInit {
               id: doc.id,
               ...doc.data()
             });
+            this.states.sort((a, b) => a.name > b.name ? 1 : -1);
           });
         });
       }

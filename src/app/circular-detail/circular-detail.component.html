@@ -16,8 +16,8 @@
         <div class="panel panel-info" *ngIf="circular.related_sections.length !== 0">
           <div class="panel-heading pan-heading" data-toggle="collapse" href="#related-section">
             <h3 class="panel-title pan-title">
-                <i class="fa fa-book"></i> 
-              Related Sections: 
+                <i class="fa fa-book"></i>
+              Related Sections:
             </h3>
           </div>
           <div id="related-section" class="panel-collapse collapse in">
@@ -101,10 +101,14 @@
 
 
 <div class="container">
-    <div  class="col-lg-7 col-md-7 col-sm-12 col-xs-12   panel-group" id="style-2">
+    <div  [ngClass]="{
+      'col-sm-12 col-xs-12 panel-group': true,
+      'col-lg-7 col-md-7' : circular.related_circulars.length !== 0 || circular.related_sections.length !== 0 || circular.related_rules.length !== 0 || circular.related_notifications.length !== 0 || circular.video_url,
+      'col-lg-12 col-md-12' : circular.related_circulars.length === 0 && circular.related_sections.length === 0 && circular.related_rules.length === 0 && circular.related_notifications.length === 0 && !circular.video_url
+    }" id="style-2">
         <ul class="nav nav-tabs  panel-info pan-border" id="myTab" role="tablist">
             <li class="nav-item active">
-              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">{{type | uppercase}}</a>
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">{{type | titlecase}}</a>
             </li>
             <li class="nav-item" *ngIf="circular.analysis">
               <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Analysis</a>
@@ -142,25 +146,3 @@
 
 
 
-
-
-<!--
-
-    <div class="container">
-      <div class="col-lg-7 clsScroll scrollbar panel-group" id="style-2">
-        <div class="panel panel-info">
-          <div class="force-overflow panel-heading">
-            <h4>{{circular.name}}</h4>
-          </div>
-          <div class="panel-body" [innerHTML]="htmlText"></div>
-        </div>
-        <hr>
-        <div class="panel panel-info">
-          <div class="force-overflow panel-heading">
-            <h4>Analysis</h4>
-          </div>
-          <div class="panel-body" [innerHTML]="htmlAnalysis"></div>
-        </div>
-      </div>
-
-    </div> -->

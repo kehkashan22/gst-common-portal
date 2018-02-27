@@ -1,3 +1,4 @@
+import { PipesModule } from './../pipes/pipes.module';
 import { CircularDetailService } from './circular-detail.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -10,7 +11,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     CircularDetailRoutingModule,
-    RouterModule
+    RouterModule,
+    PipesModule
   ],
   declarations: [CircularDetailComponent],
   providers: [CircularDetailService]

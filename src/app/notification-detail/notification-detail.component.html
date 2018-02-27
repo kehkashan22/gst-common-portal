@@ -37,8 +37,8 @@
         <div class="panel panel-info" *ngIf="notification.related_sections.length !== 0">
           <div class="panel-heading pan-heading" data-toggle="collapse" href="#related-sections">
             <h3 class="panel-title pan-title">
-                <i class="fa fa-book"></i> 
-              Related Sections: 
+                <i class="fa fa-book"></i>
+              Related Sections:
               </h3>
           </div>
           <div id="related-sections" class="panel-collapse collapse in">
@@ -55,13 +55,13 @@
           </div>
         </div>
 
-       
+
         <!--RELATED NOTIFICATIONS-->
         <div class="panel panel-info" *ngIf="notification.related_notifications.length !== 0">
           <div class="panel-heading pan-heading" data-toggle="collapse" href="#related-notification">
             <h3 class="panel-title pan-title">
                 <i class="fa fa-bell-o"></i>
-              Related notifications: 
+              Related notifications:
             </h3>
           </div>
           <div id="related-notification" class="panel-collapse collapse in">
@@ -81,7 +81,7 @@
         <div class="panel panel-info" *ngIf="notification.related_circulars.length !== 0">
           <div class="panel-heading pan-heading" data-toggle="collapse" href="#related-circular">
             <h3 class="panel-title pan-title" >
-                <i class="fa fa-bullhorn"></i>Related circulars: 
+                <i class="fa fa-bullhorn"></i>Related circulars:
                 </h3>
           </div>
           <div id="related-circular" class="panel-collapse collapse in">
@@ -105,7 +105,11 @@
 
 
     <div class="container">
-      <div  class="col-lg-7 col-md-7 col-sm-12 col-xs-12 panel-group"id="container_scroll">
+      <div  [ngClass]="{
+        'col-sm-12 col-xs-12 panel-group': true,
+        'col-lg-7 col-md-7' : notification.related_circulars.length !== 0 || notification.related_sections.length !== 0 || notification.related_rules.length !== 0 || notification.related_notifications.length !== 0 || notification.video_url,
+        'col-lg-12 col-md-12' : notification.related_circulars.length === 0 && notification.related_sections.length === 0 && notification.related_rules.length === 0 && notification.related_notifications.length === 0 && !notification.video_url
+      }" id="container_scroll">
           <ul class="nav nav-tabs  panel-info pan-border" id="myTab" role="tablist">
               <li class="nav-item active">
                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Notification</a>
@@ -119,7 +123,7 @@
                   <div class="contain-head">
                       <strong> {{notification.name}} </strong>
                   </div>
-                  
+
 
                     <div class="contain" [innerHTML]="htmlText" ></div>
                 </div>
@@ -152,7 +156,7 @@
         </div> -->
 
 
-       
+
 
   </div>
 </div>

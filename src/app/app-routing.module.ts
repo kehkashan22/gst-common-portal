@@ -1,3 +1,4 @@
+import { WelcomeComponent } from './core/welcome/welcome.component';
 import { PreventLoggedInAccessService } from './auth/prevent-logged-in-access.service';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
@@ -13,7 +14,9 @@ import { SectionDetailComponent } from './section-detail/section-detail.componen
 import { LawsComponent } from './laws/laws.component';
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'welcome', component: WelcomeComponent, canActivate: [PreventLoggedInAccessService] },
   {
     path: 'user',
     loadChildren: './user/user.module#UserModule',

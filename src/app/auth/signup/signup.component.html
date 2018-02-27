@@ -1,42 +1,68 @@
 <div class="row">
   <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-    <form [formGroup]="userForm" (ngSubmit)="signup()">
-
-      <h3>New User Signup</h3>
-      <p class="button is-small" [routerLink]="['signin']">Already Registered?</p>
-      <hr>
-
-      <div class="form-group">
+    <div class="form-section">
+      <form [formGroup]="userForm" (ngSubmit)="signup()">
+        <div class="row">
+          <h2>New User Signup</h2>
+          <h3 class="button is-small" [routerLink]="['/auth/login']">Already Registered?</h3>
+          <hr>
           <label for="displayName">Name</label>
-          <input class="form-control" type="displayName" id="displayName"  formControlName="displayName" required>
-      </div>
+          <div class="input-group-custom input-group-icon">
+            <input type="text" id="displayName" formControlName="displayName" placeholder="Full Name" required>
+            <div class="input-icon">
+              <i class="fa fa-user"></i>
+            </div>
+          </div>
 
-      <div *ngIf="formErrors.displayName" class="help-block">
-          {{ formErrors.displayName }}
+          <div *ngIf="formErrors.displayName" class="help-block">
+            {{ formErrors.displayName }}
+          </div>
+
+          <label for="email">Email</label>
+          <div class="input-group-custom input-group-icon">
+            <input type="email" id="email" placeholder="Email" formControlName="email" required>
+            <div class="input-icon">
+              <i class="fa fa-envelope"></i>
+            </div>
+          </div>
+
+          <div *ngIf="formErrors.email" class="help-block">
+            {{ formErrors.email }}
+          </div>
+
+
+          <label for="password">Password</label>
+          <div class="input-group-custom input-group-icon">
+            <input type="password" id="password" placeholder="Password" formControlName="password" required>
+            <div class="input-icon">
+              <i class="fa fa-lock"></i>
+            </div>
+          </div>
+
+          <div *ngIf="formErrors.password" class="help-block">
+            {{ formErrors.password }}
+          </div>
+
+          <label for="confirmPassword">Confirm Password</label>
+          <div class="input-group-custom input-group-icon">
+            <input type="password" id="confirmPassword" formControlName="confirmPassword" placeholder="Confirm Password" required/>
+            <div class="input-icon">
+              <i class="fa fa-key"></i>
+            </div>
+          </div>
+          <div *ngIf="!userForm.controls.confirmPassword.pristine && userForm.controls.confirmPassword.errors?.required" class="help-block">
+            You have to confirm the password is correct. Confirm Password is required.
+          </div>
+
+          <div class="help-block" *ngIf="!userForm.controls.confirmPassword.pristine && userForm.controls.confirmPassword.errors?.MatchPassword">
+            Password do not match!
+          </div>
+          <div *ngIf="userForm.valid" class="notification is-success">Form is valid</div>
+          <button type="submit" class="btn btn-primary" [disabled]="!userForm.valid">Submit</button>
         </div>
 
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input class="form-control" type="email" id="email"  formControlName="email" required>
-      </div>
+      </form>
+    </div>
 
-      <div *ngIf="formErrors.email" class="help-block">
-        {{ formErrors.email }}
-      </div>
-
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input class="form-control" type="password" id="password" formControlName="password" required>
-
-      </div>
-
-      <div *ngIf="formErrors.password" class="help-block">
-        {{ formErrors.password }}
-      </div>
-
-      <div *ngIf="userForm.valid" class="notification is-success">Form is valid</div>
-      <button type="submit" class="btn btn-primary" [disabled]="!userForm.valid">Submit</button>
-
-    </form>
   </div>
 </div>

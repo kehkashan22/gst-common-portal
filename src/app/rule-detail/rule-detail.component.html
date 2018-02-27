@@ -5,9 +5,9 @@
         <video controls class="video"  *ngIf="rule.video_url">
           <source [src]="rule.video_url" type="video/mp4" />
         </video>
-     
 
- 
+
+
 
 
         <div class="panel-group">
@@ -15,10 +15,10 @@
       <div class="panel panel-info" *ngIf="rule.related_sections.length !== 0">
           <div class="panel-heading pan-heading" data-toggle="collapse" href="#related-sections">
               <h3 class="panel-title  pan-title">
-                  <i class="fa fa-book"></i> 
+                  <i class="fa fa-book"></i>
                 Related Sections:
                </h3>
-            </div>  
+            </div>
               <div id="related-sections" class="panel-collapse collapse in">
                 <ul class="list-group">
                   <a *ngFor="let section of rule.related_sections" class="list-group-item" target="_blank" routerLink="/section" [queryParams]="{
@@ -32,14 +32,14 @@
                 </ul>
               </div>
         </div>
-  
-  
+
+
         <!-- RELATED RULES -->
         <div class="panel panel-info" *ngIf="rule.related_rules.length !== 0">
           <div class="panel-heading pan-heading" data-toggle="collapse" href="#related-rules">
             <h3 class="panel-title  pan-title">
                 <i class="fa fa-file-text-o"></i>
-              Related Rules: 
+              Related Rules:
             </h3>
           </div>
           <div id="related-rules" class="panel-collapse collapse in">
@@ -54,14 +54,14 @@
               </a>
             </ul>
           </div>
-  
+
         </div>
-  
+
         <!--RELATED NOTIFICATIONS-->
         <div class="panel panel-info" *ngIf="rule.related_notifications.length !== 0">
           <div class="panel-heading pan-heading">
             <h3 class="panel-title  pan-title" data-toggle="collapse" data-parent="#accordion" href="#related-notification">
-                <i class="fa fa-bell-o"></i> 
+                <i class="fa fa-bell-o"></i>
               Related notifications:
               </h3>
           </div>
@@ -77,13 +77,13 @@
             </ul>
           </div>
         </div>
-  
+
         <!-- RELATED CIRCULAR -->
         <div class="panel panel-info" *ngIf="rule.related_circulars.length !== 0">
           <div class="panel-heading pan-heading">
             <h3 class="panel-title  pan-title" data-toggle="collapse" data-parent="#accordion" href="#related-circular">
                 <i class="fa fa-bullhorn"></i>
-              Related circulars: 
+              Related circulars:
               </h3>
           </div>
           <div id="related-circular" class="panel-collapse collapse in">
@@ -99,12 +99,16 @@
           </div>
         </div>
         </div>
-   
+
     </div>
 
 
     <div class="container">
-        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 panel-group" id="style-2">
+        <div  [ngClass]="{
+          'col-sm-12 col-xs-12 panel-group': true,
+          'col-lg-7 col-md-7' : rule.related_circulars.length !== 0 || rule.related_sections.length !== 0 || rule.related_rules.length !== 0 || rule.related_notifications.length !== 0 || rule.video_url,
+          'col-lg-12 col-md-12' : rule.related_circulars.length === 0 && rule.related_sections.length === 0 && rule.related_rules.length === 0 && rule.related_notifications.length === 0 && !rule.video_url
+        }" id="style-2">
             <ul class="nav nav-tabs  panel-info pan-border" id="myTab" role="tablist">
                 <li class="nav-item active">
                   <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Rule</a>
@@ -118,10 +122,10 @@
                     <div class="contain-head">
                         <strong>{{rule.name}}</strong>
                     </div>
-                     
+
                       <div class="contain" [innerHTML]="htmlText" ></div>
                   </div>
-      
+
                   <div *ngIf="rule.analysis" class="tab-pane fade height clsScroll scrollbar style-2" id="profile" role="tabpanel" aria-labelledby="profile-tab" [innerHTML]="htmlAnalysis"></div>
                 </div>
                 <hr>
@@ -131,15 +135,15 @@
                       <div class="panel-heading pan-heading">
                             <h3 class="panel-title"><i class="fa fa-pencil-square-o"></i>Footnotes:</h3>
                         </div>
-                  
+
                         <div *ngFor="let footnote of rule.footnotes">
                           <div class="panel-body">Footnote {{footnote.id}}. {{footnote.note}}</div>
                         </div>
-            
-                    </div>  
-          </div> 
+
+                    </div>
+          </div>
     </div>
-   
-    
+
+
   </div>
 </div>

@@ -32,12 +32,12 @@
             <div class="panel-heading" role="tab" id="headingOne">
               <h4 class="panel-title">
                 <a role="button" data-toggle="collapse" aria-expanded="false" aria-controls="collapseOne" [attr.data-parent]="'#accordion_' + i"
-                  [attr.href]="'#collapseOne_' + i" class="claps">
+                  [attr.href]="'#collapseOne_' + i" class="collapsed">
 
                   <div class="chapter">
                     <div class="chapter-num">Chapter</div>
                     <div class="chapter-num">{{chapter.number}}</div>
-                    <div class="chapter-name">{{ chapter.name }}</div>  
+                    <div class="chapter-name">{{ chapter.name }}</div>
                   </div>
 
                 </a>
@@ -75,7 +75,7 @@
               <div class="chapter-nums"> Rule {{rule.number}}</div>
               <div class="chapter-names"> {{rule.name}}</div>
           </div>
-       
+
           </a>
         </div>
         <pagination-controls (pageChange)="p2 = $event" class="my-pagination" id="second"></pagination-controls>

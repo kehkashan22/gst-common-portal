@@ -5,7 +5,7 @@
 }
 
 div.panel-heading {
-     border: 0.5px solid #747474; 
+     border: 0.5px solid #747474;
 }
 
 .btn-lg{
@@ -20,7 +20,7 @@ div.panel-heading {
 
 }
 .panel-body{
-    border: 0.2px solid #747474; 
+    border: 0.2px solid #747474;
 }
 
 
@@ -83,7 +83,7 @@ div.panel-heading {
 }
 .nav-tabs > li > a {
   color: #3f3f3f;
-  font-weight: 400; 
+  font-weight: 400;
   margin-right: 2px;
   line-height: 1.42857143;
   border: none;
