@@ -25,7 +25,7 @@ export class PreventLoggedInAccessService implements CanActivate {
     if (!this.auth.isAuthenticated()) {
       return true;
     } else {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/']);
       return false;
     }
   }
