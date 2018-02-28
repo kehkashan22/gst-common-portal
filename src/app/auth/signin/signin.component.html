@@ -1,94 +1,52 @@
-<!-- <div class="row">
+<div class="row">
   <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-    <form (ngSubmit)="onSignin(f)" #f="ngForm">
-      <div class="form-group">
-        <label for="email">Mail</label>
-        <input type="email" id="email" name="email" ngModel class="form-control">
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          ngModel
-          class="form-control">
-      </div>
-      <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Sign In</button>
-    </form>
-  </div>
-</div> -->
+    <div class="form-section">
+      <form [formGroup]="userForm" (ngSubmit)="login()">
 
-<!-- <div *ngIf="auth.user | async; then authenticated else guest"> -->
-    <!-- template will replace this div -->
-<!-- </div> -->
-<!-- User NOT logged in -->
-<!-- <ng-template #guest>
-<h3>Howdy, GUEST</h3>
-<p>Login to get started...</p>
-
-<button (click)="auth.googleLogin()">
-    <i class="fa fa-google"></i> Connect Google
-</button>
-</ng-template> -->
-<!-- User logged in -->
-<!-- <ng-template #authenticated>
-<div *ngIf="auth.user | async as user">
-    <h3>Howdy, {{ user.displayName }}</h3>
-    <img  [src]="user.photoURL">
-    <p>UID: {{ user.uid }}</p>
-    <p>Favorite Color: {{ user?.favoriteColor }} </p>
-    <button (click)="auth.signOut()">Logout</button>
-</div>
-</ng-template> -->
-
-
-
-
-<form [formGroup]="userForm"  (ngSubmit)="login()">
-
-    <h3>Login</h3>
-    <a class="btn button is-small" routerLink="/auth/register">New User?</a>
-    <hr>
-
-    <div class="form-group">'
+        <h2>Login</h2>
+        <h3 class="btn button is-small" routerLink="/auth/register">New User?</h3>
+        <hr>
         <label for="email">Email</label>
-        <input type="email" id="email" class="form-control"
-               formControlName="email" required >
-    </div>
+        <div class="input-group-custom input-group-icon">
+          <input type="email" id="email" placeholder="Email" formControlName="email" required>
+          <div class="input-icon">
+            <i class="fa fa-envelope"></i>
+          </div>
+        </div>
 
 
-    <div *ngIf="formErrors.email" class="help is-danger">
-      {{ formErrors.email }}
-    </div>
+        <div *ngIf="formErrors.email" class="help is-danger">
+          {{ formErrors.email }}
+        </div>
 
-    <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" id="password" class="form-control"
-               formControlName="password" required >
+        <div class="input-group-custom input-group-icon">
+          <input type="password" id="password" placeholder="Password" formControlName="password" required>
+          <div class="input-icon">
+            <i class="fa fa-lock"></i>
+          </div>
+        </div>
+
+
+        <div *ngIf="formErrors.password" class="help is-danger">
+          {{ formErrors.password }}
+        </div>
+        <p *ngIf="userForm.valid" class="help is-success">Form Looks Valid</p>
+        <button type="submit" class="btn btn-primary" [disabled]="!userForm.valid">Submit</button>
+
+
+
+        <a *ngIf="!passReset && userForm.controls.email.valid" class="help is-info" (click)="resetPassword()">Reset Password for {{userForm.value.email}}?</a>
+        <p *ngIf="passReset" class="help is-info">Reset requested. Check your email instructions.</p>
+
+
+
+      </form>
+      <hr>
+      <button class="btn btn-primary" (click)="googleLogin()">
+        <i class="fa fa-google"></i> Continue with Google
+      </button>
+
     </div>
-
-
-    <div *ngIf="formErrors.password" class="help is-danger">
-      {{ formErrors.password }}
-    </div>
-    <p *ngIf="userForm.valid" class="help is-success">Form Looks Valid</p>
-    <button type="submit" class="btn btn-primary" [disabled]="!userForm.valid">Submit</button>
-
-
-
-    <a *ngIf="!passReset && userForm.controls.email.valid" class="help is-info" (click)="resetPassword()">Reset Password for {{userForm.value.email}}?</a>
-    <p *ngIf="passReset" class="help is-info">Reset requested. Check your email instructions.</p>
-
-
-
-  </form>
-<hr>
-  <button class="btn btn-primary" (click)="googleLogin()">
-      <i class="fa fa-google"></i> Continue with Google
-  </button>
-
-  <div *ngIf="_notify.msg | async as msg">
-    <p>{{msg}}</p>
   </div>
-
+</div>

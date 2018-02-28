@@ -14,13 +14,11 @@ const authRoutes: Routes = [
     children: [
       {
         path: 'login',
-        component: SigninComponent,
-        canActivate: [PreventLoggedInAccessService]
+        component: SigninComponent
       },
       {
         path: 'register',
-        component: SignupComponent,
-        canActivate: [PreventLoggedInAccessService]
+        component: SignupComponent
       }
     ]
   }

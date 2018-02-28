@@ -17,7 +17,10 @@ import { PasswordValidation } from '../../shared/password-validation';
 })
 export class EditAccountComponent implements OnInit {
   passwordForm: FormGroup;
+  emailForm: FormGroup;
   errMsg = '';
+  emailErrMsg = '';
+  editEmail = false;
   constructor(
     public _auth: AuthService,
     private fb: FormBuilder,
@@ -32,7 +35,7 @@ export class EditAccountComponent implements OnInit {
           Validators.required,
           Validators.minLength(6),
           Validators.maxLength(20),
-          Validators.pattern('[a-zA-Z][a-zA-Z0-9]+')
+          Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$')
         ]),
         confirmPassword: new FormControl(null, Validators.required)
       },
@@ -42,18 +45,46 @@ export class EditAccountComponent implements OnInit {
     );
   }
 
-  updateEmail() {
-    firebase.auth()
-    .signInWithEmailAndPassword('you@domain.com', 'correcthorsebatterystaple')
-    .then(function(user) {
-        user.updateEmail('newyou@domain.com')
-    }).catch()
+  editEmailForm() {
+    this.editEmail = !this.editEmail;
+    this.emailForm = this.fb.group({
+      password: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(20),
+        Validators.pattern('[a-zA-Z][a-zA-Z0-9]+')
+      ]),
+      newEmail: new FormControl(null, [Validators.required, Validators.email])
+    });
+  }
 
+  updateEmail(email) {
+    console.log(email);
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, this.emailForm.get('password').value)
+      .then(user => {
+        user
+          .updateEmail(this.emailForm.get('newEmail').value)
+          .then(data => {
+            this.emailErrMsg = '';
+            this._notify.update(
+              'Email reset successfully. Please log in again.',
+              'success'
+            );
+            this._auth.signOut();
+          })
+          .catch(err => (this.emailErrMsg = 'Email could not be reset'));
+      })
+      .catch(err => (this.emailErrMsg = 'Password incorrect! Cannot Authenticate. Try again.'));
   }
 
   onSubmit() {
-    if ( this.passwordForm.get('oldPassword').value === this.passwordForm.get('password').value) {
-        this.errMsg = 'Old and New Passwords cannot be same! Please try again'
+    if (
+      this.passwordForm.get('oldPassword').value ===
+      this.passwordForm.get('password').value
+    ) {
+      this.errMsg = 'Old and New Passwords cannot be same! Please try again';
     } else {
       this.updatePassword(
         this.passwordForm.get('oldPassword').value,
@@ -79,7 +110,10 @@ export class EditAccountComponent implements OnInit {
           .currentUser.updatePassword(newPassword)
           .then(data2 => {
             this.errMsg = '';
-            this._notify.update('Password reset successfully. Please log in again.', 'success');
+            this._notify.update(
+              'Password reset successfully. Please log in again.',
+              'success'
+            );
             this._auth.signOut();
           })
           .catch(err2 => {

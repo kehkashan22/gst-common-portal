@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LawsListComponent implements OnInit {
   laws = [];
-  selectedRow: number;
+  selectedRow: string;
   constructor(
     private _laws: LawsService,
     private route: ActivatedRoute,

@@ -1,38 +1,38 @@
 <div class="row article-container">
-    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12" *ngIf="article">
-        <div>
-            <div>
-                <p class="date">{{article.date | date }}</p>
-            </div>
-            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
-                <h1 class="mb-0">{{article.heading}}</h1>
-                <p class="base">{{article.base}}</p>
+  <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12" *ngIf="article">
+    <div>
+      <div>
+        <p class="date">{{article.date | date }}</p>
+      </div>
+      <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+        <h1 class="mb-0">{{article.heading}}</h1>
+        <p class="base">{{article.base}}</p>
 
-                <hr class="style14">
-            </div>
-        </div>
+        <hr class="style14">
+      </div>
     </div>
+  </div>
 
 
 
-    <div id="result" class="col-lg-12 col-md-12 col-xs-12 col-sm-12" *ngIf="article">
-        <blockquote>
-            <p>{{article.excerpt}}</p>
-        </blockquote>
-        <div>
+  <div id="result" class="col-lg-12 col-md-12 col-xs-12 col-sm-12" *ngIf="article">
+    <blockquote>
+      <p>{{article.excerpt}}</p>
+    </blockquote>
+    <div>
 
-            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 article___img">
-                <img class="article__img" [src]="article.uri" alt="">
-                <hr class="style14">
-            </div>
+      <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 article___img">
+        <img class="article__img" [src]="article.uri" alt="">
+        <hr class="style14">
+      </div>
 
-        </div>
-        <hr>
     </div>
-    
-    <div class="article__body">
-        <div [innerHTML]="htmlText"></div>
-    </div>
+    <hr>
+  </div>
+
+  <div class="article__body">
+    <div [innerHTML]="htmlText"></div>
+  </div>
 </div>
 
 <hr class="style14">
@@ -40,243 +40,174 @@
 
 
 <div class="row article-container">
-    <div class="relatedr">
+  <div class="relatedr">
     <div class="col-lg-8 col-md-12 col-xs-12 col-sm-12">
-        <div class="panel-group" *ngIf="article">
+      <div class="panel-group" *ngIf="article">
 
-            <!-- RELATED SECTIONS -->
-            <div class="panel panel-info" *ngIf="article.related_sections.length !== 0">
-                <div class="panel-heading pan-heading" data-toggle="collapse" href="#related-sections">
-                    <h3 class="panel-title pan-title">
-                            <i class="fa fa-book"></i>
-                        Related Sections:
-                    </h3>
-                </div>
-                <div id="related-sections" class="panel-collapse collapse in">
-                    <ul class="list-group">
-                        <a *ngFor="let section of article.related_sections" class="list-group-item" target="_blank" routerLink="/section" [queryParams]="{
+        <!-- RELATED SECTIONS -->
+        <div class="panel panel-info" *ngIf="article.related_sections.length !== 0">
+          <div class="panel-heading pan-heading" data-toggle="collapse" href="#related-sections">
+            <h3 class="panel-title pan-title">
+              <i class="fa fa-book"></i>
+              Related Sections:
+            </h3>
+          </div>
+          <div id="related-sections" class="panel-collapse collapse in">
+            <ul class="list-group">
+              <a *ngFor="let section of article.related_sections" class="list-group-item" target="_blank" routerLink="/section" [queryParams]="{
                   law_id: article.law_id,
                   act_id: article.act_id,
                   chap_id: article.chap_id,
                   section_id: article.section_id
                 }">
-              Section {{article.id}}. {{article.section_title}}
+                Section {{article.id}}. {{article.section_title}}
 
-            </a>
-                    </ul>
+              </a>
+            </ul>
 
-                </div>
-            </div>
-
-
-            <!-- RELATED RULES -->
-            <div class="panel panel-info" *ngIf="article.related_rules.length !== 0">
-                <div class="panel-heading pan-heading" data-toggle="collapse" href="#related-rules">
-                    <h3 class="panel-title pan-title">
-                            <i class="fa fa-file-text-o"></i>
-                        Related Rules:
-                       
-                    </h3>
-                </div>
-                <div id="related-rules" class="panel-collapse collapse in">
-                    <ul class="list-group">
+          </div>
+        </div>
 
 
-                        <a class="list-group-item" *ngFor="let rule of article.related_rules" target="_blank" routerLink="/rule" [queryParams]="{
+        <!-- RELATED RULES -->
+        <div class="panel panel-info" *ngIf="article.related_rules.length !== 0">
+          <div class="panel-heading pan-heading" data-toggle="collapse" href="#related-rules">
+            <h3 class="panel-title pan-title">
+              <i class="fa fa-file-text-o"></i>
+              Related Rules:
+
+            </h3>
+          </div>
+          <div id="related-rules" class="panel-collapse collapse in">
+            <ul class="list-group">
+
+
+              <a class="list-group-item" *ngFor="let rule of article.related_rules" target="_blank" routerLink="/rule" [queryParams]="{
                 law_id: rule.law_id,
                 rule_id: rule.rule_parent_id,
                 chap_id: rule.chap_id,
                 r_id: rule.rule_id
               }">
-              Rule {{rule.id}}. {{rule.rule_title}}
-            </a>
+                Rule {{rule.id}}. {{rule.rule_title}}
+              </a>
 
-                    </ul>
-                </div>
+            </ul>
+          </div>
 
-            </div>
+        </div>
 
-            <!-- RELATED NOTIFICATIONS -->
-            <div class="panel panel-info" *ngIf="article.related_notifications.length !== 0">
-                <div class="panel-heading pan-heading" data-toggle="collapse" href="#related-notification">
-                    <h3 class="panel-title pan-title">
-                            <i class="fa fa-bell-o"></i>
-                        Related notifications:
-                        
-                    </h3>
-                </div>
-                <div id="related-notification" class="panel-collapse collapse in">
-                    <ul class="list-group">
+        <!-- RELATED NOTIFICATIONS -->
+        <div class="panel panel-info" *ngIf="article.related_notifications.length !== 0">
+          <div class="panel-heading pan-heading" data-toggle="collapse" href="#related-notification">
+            <h3 class="panel-title pan-title">
+              <i class="fa fa-bell-o"></i>
+              Related notifications:
 
-                        <a class="list-group-item" *ngFor="let notification of article.related_notifications" target="_blank" routerLink="/notification" [queryParams]="{
+            </h3>
+          </div>
+          <div id="related-notification" class="panel-collapse collapse in">
+            <ul class="list-group">
+
+              <a class="list-group-item" *ngFor="let notification of article.related_notifications" target="_blank" routerLink="/notification"
+                [queryParams]="{
                   law_id: notification.law_id,
                   act_id: notification.act_id,
                   id: notification.notification_id
                   }">
-              Notification {{notification.id}}. {{notification.notification_name}}
-            </a>
-                    </ul>
-                </div>
-            </div>
+                Notification {{notification.id}}. {{notification.notification_name}}
+              </a>
+            </ul>
+          </div>
+        </div>
 
-            <!-- RELATED CIRCULARS -->
-            <div class="panel panel-info">
-                <div class="panel-heading pan-heading" data-toggle="collapse" href="#related-circular">
-                    <h3 class="panel-title pan-title">
-                            <i class="fa fa-bullhorn"></i> 
-                        Related circulars:
-                       
-                    </h3>
-                </div>
-                <div id="related-circular" class="panel-collapse collapse in">
-                    <ul class="list-group">
-                        <div *ngIf="article.related_circulars.length !== 0">
-                            <a *ngFor="let circular of article.related_circulars" class="list-group-item" target="_blank" routerLink="/circular" [queryParams]="{
+        <!-- RELATED CIRCULARS -->
+        <div class="panel panel-info" *ngIf="article.related_circulars.length !== 0">
+          <div class="panel-heading pan-heading" data-toggle="collapse" href="#related-circular">
+            <h3 class="panel-title pan-title">
+              <i class="fa fa-bullhorn"></i>
+              Related circulars:
+
+            </h3>
+          </div>
+          <div id="related-circular" class="panel-collapse collapse in">
+            <ul class="list-group">
+              <div *ngIf="article.related_circulars.length !== 0">
+                <a *ngFor="let circular of article.related_circulars" class="list-group-item" target="_blank" routerLink="/circular" [queryParams]="{
                                   law_id: circular.law_id,
                                   id: circular.circular_id,
                                   type: circular.type
                                   }">
-                {{circular.id}}. {{circular.circular_name}}
-              </a>
-                        </div>
-                    </ul>
-                </div>
-            </div>
+                  {{circular.id}}. {{circular.circular_name}}
+                </a>
+              </div>
+            </ul>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
 
 
-<div class="star-container card_rating col-lg-4 col-md-12 col-xs-12 col-sm-12 pull-right">
-        <div *ngIf="article">
-            <!-- <p class="author">by
-                <span>
-          <a [routerLink]="['/author', article.author_id]">{{article.by | uppercase}}</a>
-        </span>
-     
-            </p> -->
-          
+  <div class="star-container card_rating col-lg-4 col-md-12 col-xs-12 col-sm-12 pull-right">
+    <div *ngIf="article">
+      <div class="inner">
+        <div class="histo">
+
+          <div class="card__author col-lg-8 col-md-12 col-xs-12 col-sm-12">
+            <div class="card__author-dp">
+              <img  alt="Author" class="img-thumbnail rounded" src="https://media1.popsugar-assets.com/files/thumbor/bp72LRboS8pdPlVvLXRz1QDxOYI/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2015/07/08/991/n/1922398/53f34b16_edit_img_image_1090627_1436394745_INT_AntMan_PaulRuddEvangelineLilly_070715_CLUELESS_SQUARE/i/Paul-Rudd-Clueless-Interview-Video.jpg">
+            </div>
+            <div class="card__author-content">
+              <a [routerLink]="['/author', article.author_id]">{{article.by}}</a>
+              <p>
+                {{article.date | date}}
+              </p>
+            </div>
+
+          </div>
+
+
+
+          <fieldset class="rating" >
+            <ng-container *ngFor="let num of [5, 4, 3, 2, 1]">
+
+              <input (click)="starHandler(num)" [id]="'star'+num" [value]="num-0.5" name="rating" type="radio" [checked]="num === (userRating | async) "
+              />
+              <label class="full" [for]="'star'+num" data-toggle="tooltip" data-placement="top" [attr.title]="num+ '/5'"></label>
+
+              <input (click)="starHandler(num-0.5)" [value]="num-0.5" [id]="'halfstar'+num" name="rating" type="radio" [checked]="num === ((userRating | async) + 0.5)"
+              />
+              <label class="half" [for]="'halfstar'+num" data-toggle="tooltip" data-placement="top" [attr.title]="num - 0.5 + '/5'"></label>
+            </ng-container>
+          </fieldset>
+
+          <div class="rating-users">
+            <div *ngIf="exists; else none">
+              <p class="rating_template">Your current Rating </p>
+            </div>
+            <ng-template #none>
+              <p class="rating_template">Rate this article!</p>
+            </ng-template>
+          </div>
 
         </div>
 
-        <div class="inner">
-            <div class="histo">
-
-                    <div class="card__author col-lg-8 col-md-12 col-xs-12 col-sm-12">
-                            <div class="card__author-dp">
-                             <img _ngcontent-c1="" alt="Author" class="img-thumbnail rounded" src="https://media1.popsugar-assets.com/files/thumbor/bp72LRboS8pdPlVvLXRz1QDxOYI/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2015/07/08/991/n/1922398/53f34b16_edit_img_image_1090627_1436394745_INT_AntMan_PaulRuddEvangelineLilly_070715_CLUELESS_SQUARE/i/Paul-Rudd-Clueless-Interview-Video.jpg">
-                            </div>
-                            <div class="card__author-content">
-                              <a [routerLink]="['/author', article.author_id]">{{article.by}}</a>
-                              <p>
-                                {{article.date | date}}
-                              </p>
-                            </div>
-
-                          </div>    
-
-              
-                    
-                    <fieldset class="rating" data-toggle="tooltip" data-placement="top" title="Rate this article">
-                        <ng-container *ngFor="let num of [5, 4, 3, 2, 1]">
-
-                            <input (click)="starHandler(num)" [id]="'star'+num" [value]="num-0.5" name="rating" type="radio" [checked]="num === (userRating | async) " />
-                            <label class="full" [for]="'star'+num"></label>
-
-                            <input (click)="starHandler(num-0.5)" [value]="num-0.5" [id]="'halfstar'+num" name="rating" type="radio" [checked]="num === ((userRating | async) + 0.5)" />
-                            <label class="half" [for]="'halfstar'+num"></label>
-                        </ng-container>
-                    </fieldset>
-                    
-                 
-                      <div class="rating-users">
-                        <div *ngIf="exists; else none">
-                            <p class="rating_template">Your current Rating </p>
-                        </div>
-                        <ng-template #none>
-                            <p class="rating_template">Rate this article!</p>
-                        </ng-template>
-                    </div>  
-                
+        <div class="avg_rating_grid">
+          <div class="avg-rating">
+            <span class="rating-num">{{avgRating | async | round}}</span>
+            <div class="rating-stars">
+              <div class="stars-outer">
+                <div class="stars-inner" [style.width]="((avgRating | async | round)*20)+'%'"></div>
+              </div>
             </div>
-
-            <div class="avg_rating_grid">
-                    <div class="avg-rating">
-                            <span class="rating-num">{{avgRating | async | round}}</span>
-                             <div class="rating-stars">
-                                <div class="stars-outer">
-                                    <div class="stars-inner" [style.width]="((avgRating | async | round)*20)+'%'"></div>
-                                </div>
-                            </div> 
-                            <div class="rating-users">
-                              Average rating 
-                            </div>
-                        </div>
+            <div class="rating-users">
+              Average rating
             </div>
-        
+          </div>
         </div>
+
+      </div>
     </div>
+  </div>
 
-
-<!-- 
-    <div class="star-container card_rating col-lg-5">
-        <div *ngIf="article">
-            <p class="author">by
-                <span>
-          <a [routerLink]="['/author', article.author_id]">{{article.by | uppercase}}</a>
-        </span>
-     
-            </p>
-            <hr class="style14">
-          
-
-        </div>
-
-
-
-
-
-        <div class="inner">
-            <div class="histo">
-
-                <div>
-                    <div class="rating-users">
-                        <div *ngIf="exists; else none">
-                            <p class="rating_template">Your current Rating </p>
-                        </div>
-                        <ng-template #none>
-                            <p class="rating_template">Rate this article!</p>
-                        </ng-template>
-                    </div>
-                    
-                    <fieldset class="rating" data-toggle="tooltip" data-placement="top" title="Rate this article">
-                        <ng-container *ngFor="let num of [5, 4, 3, 2, 1]">
-
-                            <input (click)="starHandler(num)" [id]="'star'+num" [value]="num-0.5" name="rating" type="radio" [checked]="num === (userRating | async) " />
-                            <label class="full" [for]="'star'+num"></label>
-
-                            <input (click)="starHandler(num-0.5)" [value]="num-0.5" [id]="'halfstar'+num" name="rating" type="radio" [checked]="num === ((userRating | async) + 0.5)" />
-                            <label class="half" [for]="'halfstar'+num"></label>
-                        </ng-container>
-                    </fieldset>
-                </div>
-
-            </div>
-            <div class="avg-rating">
-                <span class="rating-num">{{avgRating | async | round}}</span>
-                <div class="rating-stars">
-                    <div class="stars-outer">
-                        <div class="stars-inner" [style.width]="((avgRating | async | round)*20)+'%'"></div>
-                    </div>
-                </div>
-                <div class="rating-users">
-                    <i class="icon-user"></i> avg rating of all users
-                </div>
-            </div>
-
-        </div>
-
-
-
-    </div> -->
 </div>

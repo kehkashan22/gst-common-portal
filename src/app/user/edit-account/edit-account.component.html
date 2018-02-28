@@ -9,71 +9,99 @@
 <hr>
 
 <div class="edit__user">
-<div class="form-section" id="form-item-email" *ngIf="_auth.user | async as user">
-  <h4>Email</h4>
+  <div class="form-section" id="form-item-email" *ngIf="_auth.user | async as user">
+    <h4>Email</h4>
 
-  <div id="tooltip-reference-email" class="tooltip-reference">
-    <div class="input-group w100p">
-      <div class="form-control">
-        Your email address is
-        <b>{{user.email}}</b>
+    <div id="tooltip-reference-email" class="tooltip-reference">
+      <div class="input-group w100p">
+        <div class="form-control">
+          Your email address is
+          <b>{{user.email}}</b>
+        </div>
+
+        <a class="input-group-addon edit-handle" (click)="editEmailForm()">
+          <span class="fa fa-pencil"></span>
+        </a>
+
       </div>
 
-      <a class="input-group-addon edit-handle">
-        <span class="fa fa-pencil"></span>
-      </a>
-
     </div>
+    <br>
+    <div *ngIf="editEmail">
+      <form [formGroup]="emailForm">
+        <div class="input-group-custom input-group-icon">
+          <input type="password" id="password" formControlName="password" placeholder="Enter Password" [formGroup]="emailForm" required/>
+          <div class="input-icon">
+            <i class="fa fa-lock"></i>
+          </div>
+          <div *ngIf="emailForm.controls.password.errors && emailForm.controls.password.touched" class="error-msg">
+            <div [hidden]="!emailForm.controls.password.errors.required" class="has-error">Password is required</div>
+          </div>
+        </div>
 
+        <div class="input-group-custom input-group-icon">
+            <input type="email" id="newEmail" formControlName="newEmail" placeholder="Enter New Email Address" [formGroup]="emailForm" required/>
+            <div class="input-icon">
+              <i class="fa fa-lock"></i>
+            </div>
+            <div *ngIf="emailForm.controls.newEmail.errors && emailForm.controls.newEmail.touched" class="error-msg">
+              <div [hidden]="!emailForm.controls.newEmail.errors.required" class="has-error">Email is required</div>
+              <div [hidden]="!emailForm.controls.newEmail.errors.email" class="has-error">Please format the email address correctly</div>
+            </div>
+          </div>
+      </form>
+      <div class="alert alert-danger" *ngIf="emailErrMsg">
+          {{emailErrMsg}}
+        </div>
+      <hr>
+      <button type="submit" class="btn btn-primary" [disabled]="!emailForm.valid" (click)="updateEmail(user.email)">Change Email</button>
+    </div>
   </div>
-</div>
-<hr>
-<div class="form-section">
-  <h4>Password</h4>
-  <form  [formGroup]="passwordForm" (ngSubmit)="onSubmit()">
-    <div class="input-group-custom input-group-icon">
-      <input type="password" id="oldPassword" formControlName="oldPassword" [formGroup]="passwordForm" placeholder="Enter Current Password"
-        required/>
-      <div class="input-icon">
-        <i class="fa fa-lock"></i>
-      </div>
-      <div *ngIf="passwordForm.controls.oldPassword.errors && !passwordForm.controls.oldPassword.pristine"
-          class="error-msg">
+  <hr>
+  <div class="form-section">
+    <h4>Password</h4>
+    <form [formGroup]="passwordForm" >
+      <div class="input-group-custom input-group-icon">
+        <input type="password" id="oldPassword" formControlName="oldPassword" [formGroup]="passwordForm" placeholder="Enter Current Password"
+          required/>
+        <div class="input-icon">
+          <i class="fa fa-lock"></i>
+        </div>
+        <div *ngIf="passwordForm.controls.oldPassword.errors && !passwordForm.controls.oldPassword.pristine" class="error-msg">
           <div [hidden]="!passwordForm.controls.oldPassword.errors.required" class="has-error">Old Password is required</div>
+        </div>
       </div>
-    </div>
 
-    <div class="input-group-custom input-group-icon">
-      <input type="password" id="password" formControlName="password" placeholder="Enter New Password" [formGroup]="passwordForm"
-        required/>
-      <div class="input-icon">
-        <i class="fa fa-user"></i>
-      </div>
-      <div *ngIf="passwordForm.controls.password.errors && passwordForm.controls.password.touched"
-          class="error-msg">
+      <div class="input-group-custom input-group-icon">
+        <input type="password" id="password" formControlName="password" placeholder="Enter New Password" [formGroup]="passwordForm"
+          required/>
+        <div class="input-icon">
+          <i class="fa fa-user"></i>
+        </div>
+        <div *ngIf="passwordForm.controls.password.errors && passwordForm.controls.password.touched" class="error-msg">
           <div [hidden]="!passwordForm.controls.password.errors.required" class="has-error">New Password is required</div>
           <div [hidden]="!passwordForm.controls.password.errors.minlength" class="has-error">Password should be atleast 6 characters long!</div>
           <div [hidden]="!passwordForm.controls.password.errors.maxlength" class="has-error">Password cannot be more that 20 characters long!</div>
           <div [hidden]="!passwordForm.controls.password.errors.pattern" class="has-error">Password can only contain letters and numbers. No special characters are allowed!</div>
+        </div>
       </div>
-    </div>
 
-    <div class="input-group-custom input-group-icon">
-      <input type="password" id="confirmPassword" formControlName="confirmPassword" [formGroup]="passwordForm" placeholder="Re-type New Password"
-        required/>
-      <div class="input-icon">
-        <i class="fa fa-user"></i>
+      <div class="input-group-custom input-group-icon">
+        <input type="password" id="confirmPassword" formControlName="confirmPassword" [formGroup]="passwordForm" placeholder="Re-type New Password"
+          required/>
+        <div class="input-icon">
+          <i class="fa fa-user"></i>
+        </div>
       </div>
-    </div>
-    <div class="alert alert-danger" *ngIf="!passwordForm.controls.confirmPassword.pristine && passwordForm.controls.confirmPassword.errors?.MatchPassword">
+      <div class="alert alert-danger" *ngIf="!passwordForm.controls.confirmPassword.pristine && passwordForm.controls.confirmPassword.errors?.MatchPassword">
         Password do not match!
-    </div>
+      </div>
 
-  </form>
-  <div class="alert alert-danger" *ngIf="errMsg">
+    </form>
+    <div class="alert alert-danger" *ngIf="errMsg">
       {{errMsg}}
+    </div>
+    <hr>
+    <button type="submit" class="btn btn-primary" [disabled]="!passwordForm.valid" (click)="onSubmit()">Change Password</button>
   </div>
-  <hr>
-  <input type="submit" class="btn btn-primary" value="submit" >
-</div>
 </div>

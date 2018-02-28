@@ -47,7 +47,7 @@ export class SigninComponent implements OnInit {
   ngOnInit() {
     this.auth.user.subscribe(data => {
       if (data) {
-        this.router.navigate(['/']);
+        this.router.navigate(['/home']);
       }
     });
     this.buildForm();

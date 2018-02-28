@@ -16,7 +16,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   name = '';
   closeResult: string;
 
-  constructor(public _authStart: AuthService, private router: Router, public _notify: NotifyService, private modalService: NgbModal) {
+  constructor(public auth: AuthService, private router: Router, public _notify: NotifyService, private modalService: NgbModal) {
       this.loading = true;
   }
 
