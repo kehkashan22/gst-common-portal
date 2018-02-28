@@ -14,8 +14,7 @@ import { SectionDetailComponent } from './section-detail/section-detail.componen
 import { LawsComponent } from './laws/laws.component';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'welcome', component: WelcomeComponent, canActivate: [PreventLoggedInAccessService] },
   {
     path: 'user',

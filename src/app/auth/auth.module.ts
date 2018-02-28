@@ -1,4 +1,3 @@
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthComponent } from './auth.component';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -27,8 +26,7 @@ import { RouterModule } from '@angular/router';
     AuthRoutingModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
-    AngularFireStorageModule,
-    NgbModule
+    AngularFireStorageModule
   ]
 })
 export class AuthModule {}

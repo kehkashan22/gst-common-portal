@@ -3,7 +3,6 @@ import { Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationErr
 import { AuthService } from './auth/auth.service';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import * as firebase from 'firebase';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +15,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   name = '';
   closeResult: string;
 
-  constructor(public auth: AuthService, private router: Router, public _notify: NotifyService, private modalService: NgbModal) {
+  constructor(public auth: AuthService, private router: Router, public _notify: NotifyService) {
       this.loading = true;
   }
 
