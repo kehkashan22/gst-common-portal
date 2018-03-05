@@ -28,7 +28,7 @@ h2 {
   padding: 1em;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 15px;
-  color: #b9b9b9;
+  color: #a3a3a3;
 }
 h4 {
   color: #464880;
@@ -52,13 +52,13 @@ select {
 }
 input:focus {
   outline: 0;
-  border-color:  #464880;
+  border-color:  #999bcf;
 }
 input:focus + .input-icon i {
-  color: #464880;
+  color: #999bcf;
 }
 input:focus + .input-icon:after {
-  border-right-color: #464880;
+  border-right-color: #999bcf;
 }
 /* input[type="radio"] {
   display: none;
@@ -88,7 +88,7 @@ select:focus,
 select:active {
   /* background-color: #C68FAA; */
   /* color: #fff; */
-  border-color:  #464880;
+  border-color:  #999bcf;
 }
 /* input[type="checkbox"] {
   display: none;
@@ -138,7 +138,7 @@ select:active {
   outline: 0;
 }
 select option {
-  background-color: rgba(192, 141, 165, 0.4);
+  background-color: rgba(153, 155, 207, 0.4);
   color: #fff;
 }
 .input-group-custom {
@@ -224,7 +224,7 @@ select option {
   padding-right: 0;
 }
 input.ng-touched.ng-invalid.ng-dirty {
-  border: 1px solid #464880 !important;
+  border: 1px solid #999bcf !important;
 }
 
 .daterangepicker td.active, .daterangepicker td.active:hover {
@@ -245,6 +245,33 @@ input.ng-touched.ng-invalid.ng-dirty {
 
 .btn-primary {
   color: #fff;
+  background-color: #6571B5;
+  border-color: #6571B5;
+  width:100%;
+  padding:1em;
+}
+
+.btn-primary:active:hover, .btn-primary.active:hover, .open > .dropdown-toggle.btn-primary:hover, .btn-primary:active:focus, .btn-primary.active:focus, .open > .dropdown-toggle.btn-primary:focus, .btn-primary:active.focus, .btn-primary.active.focus, .open > .dropdown-toggle.btn-primary.focus {
+  color: #fff;
   background-color: #464880;
   border-color: #464880;
 }
+
+.profile_upload{
+  border:1px solid #eee;
+  border-radius: 8px;
+}
+
+.file-input{
+  border:1px solid #eee;
+  border-radius: 8px;
+  width:85%;
+  color:#464880;
+}
+
+
+.profile_upload_img{
+  display:grid;
+  grid-template-rows:1fr auto;
+}
+

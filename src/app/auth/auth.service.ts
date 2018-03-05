@@ -1,3 +1,4 @@
+import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 import { User } from './../core/user';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
@@ -25,21 +26,12 @@ export class AuthService {
   ) {
     this.user = this.afAuth.authState.switchMap(user => {
       if (user && user.emailVerified) {
+        console.log(user);
         return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
       } else {
         return Observable.of(null);
       }
     });
-
-    this.check = this.afAuth.authState.switchMap(data => {
-      if (data) {
-        return Observable.of(true);
-      } else {
-        return Observable.of(null);
-      }
-    });
-
-    this.afAuth.authState.subscribe(user => console.log(user));
 
   }
 
@@ -56,20 +48,21 @@ export class AuthService {
       .then(credential => {
         this.notify.clear();
         this.router.navigate(['/']);
-        this.afs
-          .doc<User>(`users/${credential.user.uid}`)
-          .snapshotChanges()
-          .pipe(
-            take(1),
-            map(userEl => !!userEl),
-            tap(userEl => {
-              if (!userEl) {
-                return this.updateUserData(credential.user);
-              } else {
-                return null;
-              }
-            })
-          );
+        const docRef = firebase.firestore().collection('users').doc(credential.user.uid);
+
+        docRef.get().then( (doc) => {
+          if (doc.exists) {
+            console.log("Document data:", doc.data());
+            return;
+          } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+            return this.updateUserData(credential.user);
+          }
+        }).catch(function (error) {
+          console.log("Error getting document:", error);
+          return this.updateUserData(credential.user);
+        });
       })
       .catch(error => this.handleError(error));
   }
@@ -144,7 +137,7 @@ export class AuthService {
       member_since: user.member_since || null,
       company: user.company || null
     };
-    return userRef.set(data, { merge: true });
+    return userRef.set(data);
   }
 
   isAuthenticated() {

@@ -21,7 +21,7 @@
                 chap_id: section.chap_id,
                 section_id: section.section_id
               }">
-                Section {{section.id}}. {{section.section_title}}
+                <span class="related_number">Section {{section.id}}.</span> {{section.section_title}}
               </a>
             </ul>
           </div>
@@ -43,7 +43,7 @@
               chap_id: rule.chap_id,
               r_id: rule.rule_id
             }">
-                Rule {{rule.id}}. {{rule.rule_title}}
+                <span class="related_number">Rule {{rule.id}}.</span> {{rule.rule_title}}
               </a>
 
             </ul>
@@ -55,7 +55,7 @@
         <div class="panel panel-info" *ngIf="section.related_notifications.length !== 0">
           <div class="panel-heading pan-heading" data-toggle="collapse" href="#related-notification">
             <h3 class="panel-title pan-title">
-              <i class="fa fa-bell-o"></i> Related notifications:</h3>
+              <i class="fa fa-bell-o"></i> Related Notifications:</h3>
           </div>
           <div id="related-notification" class="panel-collapse collapse in">
             <ul class="list-group">
@@ -66,7 +66,7 @@
                 act_id: notification.act_id,
                 id: notification.notification_id
                 }">
-                Notification {{notification.id}}. {{notification.notification_name}}
+                <span class="related_number">Notification No. {{notification.id}}.</span> {{notification.notification_name}}
               </a>
             </ul>
           </div>
@@ -76,7 +76,7 @@
         <div class="panel panel-info" *ngIf="section.related_circulars.length !== 0">
           <div class="panel-heading pan-heading" data-toggle="collapse" href="#related-circular">
             <h3 class="panel-title pan-title">
-              <i class="fa fa-bullhorn"></i> Related circulars:</h3>
+              <i class="fa fa-bullhorn"></i> Related Circulars/Orders:</h3>
           </div>
           <div id="related-circular" class="panel-collapse collapse in">
             <ul class="list-group">
@@ -86,7 +86,7 @@
                                 id: circular.circular_id,
                                 type: circular.type
                                 }">
-                  {{circular.id}}. {{circular.circular_name}}
+                  <span class="related_number">{{circular.type || 'Circular' | titlecase}} {{circular.id}}.</span> {{circular.circular_name}}
                 </a>
               </div>
             </ul>

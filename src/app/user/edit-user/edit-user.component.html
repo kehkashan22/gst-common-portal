@@ -1,6 +1,6 @@
 <div class="form-wrapper">
   <h2>
-    Profile
+   Edit Profile
   </h2>
   <h3>
     Add information about yourself to share on your profile.
@@ -92,24 +92,33 @@
   </div>
   <hr>
   <h4>Display Picture</h4>
-  <div class="file">
-    <label class="file-label">
-      <input class="file-input" type="file" (change)="startUpload($event.target.files)">
-      <span class="file-cta">
-      </span>
-    </label>
-  </div>
-  <div *ngIf="percentage | async as pct">
-    Uploading... {{ pct | number }}%
-  </div>
-  <div *ngIf="snapshot | async as snap">
-    <button (click)="task.pause()" class="btn btn-success" [disabled]="!isActive(snap)">Pause</button>
-    <button (click)="task.cancel()" class="btn btn-danger" [disabled]="!isActive(snap)">Cancel</button>
-    <button (click)="task.resume()" class="btn btn-info" [disabled]="!(snap?.state === 'paused')">Resume</button>
-  </div>
+  
+
+  <div class="profile_upload_img">
   <div *ngIf="auth.user | async as user">
-    <img [src]="image" width="250">
+        <img class="profile_upload" [src]="image" width="250">
   </div>
+
+  
+  <div class="file">
+      <label class="file-label">
+        <input class="file-input" type="file" (change)="startUpload($event.target.files)">
+        <span class="file-cta">
+        </span>
+      </label>
+    </div>
+    <div *ngIf="percentage | async as pct">
+      Uploading... {{ pct | number }}%
+    </div>
+  
+    <div *ngIf="snapshot | async as snap">
+      <button (click)="task.pause()" class="btn btn-success" [disabled]="!isActive(snap)">Pause</button>
+      <button (click)="task.cancel()" class="btn btn-danger" [disabled]="!isActive(snap)">Cancel</button>
+      <button (click)="task.resume()" class="btn btn-info" [disabled]="!(snap?.state === 'paused')">Resume</button>
+    </div>
+  </div>
+  
+  
   <hr>
   <div class="submit-row">
     <span *ngIf="!userForm.valid && userForm.touched" class="help-block">Please enter valid data!</span>

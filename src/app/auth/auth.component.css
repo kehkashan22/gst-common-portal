@@ -1,16 +1,159 @@
-.login-wrap{
-	width:100%;
-	margin:auto;
-	max-width:525px;
-	min-height:670px;
-	position:relative;
-	background:url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg) no-repeat center;
-	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
-}
-.login-html{
-	width:100%;
-	height:100%;
-	position:absolute;
-	padding:90px 70px 50px 70px;
-	background:rgba(40,57,101,.9);
-}
+.info p {
+    text-align:center;
+    color: #999;
+    text-transform:none;
+    font-weight:600;
+    font-size:15px;
+    margin-top:2px
+  }
+  
+  .info i {
+    color:#55acee;
+  }
+  
+  h1 {
+    text-align:center; 
+    color: #666;
+    text-shadow: 1px 1px 0px #FFF;
+    margin:50px 0px 0px 0px
+  }
+  
+  .h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color:#fff;
+  }
+  
+  h3 {
+    font-size: 17px;
+    font-weight: 600;
+    color:#fff;
+  }
+ 
+  a {
+    text-decoration: inherit;
+    color: inherit;
+  }
+  
+  a:hover {
+    text-decoration: inherit;
+  }
+  
+  hr {
+    position: relative;
+    margin-top: 27%;
+    border: 1px solid #fff;
+    border-radius: 50px;
+    opacity: 0.15;
+  }
+  
+.content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index:-1;
+  }
+  
+.container {
+    display: block;
+    position: relative;
+    width: 530px;
+    height: 679px;
+    margin: auto;
+    margin-top: 180px; 
+    /* box-shadow: 1px 5px 10px 1px #333; */
+    overflow:hidden;
+    padding-left:0;
+    padding-right: 0;
+    background-color: #FFF;
+  }
+img.bg-img {
+    display: block;
+    position: absolute;
+    margin: auto;
+  }
+  
+  .menu {
+    position: relative;
+    padding: 22% 13% 0 13%;
+  }
+  
+  .menu h2 {
+    display: inline;
+    margin: 20px;
+    padding-bottom: 3px;
+  }
+  a:not(.active) {
+    cursor:inherit;
+  }
+  .menu .active h2 {
+    transition: color 0.5s ease-in;
+  }
+  
+  .connexion {
+      position: absolute;
+      padding: 15% 13%;
+      width: 74%;
+      left:0px;
+      transition: all 0.7s;
+  }
+  
+  .connexion h2 {
+      display: inline;
+      margin: 20px;
+      padding-bottom: 3px;
+      border-bottom: 2px solid #1161ee;
+  }
+  
+  .connexion h4 {
+      margin-bottom: 0;
+      text-align: center;
+      color: #ffffff;
+      opacity: 0.3;
+  }
+  
+  .connexion h4:hover {
+      opacity: 0.8;
+      transition: all 0.1s ease-in;
+  }
+
+  .nav-tabs {
+    margin-bottom: 20px;
+  }
+  .nav-tabs > li {
+    float: left;
+    margin-bottom: -1px;
+  }
+  .nav-tabs > li > a {
+    color: #3f3f3f;
+    font-weight: 400;
+    margin-right: 2px;
+    line-height: 1.42857143;
+    border: none;
+    border-radius: 0px;
+    font-family: 'Roboto', sans-serif;
+  }
+  .nav-tabs > li > a:hover {
+    background-color: rgba(166, 176, 226, 0.501);
+    /* border: #6571b5 1px 1px 1px 0px solid; */
+    border-radius: 3px 3px 0px 0px;
+  }
+  .nav-tabs > li.active > a,
+  .nav-tabs > li.active > a:hover,
+  .nav-tabs > li.active > a:focus {
+    color: #464880;
+    cursor: default;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-bottom-color:#464880;
+    border-bottom-width: 3.1414px;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .pointer {
+      cursor: pointer;
+    }

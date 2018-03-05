@@ -1,16 +1,16 @@
-<div class="row">
-  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+
+  <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12 ">
     <div class="form-section">
       <form [formGroup]="userForm" (ngSubmit)="signup()">
-        <div class="row">
+        <div class="col-lg-12">
           <h2>New User Signup</h2>
           <h3 class="button is-small" [routerLink]="['/auth/login']">Already Registered?</h3>
           <hr>
-          <label for="displayName">Name</label>
+          <!-- <label for="displayName">Name</label> -->
           <div class="input-group-custom input-group-icon">
             <input type="text" id="displayName" formControlName="displayName" placeholder="Full Name" required>
             <div class="input-icon">
-              <i class="fa fa-user"></i>
+              <i class="fa fa-user"></i> 
             </div>
           </div>
 
@@ -18,11 +18,11 @@
             {{ formErrors.displayName }}
           </div>
 
-          <label for="email">Email</label>
+          <!-- <label for="email">Email</label> -->
           <div class="input-group-custom input-group-icon">
             <input type="email" id="email" placeholder="Email" formControlName="email" required>
             <div class="input-icon">
-              <i class="fa fa-envelope"></i>
+               <i class="fa fa-envelope"></i>
             </div>
           </div>
 
@@ -31,23 +31,23 @@
           </div>
 
 
-          <label for="password">Password</label>
+          <!-- <label for="password">Password</label> -->
           <div class="input-group-custom input-group-icon">
             <input type="password" id="password" placeholder="Password" formControlName="password" required>
             <div class="input-icon">
-              <i class="fa fa-lock"></i>
+             <i class="fa fa-lock"></i> 
             </div>
           </div>
 
           <div *ngIf="formErrors.password" class="help-block">
             {{ formErrors.password }}
           </div>
-
-          <label for="confirmPassword">Confirm Password</label>
+<!-- 
+          <label for="confirmPassword">Confirm Password</label> -->
           <div class="input-group-custom input-group-icon">
             <input type="password" id="confirmPassword" formControlName="confirmPassword" placeholder="Confirm Password" required/>
             <div class="input-icon">
-              <i class="fa fa-key"></i>
+             <i class="fa fa-key"></i>
             </div>
           </div>
           <div *ngIf="!userForm.controls.confirmPassword.pristine && userForm.controls.confirmPassword.errors?.required" class="help-block">
@@ -65,4 +65,4 @@
     </div>
 
   </div>
-</div>
+

@@ -1,16 +1,50 @@
 
+
+
 <div class="edit__user">
         <div>
                 <div *ngIf="auth.user | async as user">
-                    Name: <h3>{{ user.displayName }}</h3>
-                    Company: <p>{{user.company}}</p>
-                    Designation: <p>{{user.designation}}</p>
-                    Date of Birth: <p>{{user.dob | date: 'mediumDate'}}</p>
-                    Email: <p>{{user.email}}</p>
-                    ICAI/ICSI/CMA Member Since: <p>{{user.member_since | date: 'mediumDate'}}</p>
-                    Mobile No.:<p>{{user.mob}}</p>
-                    Qualification: <p>{{user.qualification}}</p>
-                    <img  [src]="user.photoURL" width="300">
+                    <div class="profile_title"> <h1>{{ user.displayName }}</h1></div>
+                    <div class="profile_title"> <h4>{{user.designation}}</h4> </div>
+
+                    <hr class="style14">
+
+                    <div class="profile_info">
+                               
+                                    <div class="profile_title">Email:</div> 
+                                    <div class="profile_text">{{user.email}}</div>
+                                
+            
+                             
+                                    <div class="profile_title">Mobile No.: </div> 
+                                    <div class="profile_text">{{user.mob}}</div>
+                                 
+                               
+                             
+                                    <div class="profile_title">Company:</div> 
+                                    <div class="profile_text">{{user.company}}</div>
+                                
+            
+                            
+                                    <div class="profile_title">Date of Birth:</div> 
+                                    <div class="profile_text">{{user.dob | date: 'mediumDate'}}</div> 
+                                
+            
+                             
+                                    <div class="profile_title">ICAI/ICSI/CMA Member Since: </div> 
+                                    <div class="profile_text">{{user.member_since | date: 'mediumDate'}}</div>
+                                
+            
+                            
+                                     <div class="profile_title">Qualification: </div> 
+                                     <div class="profile_text">{{user.qualification}}</div> 
+                                
+                    </div>
+                    
+
+            
+
+                    <!-- <img  [src]="user.photoURL" width="300"> -->
                 </div>
             </div>
             <hr>
