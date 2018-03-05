@@ -1,3 +1,7 @@
+
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
 .width-drop {
   background-color: #6571b5;
   padding:0px 0px;
@@ -61,6 +65,9 @@
   } 
 }
 
+.law-name{
+  font-family: 'Roboto', sans-serif;
+}
 
 .list-style{
   margin:10px; 

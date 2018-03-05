@@ -13,12 +13,14 @@
   color: #6571b5;
   padding: 0px 5px 0px 0px;
   font-weight:bold;
+  
 }
 
 .chapter-name{
   border-radius: 0;
   border: none;
   color: #3f3f3f;
+  font-family: 'Roboto', sans-serif;
 }
 
 .panel-title > a:before {
@@ -129,6 +131,7 @@ a:active {
 .chapter-names{
   color: #3f3f3f;
   font-weight:200;
+  font-family: 'Roboto', sans-serif;
 }
 
 .chapter-nums{

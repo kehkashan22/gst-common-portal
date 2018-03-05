@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Muli|Open+Sans:400,700');
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+@import url('https://fonts.googleapis.com/css?family=Oswald:400,500');
+
 
 .panel-heading > .pan-title:before {
   float: right !important;
@@ -137,9 +139,16 @@ h2{
 
 .panel-title{
   /* font-weight:bold; */
+  font-family: 'Oswald', sans-serif;
   color:#48487d;
 }
+.panel-body{
+  font-family: 'Roboto', sans-serif;
+}
 
+.list-group-item{
+  font-family: 'Roboto', sans-serif;
+}
 .fa-book,
 .fa-file-text-o,
 .fa-bell-o,
@@ -177,3 +186,7 @@ a {
   color: #fff;
   background-color: #6571b5;
 } */
+
+.related_number{
+  font-weight: 900;
+}

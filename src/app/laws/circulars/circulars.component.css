@@ -1,12 +1,17 @@
-
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 .pointer {
     cursor: pointer;
+  }
+
+  .table_font{
+    font-family: 'Roboto', sans-serif;
   }
   
   .head {
     background-color: #6571B5;
     color: white;
     text-align: center;
+    font-family: 'Roboto', sans-serif;
   }
   
   

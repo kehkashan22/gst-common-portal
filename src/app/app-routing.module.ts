@@ -15,7 +15,7 @@ import { LawsComponent } from './laws/laws.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'welcome', component: WelcomeComponent, canActivate: [PreventLoggedInAccessService] },
+  { path: 'welcome', component: WelcomeComponent },
   {
     path: 'user',
     loadChildren: './user/user.module#UserModule',

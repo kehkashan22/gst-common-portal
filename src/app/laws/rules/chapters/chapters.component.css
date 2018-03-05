@@ -1,5 +1,9 @@
 
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
+
+
 
 .chapter{
   display:flex;
@@ -19,6 +23,7 @@
   border-radius: 0;
   border: none;
   color: #3f3f3f;
+  font-family: 'Roboto', sans-serif;
 }
 
 .panel-title > a:before {
@@ -128,6 +133,7 @@ transition: border-radius linear 0s;
 .chapter-names{
   color: #3f3f3f;
   font-weight:200;
+  font-family: 'Roboto', sans-serif;
 }
 
 .chapter-nums{

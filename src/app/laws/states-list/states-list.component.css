@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 .panel{
 border-left:8px solid #ff5a5f; 
 border: #c9c8c8 1px solid;
@@ -35,6 +35,10 @@ a:hover{
 
 .act-name{
   margin:5px;
+}
+
+.title{
+  font-family: 'Roboto', sans-serif;
 }
 
 
