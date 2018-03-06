@@ -72,10 +72,10 @@
     display: block;
     position: relative;
     width: 530px;
-    height: 679px;
+    height: auto;
     margin: auto;
-    margin-top: 180px;
-    /* box-shadow: 1px 5px 10px 1px #333; */
+    margin-top: 180px; 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     overflow:hidden;
     padding-left:0;
     padding-right: 0;
@@ -89,7 +89,7 @@ img.bg-img {
 
   .menu {
     position: relative;
-    padding: 22% 13% 0 13%;
+    padding: 25% 13% 0 13%;
   }
 
   .menu h2 {
@@ -102,33 +102,6 @@ img.bg-img {
   }
   .menu .active h2 {
     transition: color 0.5s ease-in;
-  }
-
-  .connexion {
-      position: absolute;
-      padding: 15% 13%;
-      width: 74%;
-      left:0px;
-      transition: all 0.7s;
-  }
-
-  .connexion h2 {
-      display: inline;
-      margin: 20px;
-      padding-bottom: 3px;
-      border-bottom: 2px solid #1161ee;
-  }
-
-  .connexion h4 {
-      margin-bottom: 0;
-      text-align: center;
-      color: #ffffff;
-      opacity: 0.3;
-  }
-
-  .connexion h4:hover {
-      opacity: 0.8;
-      transition: all 0.1s ease-in;
   }
 
   .nav-tabs {
@@ -164,6 +137,13 @@ img.bg-img {
     font-family: 'Roboto', sans-serif;
   }
 
-  .pointer {
-      cursor: pointer;
+  a {
+      cursor: pointer !important;
     }
+
+    .login_img{
+        display: flex;
+        flex-direction:column;
+        justify-content:center;
+    }
+
