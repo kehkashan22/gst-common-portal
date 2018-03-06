@@ -11,7 +11,7 @@
   </div>
   <hr>
   <div class="tab-content">
- 
+
     <!--SECTIONS-->
     <div id="sections" class="tab-pane fade in active">
       <div class="box">
@@ -28,12 +28,12 @@
           <a class="list-group-item" *ngFor="let section of sections | filter:filter2 | paginate: {id: 'second', itemsPerPage: 10, currentPage: p2 }; let j = index"
             (click)="toSection(section.chap_id, section.name)" style="cursor: pointer;" class="list-group-item">
             <div class="chapter">
-                <div class="chapter-nums">Section {{section.number}} </div>  
-                <div class="chapter-names">  {{section.name}} </div>
+                <div class="chapter-nums">Section {{section.number}} </div>
+                <div class="chapter-names">  <span> {{section.name}} </span> </div>
             </div>
-        
 
-          
+
+
           </a>
         </div>
         <pagination-controls (pageChange)="p2 = $event" class="my-pagination" id="second"></pagination-controls>
@@ -66,13 +66,13 @@
                         <div class="chapter-num"> Chapter </div>
                         <div class="chapter-num">{{chapter.number}} </div>
                         <div class="chapter-name"> {{ chapter.name }}</div>
-    
+
                     </div>
-                     
+
                     </a>
                   </div>
                 </div>
-                <div [attr.id]="'collapseOne_' + i" class="panel-collapse collapse" role="tabpanel" 
+                <div [attr.id]="'collapseOne_' + i" class="panel-collapse collapse" role="tabpanel"
                       aria-labelledby="headingOne">
                   <div class="panel-body" style="cursor: pointer;" class="list-group-item" *ngFor="let section of chapter.sections; let i = index"
                     (click)="toSection(chapter.id, section.name)">
@@ -81,7 +81,7 @@
                       <div class="chapter-nums">Section {{section.number}}</div>
                       <div class="chapter-names">{{section.name}}</div>
                     </div>
-                  
+
                   </div>
                 </div>
               </div>
@@ -94,7 +94,7 @@
     </div>
 
   </div>
-  
+
 
 </div>
 

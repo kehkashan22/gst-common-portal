@@ -31,6 +31,7 @@ import { CircularsComponent } from './circulars/circulars.component';
 import { ActsComponent } from './acts/acts.component';
 import { OrdersComponent } from './orders/orders.component';
 import { CaseLawsComponent } from './case-laws/case-laws.component';
+import { UnderConstructionComponent } from './under-construction/under-construction.component';
 
 
 
@@ -50,7 +51,8 @@ import { CaseLawsComponent } from './case-laws/case-laws.component';
     ChaptersComponent,
     OrdersComponent,
     CaseLawsComponent,
-    ArticlesComponent
+    ArticlesComponent,
+    UnderConstructionComponent
 ],
   imports: [
     CommonModule,

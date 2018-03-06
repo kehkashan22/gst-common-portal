@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -9,6 +10,7 @@ import { AuthService } from '../auth/auth.service';
 import { NotifyService } from 'app/auth/notify.service';
 import { RouterModule } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { BsDropdownModule } from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { WelcomeComponent } from './welcome/welcome.component';
 ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    SharedModule,
+    BsDropdownModule.forRoot()
   ],
   exports: [
     // AppRoutingModule,

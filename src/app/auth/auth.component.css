@@ -6,39 +6,49 @@
     font-size:15px;
     margin-top:2px
   }
-  
+
   .info i {
     color:#55acee;
   }
-  
+
+  /* .logo {
+    display: flex;
+    justify-content: center;
+
+  }
+
+  .logo img {
+    align-self: center;
+  } */
+
   h1 {
-    text-align:center; 
+    text-align:center;
     color: #666;
     text-shadow: 1px 1px 0px #FFF;
     margin:50px 0px 0px 0px
   }
-  
+
   .h2 {
     font-size: 20px;
     font-weight: 600;
     color:#fff;
   }
-  
+
   h3 {
     font-size: 17px;
     font-weight: 600;
     color:#fff;
   }
- 
+
   a {
     text-decoration: inherit;
     color: inherit;
   }
-  
+
   a:hover {
     text-decoration: inherit;
   }
-  
+
   hr {
     position: relative;
     margin-top: 27%;
@@ -46,7 +56,7 @@
     border-radius: 50px;
     opacity: 0.15;
   }
-  
+
 .content {
     position: absolute;
     top: 0;
@@ -57,14 +67,14 @@
     height: auto;
     z-index:-1;
   }
-  
+
 .container {
     display: block;
     position: relative;
     width: 530px;
     height: 679px;
     margin: auto;
-    margin-top: 180px; 
+    margin-top: 180px;
     /* box-shadow: 1px 5px 10px 1px #333; */
     overflow:hidden;
     padding-left:0;
@@ -76,12 +86,12 @@ img.bg-img {
     position: absolute;
     margin: auto;
   }
-  
+
   .menu {
     position: relative;
     padding: 22% 13% 0 13%;
   }
-  
+
   .menu h2 {
     display: inline;
     margin: 20px;
@@ -93,7 +103,7 @@ img.bg-img {
   .menu .active h2 {
     transition: color 0.5s ease-in;
   }
-  
+
   .connexion {
       position: absolute;
       padding: 15% 13%;
@@ -101,21 +111,21 @@ img.bg-img {
       left:0px;
       transition: all 0.7s;
   }
-  
+
   .connexion h2 {
       display: inline;
       margin: 20px;
       padding-bottom: 3px;
       border-bottom: 2px solid #1161ee;
   }
-  
+
   .connexion h4 {
       margin-bottom: 0;
       text-align: center;
       color: #ffffff;
       opacity: 0.3;
   }
-  
+
   .connexion h4:hover {
       opacity: 0.8;
       transition: all 0.1s ease-in;

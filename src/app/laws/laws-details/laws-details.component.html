@@ -19,7 +19,7 @@
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Rules
             <span class="caret"></span>
           </a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" *ngIf="rules.length !== 0">
             <li *ngFor="let rule of rules">
               <a [routerLink]="['rules', rule.id, 'rule-list']">{{rule.name}}</a>
             </li>

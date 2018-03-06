@@ -74,16 +74,29 @@ export class AuthService {
       .createUserWithEmailAndPassword(email, password)
       .then(user => {
         this.notify.clear();
-        this.notify.update(
-          'Account creation successful. Verify your account by clicking on the verification link sent to the email.',
-          'success'
-        );
-        this.router.navigate(['/auth/login']);
+
+
         user = {
           ...user,
           displayName
         };
-        return this.updateUserData(user); // if using firestore
+        firebase
+        .auth()
+        .currentUser.sendEmailVerification()
+        .then(() => {
+          console.log("Account creation successful");
+          this.notify.update(
+            'Account creation successful. Verify your account by clicking on the verification link sent to the email.',
+            'success'
+          );
+          this.router.navigate(['/auth/login']);
+          return this.updateUserData(user);
+        })
+        .catch(error => {
+          console.log("Failed to send verification email");
+          this.handleError(error)
+        });
+         // if using firestore
       })
       .catch(error => this.handleError(error));
   }
@@ -117,7 +130,7 @@ export class AuthService {
   // If error, console log and notify user
   private handleError(error: Error) {
     console.error(error);
-    this.notify.update(error.message, 'error');
+    this.notify.update(error.message + 'Please try again.', 'error');
   }
 
   // Sets user data to firestore after succesful login
