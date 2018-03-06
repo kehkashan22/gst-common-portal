@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display|Roboto');
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
-
 .chapter{
   display:flex;
   flex-direction: row;

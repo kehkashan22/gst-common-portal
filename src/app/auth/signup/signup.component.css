@@ -4,7 +4,7 @@ h2 {
   line-height: 1!important;
   font-weight: 700!important;
   font-size: 22px;
-  margin: 20px 0 3px;
+  margin: 0px 0 3px;
 }
 
  h3 {
@@ -13,11 +13,12 @@ h2 {
   color: #afaeae;
   text-align: center;
   margin: 0 0 15px;
-  line-height: 25px;
 }
 
 .btn-primary{
   background-color: #6571b5;
+  margin-bottom:20px; 
+  border-color:#6571b5 !important;
 }
 
 .btn-primary:active:hover,
@@ -159,7 +160,7 @@ input:focus + .input-icon:after {
 }
 
 .input-group-custom {
-  margin-bottom: 1em;
+  margin-top: 1em;
   zoom: 1;
 }
 .input-group-custom:before,
@@ -208,11 +209,29 @@ input:focus + .input-icon:after {
 }
 
 input.ng-touched.ng-invalid.ng-dirty {
-  border: 1px solid rgb(241, 140, 140) !important;
+  border-bottom: 2px solid rgb(241, 140, 140) !important;
 }
 
-.col-lg-12{
+.login_side{
   padding-left: 30px;
   padding-right: 30px;
 }
 
+.login_submit{
+  padding-top: 25px;
+  display:grid;
+}
+
+.error_text{
+  color: rgb(241, 140, 140);
+}
+
+
+.login_or{
+  font-size: 12px;
+  font-family: "Roboto", Helvetica;
+}
+
+.reset_password_mail{
+  color:#6571b5;
+}

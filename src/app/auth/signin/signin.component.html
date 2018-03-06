@@ -2,10 +2,9 @@
   <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
     <div class="form-section">
       <form [formGroup]="userForm" (ngSubmit)="login()">
-
+        <div  class="col-lg-12 login_side">
         <h2>Login</h2>
-        <h3 class="button is-small" routerLink="/auth/register">New User?</h3>
-        <hr>
+       
         <!-- <label for="email">Email</label> -->
         <div class="input-group-custom input-group-icon">
           <input type="email" id="email" placeholder="Email" formControlName="email" required>
@@ -15,7 +14,7 @@
         </div>
 
 
-        <div *ngIf="formErrors.email" class="help is-danger">
+        <div *ngIf="formErrors.email" class="error_text">
           {{ formErrors.email }}
         </div>
 <!-- 
@@ -28,25 +27,36 @@
         </div>
 
 
-        <div *ngIf="formErrors.password" class="help is-danger">
+        <div *ngIf="formErrors.password" class="error_text">
           {{ formErrors.password }}
         </div>
-    
-        <button type="submit" class="btn btn-primary" [disabled]="!userForm.valid">Submit</button>
+        <div class="login_submit">
+            <button type="submit" class="btn btn-primary" [disabled]="!userForm.valid">Submit</button>
+        </div>
+        
         <br>
 
+       <a *ngIf="!passReset && userForm.controls.email.valid" class="pointer" (click)="resetPassword()">Reset Password for <span class="reset_password_mail">{{userForm.value.email}}?</span></a>
+        <p *ngIf="passReset" class="error_text">Reset requested. Check your email instructions.</p>
+        <hr>
 
-        <a *ngIf="!passReset && userForm.controls.email.valid" class="help is-info" (click)="resetPassword()">Reset Password for {{userForm.value.email}}?</a>
-        <p *ngIf="passReset" class="help is-info">Reset requested. Check your email instructions.</p>
-
-
-
+      </div>
       </form>
       <hr>
-      <button class="btn btn-primary" (click)="googleLogin()">
-        <i class="fa fa-google"></i> Continue with Google
-      </button>
-
+      <div class="col-lg-12">
+         
+          <div class="col-lg-12">
+              <h3 class="button is-small pointer" routerLink="/auth/register">New User?<p class="login_or">Or</p></h3>
+          </div>
+        <div class="col-lg-12 login_button">
+            <button class="btn btn-primary login_button" (click)="googleLogin()">
+                <span><i class="fa fa-google"></i> Continue with Google</span> 
+              </button>
+        </div>
+        
+      </div>
+      
     </div>
+
   </div>
 </div>
