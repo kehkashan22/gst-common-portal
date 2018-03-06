@@ -1,3 +1,4 @@
+import { UnderConstructionComponent } from './under-construction/under-construction.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { CaseLawsComponent } from './case-laws/case-laws.component';
 import { OrdersComponent } from './orders/orders.component';
@@ -34,7 +35,8 @@ const lawsRoutes: Routes = [
           { path: 'circulars', component: CircularsComponent },
           { path: 'orders', component: OrdersComponent },
           { path: 'case-laws', component: CaseLawsComponent },
-          { path: 'articles', component: ArticlesComponent }
+          { path: 'articles', component: ArticlesComponent },
+          { path: 'under-construction', component: UnderConstructionComponent }
         ]
       }
     ]

@@ -1,72 +1,80 @@
-<div class="box  col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div *ngIf="orders.length === 0; else order;">
+    <h1>ORDERS NOT HERE YET!</h1>
+  <app-construction></app-construction>
+</div>
 
-  <div  class="box col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12 search-box mob-div">
-          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"><label for="daterangeInput">Select date:</label></div>
-          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"><input type="text" class="date-style pointer" name="daterangeInput" daterangepicker [options]="options" (selected)="selectedDate($event, daterange)"/></div>
-      </div>
+<ng-template #order>
+    <div class="box  col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-        <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 pull-right">
-          <!-- <label for="search">Search:</label> -->
-          <input class="form-control search-box mob-div" type="text" name="search" placeholder="Search..." [(ngModel)]="filter">
+        <div  class="box col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12 search-box mob-div">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"><label for="daterangeInput">Select date:</label></div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"><input type="text" class="date-style pointer" name="daterangeInput" daterangepicker [options]="options" (selected)="selectedDate($event, daterange)"/></div>
+            </div>
+
+              <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 pull-right">
+                <!-- <label for="search">Search:</label> -->
+                <input class="form-control search-box mob-div" type="text" name="search" placeholder="Search..." [(ngModel)]="filter">
+              </div>
         </div>
-  </div>
 
 
 
 
-<hr>
-<div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 table-responsive">
-  <table class="table table-bordered">
-    <thead class="head">
-      <tr>
-        <th (click)="sort('subject')" class="col-md-5 text-center">
-          Subject
-          <i class="fa" [ngClass]="{'fa-sort': column != 'subject', 'fa-sort-asc': (column == 'subject' && isDesc), 'fa-sort-desc': (column == 'subject' && !isDesc) }"
-            aria-hidden="true"> </i>
-        </th>
-        <th (click)="sortByName()" class="col-md-2 text-center">
-          Order No.
-          <i class="fa" [ngClass]="{'fa-sort': column != 'name', 'fa-sort-asc': (column == 'name' && isDesc), 'fa-sort-desc': (column == 'name' && !isDesc) }"
-            aria-hidden="true"> </i>
-        </th>
-        <th (click)="sort('name')" class="col-md-3 text-center">
-          File No.
-          <i class="fa" [ngClass]="{'fa-sort': column != 'fileno', 'fa-sort-asc': (column == 'fileno' && isDesc), 'fa-sort-desc': (column == 'fileno' && !isDesc) }"
-            aria-hidden="true"> </i>
-        </th>
-        <th (click)="sort('date')" class="col-md-3 text-center">
-          Date
-          <i class="fa" [ngClass]="{'fa-sort': column != 'date', 'fa-sort-asc': (column == 'date' && isDesc), 'fa-sort-desc': (column == 'date' && !isDesc) }"
-            aria-hidden="true"> </i>
-        </th>
-        <th class="col-md-2 text-center">
-          PDF
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let order of orders | filter:filter | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
-        <td>
-          {{order.subject}}
-        </td>
-        <td>
-          <a (click)="toOrder(order.name)" style="cursor: pointer;">{{order.name}}</a>
-        </td>
-        <td>
-          {{order.fileno}}
-        </td>
-        <td>
-          {{order.date}}
-        </td>
-        <td>
-          <a [href]="order.pdf" target="_blank">Link</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+      <hr>
+      <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 table-responsive">
+        <table class="table table-bordered">
+          <thead class="head">
+            <tr>
+              <th (click)="sort('subject')" class="col-md-5 text-center">
+                Subject
+                <i class="fa" [ngClass]="{'fa-sort': column != 'subject', 'fa-sort-asc': (column == 'subject' && isDesc), 'fa-sort-desc': (column == 'subject' && !isDesc) }"
+                  aria-hidden="true"> </i>
+              </th>
+              <th (click)="sortByName()" class="col-md-2 text-center">
+                Order No.
+                <i class="fa" [ngClass]="{'fa-sort': column != 'name', 'fa-sort-asc': (column == 'name' && isDesc), 'fa-sort-desc': (column == 'name' && !isDesc) }"
+                  aria-hidden="true"> </i>
+              </th>
+              <th (click)="sort('name')" class="col-md-3 text-center">
+                File No.
+                <i class="fa" [ngClass]="{'fa-sort': column != 'fileno', 'fa-sort-asc': (column == 'fileno' && isDesc), 'fa-sort-desc': (column == 'fileno' && !isDesc) }"
+                  aria-hidden="true"> </i>
+              </th>
+              <th (click)="sort('date')" class="col-md-3 text-center">
+                Date
+                <i class="fa" [ngClass]="{'fa-sort': column != 'date', 'fa-sort-asc': (column == 'date' && isDesc), 'fa-sort-desc': (column == 'date' && !isDesc) }"
+                  aria-hidden="true"> </i>
+              </th>
+              <th class="col-md-2 text-center">
+                PDF
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let order of orders | filter:filter | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
+              <td>
+                {{order.subject}}
+              </td>
+              <td>
+                <a (click)="toOrder(order.name)" style="cursor: pointer;">{{order.name}}</a>
+              </td>
+              <td>
+                {{order.fileno}}
+              </td>
+              <td>
+                {{order.date}}
+              </td>
+              <td>
+                <a [href]="order.pdf" target="_blank">Link</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
 
-<pagination-controls (pageChange)="p = $event" class="my-pagination"></pagination-controls>
-</div>
-</div>
+      <pagination-controls (pageChange)="p = $event" class="my-pagination"></pagination-controls>
+      </div>
+      </div>
+    </ng-template>
+

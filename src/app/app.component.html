@@ -1,4 +1,4 @@
-<div *ngIf="_notify.msg | async as msg" [ngClass]="{
+<!-- <div *ngIf="_notify.msg | async as msg" [ngClass]="{
               'alert alert-dismissable fade in': true,
              'alert-danger': msg.style === 'error',
              'alert-success': msg.style === 'success',
@@ -7,6 +7,25 @@
   <a  class="close" (click)="_notify.clear()" aria-label="close">&times;</a>
   {{ msg.content }}
 </div>
+<pre *ngFor="let message of messages">{{message}}</pre> -->
+
+<div *ngIf="_notify.msg | async as msg" [config]="{ show: true }" (onHidden)="_notify.clear()" bsModal #autoShownModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">{{ msg.style | titlecase }}!</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal('onHide', $event)">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          {{ msg.content }}
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 <div [hidden]="!loading" class="loader">
   <app-loader></app-loader>

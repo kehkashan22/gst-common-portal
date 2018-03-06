@@ -28,7 +28,7 @@ import { SectionDetailModule } from './section-detail/section-detail.module';
 import { Daterangepicker } from 'ng2-daterangepicker';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { Ng2OrderModule } from 'ng2-order-pipe';
-
+import { ModalModule } from 'ngx-bootstrap';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -71,7 +71,8 @@ export const firebaseConfig = environment.firebaseConfig;
     NgxPaginationModule,
     PipesModule,
     UserModule,
-    SharedModule
+    SharedModule,
+    ModalModule.forRoot()
   ],
   bootstrap: [AppComponent],
   providers: [

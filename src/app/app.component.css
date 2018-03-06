@@ -17,3 +17,17 @@
 
 
 
+.modal.fade {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.modal.fade.is-error .modal-dialog .modal-content  .modal-body {
+  color: red !important;
+}
+
+.modal-dialog {
+  vertical-align:middle;
+}
