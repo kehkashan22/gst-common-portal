@@ -14,6 +14,7 @@ import 'firebase/firestore';
   styleUrls: ['./notification-detail.component.css']
 })
 export class NotificationDetailComponent implements OnInit, OnDestroy {
+  pageurl: any;
   sub: Subscription;
 
 
@@ -46,6 +47,8 @@ export class NotificationDetailComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    this.pageurl = this._dom.bypassSecurityTrustResourceUrl
+    ('https://s3-ap-southeast-1.amazonaws.com/fhc.app/pdf_notif/CA-IPCC_FT-nov17.pdf');
     this.sub = this.route.queryParams.subscribe(params => {
       this.resetAllValues();
       console.log('reset?', this.notification);

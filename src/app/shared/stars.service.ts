@@ -30,7 +30,7 @@ export class StarsService {
     const starsRef = this.afs.collection('stars', ref => ref.where('userId', '==', userId).where('articleId', '==', articleId) );
     return starsRef.valueChanges();
   }
-  
+
   // Create or update star
   setStar(userId, authorId, articleId, value) {
     // Star document data
@@ -38,7 +38,7 @@ export class StarsService {
     // Custom doc ID for relationship
     const starPath = `stars/${star.userId}_${star.authorId}`;
     // Set the data, return the promise
-    return this.afs.doc(starPath).set(star)
+    return this.afs.doc(starPath).set(star);
   }
 
   getAvgRating(stars): Observable<any> {

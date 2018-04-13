@@ -1,73 +1,73 @@
+<!-- <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12 login_side"> -->
+<div class="form-section">
+  <form [formGroup]="userForm" (ngSubmit)="signup()">
+    <div class="col-lg-12 login_side">
+      <!-- <label for="displayName">Name</label> -->
+      <div class="input-group-custom input-group-icon">
+        <input type="text" id="displayName" formControlName="displayName" placeholder="Full Name" required>
+        <div class="input-icon">
+          <i class="fa fa-user"></i>
+        </div>
+      </div>
 
-  <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12 login_side">
-    <div class="form-section">
-      <form [formGroup]="userForm" (ngSubmit)="signup()">
-        <div class="col-lg-12 login_side">
-          <h2>New User Signup</h2>
-          <!-- <label for="displayName">Name</label> -->
-          <div class="input-group-custom input-group-icon">
-            <input type="text" id="displayName" formControlName="displayName" placeholder="Full Name" required>
-            <div class="input-icon">
-              <i class="fa fa-user"></i> 
-            </div>
-          </div>
-
-          <div *ngIf="formErrors.displayName" class="error_text">
-            {{ formErrors.displayName }}
-          </div>
-
-          <!-- <label for="email">Email</label> -->
-          <div class="input-group-custom input-group-icon">
-            <input type="email" id="email" placeholder="Email" formControlName="email" required>
-            <div class="input-icon">
-               <i class="fa fa-envelope"></i>
-            </div>
-          </div>
-
-          <div *ngIf="formErrors.email" class="error_text">
-            {{ formErrors.email }}
-          </div>
-
-
-          <!-- <label for="password">Password</label> -->
-          <div class="input-group-custom input-group-icon">
-            <input type="password" id="password" placeholder="Password" formControlName="password" required>
-            <div class="input-icon">
-             <i class="fa fa-lock"></i> 
-            </div>
-          </div>
-
-          <div *ngIf="formErrors.password" class="error_text">
-            {{ formErrors.password }}
-          </div>
-<!-- 
-          <label for="confirmPassword">Confirm Password</label> -->
-          <div class="input-group-custom input-group-icon">
-            <input type="password" id="confirmPassword" formControlName="confirmPassword" placeholder="Confirm Password" required/>
-            <div class="input-icon">
-             <i class="fa fa-key"></i>
-            </div>
-          </div>
-          <div *ngIf="!userForm.controls.confirmPassword.pristine && userForm.controls.confirmPassword.errors?.required" class="error_text">
-            You have to confirm the password is correct. Confirm Password is required.
-          </div>
-
-          <div class="error_text" *ngIf="!userForm.controls.confirmPassword.pristine && userForm.controls.confirmPassword.errors?.MatchPassword">
-            Password do not match!
-          </div>
-          <div *ngIf="userForm.valid" class="notification is-success">Form is valid</div>
-          <div class="login_submit">
-              <button type="submit" class="btn btn-primary" [disabled]="!userForm.valid">Submit</button>
-          </div>
-          <div class="col-lg-12">
-              <h3><p class="login_or">Or</p></h3>
-          </div>
-          <h3 class="button is-small" [routerLink]="['/auth/login']">Already Registered?</h3>
-          
+      <div *ngIf="!userForm.controls.displayName.pristine && userForm.controls.displayName.errors?.required" class="error_text">
+         Name is required.
         </div>
 
-      </form>
+      <!-- <label for="email">Email</label> -->
+      <div class="input-group-custom input-group-icon">
+        <input type="email" id="email" placeholder="Email" formControlName="email" required>
+        <div class="input-icon">
+          <i class="fa fa-envelope"></i>
+        </div>
+      </div>
+
+      <div *ngIf="formErrors.email" class="error_text">
+        {{ formErrors.email }}
+      </div>
+
+
+      <!-- <label for="password">Password</label> -->
+      <div class="input-group-custom input-group-icon">
+        <input type="password" id="password" placeholder="Password" formControlName="password" required>
+        <div class="input-icon">
+          <i class="fa fa-lock"></i>
+        </div>
+      </div>
+
+      <div *ngIf="formErrors.password" class="error_text">
+        {{ formErrors.password }}
+      </div>
+      <!--
+          <label for="confirmPassword">Confirm Password</label> -->
+      <div class="input-group-custom input-group-icon">
+        <input type="password" id="confirmPassword" formControlName="confirmPassword" placeholder="Confirm Password" required/>
+        <div class="input-icon">
+          <i class="fa fa-key"></i>
+        </div>
+      </div>
+      <div *ngIf="!userForm.controls.confirmPassword.pristine && userForm.controls.confirmPassword.errors?.required" class="error_text">
+        You have to confirm the password is correct. Confirm Password is required.
+      </div>
+
+      <div class="error_text" *ngIf="!userForm.controls.confirmPassword.pristine && userForm.controls.confirmPassword.errors?.MatchPassword">
+        Password do not match!
+      </div>
+      <div *ngIf="userForm.valid" class="notification is-success">Form is valid</div>
+      <div class="login_submit">
+        <button type="submit" class="btn btn-purple btn-border" [disabled]="!userForm.valid">Submit</button>
+      </div>
+
+      <div class="hr-center">
+        <hr class="hr-text" data-content="OR">
+      </div>
+      <h3>Already Registered?
+        <a class="button is-small underlineHover" [routerLink]="['/auth/login']">Login</a>
+      </h3>
+
     </div>
 
-  </div>
+  </form>
+</div>
 
+<!-- </div> -->

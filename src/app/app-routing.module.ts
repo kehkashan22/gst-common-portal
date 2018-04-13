@@ -59,6 +59,16 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'rate-finder',
+    loadChildren: './rate-finder/rate-finder.module#RateFinderModule',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'case-laws',
+    loadChildren: './case-laws/case-laws.module#CaseLawsModule',
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'auth',
     loadChildren: './auth/auth.module#AuthModule',
     canActivate: [PreventLoggedInAccessService]

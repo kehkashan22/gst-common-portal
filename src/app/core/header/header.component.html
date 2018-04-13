@@ -9,75 +9,41 @@
         <li routerLinkActive="active">
           <a routerLink="/wiki" *ngIf="isAuthenticated()">GST Wiki</a>
         </li>
+        <li routerLinkActive="active">
+          <a routerLink="/rate-finder" *ngIf="isAuthenticated()">Rate Finder</a>
+        </li>
+        <li routerLinkActive="active">
+            <a routerLink="/case-laws" *ngIf="isAuthenticated()">Case Laws</a>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <ng-template [ngIf]="!isAuthenticated()">
-          <li>
-            <a routerLink="/auth/register">Register</a>
-          </li>
-          <li>
-            <a routerLink="/auth/login">Login</a>
-          </li>
-        </ng-template>
-
-<!--
-        <li class="dropdown" *ngIf="auth.user | async as user">
-          <a role="button" class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <li dropdown *ngIf="auth.user | async as user">
+          <a dropdownToggle role="button" class="dropdown-toggle">
             <img width="20" class="rounded" [src]="user.photoURL || 'https://goo.gl/knVFYJ'">
             <span class="caret"></span>
           </a>
-          <ul class="dropdown-menu" style="width: 300px;">
-
-            <li>
-              <div>
-                <div id="header__profile">
-                  <div class="header__profile_img_container">
-                    <img id="profile_img" alt="Author" [src]="user.photoURL">
-                  </div>
-                  <div id="header__profile_inner">
-                    <p id="profile__name">{{user.displayName}}</p>
-                    <span id="profile__email"> {{user.email}} </span>
-                  </div>
+          <ul *dropdownMenu class="dropdown-menu" role="menu">
+            <li role="menuitem">
+              <div id="header__profile">
+                <div class="header__profile_img_container">
+                  <img id="profile_img" alt="Author" [src]="user.photoURL">
+                </div>
+                <div id="header__profile_inner">
+                  <p id="profile__name">{{user.displayName}}</p>
+                  <span id="profile__email"> {{user.email}} </span>
                 </div>
               </div>
-              <li class="divider dropdown-divider"></li>
-              <li>
-                <a style="cursor: pointer;" routerLink="/user">My Account</a>
-              </li>
-              <li>
-                <a style="cursor: pointer;" (click)="onLogout()">Logout</a>
-              </li>
+            </li>
+            <li class="divider dropdown-divider"></li>
+            <li>
+              <a style="cursor: pointer;" routerLink="/user">My Account</a>
+            </li>
+            <li>
+              <a style="cursor: pointer;" (click)="onLogout()">Logout</a>
+            </li>
+
           </ul>
-          </li> -->
-
-
-          <li dropdown *ngIf="auth.user | async as user">
-            <a dropdownToggle role="button" class="dropdown-toggle">
-              <img width="20" class="rounded" [src]="user.photoURL || 'https://goo.gl/knVFYJ'">
-              <span class="caret"></span>
-            </a>
-            <ul *dropdownMenu class="dropdown-menu" role="menu">
-              <li role="menuitem">
-                <div id="header__profile">
-                  <div class="header__profile_img_container">
-                    <img id="profile_img" alt="Author" [src]="user.photoURL">
-                  </div>
-                  <div id="header__profile_inner">
-                    <p id="profile__name">{{user.displayName}}</p>
-                    <span id="profile__email"> {{user.email}} </span>
-                  </div>
-                </div>
-              </li>
-              <li class="divider dropdown-divider"></li>
-              <li>
-                <a style="cursor: pointer;" routerLink="/user">My Account</a>
-              </li>
-              <li>
-                <a style="cursor: pointer;" (click)="onLogout()">Logout</a>
-              </li>
-
-            </ul>
-          </li>
+        </li>
 
       </ul>
     </div>

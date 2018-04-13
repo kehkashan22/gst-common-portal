@@ -12,23 +12,23 @@
 
         <!-- RELATED RULES -->
         <div class="panel panel-info" *ngIf="notification.related_rules.length !== 0">
-          <div class="panel-heading pan-heading"  data-toggle="collapse" href="#related-rules">
+          <div class="panel-heading pan-heading" data-toggle="collapse" href="#related-rules">
             <h3 class="panel-title pan-title">
-                <i class="fa fa-file-text-o"></i>
+              <i class="fa fa-file-text-o"></i>
               Related Rules:
             </h3>
           </div>
           <div id="related-rules" class="panel-collapse collapse in">
-              <ul class="list-group">
-                <a class="list-group-item" *ngFor="let rule of notification.related_rules" target="_blank" routerLink="/rule" [queryParams]="{
+            <ul class="list-group">
+              <a class="list-group-item" *ngFor="let rule of notification.related_rules" target="_blank" routerLink="/rule" [queryParams]="{
                 law_id: rule.law_id,
                 rule_id: rule.rule_parent_id,
                 chap_id: rule.chap_id,
                 r_id: rule.rule_id
               }">
-                  {{rule.id}}. {{rule.rule_title}}
-            </a>
-          </ul>
+                {{rule.id}}. {{rule.rule_title}}
+              </a>
+            </ul>
           </div>
 
         </div>
@@ -37,19 +37,19 @@
         <div class="panel panel-info" *ngIf="notification.related_sections.length !== 0">
           <div class="panel-heading pan-heading" data-toggle="collapse" href="#related-sections">
             <h3 class="panel-title pan-title">
-                <i class="fa fa-book"></i>
+              <i class="fa fa-book"></i>
               Related Sections:
-              </h3>
+            </h3>
           </div>
           <div id="related-sections" class="panel-collapse collapse in">
-              <ul class="list-group">
-                <a *ngFor="let section of notification.related_sections" class="list-group-item" target="_blank" routerLink="/section" [queryParams]="{
+            <ul class="list-group">
+              <a *ngFor="let section of notification.related_sections" class="list-group-item" target="_blank" routerLink="/section" [queryParams]="{
                   law_id: section.law_id,
                   act_id: section.act_id,
                   chap_id: section.chap_id,
                   section_id: section.section_id
                 }">
-                  {{section.id}}. {{section.section_title}}
+                {{section.id}}. {{section.section_title}}
               </a>
             </ul>
           </div>
@@ -60,40 +60,42 @@
         <div class="panel panel-info" *ngIf="notification.related_notifications.length !== 0">
           <div class="panel-heading pan-heading" data-toggle="collapse" href="#related-notification">
             <h3 class="panel-title pan-title">
-                <i class="fa fa-bell-o"></i>
+              <i class="fa fa-bell-o"></i>
               Related notifications:
             </h3>
           </div>
           <div id="related-notification" class="panel-collapse collapse in">
-              <ul class="list-group">
-                <a *ngFor="let notification of notification.related_notifications" class="list-group-item" target="_blank" routerLink="/notification" [queryParams]="{
+            <ul class="list-group">
+              <a *ngFor="let notification of notification.related_notifications" class="list-group-item" target="_blank" routerLink="/notification"
+                [queryParams]="{
                 law_id: notification.law_id,
                 act_id: notification.act_id,
                 id: notification.notification_id
                 }">
-                  {{notification.id}}. {{notification.notification_name}}
+                {{notification.id}}. {{notification.notification_name}}
               </a>
-              </ul>
+            </ul>
           </div>
         </div>
 
         <!-- RELATED CIRCULARS -->
         <div class="panel panel-info" *ngIf="notification.related_circulars.length !== 0">
           <div class="panel-heading pan-heading" data-toggle="collapse" href="#related-circular">
-            <h3 class="panel-title pan-title" >
-                <i class="fa fa-bullhorn"></i>Related circulars:
-                </h3>
+            <h3 class="panel-title pan-title">
+              <i class="fa fa-bullhorn"></i>Related circulars:
+            </h3>
           </div>
           <div id="related-circular" class="panel-collapse collapse in">
-              <ul class="list-group">
-                <a *ngFor="let circular of notification.related_circulars" class="list-group-item" target="_blank" routerLink='/circular' [queryParams]="{
+            <ul class="list-group">
+              <a *ngFor="let circular of notification.related_circulars" class="list-group-item" target="_blank" routerLink='/circular'
+                [queryParams]="{
                                 law_id: circular.law_id,
                                 id: circular.circular_id,
                                 type: circular.type
                               }">
-                  {{circular.id}}. {{circular.circular_name}}
-                            </a>
-                          </ul>
+                {{circular.id}}. {{circular.circular_name}}
+              </a>
+            </ul>
           </div>
         </div>
 
@@ -105,50 +107,57 @@
 
 
     <div class="container">
-      <div  [ngClass]="{
+      <div [ngClass]="{
         'col-sm-12 col-xs-12 panel-group': true,
         'col-lg-7 col-md-7' : notification.related_circulars.length !== 0 || notification.related_sections.length !== 0 || notification.related_rules.length !== 0 || notification.related_notifications.length !== 0 || notification.video_url,
         'col-lg-12 col-md-12' : notification.related_circulars.length === 0 && notification.related_sections.length === 0 && notification.related_rules.length === 0 && notification.related_notifications.length === 0 && !notification.video_url
       }" id="container_scroll">
-          <ul class="nav nav-tabs  panel-info pan-border" id="myTab" role="tablist">
-              <li class="nav-item active">
-                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Notification</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Analysis</a>
-              </li>
-            </ul>
-            <div class="tab-content panel" id="myTabContent">
-                <div class="tab-pane fade in active clsScroll scrollbar height container_scroll" id="home" role="tabpanel"  aria-labelledby="home-tab">
-                  <div class="contain-head">
-                      <strong> {{notification.name}} </strong>
-                  </div>
+        <ul class="nav nav-tabs  panel-info pan-border" id="myTab" role="tablist">
+          <li class="nav-item active">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Notification</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Analysis</a>
+          </li>
+        </ul>
+        <div class="tab-content panel" id="myTabContent">
+          <div class="tab-pane fade in active clsScroll scrollbar height container_scroll" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="contain-head">
+              <strong> {{notification.name}} </strong>
+            </div>
 
 
-                    <div class="contain" [innerHTML]="htmlText" ></div>
-                </div>
-                <div class="tab-pane fade height clsScroll scrollbar container_scroll" id="profile" role="tabpanel" aria-labelledby="profile-tab" [innerHTML]="htmlAnalysis"></div>
-              </div>
-              <hr>
+            <div class="contain" [innerHTML]="htmlText"></div>
+          </div>
+          <div class="tab-pane fade height clsScroll scrollbar container_scroll" id="profile" role="tabpanel" aria-labelledby="profile-tab"
+            [innerHTML]="htmlAnalysis"></div>
+          <div>
+              <pdf-viewer [src]="{
+                url: 'https://vadimdez.github.io/ng2-pdf-viewer/pdf-test.pdf',
+                withCredentials: true
+               }"></pdf-viewer>
+            </div>
+        </div>
+        <hr>
 
-               <!-- FOOTNOTES -->
-               <div class="panel panel-info" *ngIf="notification.footnotes.length !== 0">
-                  <div class="panel-heading pan-heading">
-                      <h3 class="panel-title">Footnotes:</h3>
-                  </div>
-                    <div *ngFor="let footnote of notification.footnotes">
-                      <div class="panel-body">Footnote {{footnote.id}}. {{footnote.note}}</div>
-                    </div>
-                </div>
+        <!-- FOOTNOTES -->
+        <div class="panel panel-info" *ngIf="notification.footnotes.length !== 0">
+          <div class="panel-heading pan-heading">
+            <h3 class="panel-title">Footnotes:</h3>
+          </div>
+          <div *ngFor="let footnote of notification.footnotes">
+            <div class="panel-body">Footnote {{footnote.id}}. {{footnote.note}}</div>
+          </div>
+        </div>
       </div>
     </div>
 
 
 
-        <hr>
+    <hr>
 
-        <!-- ..........analysis............ -->
-        <!-- <div class="panel panel-info">
+    <!-- ..........analysis............ -->
+    <!-- <div class="panel panel-info">
           <div class="force-overflow panel-heading">
             <h4>Analysis</h4>
           </div>

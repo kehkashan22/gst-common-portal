@@ -1,11 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-  background-image: url("assets/image/webbg.png");
+  background:#A8D0E6;
 }
 
 .my-pagination /deep/ .ngx-pagination .current {
   background: #6571b5;
- 
+
 }
 
 .ngx-pagination a, .ngx-pagination button {
@@ -72,9 +72,9 @@ body {
   align-self: center;
 }
 
-#header_line { 
+#header_line {
   margin:0;
-} 
+}
 
 .header__profile_img_container    {
   border-radius: 50%;

@@ -1,54 +1,47 @@
-
-
-
 <div class="edit__user">
-        <div>
-                <div *ngIf="auth.user | async as user">
-                    <div class="profile_title"> <h1>{{ user.displayName }}</h1></div>
-                    <div class="profile_title"> <h4>{{user.designation}}</h4> </div>
+  <div>
+    <div *ngIf="auth.user | async as user">
+      <div class="profile_title">
+        <h1>{{ user.displayName }}</h1>
+      </div>
+      <div class="profile_title">
+        <h4>{{user.designation}}</h4>
+      </div>
 
-                    <hr class="style14">
+      <hr class="style14">
 
-                    <div class="profile_info">
-                               
-                                    <div class="profile_title">Email:</div> 
-                                    <div class="profile_text">{{user.email}}</div>
-                                
-            
-                             
-                                    <div class="profile_title">Mobile No.: </div> 
-                                    <div class="profile_text">{{user.mob}}</div>
-                                 
-                               
-                             
-                                    <div class="profile_title">Company:</div> 
-                                    <div class="profile_text">{{user.company}}</div>
-                                
-            
-                            
-                                    <div class="profile_title">Date of Birth:</div> 
-                                    <div class="profile_text">{{user.dob | date: 'mediumDate'}}</div> 
-                                
-            
-                             
-                                    <div class="profile_title">ICAI/ICSI/CMA Member Since: </div> 
-                                    <div class="profile_text">{{user.member_since | date: 'mediumDate'}}</div>
-                                
-            
-                            
-                                     <div class="profile_title">Qualification: </div> 
-                                     <div class="profile_text">{{user.qualification}}</div> 
-                                
-                    </div>
-                    
+      <div class="profile_info">
 
-            
+        <div class="profile_title">Email:</div>
+        <div class="profile_text">{{user.email}}</div>
 
-                    <!-- <img  [src]="user.photoURL" width="300"> -->
-                </div>
-            </div>
-            <hr>
-            <div>
-              <p>BOOKMARKS</p>
-            </div>
+
+
+        <div class="profile_title">Mobile No.: </div>
+        <div class="profile_text">{{user.mob}}</div>
+
+
+
+        <div class="profile_title">Company:</div>
+        <div class="profile_text">{{user.company}}</div>
+
+
+
+        <div class="profile_title">Date of Birth:</div>
+        <div class="profile_text">{{user.dob | date: 'mediumDate'}}</div>
+
+
+
+        <div class="profile_title">ICAI/ICSI/CMA Member Since: </div>
+        <div class="profile_text">{{user.member_since | date: 'mediumDate'}}</div>
+
+        <div class="profile_title">Qualification: </div>
+        <div class="profile_text">{{user.qualification}}</div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div>
+    <p>BOOKMARKS</p>
+  </div>
 </div>

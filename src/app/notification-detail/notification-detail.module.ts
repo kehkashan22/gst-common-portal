@@ -1,3 +1,4 @@
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { NotificationDetailService } from './notification-detail.service';
 import { NotificationDetailComponent } from './notification-detail.component';
 import { NgModule } from '@angular/core';
@@ -10,7 +11,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     NotificationDetailRoutingModule,
-    RouterModule
+    RouterModule,
+    PdfViewerModule
   ],
   declarations: [NotificationDetailComponent],
   providers: [NotificationDetailService]

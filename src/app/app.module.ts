@@ -1,3 +1,6 @@
+import { CaseLawsModule } from './case-laws/case-laws.module';
+import { RateFinderModule } from './rate-finder/rate-finder.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { UserModule } from './user/user.module';
 import { PreventLoggedInAccessService } from './auth/prevent-logged-in-access.service';
@@ -33,7 +36,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireStorageModule } from 'angularfire2/storage';
-
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { environment } from '../environments/environment';
 /* For Firebase Related */
 import * as firebase from 'firebase';
@@ -50,6 +53,7 @@ export const firebaseConfig = environment.firebaseConfig;
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
@@ -59,6 +63,7 @@ export const firebaseConfig = environment.firebaseConfig;
     FormsModule,
     AuthModule,
     CoreModule,
+    CaseLawsModule,
     LawsModule,
     SectionDetailModule,
     RuleDetailModule,
@@ -71,8 +76,10 @@ export const firebaseConfig = environment.firebaseConfig;
     NgxPaginationModule,
     PipesModule,
     UserModule,
+    RateFinderModule,
     SharedModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    PdfViewerModule
   ],
   bootstrap: [AppComponent],
   providers: [
