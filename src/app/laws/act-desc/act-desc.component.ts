@@ -1,3 +1,4 @@
+import { DomSanitizer } from '@angular/platform-browser';
 import { LawsService } from 'app/laws/laws.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Params, ActivatedRoute, Router } from '@angular/router';
@@ -9,7 +10,7 @@ import { Params, ActivatedRoute, Router } from '@angular/router';
 })
 export class ActDescComponent implements OnInit, OnDestroy {
   sub: any;
-
+  htmlText: any;
   id: string;
   act_id: string;
   law = {
@@ -18,13 +19,15 @@ export class ActDescComponent implements OnInit, OnDestroy {
     year: '',
     levied_by: '',
     levied_on: '',
-    levied_of: ''
+    levied_of: '',
+    description: ''
   };
 
   constructor(
     private _law: LawsService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private _dom: DomSanitizer
   ) { }
 
   ngOnInit() {
@@ -37,6 +40,8 @@ export class ActDescComponent implements OnInit, OnDestroy {
               id: doc.id,
               ...doc.data()
             };
+            console.log(this.law);
+            this.htmlText = this._dom.bypassSecurityTrustHtml(this.law.description);
         });
       }
     );

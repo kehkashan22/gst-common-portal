@@ -2,15 +2,10 @@
   <div class="panel-heading" >
     <h4> {{ law.name }}</h4>
 </div>
-<div class="panel-body">{{ law.title }}</div>
 <div>
 
-  <div class="pull-right">
-  <h4>Levied By: {{law.levied_by}}</h4>
-  <h4>On: {{law.levied_on}}</h4>
-  <h4>Of: {{law.levied_of}}</h4>
-  </div>
-  
+  <div class="contain" [innerHTML]="htmlText" ></div>
+
 </div>
 </div>
 

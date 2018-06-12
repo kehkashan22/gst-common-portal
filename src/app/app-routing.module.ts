@@ -14,7 +14,7 @@ import { SectionDetailComponent } from './section-detail/section-detail.componen
 import { LawsComponent } from './laws/laws.component';
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: '/wiki', pathMatch: 'full', canActivate: [AuthGuard] },
   { path: 'welcome', component: WelcomeComponent },
   {
     path: 'user',

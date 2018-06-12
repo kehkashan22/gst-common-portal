@@ -22,7 +22,7 @@ import * as moment from 'moment';
 })
 export class EditUserComponent implements OnInit {
   member_since: any;
-  userForm: FormGroup;
+  public userForm: FormGroup;
   user: User;
   image: string;
   isImage: boolean;
@@ -80,11 +80,11 @@ export class EditUserComponent implements OnInit {
         userData: {
           displayName: this.user.displayName,
           photoURL: this.user.photoURL,
-          dob: moment(this.user.dob).format('MMM DD, YYYY'),
+          dob: this.user.dob ? moment(this.user.dob).format('MMM DD, YYYY') : moment().format('MMM DD, YYYY'),
           mob: this.user.mob,
           qualification: this.user.qualification,
           designation: this.user.designation,
-          member_since: moment(this.user.member_since).format('MMM DD, YYYY'),
+          member_since: this.user.dob ? moment(this.user.member_since).format('MMM DD, YYYY') : moment().format('MMM DD, YYYY'),
           company: this.user.company
         }
       });
@@ -99,10 +99,10 @@ export class EditUserComponent implements OnInit {
           Validators.maxLength(10),
           Validators.pattern('[0-9]+')
         ]),
-        dob: new FormControl(null),
+        dob: new FormControl(moment().format('MMM DD, YYYY')),
         qualification: new FormControl('Choose'),
         designation: new FormControl(null),
-        member_since: new FormControl(null),
+        member_since: new FormControl(moment().format('MMM DD, YYYY')),
         company: new FormControl(null)
       })
     });

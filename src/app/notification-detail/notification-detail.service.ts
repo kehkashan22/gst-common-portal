@@ -42,4 +42,20 @@ export class NotificationDetailService {
     });
   }
 
+  getNotificationPDF(law_id, act_id, chap_id, notification_name) {
+    return new Promise((resolve, reject) => {
+      this.firestore
+      .collection('laws')
+      .doc(law_id)
+      .collection('notifications')
+      .doc(act_id)
+      .collection('notifications_list')
+      .where('name', '==', notification_name)
+        .get()
+        .then(snapshot => {
+          resolve(snapshot);
+        });
+    });
+  }
+
 }

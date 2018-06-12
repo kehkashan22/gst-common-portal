@@ -10,6 +10,10 @@
   border-color: transparent;
 }
 
+.total {
+  overflow: hidden;
+}
+
 /*****************FLOATING BOOK *********************/
 @-webkit-keyframes Hk-GXMaIBOM_SkLoa8SuG_Animation {
   0% {
@@ -365,6 +369,7 @@
   display: inline-block;
   line-height: 35px;
   margin: 8px;
+  margin-top: 25px;
   padding: 0 15px;
   font-size: 15px;
   position: relative;
@@ -372,9 +377,9 @@
   border-radius: 3px;
 }
 .btn-border-o {
-  background-color: transparent;
-  border: 1px solid #d0d0d0;
-  color: #b8b8b8;
+  background-color: #454E9B;
+  border: 1px solid #454E9B;
+  color: #f3f3f3;
 }
 .btn-border-o:before,
 .btn-border-o:after {
@@ -408,10 +413,12 @@
 }
 .btn-border-o.btn-purple:before,
 .btn-border-o.btn-purple:after {
-  border-color: #9b59b6;
+  border-color: #454E9B;
+  background: transparent;
 }
 .btn-border-o.btn-purple:hover {
-  color: #9b59b6;
+  color: #454E9B;
+  background: transparent;
 }
 /* **HOME PAGE DIVS*** */
 .first {
@@ -428,6 +435,7 @@
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
+  overflow-x: hidden;
 }
 .one {
   display: flex;
@@ -475,6 +483,7 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  overflow-x: hidden;
 }
 .work-inner {
   margin: 0 auto;
@@ -654,7 +663,7 @@ img {
   -o-background-size: cover;
   background-size: cover;
 } */
-h1 {
+/* h1 {
   margin: 0;
   display: inline-block;
   position: relative;
@@ -678,7 +687,126 @@ h1:before {
   -webkit-transform-origin: 0 0;
   -ms-transform-origin: 0 0;
   transform-origin: 0 0;
+} */
+
+/*BUTTON FOR LOGIN*/
+.button-8{
+  width:140px;
+  height:50px;
+  border:2px solid #fff;
+  border-radius: 5px;
+  float:left;
+  text-align:center;
+  cursor:pointer;
+  position:relative;
+  box-sizing:border-box;
+  overflow:hidden;
+  margin:0 0 0 0;
 }
+.button-8 a{
+  font-size:16px;
+  color:#3f3f3f;
+  text-decoration:none;
+  line-height:50px;
+  transition:all .5s ease;
+  z-index:2;
+  position:relative;
+
+}
+.eff-8{
+  width:140px;
+  height:50px;
+  border:70px solid #fff;
+  position:absolute;
+  transition:all .5s ease;
+  z-index:1;
+  box-sizing:border-box;
+}
+.button-8:hover .eff-8{
+  border:0px solid #fff;
+}
+.button-8:hover a{
+  color:#fff;
+}
+
+
+/*GOOGLE*/
+.hero_home__wrap {
+  position: relative;
+}
+
+.heroLoaded .hero_home__copy {
+  color: #fff;
+}
+
+.hero_home__copy {
+  color: #fff;
+  padding: 0 9%;
+  position: absolute;
+  top: 22%;
+  transition: color 1s;
+  width: 50%;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: 100;
+  line-height: 62px;
+}
+
+.hero_home__link__desktop {
+  background-color: #dd5347;
+  color: #fff;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  height: 16px;
+  padding: 24px 48px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  width: auto;
+}
+
+.heroLoaded .hero__image {
+  opacity: 1;
+}
+
+.hero_home__image {
+  background-image: url(http://apod.nasa.gov/apod/image/0603/coma_misti.jpg);
+}
+.hero_home__image {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.hero__image {
+  display: block;
+  height: 100%;
+  margin: 0 auto;
+  max-width: 100%;
+  opacity: 0;
+  overflow: hidden;
+  position: relative;
+  transition: opacity 1s;
+}
+.scroll-target {
+  padding-top: 64px;
+}
+
+.hero_home__image:before {
+  padding-bottom: 63.33333%;
+}
+
+.hero__image:before {
+  content: '';
+  display: block;
+  padding-bottom: 100%;
+  width: 100%;
+}
+
+/***************/
 .knockout {
   background: url(http://apod.nasa.gov/apod/image/0603/coma_misti.jpg);
   color: red;
@@ -695,10 +823,22 @@ h1:before {
   height: 100vh;
   max-height: 100%;
   min-height: 100%;
-  width: 100vw;
   max-width: 100%;
   min-width: 100%;
   background: #faabab no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.background1 {
+  height: 100vh;
+  max-height: 100%;
+  min-height: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  background: url(https://i.redditmedia.com/cv3D3IsS8fxToBQixEurgvaXT9iZoT4jnLETmR1dmSQ.jpg?w=1024&s=e09fad8efc3c204c2c9491d8278b53e5) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

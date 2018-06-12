@@ -17,9 +17,9 @@
         <div class="input-icon">
           <i class="fa fa-user"></i>
         </div>
-        <div *ngIf="userForm.controls.userData.controls['displayName'].errors && userForm.controls.userData.controls['displayName'].touched"
+        <div *ngIf="userForm.get('userData.displayName').errors && userForm.get('userData.displayName').touched"
           class="error-msg">
-          <div [hidden]="!userForm.controls.userData.controls['displayName'].errors.required" class="has-error">Display Name is required</div>
+          <div [hidden]="!userForm.get('userData.displayName').errors.required" class="has-error">Display Name is required</div>
         </div>
       </div>
 
@@ -28,12 +28,12 @@
         <div class="input-icon">
           <i class="fa fa-phone"></i>
         </div>
-        <div *ngIf="userForm.controls.userData.controls['mob'].errors && !userForm.controls.userData.controls['mob'].pristine" class="error-msg">
-          <div [hidden]="!userForm.controls.userData.controls['mob'].errors.minlength && !userForm.controls.userData.controls['mob'].errors.maxlength">
+        <div *ngIf="userForm.get('userData.mob').errors && !userForm.get('userData.mob').pristine" class="error-msg">
+          <div [hidden]="!userForm.get('userData.mob').errors.minlength && !userForm.get('userData.mob').errors.maxlength">
             Mobile Number should have 10 numbers.
           </div>
 
-          <div [hidden]="!userForm.controls.userData.controls['mob'].errors.pattern">Mobile Number should only contain numbers!</div>
+          <div [hidden]="!userForm.get('userData.mob').errors.pattern">Mobile Number should only contain numbers!</div>
         </div>
       </div>
 
@@ -92,14 +92,14 @@
   </div>
   <hr>
   <h4>Display Picture</h4>
-  
+
 
   <div class="profile_upload_img">
   <div *ngIf="auth.user | async as user">
         <img class="profile_upload" [src]="image" width="250">
   </div>
 
-  
+
   <div class="file">
       <label class="file-label">
         <input class="file-input" type="file" (change)="startUpload($event.target.files)">
@@ -110,15 +110,15 @@
     <div *ngIf="percentage | async as pct">
       Uploading... {{ pct | number }}%
     </div>
-  
+
     <div *ngIf="snapshot | async as snap">
       <button (click)="task.pause()" class="btn btn-success" [disabled]="!isActive(snap)">Pause</button>
       <button (click)="task.cancel()" class="btn btn-danger" [disabled]="!isActive(snap)">Cancel</button>
       <button (click)="task.resume()" class="btn btn-info" [disabled]="!(snap?.state === 'paused')">Resume</button>
     </div>
   </div>
-  
-  
+
+
   <hr>
   <div class="submit-row">
     <span *ngIf="!userForm.valid && userForm.touched" class="help-block">Please enter valid data!</span>

@@ -17,9 +17,9 @@ export class NotificationDetailComponent implements OnInit, OnDestroy {
   pageurl: any;
   sub: Subscription;
 
-
   notification = {
     id: '',
+    listId: '',
     video_url: '',
     name: '',
     number: '',
@@ -29,7 +29,8 @@ export class NotificationDetailComponent implements OnInit, OnDestroy {
     related_circulars: [],
     footnotes: [],
     text: '',
-    analysis: ''
+    analysis: '',
+    pdf: ''
   };
 
   htmlText: any;
@@ -47,11 +48,13 @@ export class NotificationDetailComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.pageurl = this._dom.bypassSecurityTrustResourceUrl
-    ('https://s3-ap-southeast-1.amazonaws.com/fhc.app/pdf_notif/CA-IPCC_FT-nov17.pdf');
+    this.pageurl = this._dom.bypassSecurityTrustResourceUrl(
+      'https://s3-ap-southeast-1.amazonaws.com/fhc.app/pdf_notif/CA-IPCC_FT-nov17.pdf'
+    );
+
     this.sub = this.route.queryParams.subscribe(params => {
       this.resetAllValues();
-      console.log('reset?', this.notification);
+
       this.law_id = params['law_id'];
       this.act_id = params['act_id'];
       this.chap_id = params['chap_id'];
@@ -66,11 +69,27 @@ export class NotificationDetailComponent implements OnInit, OnDestroy {
             this.notification_id
           )
           .then((snap: firebase.firestore.DocumentSnapshot) => {
-            const notification = {
+            const notification: any = {
               id: snap.id,
               ...snap.data()
             };
             this.populateNotification(notification);
+            this._notification
+            .getNotificationPDF(
+              this.law_id,
+              this.act_id,
+              this.chap_id,
+              notification.name
+            )
+            .then((snapshot: any[]) => {
+              snapshot.forEach(doc => {
+                const notificationList = {
+                  listId: doc.id,
+                  ...doc.data()
+                };
+                this.populateNotification(notificationList);
+              });
+            });
           });
       } else if (this.name) {
         this._notification
@@ -83,6 +102,22 @@ export class NotificationDetailComponent implements OnInit, OnDestroy {
               };
               this.populateNotification(notification);
             });
+            this._notification
+              .getNotificationPDF(
+                this.law_id,
+                this.act_id,
+                this.chap_id,
+                this.name
+              )
+              .then((snapshot: any[]) => {
+                snapshot.forEach(doc => {
+                  const notification2 = {
+                    listId: doc.id,
+                    ...doc.data()
+                  };
+                  this.populateNotification(notification2);
+                });
+              });
           });
       }
     });
@@ -93,9 +128,7 @@ export class NotificationDetailComponent implements OnInit, OnDestroy {
       ...this.notification,
       ...notification
     };
-    this.htmlText = this._dom.bypassSecurityTrustHtml(
-      this.notification.text
-    );
+    this.htmlText = this._dom.bypassSecurityTrustHtml(this.notification.text);
     this.htmlAnalysis = this._dom.bypassSecurityTrustHtml(
       this.notification.analysis
     );
@@ -108,6 +141,7 @@ export class NotificationDetailComponent implements OnInit, OnDestroy {
   resetAllValues() {
     this.notification = {
       id: '',
+      listId: '',
       video_url: '',
       name: '',
       number: '',
@@ -117,9 +151,8 @@ export class NotificationDetailComponent implements OnInit, OnDestroy {
       related_circulars: [],
       footnotes: [],
       text: '',
-      analysis: ''
+      analysis: '',
+      pdf: ''
     };
   }
-
-
 }

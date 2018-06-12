@@ -102,10 +102,6 @@
       </div>
     </div>
 
-
-
-
-
     <div class="container">
       <div [ngClass]="{
         'col-sm-12 col-xs-12 panel-group': true,
@@ -116,7 +112,7 @@
           <li class="nav-item active">
             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Notification</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="notification.analysis">
             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Analysis</a>
           </li>
         </ul>
@@ -126,16 +122,19 @@
               <strong> {{notification.name}} </strong>
             </div>
 
-
+            <div class="contain-head">
+              <a [href]="notification.pdf" target="_blank">Get PDF Here </a>
+            </div>
             <div class="contain" [innerHTML]="htmlText"></div>
           </div>
-          <div class="tab-pane fade height clsScroll scrollbar container_scroll" id="profile" role="tabpanel" aria-labelledby="profile-tab"
+          <div *ngIf="notification.analysis" class="tab-pane fade height clsScroll scrollbar container_scroll" id="profile" role="tabpanel" aria-labelledby="profile-tab"
             [innerHTML]="htmlAnalysis"></div>
           <div>
               <pdf-viewer [src]="{
-                url: 'https://vadimdez.github.io/ng2-pdf-viewer/pdf-test.pdf',
+                url: 'https://www.tutorialspoint.com/angular2/angular2_tutorial.pdf',
                 withCredentials: true
-               }"></pdf-viewer>
+               }" [original-size]="false"
+               style="display: block;"></pdf-viewer>
             </div>
         </div>
         <hr>
@@ -151,21 +150,6 @@
         </div>
       </div>
     </div>
-
-
-
-    <hr>
-
-    <!-- ..........analysis............ -->
-    <!-- <div class="panel panel-info">
-          <div class="force-overflow panel-heading">
-            <h4>Analysis</h4>
-          </div>
-          <div class="panel-body" [innerHTML]="htmlAnalysis"></div>
-        </div> -->
-
-
-
 
   </div>
 </div>

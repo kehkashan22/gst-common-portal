@@ -9,12 +9,12 @@
         <li routerLinkActive="active">
           <a routerLink="/wiki" *ngIf="isAuthenticated()">GST Wiki</a>
         </li>
-        <li routerLinkActive="active">
+        <!-- <li routerLinkActive="active">
           <a routerLink="/rate-finder" *ngIf="isAuthenticated()">Rate Finder</a>
         </li>
         <li routerLinkActive="active">
             <a routerLink="/case-laws" *ngIf="isAuthenticated()">Case Laws</a>
-        </li>
+        </li> -->
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li dropdown *ngIf="auth.user | async as user">
